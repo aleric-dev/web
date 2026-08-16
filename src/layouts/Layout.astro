@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+import { WhatsAppModal } from '../components/WhatsAppModal';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Aleric.dev | Software a Medida, Automatizaciones & Consultoría Técnica",
+  description = "Transformamos procesos caóticos en software de alto rendimiento. Construcción de sistemas a la medida, automatizaciones sin fricción y arquitectura sólida."
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Aleric.dev, desarrollo web, software a medida, automatizacion n8n, whatsapp api, nestjs, react, typescript, consultoria tecnica, mentoría full stack" />
+    <meta name="author" content="Aleric.dev" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="Aleric.dev" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-600 selection:text-white relative">
+    <slot />
+
+    <!-- Global Floating WhatsApp Modal Widget -->
+    <WhatsAppModal client:load />
+
+    <!-- Script de soporte para triggers de WhatsApp en toda la app -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        const triggers = document.querySelectorAll('[data-trigger-whatsapp]');
+        triggers.forEach((trigger) => {
+          trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            const customMsg = trigger.getAttribute('data-whatsapp-msg');
+            if (window.openWhatsAppModal) {
+              window.openWhatsAppModal(customMsg || undefined);
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

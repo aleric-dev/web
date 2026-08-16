@@ -1,0 +1,84 @@
+---
+---
+
+<header class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-slate-950/80 border-b border-slate-800/80 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <!-- Brand Logo -->
+    <a href="#" class="flex items-center gap-2 group">
+      <div class="w-10 h-10 rounded-xl bg-indigo-600/20 border border-indigo-500/40 flex items-center justify-center text-indigo-400 font-mono text-lg font-bold group-hover:scale-105 group-hover:bg-indigo-600/30 transition shadow-lg shadow-indigo-950/50">
+        &lt;/&gt;
+      </div>
+      <div class="flex flex-col">
+        <span class="text-xl font-extrabold tracking-tight text-white group-hover:text-indigo-300 transition">
+          Aleric<span class="text-indigo-400 font-black">.dev</span>
+        </span>
+        <span class="text-[10px] font-mono text-slate-400 tracking-widest uppercase">Engineering &amp; Code</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
+      <a href="#servicios" class="hover:text-indigo-400 transition-colors py-1">Servicios</a>
+      <a href="#stack" class="hover:text-indigo-400 transition-colors py-1">Dominio Técnico</a>
+      <a href="#proceso" class="hover:text-indigo-400 transition-colors py-1">Metodología</a>
+      <a href="#rendimiento" class="hover:text-indigo-400 transition-colors py-1">Rendimiento</a>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="flex items-center gap-4">
+      <button
+        type="button"
+        data-trigger-whatsapp
+        data-whatsapp-msg="Hola Aleric.dev, me gustaría solicitar una cotización para un proyecto."
+        class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-indigo-600/20 hover:shadow-indigo-500/40 hover:scale-105 transition cursor-pointer border border-indigo-400/30"
+      >
+        Cotizar Proyecto
+      </button>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button
+        type="button"
+        id="mobile-menu-btn"
+        class="md:hidden p-2 text-slate-300 hover:text-white rounded-xl bg-slate-900 border border-slate-800"
+        aria-label="Abrir menú"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 border-b border-slate-800 px-6 py-6 space-y-4 text-center">
+    <a href="#servicios" class="block text-slate-200 font-semibold py-2 hover:text-indigo-400">Servicios</a>
+    <a href="#stack" class="block text-slate-200 font-semibold py-2 hover:text-indigo-400">Dominio Técnico</a>
+    <a href="#proceso" class="block text-slate-200 font-semibold py-2 hover:text-indigo-400">Metodología</a>
+    <a href="#rendimiento" class="block text-slate-200 font-semibold py-2 hover:text-indigo-400">Rendimiento</a>
+    <div class="pt-2">
+      <button
+        type="button"
+        data-trigger-whatsapp
+        data-whatsapp-msg="Hola Aleric.dev, me gustaría solicitar una cotización para un proyecto."
+        class="w-full py-3 rounded-xl bg-indigo-600 text-white font-bold text-xs uppercase tracking-wider"
+      >
+        Cotizar Proyecto por WhatsApp
+      </button>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => menu.classList.add('hidden'));
+      });
+    }
+  });
+</script>

@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import { Services } from '../components/Services';
+import TechStack from '../components/TechStack.astro';
+import { Process } from '../components/Process';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Aleric.dev | Software a Medida, Automatizaciones & Consultoría Técnica"
+  description="Transformamos procesos caóticos en software de alto rendimiento. Construcción de sistemas a la medida, automatizaciones sin fricción y arquitectura sólida para empresas que no pueden permitirse fallar."
+>
+  <!-- Navigation Header -->
+  <Navbar />
+
+  <!-- Main Content Sections -->
+  <main>
+    <!-- 1. Hero Section -->
+    <Hero />
+
+    <!-- 2. Servicios Principales Grid (Hydrated with client:visible using Framer Motion) -->
+    <Services client:visible />
+
+    <!-- 3. Stack & Dominio Técnico -->
+    <TechStack />
+
+    <!-- 4. Proceso de Trabajo / Metodología (Hydrated with client:visible using Framer Motion) -->
+    <Process client:visible />
+  </main>
+
+  <!-- Global Footer -->
+  <Footer />
+</Layout>
