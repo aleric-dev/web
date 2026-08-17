@@ -1,0 +1,111 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+const automationFeatures = [
+  {
+    icon: '💬',
+    title: 'WhatsApp Cloud API & Chatwoot',
+    description: 'Respuestas automáticas, asignación multiagente y bots que atienden prospectos 24/7 sin intervención humana.',
+  },
+  {
+    icon: '🔀',
+    title: 'Flujos Complejos en n8n',
+    description: 'Orquestación de procesos entre CRM, correo, pasarelas de pago y hojas de cálculo en tiempo real.',
+  },
+  {
+    icon: '🐍',
+    title: 'Scripts Personalizados en Python',
+    description: 'Extracción de datos (scraping), procesamiento masivo de información y tareas programadas en segundo plano.',
+  },
+  {
+    icon: '⚡',
+    title: 'Webhooks & Sincronización',
+    description: 'Conexión transparente de plataformas dispares para eliminar la doble digitación de datos.',
+  },
+];
+---
+
+<Layout
+  title="Automatización de Procesos & WhatsApp API | Aleric.dev"
+  description="Elimina la carga operativa manual conectando tus sistemas con WhatsApp API, n8n, Chatwoot y bots personalizados en Python."
+>
+  <Navbar />
+
+  <main class="pt-28 pb-20 bg-slate-950">
+    <!-- Hero Especializado Automatización -->
+    <section class="py-16 relative overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-emerald-600/15 rounded-full blur-[140px] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-2 text-xs font-mono font-bold text-emerald-300 mb-6">
+          ⚡ Automatización Operativa &amp; Sin Fricción
+        </span>
+
+        <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
+          Automatiza tu Operación con <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">WhatsApp API &amp; n8n</span>
+        </h1>
+
+        <p class="text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+          Ahorra cientos de horas hombre eliminando tareas repetitivas. Conectamos tus herramientas para que la información fluya sin intervención humana.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button
+            type="button"
+            data-trigger-whatsapp
+            data-whatsapp-msg="Hola Aleric.dev, me interesa automatizar la atención en WhatsApp y conectar mis procesos con n8n."
+            class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-emerald-950/50 hover:scale-105 transition cursor-pointer"
+          >
+            Cotizar Automatización por WhatsApp
+          </button>
+          <a
+            href="/"
+            class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-900 text-slate-300 hover:text-white font-bold text-xs border border-slate-800 transition flex items-center justify-center"
+          >
+            ← Volver al Orquestador
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Características -->
+    <section class="py-16 bg-slate-900/60 border-t border-slate-800">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <h2 class="text-3xl font-bold text-white mb-3">Soluciones de Automatización Integrada</h2>
+          <p class="text-slate-400 text-sm">Flujos automáticos diseñados para responder al instante y procesar datos sin fallas.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {automationFeatures.map((f) => (
+            <div class="p-7 rounded-3xl border border-slate-800 bg-slate-950/80 shadow-xl">
+              <div class="text-3xl mb-4">{f.icon}</div>
+              <h3 class="text-lg font-bold text-white mb-2">{f.title}</h3>
+              <p class="text-xs text-slate-300 leading-relaxed">{f.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-20 text-center">
+      <div class="max-w-3xl mx-auto px-6 p-10 rounded-3xl bg-gradient-to-r from-slate-900 via-emerald-950/50 to-slate-900 border border-emerald-500/30">
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-4">¿Quieres ver un bot o flujo en acción?</h3>
+        <p class="text-slate-300 text-sm mb-8">Te mostramos una demostración personalizada de cómo la automatización de WhatsApp y n8n impactará tu negocio.</p>
+        <button
+          type="button"
+          data-trigger-whatsapp
+          data-whatsapp-msg="Hola Aleric.dev, quisiera solicitar una demostración en vivo de automatización de WhatsApp."
+          class="px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs uppercase tracking-wider shadow-lg transition cursor-pointer"
+        >
+          Solicitar Demostración en Vivo
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

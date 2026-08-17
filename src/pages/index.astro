@@ -1,35 +1,100 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
-import Hero from '../components/Hero.astro';
-import { Services } from '../components/Services';
-import TechStack from '../components/TechStack.astro';
-import { Process } from '../components/Process';
+import CommercialHero from '../components/CommercialHero.astro';
+import { ProfileRouter } from '../components/ProfileRouter';
 import Footer from '../components/Footer.astro';
+
+// JSON-LD Schema para SEO indexable por Google y otros motores
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Aleric.dev",
+  "description": "Agencia especializada en desarrollo web de alta conversión, aplicaciones a la medida, automatizaciones de WhatsApp API y consultoría técnica.",
+  "url": "https://aleric.dev",
+  "areaServed": "Global",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios Digitales Aleric.dev",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Desarrollo Web & Landings de Alta Conversión",
+          "url": "https://aleric.dev/desarrollo-web"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Desarrollo de Software & SaaS a la Medida",
+          "url": "https://aleric.dev/software-a-medida"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Automatización de Operaciones & WhatsApp API",
+          "url": "https://aleric.dev/automatizaciones"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Consultoría & Auditoría Técnica",
+          "url": "https://aleric.dev/consultoria-tecnica"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Mentoría & Capacitación Full Stack",
+          "url": "https://aleric.dev/mentoria-fullstack"
+        }
+      }
+    ]
+  }
+};
 ---
 
 <Layout
-  title="Aleric.dev | Software a Medida, Automatizaciones & Consultoría Técnica"
-  description="Transformamos procesos caóticos en software de alto rendimiento. Construcción de sistemas a la medida, automatizaciones sin fricción y arquitectura sólida para empresas que no pueden permitirse fallar."
+  title="Aleric.dev | Desarrollo Web, Software a Medida & Automatizaciones"
+  description="Soluciones de software y automatización comercial. Desarrollo de páginas web de alta conversión, plataformas a la medida, bots de WhatsApp API y consultoría."
 >
-  <!-- Navigation Header -->
+  <!-- Inyección de Schema para SEO Indexable -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
   <Navbar />
 
-  <!-- Main Content Sections -->
-  <main>
-    <!-- 1. Hero Section -->
-    <Hero />
+  <main class="min-h-[85vh] flex flex-col justify-between">
+    <!-- Hero Comercial Minimalista -->
+    <CommercialHero />
 
-    <!-- 2. Servicios Principales Grid (Hydrated with client:visible using Framer Motion) -->
-    <Services client:visible />
+    <!-- Orquestador Principal de Opciones -->
+    <ProfileRouter client:load />
 
-    <!-- 3. Stack & Dominio Técnico -->
-    <TechStack />
-
-    <!-- 4. Proceso de Trabajo / Metodología (Hydrated with client:visible using Framer Motion) -->
-    <Process client:visible />
+    <!-- Sección Semántica SEO para Indexación de Motores de Búsqueda -->
+    <section class="sr-only">
+      <h2>Agencia de Desarrollo Web, Software a Medida y Automatizaciones</h2>
+      <p>
+        En Aleric.dev ofrecemos servicios especializados en creación de páginas web corporativas, landings de alta conversión,
+        desarrollo de plataformas SaaS a la medida, integración de WhatsApp Cloud API, flujos automáticos en n8n, auditoría de código legacy
+        y mentoría técnica Full Stack.
+      </p>
+      <ul>
+        <li><a href="/desarrollo-web">Desarrollo Web &amp; Landings de Alta Conversión</a></li>
+        <li><a href="/software-a-medida">Desarrollo de Software &amp; SaaS a la Medida</a></li>
+        <li><a href="/automatizaciones">Automatización de Procesos &amp; WhatsApp API</a></li>
+        <li><a href="/consultoria-tecnica">Consultoría &amp; Auditoría Técnica Senior</a></li>
+        <li><a href="/mentoria-fullstack">Mentoría &amp; Capacitación Full Stack 1-a-1</a></li>
+      </ul>
+    </section>
   </main>
 
-  <!-- Global Footer -->
   <Footer />
 </Layout>

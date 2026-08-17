@@ -1,0 +1,111 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+const softwareFeatures = [
+  {
+    icon: '🚀',
+    title: 'Plataformas SaaS & MVP Rapid',
+    description: 'Llevamos tu idea de producto a un software mínimo viable (MVP) robusto y probado en tiempo récord.',
+  },
+  {
+    icon: '📊',
+    title: 'CRMs & Dashboards de Control',
+    description: 'Sistemas a medida para administrar usuarios, ventas, inventarios y métricas en tiempo real.',
+  },
+  {
+    icon: '🔌',
+    title: 'APIs REST & Integraciones',
+    description: 'Arquitecturas desacopladas listas para conectar con pasarelas de pago, bases de datos y servicios externos.',
+  },
+  {
+    icon: '🛡️',
+    title: 'Seguridad & Autenticación',
+    description: 'Control de acceso basado en roles (RBAC), encriptación y protección de datos bajo estándares industriales.',
+  },
+];
+---
+
+<Layout
+  title="Desarrollo de Software & SaaS a la Medida | Aleric.dev"
+  description="Construimos plataformas SaaS, aplicaciones web complejas, CRMs y paneles administrativos escalables adaptados a la lógica exacta de tu negocio."
+>
+  <Navbar />
+
+  <main class="pt-28 pb-20 bg-slate-950">
+    <!-- Hero Especializado Software a Medida -->
+    <section class="py-16 relative overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-indigo-600/15 rounded-full blur-[140px] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-2 text-xs font-mono font-bold text-indigo-300 mb-6">
+          🚀 Para Startups, Founders &amp; Empresas
+        </span>
+
+        <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
+          Desarrollo de Software &amp; SaaS <span class="bg-gradient-to-r from-indigo-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">Construido a la Medida</span>
+        </h1>
+
+        <p class="text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+          Transformamos procesos complejos en plataformas digitales ágiles, seguras y preparadas para soportar miles de usuarios concurrentes.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button
+            type="button"
+            data-trigger-whatsapp
+            data-whatsapp-msg="Hola Aleric.dev, me interesa cotizar una plataforma SaaS / Software a la medida para mi proyecto."
+            class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-indigo-950/50 hover:scale-105 transition cursor-pointer"
+          >
+            Cotizar Proyecto Software por WhatsApp
+          </button>
+          <a
+            href="/"
+            class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-900 text-slate-300 hover:text-white font-bold text-xs border border-slate-800 transition flex items-center justify-center"
+          >
+            ← Volver al Orquestador
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Características -->
+    <section class="py-16 bg-slate-900/60 border-t border-slate-800">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <h2 class="text-3xl font-bold text-white mb-3">Capacidades de Desarrollo a Medida</h2>
+          <p class="text-slate-400 text-sm">Construcción con tecnologías modernas (TypeScript, React, NestJS, PostgreSQL).</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {softwareFeatures.map((f) => (
+            <div class="p-7 rounded-3xl border border-slate-800 bg-slate-950/80 shadow-xl">
+              <div class="text-3xl mb-4">{f.icon}</div>
+              <h3 class="text-lg font-bold text-white mb-2">{f.title}</h3>
+              <p class="text-xs text-slate-300 leading-relaxed">{f.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-20 text-center">
+      <div class="max-w-3xl mx-auto px-6 p-10 rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950/50 to-slate-900 border border-indigo-500/30">
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-4">¿Tienes una idea o arquitectura en mente?</h3>
+        <p class="text-slate-300 text-sm mb-8">Escribamos la primera versión de tu sistema con arquitectura limpia y código escalable desde el día uno.</p>
+        <button
+          type="button"
+          data-trigger-whatsapp
+          data-whatsapp-msg="Hola Aleric.dev, quiero agendar una reunión técnica para presentar mi proyecto de software."
+          class="px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-xs uppercase tracking-wider shadow-lg transition cursor-pointer"
+        >
+          Agendar Sesión Técnica
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

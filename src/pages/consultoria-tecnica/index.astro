@@ -1,0 +1,111 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+const consultingFeatures = [
+  {
+    icon: '🛡️',
+    title: 'Auditoría & Rescate de Proyectos Legacy',
+    description: 'Diagnóstico exhaustivo de bases de código problemáticas, remediación de bugs críticos y refactorización orientada a mantenibilidad.',
+  },
+  {
+    icon: '⚡',
+    title: 'Optimización de Rendimiento & SEO',
+    description: 'Aceleración extrema de sistemas lentos, auditoría Google Lighthouse 100/100 y eliminación de cuellos de botella.',
+  },
+  {
+    icon: '📐',
+    title: 'Arquitectura de Software Senior',
+    description: 'Diseño de sistemas desacoplados, microservicios, APIs bien documentadas y patrones de diseño limpios (Clean Code).',
+  },
+  {
+    icon: '⚖️',
+    title: 'Inspección de Proveedores Externos',
+    description: 'Validación técnica e imparcial del trabajo entregado por agencias o freelancers antes de liberar pagos.',
+  },
+];
+---
+
+<Layout
+  title="Consultoría Técnica & Rescate Legacy para CTOs | Aleric.dev"
+  description="Auditoría de código senior, rescate de proyectos software deficientes, optimización de infraestructura y acompañamiento arquitectónico."
+>
+  <Navbar />
+
+  <main class="pt-28 pb-20 bg-slate-950">
+    <!-- Hero Especializado Consultoría CTO -->
+    <section class="py-16 relative overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-amber-600/15 rounded-full blur-[140px] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/10 px-4 py-2 text-xs font-mono font-bold text-amber-300 mb-6">
+          🛡️ Para CTOs, Directores de Tecnología &amp; Propietarios de Código
+        </span>
+
+        <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
+          Auditoría Técnica Senior &amp; <span class="bg-gradient-to-r from-amber-400 via-orange-300 to-red-400 bg-clip-text text-transparent">Rescate de Proyectos Legacy</span>
+        </h1>
+
+        <p class="text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+          ¿Tu software tiene deuda técnica inmanejable, lentitud o proveedores que no responden? Entramos al código, diagnosticamos con rigor y saneamos la arquitectura.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button
+            type="button"
+            data-trigger-whatsapp
+            data-whatsapp-msg="Hola Aleric.dev, requiero una auditoría técnica o consultoría para un proyecto software."
+            class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-amber-950/50 hover:scale-105 transition cursor-pointer"
+          >
+            Solicitar Auditoría por WhatsApp
+          </button>
+          <a
+            href="/"
+            class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-900 text-slate-300 hover:text-white font-bold text-xs border border-slate-800 transition flex items-center justify-center"
+          >
+            ← Volver al Orquestador
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Características -->
+    <section class="py-16 bg-slate-900/60 border-t border-slate-800">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <h2 class="text-3xl font-bold text-white mb-3">Servicios de Consultoría Senior</h2>
+          <p class="text-slate-400 text-sm">Evaluación imparcial y solución efectiva a problemas técnicos complejos.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {consultingFeatures.map((f) => (
+            <div class="p-7 rounded-3xl border border-slate-800 bg-slate-950/80 shadow-xl">
+              <div class="text-3xl mb-4">{f.icon}</div>
+              <h3 class="text-lg font-bold text-white mb-2">{f.title}</h3>
+              <p class="text-xs text-slate-300 leading-relaxed">{f.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-20 text-center">
+      <div class="max-w-3xl mx-auto px-6 p-10 rounded-3xl bg-gradient-to-r from-slate-900 via-amber-950/50 to-slate-900 border border-amber-500/30">
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-4">¿Tu proyecto se encuentra en riesgo técnico?</h3>
+        <p class="text-slate-300 text-sm mb-8">Obtén un informe confidencial con el estado real de tu arquitectura y recomendaciones inmediatas.</p>
+        <button
+          type="button"
+          data-trigger-whatsapp
+          data-whatsapp-msg="Hola Aleric.dev, necesito agendar una revisión confidencial de código."
+          class="px-8 py-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs uppercase tracking-wider shadow-lg transition cursor-pointer"
+        >
+          Solicitar Revisión Confidencial
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
