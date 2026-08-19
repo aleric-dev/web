@@ -110,7 +110,7 @@ export const Process: React.FC = () => {
             </svg>
           </button>
         </div>
-
+        
       </div>
     </section>
   );
