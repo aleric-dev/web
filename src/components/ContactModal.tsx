@@ -16,10 +16,17 @@ const PRESET_TOPICS = [
   { id: 'mentorship', label: '🎓 Mentoría Full Stack', msg: 'Hola Aleric.dev, me interesa su programa de consultoría y mentoría técnica Full Stack.' },
 ];
 
-export const ContactModal: React.FC<ContactModalProps> = ({
-  phoneNumber = '573013229292',
-  web3FormsKey = 'YOUR_WEB3FORMS_ACCESS_KEY',
-}) => {
+const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE;
+const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+
+export const ContactModal: React.FC = () => {
+  if (!PHONE_NUMBER) {
+    throw new Error('[ContactModal] Error crítico: La variable de entorno PUBLIC_WHATSAPP_PHONE no está definida.');
+  }
+  if (!WEB3FORMS_KEY) {
+    throw new Error('[ContactModal] Error crítico: La variable de entorno PUBLIC_WEB3FORMS_KEY no está definida.');
+  }
+
   const [isOpen, setIsOpen] = useState(false);
   const [mode, setMode] = useState<ContactMode>('form');
   
@@ -131,7 +138,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          access_key: web3FormsKey,
+          access_key: WEB3FORMS_KEY,
           name: name.trim(),
           email: email.trim(),
           category: categoryObj?.label || selectedTopic || 'No especificada',
@@ -160,7 +167,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
     e.preventDefault();
     const textToSend = message.trim() || 'Hola Aleric.dev, quiero solicitar información sobre un proyecto.';
     const encodedText = encodeURIComponent(textToSend);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+    const whatsappUrl = `https://wa.me/${PHONE_NUMBER}?text=${encodedText}`;
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     setIsOpen(false);
   };
