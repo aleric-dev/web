@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MessageSquare, Mail, X, CheckCircle2, Zap, ArrowUp, Send, Check, ShieldCheck } from 'lucide-react';
-
-interface ContactModalProps {
-  phoneNumber?: string;
-  web3FormsKey?: string;
-}
+import { MessageSquare, Mail, X, CheckCircle2, Zap, ArrowUp, Send, Check, ShieldCheck, AlertCircle } from 'lucide-react';
 
 type ContactMode = 'form' | 'whatsapp';
 
@@ -20,7 +15,6 @@ const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE || '';
 const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
 
 export const ContactModal: React.FC = () => {
-
   const [isOpen, setIsOpen] = useState(false);
   const [mode, setMode] = useState<ContactMode>('form');
   
@@ -62,6 +56,21 @@ export const ContactModal: React.FC = () => {
     }
     setIsOpen(true);
   };
+
+  // Validación de variables de entorno al abrir modal o cambiar de modo
+  useEffect(() => {
+    if (isOpen) {
+      if (mode === 'form' && !WEB3FORMS_KEY) {
+        console.error('[ContactModal] Error crítico: La variable de entorno PUBLIC_WEB3FORMS_KEY no está definida.');
+        setErrorMsg('Error de configuración: La variable de entorno PUBLIC_WEB3FORMS_KEY no está configurada.');
+      } else if (mode === 'whatsapp' && !PHONE_NUMBER) {
+        console.error('[ContactModal] Error crítico: La variable de entorno PUBLIC_WHATSAPP_PHONE no está definida.');
+        setErrorMsg('Error de configuración: La variable de entorno PUBLIC_WHATSAPP_PHONE no está configurada.');
+      } else {
+        setErrorMsg(null);
+      }
+    }
+  }, [isOpen, mode]);
 
   useEffect(() => {
     // Listeners globales para abrir modal
@@ -120,11 +129,13 @@ export const ContactModal: React.FC = () => {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!WEB3FORMS_KEY) {
-      setErrorMsg('Error: La variable PUBLIC_WEB3FORMS_KEY no está configurada en las variables de entorno.');
+      console.error('[ContactModal] Error al enviar formulario: Falta la variable PUBLIC_WEB3FORMS_KEY.');
+      setErrorMsg('Error de configuración: La variable de entorno PUBLIC_WEB3FORMS_KEY no está definida.');
       return;
     }
     if (!name.trim() || !email.trim() || !message.trim() || !acceptedTerms) return;
 
+    setErrorMsg(null);
     setIsSubmitting(true);
 
     const categoryObj = PRESET_TOPICS.find((t) => t.id === selectedTopic);
@@ -165,9 +176,11 @@ export const ContactModal: React.FC = () => {
   const handleWhatsAppRedirect = (e: React.FormEvent) => {
     e.preventDefault();
     if (!PHONE_NUMBER) {
-      setErrorMsg('Error: La variable PUBLIC_WHATSAPP_PHONE no está configurada en las variables de entorno.');
+      console.error('[ContactModal] Error al abrir WhatsApp: Falta la variable PUBLIC_WHATSAPP_PHONE.');
+      setErrorMsg('Error de configuración: La variable de entorno PUBLIC_WHATSAPP_PHONE no está definida.');
       return;
     }
+    setErrorMsg(null);
     const textToSend = message.trim() || 'Hola Aleric.dev, quiero solicitar información sobre un proyecto.';
     const encodedText = encodeURIComponent(textToSend);
     const whatsappUrl = `https://wa.me/${PHONE_NUMBER}?text=${encodedText}`;
@@ -178,6 +191,7 @@ export const ContactModal: React.FC = () => {
   const resetAndClose = () => {
     setIsOpen(false);
     setIsSuccess(false);
+    setErrorMsg(null);
   };
 
   return (
@@ -283,6 +297,14 @@ export const ContactModal: React.FC = () => {
                   <span>WhatsApp Directo</span>
                 </button>
               </div>
+
+              {/* Box de Alerta Visual para Errores (Variables de Entorno o Validación) */}
+              {errorMsg && (
+                <div className="p-3.5 rounded-xl bg-rose-500/15 border border-rose-500/40 text-rose-200 text-xs flex items-start gap-2.5 animate-fade-in-up">
+                  <AlertCircle className="w-4 h-4 shrink-0 text-rose-400 mt-0.5" />
+                  <span className="leading-snug">{errorMsg}</span>
+                </div>
+              )}
 
               {/* MODO 1: TE CONTACTAMOS NOSOTROS (FORMULARIO) */}
               {mode === 'form' && (
