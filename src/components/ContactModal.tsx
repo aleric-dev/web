@@ -37,27 +37,45 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   // Scroll to top state
   const [showScrollTop, setShowScrollTop] = useState(false);
 
+  const getCategoryFromPath = (path: string): string => {
+    if (path.includes('software-a-medida')) return 'custom';
+    if (path.includes('automatizaciones')) return 'n8n';
+    if (path.includes('consultoria-tecnica')) return 'advisory';
+    if (path.includes('mentoria-fullstack')) return 'mentorship';
+    return 'web'; // Primera opción (Desarrollo Web) por defecto para home / orquestador
+  };
+
+  const openModalWithCategory = (customMsg?: string, customCategory?: string) => {
+    const currentPath = window.location.pathname;
+    const catId = customCategory || getCategoryFromPath(currentPath);
+    setSelectedTopic(catId);
+
+    if (customMsg) {
+      setMessage(customMsg.slice(0, 100));
+    } else {
+      const found = PRESET_TOPICS.find((t) => t.id === catId);
+      if (found) {
+        setMessage(found.msg.slice(0, 100));
+      }
+    }
+    setIsOpen(true);
+  };
+
   useEffect(() => {
     // Listeners globales para abrir modal
-    const handleOpenModal = (e: CustomEvent<{ message?: string }>) => {
-      if (e.detail?.message) {
-        const truncated = e.detail.message.slice(0, 100);
-        setMessage(truncated);
-      }
-      setIsOpen(true);
+    const handleOpenModal = (e: CustomEvent<{ message?: string; category?: string }>) => {
+      openModalWithCategory(e.detail?.message, e.detail?.category);
     };
 
     window.addEventListener('open-contact-modal' as any, handleOpenModal);
     window.addEventListener('open-whatsapp-modal' as any, handleOpenModal);
 
-    (window as any).openContactModal = (customMsg?: string) => {
-      if (customMsg) setMessage(customMsg.slice(0, 100));
-      setIsOpen(true);
+    (window as any).openContactModal = (customMsg?: string, customCategory?: string) => {
+      openModalWithCategory(customMsg, customCategory);
     };
 
-    (window as any).openWhatsAppModal = (customMsg?: string) => {
-      if (customMsg) setMessage(customMsg.slice(0, 100));
-      setIsOpen(true);
+    (window as any).openWhatsAppModal = (customMsg?: string, customCategory?: string) => {
+      openModalWithCategory(customMsg, customCategory);
     };
 
     // Scroll-to-top handler

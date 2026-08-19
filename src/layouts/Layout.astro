@@ -53,19 +53,19 @@ const {
     <!-- Global Floating Contact Modal Widget -->
     <ContactModal client:load />
 
-    <!-- Script de soporte para triggers de WhatsApp en toda la app -->
+    <!-- Script de soporte para triggers de contacto en toda la app (Event Delegation) -->
     <script is:inline>
-      document.addEventListener('DOMContentLoaded', () => {
-        const triggers = document.querySelectorAll('[data-trigger-whatsapp]');
-        triggers.forEach((trigger) => {
-          trigger.addEventListener('click', (e) => {
-            e.preventDefault();
-            const customMsg = trigger.getAttribute('data-whatsapp-msg');
-            if (window.openWhatsAppModal) {
-              window.openWhatsAppModal(customMsg || undefined);
-            }
-          });
-        });
+      document.addEventListener('click', (e) => {
+        const trigger = e.target.closest('[data-trigger-whatsapp], [data-trigger-contact]');
+        if (trigger) {
+          e.preventDefault();
+          const customMsg = trigger.getAttribute('data-whatsapp-msg') || trigger.getAttribute('data-contact-msg');
+          if (window.openContactModal) {
+            window.openContactModal(customMsg || undefined);
+          } else if (window.openWhatsAppModal) {
+            window.openWhatsAppModal(customMsg || undefined);
+          }
+        }
       });
     </script>
   </body>
