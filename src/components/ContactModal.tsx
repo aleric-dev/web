@@ -11,8 +11,9 @@ const PRESET_TOPICS = [
   { id: 'mentorship', label: '🎓 Mentoría Full Stack', msg: 'Hola Aleric.dev, me interesa su programa de consultoría y mentoría técnica Full Stack.' },
 ];
 
-const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE || '';
-const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
+// Valores directos con fallback garantizado para funcionamiento inmediato en producción y Cloudflare Pages
+const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE || '573013229292';
+const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY || '987dd1cc-25dd-4512-8bc3-4eac1d116b44';
 
 export const ContactModal: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,21 +57,6 @@ export const ContactModal: React.FC = () => {
     }
     setIsOpen(true);
   };
-
-  // Validación de variables de entorno al abrir modal o cambiar de modo
-  useEffect(() => {
-    if (isOpen) {
-      if (mode === 'form' && !WEB3FORMS_KEY) {
-        console.error('[ContactModal] Error crítico: La variable de entorno PUBLIC_WEB3FORMS_KEY no está definida.');
-        setErrorMsg('Error de configuración: La variable de entorno PUBLIC_WEB3FORMS_KEY no está configurada.');
-      } else if (mode === 'whatsapp' && !PHONE_NUMBER) {
-        console.error('[ContactModal] Error crítico: La variable de entorno PUBLIC_WHATSAPP_PHONE no está definida.');
-        setErrorMsg('Error de configuración: La variable de entorno PUBLIC_WHATSAPP_PHONE no está configurada.');
-      } else {
-        setErrorMsg(null);
-      }
-    }
-  }, [isOpen, mode]);
 
   useEffect(() => {
     // Listeners globales para abrir modal
@@ -128,11 +114,6 @@ export const ContactModal: React.FC = () => {
   // Envío Formulario Web3Forms
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!WEB3FORMS_KEY) {
-      console.error('[ContactModal] Error al enviar formulario: Falta la variable PUBLIC_WEB3FORMS_KEY.');
-      setErrorMsg('Error de configuración: La variable de entorno PUBLIC_WEB3FORMS_KEY no está definida.');
-      return;
-    }
     if (!name.trim() || !email.trim() || !message.trim() || !acceptedTerms) return;
 
     setErrorMsg(null);
@@ -175,11 +156,6 @@ export const ContactModal: React.FC = () => {
   // Redirección WhatsApp Directo
   const handleWhatsAppRedirect = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!PHONE_NUMBER) {
-      console.error('[ContactModal] Error al abrir WhatsApp: Falta la variable PUBLIC_WHATSAPP_PHONE.');
-      setErrorMsg('Error de configuración: La variable de entorno PUBLIC_WHATSAPP_PHONE no está definida.');
-      return;
-    }
     setErrorMsg(null);
     const textToSend = message.trim() || 'Hola Aleric.dev, quiero solicitar información sobre un proyecto.';
     const encodedText = encodeURIComponent(textToSend);
@@ -298,7 +274,7 @@ export const ContactModal: React.FC = () => {
                 </button>
               </div>
 
-              {/* Box de Alerta Visual para Errores (Variables de Entorno o Validación) */}
+              {/* Box de Alerta Visual para Errores */}
               {errorMsg && (
                 <div className="p-3.5 rounded-xl bg-rose-500/15 border border-rose-500/40 text-rose-200 text-xs flex items-start gap-2.5 animate-fade-in-up">
                   <AlertCircle className="w-4 h-4 shrink-0 text-rose-400 mt-0.5" />
