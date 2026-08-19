@@ -16,16 +16,10 @@ const PRESET_TOPICS = [
   { id: 'mentorship', label: '🎓 Mentoría Full Stack', msg: 'Hola Aleric.dev, me interesa su programa de consultoría y mentoría técnica Full Stack.' },
 ];
 
-const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE;
-const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE || '';
+const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
 
 export const ContactModal: React.FC = () => {
-  if (!PHONE_NUMBER) {
-    throw new Error('[ContactModal] Error crítico: La variable de entorno PUBLIC_WHATSAPP_PHONE no está definida.');
-  }
-  if (!WEB3FORMS_KEY) {
-    throw new Error('[ContactModal] Error crítico: La variable de entorno PUBLIC_WEB3FORMS_KEY no está definida.');
-  }
 
   const [isOpen, setIsOpen] = useState(false);
   const [mode, setMode] = useState<ContactMode>('form');
@@ -40,6 +34,7 @@ export const ContactModal: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   // Scroll to top state
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -124,6 +119,10 @@ export const ContactModal: React.FC = () => {
   // Envío Formulario Web3Forms
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!WEB3FORMS_KEY) {
+      setErrorMsg('Error: La variable PUBLIC_WEB3FORMS_KEY no está configurada en las variables de entorno.');
+      return;
+    }
     if (!name.trim() || !email.trim() || !message.trim() || !acceptedTerms) return;
 
     setIsSubmitting(true);
@@ -165,6 +164,10 @@ export const ContactModal: React.FC = () => {
   // Redirección WhatsApp Directo
   const handleWhatsAppRedirect = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!PHONE_NUMBER) {
+      setErrorMsg('Error: La variable PUBLIC_WHATSAPP_PHONE no está configurada en las variables de entorno.');
+      return;
+    }
     const textToSend = message.trim() || 'Hola Aleric.dev, quiero solicitar información sobre un proyecto.';
     const encodedText = encodeURIComponent(textToSend);
     const whatsappUrl = `https://wa.me/${PHONE_NUMBER}?text=${encodedText}`;
