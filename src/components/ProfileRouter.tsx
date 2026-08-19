@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Globe, Rocket, Zap, ShieldCheck, GraduationCap, MessageSquare, ArrowRight } from 'lucide-react';
 
 interface ProfileOption {
@@ -122,15 +121,12 @@ export const ProfileRouter: React.FC = () => {
 
         {/* Options Grid (6 Cards) */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 items-stretch">
-          {OPTIONS.map((opt, idx) => (
-            <motion.a
+          {OPTIONS.map((opt) => (
+            <a
               key={opt.id}
               href={opt.path || '#'}
               onClick={(e) => handleCardClick(e, opt)}
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: idx * 0.08 }}
-              className={`group relative flex flex-col justify-between rounded-3xl border border-slate-800 bg-gradient-to-b ${opt.accentColor} bg-slate-900/60 p-7 backdrop-blur-md transition-all duration-300 ${opt.borderHover} shadow-xl cursor-pointer`}
+              className={`group relative flex flex-col justify-between rounded-3xl border border-slate-800 bg-gradient-to-b ${opt.accentColor} bg-slate-900/60 p-7 backdrop-blur-md transition-all duration-300 ${opt.borderHover} hover:-translate-y-1 shadow-xl cursor-pointer`}
             >
               <div>
                 <div className="flex items-center justify-between mb-5">
@@ -161,7 +157,7 @@ export const ProfileRouter: React.FC = () => {
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </div>
-            </motion.a>
+            </a>
           ))}
         </div>
 

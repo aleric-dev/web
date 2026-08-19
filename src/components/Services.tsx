@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Layout, Cpu, Bot, ShieldCheck, GraduationCap, ArrowRight, Check } from 'lucide-react';
 
 interface ServiceItem {
@@ -108,25 +107,6 @@ const SERVICES: ServiceItem[] = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: 'easeOut' },
-  },
-};
-
 export const Services: React.FC = () => {
   const triggerWhatsApp = (msg: string) => {
     if ((window as any).openWhatsAppModal) {
@@ -153,19 +133,12 @@ export const Services: React.FC = () => {
           </p>
         </div>
 
-        {/* Interactive Grid Animated with Framer Motion */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch"
-        >
-          {SERVICES.map((service, index) => (
-            <motion.div
+        {/* Interactive Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          {SERVICES.map((service) => (
+            <div
               key={service.id}
-              variants={cardVariants}
-              className={`group relative flex flex-col justify-between rounded-3xl border border-slate-800 bg-gradient-to-b ${service.gradient} p-8 backdrop-blur-md transition-all duration-300 ${service.borderGlow} shadow-xl`}
+              className={`group relative flex flex-col justify-between rounded-3xl border border-slate-800 bg-gradient-to-b ${service.gradient} p-8 backdrop-blur-md transition-all duration-300 ${service.borderGlow} hover:-translate-y-1 shadow-xl`}
             >
               <div>
                 {/* Header card info */}
@@ -212,9 +185,9 @@ export const Services: React.FC = () => {
                   <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                 </button>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

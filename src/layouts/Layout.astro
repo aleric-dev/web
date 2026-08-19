@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
-import { WhatsAppModal } from '../components/WhatsAppModal';
+import { ContactModal } from '../components/ContactModal';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title?: string;
@@ -20,6 +21,9 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Astro Native View Transitions Router -->
+    <ClientRouter />
 
     <!-- SEO Meta Tags -->
     <title>{title}</title>
@@ -46,8 +50,8 @@ const {
   <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-600 selection:text-white relative">
     <slot />
 
-    <!-- Global Floating WhatsApp Modal Widget -->
-    <WhatsAppModal client:load />
+    <!-- Global Floating Contact Modal Widget -->
+    <ContactModal client:load />
 
     <!-- Script de soporte para triggers de WhatsApp en toda la app -->
     <script is:inline>

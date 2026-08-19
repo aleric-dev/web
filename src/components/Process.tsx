@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Search, Compass, Code2, Rocket } from 'lucide-react';
 
 const STEPS = [
@@ -62,13 +61,9 @@ export const Process: React.FC = () => {
         {/* 4 Steps Timeline Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
           {STEPS.map((item, idx) => (
-            <motion.div
+            <div
               key={item.step}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.12 }}
-              className={`relative flex flex-col justify-between rounded-3xl border bg-gradient-to-b ${item.color} bg-slate-900/60 p-7 backdrop-blur-md shadow-xl hover:translate-y-[-4px] transition-all duration-300`}
+              className={`relative flex flex-col justify-between rounded-3xl border bg-gradient-to-b ${item.color} bg-slate-900/60 p-7 backdrop-blur-md shadow-xl hover:-translate-y-1 transition-all duration-300`}
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
@@ -97,7 +92,7 @@ export const Process: React.FC = () => {
                 <span>Paso {idx + 1} de 4</span>
                 <span className="text-indigo-400 font-bold">100% Claridad</span>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
