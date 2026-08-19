@@ -1,28 +1,49 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
+import ContactSection from '../../components/ContactSection.astro';
 import Footer from '../../components/Footer.astro';
 
-const webFeatures = [
+const webServices = [
   {
     icon: '⚡',
-    title: 'Velocidad de Carga Instantánea',
-    description: 'Sitios maquetados en código ultraligero que cargan en menos de 0.5 segundos, reduciendo la tasa de rebote.',
+    title: 'Landings de Alta Conversión (CRO)',
+    description: 'Páginas promocionales de un solo producto o servicio optimizadas rigurosamente para captar prospectos y leads cualificados.',
   },
   {
-    icon: '🎯',
-    title: 'Diseño Enfocado en Conversión',
-    description: 'Estructuras persuasivas con llamados a la acción estratégicos diseñados para captar prospectos constantemente.',
+    icon: '🏢',
+    title: 'Sitios Web Corporativos e Institucionales',
+    description: 'Portales de marcas y empresas con arquitectura limpia, velocidad extrema y presentación profesional que inspira confianza.',
+  },
+  {
+    icon: '🛍️',
+    title: 'Tiendas E-commerce Escalables',
+    description: 'Catálogos digitales y plataformas de venta en línea con carritos de compra, pasarelas de pago y navegación fluida.',
+  },
+  {
+    icon: '🚀',
+    title: 'Optimizaciones Lighthouse 100/100',
+    description: 'Saneamiento técnico de sitios lentos para lograr puntuaciones máximas de rendimiento, accesibilidad y SEO técnico.',
+  },
+  {
+    icon: '🏡',
+    title: 'Portales Inmobiliarios & Catálogos',
+    description: 'Plataformas interactivas para búsqueda de propiedades, automóviles o catálogos complejos con filtros dinámicos.',
+  },
+  {
+    icon: '🔄',
+    title: 'Rediseño & Migración Web Legacy',
+    description: 'Modernización completa de sitios antiguos o lentos basados en WordPress a código moderno ultraveloz.',
+  },
+  {
+    icon: '📲',
+    title: 'Progressive Web Apps (PWA)',
+    description: 'Sitios web avanzados instalables en dispositivos móviles que funcionan offline y envían notificaciones push.',
   },
   {
     icon: '🔍',
-    title: 'Posicionamiento SEO Nativo',
-    description: 'Indexación optimizada en Google con arquitectura de etiquetas limpias para destacar sobre la competencia.',
-  },
-  {
-    icon: '📱',
-    title: '100% Responsivo & Móvil First',
-    description: 'Adaptación perfecta para smartphones, tablets y computadoras de escritorio.',
+    title: 'Posicionamiento SEO Técnico Nativo',
+    description: 'Estructuración de datos Schema.org, sitemaps y renderizado estático para destacar en los primeros lugares de Google.',
   },
 ];
 ---
@@ -33,78 +54,70 @@ const webFeatures = [
 >
   <Navbar />
 
-  <main class="pt-28 pb-20 bg-slate-950">
+  <main class="pt-28 bg-slate-900/40 dark:bg-slate-950 transition-colors duration-300">
     <!-- Hero Especializado Desarrollo Web -->
-    <section class="py-16 relative overflow-hidden">
+    <section id="hero" class="py-16 relative overflow-hidden">
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-cyan-600/15 rounded-full blur-[140px] pointer-events-none"></div>
 
       <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-        <span class="inline-flex items-center gap-2 rounded-full border border-cyan-500/40 bg-cyan-500/10 px-4 py-2 text-xs font-mono font-bold text-cyan-300 mb-6">
+        <span class="inline-flex items-center gap-2 rounded-full border border-cyan-500/40 bg-cyan-500/10 px-4 py-2 text-xs font-mono font-bold text-cyan-600 dark:text-cyan-300 mb-6">
           🌐 Soluciones Web Comerciales &amp; PyMEs
         </span>
 
-        <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
-          Páginas Web &amp; Landings diseñadas para <span class="bg-gradient-to-r from-cyan-400 via-blue-300 to-indigo-400 bg-clip-text text-transparent">Multiplicar tus Ventas</span>
+        <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
+          Páginas Web &amp; Landings diseñadas para <span class="bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">Multiplicar tus Ventas</span>
         </h1>
 
-        <p class="text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+        <p class="text-slate-600 dark:text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
           Olvídate de sitios lentos o plantillas genéricas. Desarrollamos presencia digital de alto nivel que atrapa la atención y convierte visitas en clientes.
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button
-            type="button"
-            data-trigger-contact
-            data-contact-msg="Hola Aleric.dev, me interesa solicitar una cotización para un sitio web / Landing Page de alta conversión."
-            class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-cyan-950/50 hover:scale-105 transition cursor-pointer"
+          <a
+            href="#contacto"
+            class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-cyan-950/30 hover:scale-105 transition cursor-pointer flex items-center justify-center"
           >
             Cotizar Sitio Web / Landing Page
-          </button>
+          </a>
           <a
             href="/"
-            class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-900 text-slate-300 hover:text-white font-bold text-xs border border-slate-800 transition flex items-center justify-center"
+            class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white font-bold text-xs border border-slate-200 dark:border-slate-800 transition flex items-center justify-center"
           >
-            ← Volver al Orquestador
+            ← Volver al Inicio
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Características y Beneficios -->
-    <section class="py-16 bg-slate-900/60 border-t border-slate-800">
+    <!-- Catálogo Especializado de Servicios Web (8 Tarjetas) -->
+    <section id="beneficios" class="py-16 bg-slate-100/80 dark:bg-slate-900/60 border-t border-slate-200 dark:border-slate-800">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center max-w-2xl mx-auto mb-16">
-          <h2 class="text-3xl font-bold text-white mb-3">¿Por qué nuestras páginas generan resultados?</h2>
-          <p class="text-slate-400 text-sm">Combinamos diseño moderno, código optimizado e ingeniería de persuasión comercial.</p>
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">Catálogo de Soluciones de Desarrollo Web</h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">Explora las especialidades de ingeniería web que ponemos a disposición de tu empresa.</p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {webFeatures.map((f) => (
-            <div class="p-7 rounded-3xl border border-slate-800 bg-slate-950/80 shadow-xl">
-              <div class="text-3xl mb-4">{f.icon}</div>
-              <h3 class="text-lg font-bold text-white mb-2">{f.title}</h3>
-              <p class="text-xs text-slate-300 leading-relaxed">{f.description}</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-7">
+          {webServices.map((f) => (
+            <div class="p-7 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/80 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
+              <div>
+                <div class="text-3xl mb-4 p-3 rounded-2xl bg-cyan-500/10 w-fit">{f.icon}</div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">{f.title}</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">{f.description}</p>
+              </div>
+              <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-900">
+                <a href="#contacto" class="text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1">
+                  <span>Cotizar servicio</span> →
+                </a>
+              </div>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- CTA Final -->
-    <section class="py-20 text-center">
-      <div class="max-w-3xl mx-auto px-6 p-10 rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950/50 to-slate-900 border border-indigo-500/30">
-        <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-4">¿Listo para lanzar tu proyecto web?</h3>
-        <p class="text-slate-300 text-sm mb-8">Te entregamos un sitio web optimizado, seguro y listo para captar prospectos en tiempo récord.</p>
-        <button
-          type="button"
-          data-trigger-contact
-          data-contact-msg="Hola Aleric.dev, quisiera agendar una asesoría para mi nueva página web."
-          class="px-8 py-4 rounded-2xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold text-xs uppercase tracking-wider shadow-lg transition cursor-pointer"
-        >
-          Iniciar Proyecto Web Ahora
-        </button>
-      </div>
-    </section>
+    <!-- Formulario de Captura de Leads Dedicado con Selección Automática -->
+    <ContactSection defaultService="Desarrollo Web & Landings de Alta Conversión" />
   </main>
 
   <Footer />

@@ -1,0 +1,74 @@
+---
+---
+
+<div class="relative inline-flex items-center select-none" id="theme-toggle-container">
+  <button
+    type="button"
+    id="theme-toggle-btn"
+    class="w-16 h-8 rounded-full bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 p-1 flex items-center justify-between cursor-pointer shadow-inner relative transition-colors duration-300 focus:outline-none"
+    aria-label="Alternar tema entre claro y oscuro"
+    title="Alternar tema (Claro / Oscuro)"
+  >
+    <!-- Background Icon Sol (Modo Claro) -->
+    <svg class="w-4 h-4 text-amber-500 ml-0.5 z-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+    </svg>
+
+    <!-- Background Icon Luna (Modo Oscuro) -->
+    <svg class="w-4 h-4 text-purple-400 mr-0.5 z-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+    </svg>
+
+    <!-- Sliding Knob -->
+    <span
+      id="theme-toggle-knob"
+      class="absolute left-1 top-1 w-6 h-6 rounded-full bg-indigo-600 dark:bg-purple-500 text-white flex items-center justify-center shadow-md transition-transform duration-300 transform dark:translate-x-8 translate-x-0 z-10"
+    >
+      <svg id="knob-icon-light" class="w-3.5 h-3.5 block dark:hidden text-amber-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+      </svg>
+      <svg id="knob-icon-dark" class="w-3.5 h-3.5 hidden dark:block text-purple-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+      </svg>
+    </span>
+  </button>
+</div>
+
+<script is:inline>
+  (function () {
+    function initThemeToggle() {
+      const btn = document.getElementById('theme-toggle-btn');
+      if (!btn) return;
+
+      function isDarkMode() {
+        const stored = localStorage.getItem('theme');
+        if (stored) return stored === 'dark';
+        return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+
+      function applyTheme(isDark) {
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+        }
+      }
+
+      // Initial check
+      applyTheme(isDarkMode());
+
+      btn.addEventListener('click', () => {
+        const currentIsDark = document.documentElement.classList.contains('dark');
+        applyTheme(!currentIsDark);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initThemeToggle);
+    } else {
+      initThemeToggle();
+    }
+  })();
+</script>

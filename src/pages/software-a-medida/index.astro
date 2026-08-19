@@ -1,110 +1,123 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
+import ContactSection from '../../components/ContactSection.astro';
 import Footer from '../../components/Footer.astro';
 
-const softwareFeatures = [
+const softwareServices = [
   {
-    icon: '🚀',
-    title: 'Plataformas SaaS & MVP Rapid',
-    description: 'Llevamos tu idea de producto a un software mínimo viable (MVP) robusto y probado en tiempo récord.',
+    icon: '☁️',
+    title: 'Plataformas SaaS Multi-tenant',
+    description: 'Arquitectura de software como servicio con aislamiento seguro de datos por cliente y suscripciones recurrentes.',
   },
   {
     icon: '📊',
-    title: 'CRMs & Dashboards de Control',
-    description: 'Sistemas a medida para administrar usuarios, ventas, inventarios y métricas en tiempo real.',
+    title: 'Sistemas CRM & ERP a la Medida',
+    description: 'Plataformas de gestión comercial y operacional construidas a la medida exacta de tus flujos de trabajo.',
   },
   {
-    icon: '🔌',
-    title: 'APIs REST & Integraciones',
-    description: 'Arquitecturas desacopladas listas para conectar con pasarelas de pago, bases de datos y servicios externos.',
+    icon: '🖥️',
+    title: 'Paneles de Control & Dashboards',
+    description: 'Tableros de control interactivos con gráficas en tiempo real, métricas clave (KPIs) y analítica empresarial.',
   },
   {
-    icon: '🛡️',
-    title: 'Seguridad & Autenticación',
-    description: 'Control de acceso basado en roles (RBAC), encriptación y protección de datos bajo estándares industriales.',
+    icon: '🔗',
+    title: 'Desarrollo de APIs REST & GraphQL',
+    description: 'Interfaces de programación robustas y seguras para comunicar aplicaciones móviles, web y sistemas externos.',
+  },
+  {
+    icon: '💳',
+    title: 'Integración de Pasarelas de Pago',
+    description: 'Conexiones con Stripe, MercadoPago, PayU y Wompi con facturación electrónica y gestión de cobros.',
+  },
+  {
+    icon: '🧩',
+    title: 'Arquitectura de Microservicios',
+    description: 'Descomposición de sistemas monolíticos en servicios independientes desacoplados para alta disponibilidad.',
+  },
+  {
+    icon: '🔐',
+    title: 'Control de Acceso & Roles (RBAC)',
+    description: 'Módulos avanzados de seguridad, autenticación JWT/OAuth2 y permisos detallados por rol de usuario.',
+  },
+  {
+    icon: '📄',
+    title: 'Generación Automática de Documentos',
+    description: 'Motores de generación masiva de PDFs (facturas, reportes, certificados) e informes financieros.',
   },
 ];
 ---
 
 <Layout
   title="Desarrollo de Software & SaaS a la Medida | Aleric.dev"
-  description="Construimos plataformas SaaS, aplicaciones web complejas, CRMs y paneles administrativos escalables adaptados a la lógica exacta de tu negocio."
+  description="Construimos plataformas web complejas, sistemas CRM/ERP personalizados y arquitecturas escalables diseñadas para la operación de tu empresa."
 >
   <Navbar />
 
-  <main class="pt-28 pb-20 bg-slate-950">
+  <main class="pt-28 bg-slate-900/40 dark:bg-slate-950 transition-colors duration-300">
     <!-- Hero Especializado Software a Medida -->
-    <section class="py-16 relative overflow-hidden">
+    <section id="hero" class="py-16 relative overflow-hidden">
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-indigo-600/15 rounded-full blur-[140px] pointer-events-none"></div>
 
       <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-        <span class="inline-flex items-center gap-2 rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-2 text-xs font-mono font-bold text-indigo-300 mb-6">
-          🚀 Para Startups, Founders &amp; Empresas
+        <span class="inline-flex items-center gap-2 rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-2 text-xs font-mono font-bold text-indigo-600 dark:text-indigo-300 mb-6">
+          🚀 Para Startups &amp; Empresas en Crecimiento
         </span>
 
-        <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
-          Desarrollo de Software &amp; SaaS <span class="bg-gradient-to-r from-indigo-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">Construido a la Medida</span>
+        <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
+          Desarrollo de Software &amp; <span class="bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">Plataformas SaaS a la Medida</span>
         </h1>
 
-        <p class="text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
-          Transformamos procesos complejos en plataformas digitales ágiles, seguras y preparadas para soportar miles de usuarios concurrentes.
+        <p class="text-slate-600 dark:text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+          Creamos herramientas tecnológicas exclusivas para tu negocio. Automatiza tu operación, gestiona datos complejos y escala sin límites de software comercial.
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button
-            type="button"
-            data-trigger-contact
-            data-contact-msg="Hola Aleric.dev, me interesa cotizar una plataforma SaaS / Software a la medida para mi proyecto."
-            class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-indigo-950/50 hover:scale-105 transition cursor-pointer"
+          <a
+            href="#contacto"
+            class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-indigo-950/30 hover:scale-105 transition cursor-pointer flex items-center justify-center"
           >
-            Cotizar Proyecto Software
-          </button>
+            Cotizar Proyecto de Software
+          </a>
           <a
             href="/"
-            class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-900 text-slate-300 hover:text-white font-bold text-xs border border-slate-800 transition flex items-center justify-center"
+            class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white font-bold text-xs border border-slate-200 dark:border-slate-800 transition flex items-center justify-center"
           >
-            ← Volver al Orquestador
+            ← Volver al Inicio
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Características -->
-    <section class="py-16 bg-slate-900/60 border-t border-slate-800">
+    <!-- Catálogo Especializado de Servicios Software (8 Tarjetas) -->
+    <section id="beneficios" class="py-16 bg-slate-100/80 dark:bg-slate-900/60 border-t border-slate-200 dark:border-slate-800">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center max-w-2xl mx-auto mb-16">
-          <h2 class="text-3xl font-bold text-white mb-3">Capacidades de Desarrollo a Medida</h2>
-          <p class="text-slate-400 text-sm">Construcción con tecnologías modernas (TypeScript, React, NestJS, PostgreSQL).</p>
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">Catálogo de Soluciones de Software a la Medida</h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">Construcción de arquitectura tecnológica robusta adaptada a la lógica exacta de tu empresa.</p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {softwareFeatures.map((f) => (
-            <div class="p-7 rounded-3xl border border-slate-800 bg-slate-950/80 shadow-xl">
-              <div class="text-3xl mb-4">{f.icon}</div>
-              <h3 class="text-lg font-bold text-white mb-2">{f.title}</h3>
-              <p class="text-xs text-slate-300 leading-relaxed">{f.description}</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-7">
+          {softwareServices.map((f) => (
+            <div class="p-7 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/80 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
+              <div>
+                <div class="text-3xl mb-4 p-3 rounded-2xl bg-indigo-500/10 w-fit">{f.icon}</div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">{f.title}</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">{f.description}</p>
+              </div>
+              <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-900">
+                <a href="#contacto" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
+                  <span>Cotizar proyecto</span> →
+                </a>
+              </div>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- CTA Final -->
-    <section class="py-20 text-center">
-      <div class="max-w-3xl mx-auto px-6 p-10 rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950/50 to-slate-900 border border-indigo-500/30">
-        <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-4">¿Tienes una idea o arquitectura en mente?</h3>
-        <p class="text-slate-300 text-sm mb-8">Escribamos la primera versión de tu sistema con arquitectura limpia y código escalable desde el día uno.</p>
-        <button
-          type="button"
-          data-trigger-contact
-          data-contact-msg="Hola Aleric.dev, quiero agendar una reunión técnica para presentar mi proyecto de software."
-          class="px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-xs uppercase tracking-wider shadow-lg transition cursor-pointer"
-        >
-          Agendar Sesión Técnica
-        </button>
-      </div>
-    </section>
+    <!-- Formulario de Captura de Leads Dedicado con Selección Automática -->
+    <ContactSection defaultService="Desarrollo de Software & SaaS a la Medida" />
   </main>
 
   <Footer />

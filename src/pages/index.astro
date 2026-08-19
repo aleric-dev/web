@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import CommercialHero from '../components/CommercialHero.astro';
 import { ProfileRouter } from '../components/ProfileRouter';
+import ContactSection from '../components/ContactSection.astro';
 import Footer from '../components/Footer.astro';
 
 // JSON-LD Schema para SEO indexable por Google y otros motores
@@ -75,8 +76,11 @@ const jsonLd = {
     <!-- Hero Comercial Minimalista -->
     <CommercialHero />
 
-    <!-- Orquestador Principal de Opciones -->
+    <!-- Orquestador Principal de Opciones & Soluciones -->
     <ProfileRouter client:load />
+
+    <!-- Sección de Formulario de Captura de Leads Directo -->
+    <ContactSection />
 
     <!-- Sección Semántica SEO para Indexación de Motores de Búsqueda -->
     <section class="sr-only">
@@ -88,7 +92,7 @@ const jsonLd = {
       </p>
       <ul>
         <li><a href="/desarrollo-web">Desarrollo Web &amp; Landings de Alta Conversión</a></li>
-        <li><a href="/software-a-medida">Desarrollo de Software &amp; SaaS a la Medida</a></li>
+        <li><a href="/software-a-medida">Desarrollo de Software &amp; SaaS a Medida</a></li>
         <li><a href="/automatizaciones">Automatización de Procesos &amp; WhatsApp API</a></li>
         <li><a href="/consultoria-tecnica">Consultoría &amp; Auditoría Técnica Senior</a></li>
         <li><a href="/mentoria-fullstack">Mentoría &amp; Capacitación Full Stack 1-a-1</a></li>

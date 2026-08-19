@@ -226,7 +226,8 @@ export const ContactModal: React.FC = () => {
             {/* Header del Modal */}
             <div className="bg-slate-950/80 px-6 py-4 border-b border-slate-800 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <img src="/logo.png" alt="Aleric.dev Logo" className="h-9 w-auto object-contain" />
+                <img src="/logo dark.png" alt="Aleric.dev Logo" width={140} height={36} className="h-9 w-auto object-contain dark:hidden" />
+                <img src="/logo.png" alt="Aleric.dev Logo Dark" width={140} height={36} className="h-9 w-auto object-contain hidden dark:block" />
                 <span className="bg-indigo-500/20 text-indigo-300 text-[10px] font-bold px-2 py-0.5 rounded-full border border-indigo-500/30">
                   Senior Team
                 </span>

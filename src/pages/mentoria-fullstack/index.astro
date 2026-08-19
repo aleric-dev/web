@@ -1,28 +1,49 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
+import ContactSection from '../../components/ContactSection.astro';
 import Footer from '../../components/Footer.astro';
 
-const mentorshipPillars = [
+const mentorshipServices = [
   {
     icon: '🎓',
     title: 'Acompañamiento 1-a-1 Directo',
     description: 'Sesiones personalizadas en vivo para resolver dudas, revisar tu código real y acelerar tu aprendizaje sin rodeos.',
   },
   {
-    icon: '💻',
-    title: 'Stack Moderno & Demandado',
-    description: 'Dominio de TypeScript estricto, React 19, NestJS, PostgreSQL, Prisma ORM, Redis y Tailwind CSS.',
+    icon: '📘',
+    title: 'Dominio de TypeScript Estricto',
+    description: 'Aprende tipos avanzados, genéricos, utilidades de tipo y arquitecturas con tipado seguro de extremo a extremo.',
+  },
+  {
+    icon: '⚛️',
+    title: 'Maestría en React 19 & Next.js App Router',
+    description: 'Patrones de diseño modernos, Server Components, React Hooks complejos y optimización de renderizado.',
+  },
+  {
+    icon: '🦁',
+    title: 'Backend Senior con NestJS & Node.js',
+    description: 'Construcción de APIs empresariales estructuradas con inyección de dependencias, módulos y guards de seguridad.',
+  },
+  {
+    icon: '🐘',
+    title: 'Bases de Datos PostgreSQL & Prisma ORM',
+    description: 'Modelado relacional eficiente, migraciones de base de datos, índices y consultas complejas de alto rendimiento.',
   },
   {
     icon: '🏗️',
-    title: 'Arquitectura Limpia & Testing',
-    description: 'Aprende a estructurar proyectos escalables, desacoplados y con pruebas automatizadas (Jest/Vitest).',
+    title: 'Arquitectura Limpia & Clean Code',
+    description: 'Aprende a estructurar proyectos desacoplados, aplicando principios SOLID y patrones de diseño profesionales.',
+  },
+  {
+    icon: '🧪',
+    title: 'Testing Automatizado (Jest & Vitest)',
+    description: 'Implementación de pruebas unitarias, de integración y e2e para garantizar código robusto y sin regresiones.',
   },
   {
     icon: '💼',
-    title: 'Preparación para Roles Senior',
-    description: 'Mejora tu nivel técnico para optar a mejores salarios, liderar equipos o cotizar proyectos como freelancer senior.',
+    title: 'Preparación para Entrevistas Tech & Freelancing',
+    description: 'Mejora tu perfil profesional, supera pruebas técnicas exigentes y aprende a cotizar proyectos como desarrollador senior.',
   },
 ];
 ---
@@ -33,78 +54,70 @@ const mentorshipPillars = [
 >
   <Navbar />
 
-  <main class="pt-28 pb-20 bg-slate-950">
+  <main class="pt-28 bg-slate-900/40 dark:bg-slate-950 transition-colors duration-300">
     <!-- Hero Especializado Mentoría -->
-    <section class="py-16 relative overflow-hidden">
+    <section id="hero" class="py-16 relative overflow-hidden">
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-purple-600/15 rounded-full blur-[140px] pointer-events-none"></div>
 
       <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-        <span class="inline-flex items-center gap-2 rounded-full border border-purple-500/40 bg-purple-500/10 px-4 py-2 text-xs font-mono font-bold text-purple-300 mb-6">
+        <span class="inline-flex items-center gap-2 rounded-full border border-purple-500/40 bg-purple-500/10 px-4 py-2 text-xs font-mono font-bold text-purple-600 dark:text-purple-300 mb-6">
           🎓 Para Developers, Freelancers &amp; Estudiantes
         </span>
 
-        <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
-          Mentoría Técnica 1-a-1 &amp; <span class="bg-gradient-to-r from-purple-400 via-pink-300 to-indigo-400 bg-clip-text text-transparent">Maestría Full Stack</span>
+        <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
+          Mentoría Técnica 1-a-1 &amp; <span class="bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 bg-clip-text text-transparent">Maestría Full Stack</span>
         </h1>
 
-        <p class="text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+        <p class="text-slate-600 dark:text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
           Supera los bloqueos técnicos en tus proyectos. Te guiamos paso a paso en buenas prácticas de ingeniería, arquitectura limpia y código profesional.
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button
-            type="button"
-            data-trigger-contact
-            data-contact-msg="Hola Aleric.dev, me interesa solicitar información sobre la mentoría técnica Full Stack 1-a-1."
-            class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-purple-950/50 hover:scale-105 transition cursor-pointer"
+          <a
+            href="#contacto"
+            class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-purple-950/30 hover:scale-105 transition cursor-pointer flex items-center justify-center"
           >
             Consultar Programa de Mentoría
-          </button>
+          </a>
           <a
             href="/"
-            class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-900 text-slate-300 hover:text-white font-bold text-xs border border-slate-800 transition flex items-center justify-center"
+            class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white font-bold text-xs border border-slate-200 dark:border-slate-800 transition flex items-center justify-center"
           >
-            ← Volver al Orquestador
+            ← Volver al Inicio
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Características -->
-    <section class="py-16 bg-slate-900/60 border-t border-slate-800">
+    <!-- Catálogo Especializado de Servicios Mentoría (8 Tarjetas) -->
+    <section id="beneficios" class="py-16 bg-slate-100/80 dark:bg-slate-900/60 border-t border-slate-200 dark:border-slate-800">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center max-w-2xl mx-auto mb-16">
-          <h2 class="text-3xl font-bold text-white mb-3">Pilares de la Mentoría Técnica</h2>
-          <p class="text-slate-400 text-sm">Enfoque 100% práctico sobre proyectos y situaciones de la vida real.</p>
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">Programa &amp; Módulos de Mentoría Técnica</h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">Enfoque 100% práctico sobre proyectos reales para acelerar tu crecimiento profesional.</p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {mentorshipPillars.map((f) => (
-            <div class="p-7 rounded-3xl border border-slate-800 bg-slate-950/80 shadow-xl">
-              <div class="text-3xl mb-4">{f.icon}</div>
-              <h3 class="text-lg font-bold text-white mb-2">{f.title}</h3>
-              <p class="text-xs text-slate-300 leading-relaxed">{f.description}</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-7">
+          {mentorshipServices.map((f) => (
+            <div class="p-7 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/80 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
+              <div>
+                <div class="text-3xl mb-4 p-3 rounded-2xl bg-purple-500/10 w-fit">{f.icon}</div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">{f.title}</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">{f.description}</p>
+              </div>
+              <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-900">
+                <a href="#contacto" class="text-xs font-bold text-purple-600 dark:text-purple-400 hover:underline flex items-center gap-1">
+                  <span>Consultar módulo</span> →
+                </a>
+              </div>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- CTA Final -->
-    <section class="py-20 text-center">
-      <div class="max-w-3xl mx-auto px-6 p-10 rounded-3xl bg-gradient-to-r from-slate-900 via-purple-950/50 to-slate-900 border border-purple-500/30">
-        <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-4">¿Listo para elevar tu nivel como desarrollador?</h3>
-        <p class="text-slate-300 text-sm mb-8">Agenda una sesión de diagnóstico inicial para evaluar tus objetivos y armar un plan de mentoría a tu medida.</p>
-        <button
-          type="button"
-          data-trigger-contact
-          data-contact-msg="Hola Aleric.dev, quiero agendar mi sesión de diagnóstico inicial para la mentoría."
-          class="px-8 py-4 rounded-2xl bg-purple-600 hover:bg-purple-500 text-white font-extrabold text-xs uppercase tracking-wider shadow-lg transition cursor-pointer"
-        >
-          Agendar Diagnóstico Inicial
-        </button>
-      </div>
-    </section>
+    <!-- Formulario de Captura de Leads Dedicado con Selección Automática -->
+    <ContactSection defaultService="Mentoría & Capacitación Full Stack" />
   </main>
 
   <Footer />
