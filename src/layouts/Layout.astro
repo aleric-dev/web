@@ -1,7 +1,9 @@
 ---
 import '../styles/global.css';
-import { ContactModal } from '../components/ContactModal';
 import { ClientRouter } from 'astro:transitions';
+import FloatingContactButton from '../components/FloatingContactButton.astro';
+
+
 
 interface Props {
   title?: string;
@@ -62,8 +64,10 @@ const {
   <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-600 selection:text-white relative transition-colors duration-300">
     <slot />
 
-    <!-- Global Floating Contact Modal Widget -->
-    <ContactModal client:load />
+    <!-- Botón Flotante Global de Contacto / Agendar Reunión -->
+    <FloatingContactButton />
+
+
 
     <!-- Script de soporte para desplazarse suavemente a la sección de contacto (#contacto) -->
     <script is:inline>

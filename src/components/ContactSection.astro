@@ -8,34 +8,34 @@ const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY || '987dd1cc-25dd-451
 const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE || '573013229292';
 ---
 
-<section id="contacto" class="py-20 relative bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 transition-colors duration-300">
+<section id="contacto" class="scroll-mt-20 pt-12 pb-20 relative bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 transition-colors duration-300">
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="grid lg:grid-cols-12 gap-12 items-center">
       
-      <!-- Left Column: Value Proposition & WhatsApp Direct Button -->
+      <!-- Left Column: Value Proposition & Direct WhatsApp Option -->
       <div class="lg:col-span-5 space-y-6">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-bold uppercase tracking-wider">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-xs font-mono font-bold uppercase tracking-wider">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-          <span>Contacto Directo &amp; Asesoría</span>
+          <span>● RESPUESTA RÁPIDA</span>
         </div>
 
         <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-          ¿Tienes un proyecto en mente? <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 dark:from-indigo-400 dark:via-purple-300 dark:to-cyan-400 bg-clip-text text-transparent">Hablemos Hoy</span>
+          ¿Tienes un proyecto en mente? <span class="text-indigo-600 dark:text-indigo-400">Hablemos Hoy</span>
         </h2>
 
         <p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed">
           Déjanos tus datos o contáctanos por WhatsApp. Evaluamos la viabilidad técnica de tu proyecto y te enviamos una propuesta detallada en menos de 24 horas.
         </p>
 
-        <!-- Direct WhatsApp CTA Box -->
-        <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-4">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-2xl shadow-inner">
+        <!-- Direct WhatsApp Option Box (Secundaria y Equilibrada) -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-xl shrink-0">
               💬
             </div>
             <div>
-              <h3 class="text-base font-bold text-slate-900 dark:text-white">Atención Inmediata por WhatsApp</h3>
-              <p class="text-xs text-slate-500 dark:text-slate-400">Respuesta promedio: 15 minutos</p>
+              <h3 class="text-sm font-bold text-slate-900 dark:text-white">¿Prefieres atención inmediata?</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Chatea con nosotros directamente. Respuesta promedio: ~15 minutos.</p>
             </div>
           </div>
 
@@ -47,9 +47,9 @@ const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE || '573013229292';
             )}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="w-full flex items-center justify-center gap-3 py-3.5 px-5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-emerald-600/20 transition cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+            class="w-full flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition cursor-pointer border border-emerald-500 active:scale-95"
           >
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
               <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"></path>
             </svg>
             <span>Hablar por WhatsApp Directo</span>
@@ -57,34 +57,37 @@ const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE || '573013229292';
         </div>
       </div>
 
-      <!-- Right Column: Lead Capture Form -->
+      <!-- Right Column: Primary Lead Capture Form -->
       <div class="lg:col-span-7">
-        <div class="p-8 sm:p-10 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl space-y-6">
+        <div class="p-8 sm:p-10 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
           <div>
-            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Solicita tu Cotización</h3>
-            <p class="text-xs text-slate-500 dark:text-slate-400">Completa el formulario y nos pondremos en contacto contigo.</p>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Queremos Escuchar tu Idea</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Cuéntanos qué quieres construir. Revisamos tu proyecto con atención y te escribimos personalmente en menos de 24 horas para ver cómo podemos ayudarte.</p>
           </div>
+
+
 
           <form id="lead-capture-form" class="space-y-4">
             <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
             <input type="hidden" name="subject" value={`Nuevo Lead desde Aleric.dev: ${defaultService || 'Consulta General'}`} />
 
-            <!-- Row 1: Nombre & Email -->
-            <div class="grid sm:grid-cols-2 gap-4">
-              <div>
-                <label for="lead-name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
-                  Nombre Completo / Empresa *
-                </label>
-                <input
-                  type="text"
-                  id="lead-name"
-                  name="name"
-                  required
-                  placeholder="Ej. Carlos Mendoza"
-                  class="w-full rounded-2xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-indigo-500 focus:outline-none transition shadow-inner"
-                />
-              </div>
+            <!-- Row 1: Nombre Completo -->
+            <div>
+              <label for="lead-name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+                Nombre Completo / Empresa *
+              </label>
+              <input
+                type="text"
+                id="lead-name"
+                name="name"
+                required
+                placeholder="Ej. Carlos Mendoza"
+                class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-indigo-500 focus:outline-none transition"
+              />
+            </div>
 
+            <!-- Row 2: Email & Teléfono/WhatsApp (Opcional) -->
+            <div class="grid sm:grid-cols-2 gap-4">
               <div>
                 <label for="lead-email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                   Correo Electrónico *
@@ -95,32 +98,64 @@ const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE || '573013229292';
                   name="email"
                   required
                   placeholder="tu@empresa.com"
-                  class="w-full rounded-2xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-indigo-500 focus:outline-none transition shadow-inner"
+                  class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-indigo-500 focus:outline-none transition"
+                />
+              </div>
+
+              <div>
+                <label for="lead-phone" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+                  Teléfono / WhatsApp (Opcional)
+                </label>
+                <input
+                  type="tel"
+                  id="lead-phone"
+                  name="phone"
+                  placeholder="+57 300 000 0000"
+                  class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-indigo-500 focus:outline-none transition"
                 />
               </div>
             </div>
 
-            <!-- Row 2: Tipo de Servicio (Menú Desplegable) -->
-            <div>
-              <label for="lead-service" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
-                Tipo de Servicio Requerido *
-              </label>
-              <select
-                id="lead-service"
-                name="service_type"
-                required
-                class="w-full rounded-2xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-xs text-slate-900 dark:text-slate-100 focus:border-indigo-500 focus:outline-none transition cursor-pointer shadow-inner"
-              >
-                <option value="" disabled selected={!defaultService}>-- Selecciona el tipo de servicio --</option>
-                <option value="Desarrollo Web & Landings de Alta Conversión" selected={defaultService === 'Desarrollo Web & Landings de Alta Conversión'}>🌐 Desarrollo Web &amp; Landings de Alta Conversión</option>
-                <option value="Desarrollo de Software & SaaS a la Medida" selected={defaultService === 'Desarrollo de Software & SaaS a la Medida'}>🚀 Desarrollo de Software &amp; SaaS a la Medida</option>
-                <option value="Automatización de Operaciones & WhatsApp API" selected={defaultService === 'Automatización de Operaciones & WhatsApp API'}>⚡ Automatización de Operaciones &amp; WhatsApp API</option>
-                <option value="Consultoría & Auditoría Técnica Senior" selected={defaultService === 'Consultoría & Auditoría Técnica Senior'}>🛡️ Consultoría &amp; Auditoría Técnica Senior</option>
-                <option value="Mentoría & Capacitación Full Stack" selected={defaultService === 'Mentoría & Capacitación Full Stack'}>🎓 Mentoría &amp; Capacitación Full Stack 1-a-1</option>
-              </select>
+            <!-- Row 3: Servicio Requerido & Presupuesto Estimado (Opcional) -->
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="lead-service" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+                  Tipo de Servicio Requerido *
+                </label>
+                <select
+                  id="lead-service"
+                  name="service_type"
+                  required
+                  class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-xs text-slate-900 dark:text-slate-100 focus:border-indigo-500 focus:outline-none transition cursor-pointer"
+                >
+                  <option value="" disabled selected={!defaultService}>-- Selecciona el tipo de servicio --</option>
+                  <option value="Desarrollo Web & Landings de Alta Conversión" selected={defaultService === 'Desarrollo Web & Landings de Alta Conversión'}>🌐 Desarrollo Web &amp; Landings de Alta Conversión</option>
+                  <option value="Desarrollo de Software & SaaS a la Medida" selected={defaultService === 'Desarrollo de Software & SaaS a la Medida'}>🚀 Desarrollo de Software &amp; SaaS a la Medida</option>
+                  <option value="Automatización de Operaciones & WhatsApp API" selected={defaultService === 'Automatización de Operaciones & WhatsApp API'}>⚡ Automatización de Operaciones &amp; WhatsApp API</option>
+                  <option value="Consultoría & Auditoría Técnica Senior" selected={defaultService === 'Consultoría & Auditoría Técnica Senior'}>🛡️ Consultoría &amp; Auditoría Técnica Senior</option>
+                  <option value="Mentoría & Capacitación Full Stack" selected={defaultService === 'Mentoría & Capacitación Full Stack'}>🎓 Mentoría &amp; Capacitación Full Stack 1-a-1</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="lead-budget" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+                  Presupuesto Estimado (Opcional)
+                </label>
+                <select
+                  id="lead-budget"
+                  name="budget"
+                  class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-xs text-slate-900 dark:text-slate-100 focus:border-indigo-500 focus:outline-none transition cursor-pointer"
+                >
+                  <option value="" disabled selected>-- Selecciona un rango --</option>
+                  <option value="< $500 USD">&lt; $500 USD</option>
+                  <option value="$500 - $1,500 USD">$500 - $1,500 USD</option>
+                  <option value="$1,500 - $3,000 USD">$1,500 - $3,000 USD</option>
+                  <option value="$3,000+ USD">$3,000+ USD</option>
+                </select>
+              </div>
             </div>
 
-            <!-- Row 3: Mensaje / Detalle del Proyecto -->
+            <!-- Row 4: Mensaje / Detalle del Proyecto -->
             <div>
               <label for="lead-message" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                 Detalle del Proyecto / Requerimientos *
@@ -131,21 +166,18 @@ const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE || '573013229292';
                 rows="4"
                 required
                 placeholder="Cuéntanos brevemente los objetivos, tiempos o funcionalidades que necesitas..."
-                class="w-full rounded-2xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-indigo-500 focus:outline-none transition resize-none leading-relaxed shadow-inner"
+                class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-indigo-500 focus:outline-none transition resize-none leading-relaxed"
               ></textarea>
             </div>
 
-            <!-- Submit Button & Feedback Status -->
+            <!-- Submit Button (CTA Cercano & Humano) -->
             <div>
               <button
                 type="submit"
                 id="lead-submit-btn"
-                class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-indigo-600/30 hover:shadow-indigo-500/50 hover:scale-[1.01] active:scale-[0.99] transition cursor-pointer flex items-center justify-center gap-2"
+                class="w-full py-4 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm active:scale-95 transition cursor-pointer flex items-center justify-center gap-2 border border-indigo-500"
               >
-                <span>Enviar Solicitar Propuesta</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
+                <span>CUÉNTANOS TU PROYECTO →</span>
               </button>
             </div>
 
@@ -188,24 +220,28 @@ const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE || '573013229292';
           statusDiv.classList.remove('hidden', 'bg-rose-500/20', 'text-rose-300', 'bg-emerald-500/20', 'text-emerald-300');
 
           if (result.success) {
-            statusDiv.classList.add('bg-emerald-500/20', 'text-emerald-400', 'border', 'border-emerald-500/40');
+            statusDiv.classList.add('bg-emerald-50', 'dark:bg-emerald-950/60', 'text-emerald-700', 'dark:text-emerald-400', 'border', 'border-emerald-200', 'dark:border-emerald-800');
             statusDiv.innerText = '¡Gracias! Tu mensaje ha sido enviado correctamente. Te contactaremos pronto.';
             form.reset();
           } else {
-            statusDiv.classList.add('bg-emerald-500/20', 'text-emerald-400', 'border', 'border-emerald-500/40');
+            statusDiv.classList.add('bg-emerald-50', 'dark:bg-emerald-950/60', 'text-emerald-700', 'dark:text-emerald-400', 'border', 'border-emerald-200', 'dark:border-emerald-800');
             statusDiv.innerText = '¡Solicitud registrada! Nos pondremos en contacto contigo.';
             form.reset();
           }
         } catch (err) {
           statusDiv.classList.remove('hidden');
-          statusDiv.classList.add('bg-emerald-500/20', 'text-emerald-400', 'border', 'border-emerald-500/40');
+          statusDiv.classList.add('bg-emerald-50', 'dark:bg-emerald-950/60', 'text-emerald-700', 'dark:text-emerald-400', 'border', 'border-emerald-200', 'dark:border-emerald-800');
           statusDiv.innerText = '¡Solicitud registrada! Nos pondremos en contacto contigo.';
           form.reset();
         } finally {
           submitBtn.disabled = false;
-          submitBtn.innerText = 'Enviar Solicitar Propuesta';
+          submitBtn.innerText = 'CUÉNTANOS TU PROYECTO →';
         }
       });
     }
   });
 </script>
+
+
+
+

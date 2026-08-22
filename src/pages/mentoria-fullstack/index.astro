@@ -1,49 +1,58 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Navbar from '../../components/Navbar.astro';
-import ContactSection from '../../components/ContactSection.astro';
-import Footer from '../../components/Footer.astro';
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import MentorshipRoadmap from "../../components/MentorshipRoadmap.astro";
+import ContactSection from "../../components/ContactSection.astro";
+import Footer from "../../components/Footer.astro";
 
 const mentorshipServices = [
   {
-    icon: '🎓',
-    title: 'Acompañamiento 1-a-1 Directo',
-    description: 'Sesiones personalizadas en vivo para resolver dudas, revisar tu código real y acelerar tu aprendizaje sin rodeos.',
+    icon: "🎓",
+    title: "Acompañamiento 1-a-1 Directo",
+    description:
+      "Sesiones personalizadas en vivo para resolver dudas, revisar tu código real y acelerar tu aprendizaje.",
   },
   {
-    icon: '📘',
-    title: 'Dominio de TypeScript Estricto',
-    description: 'Aprende tipos avanzados, genéricos, utilidades de tipo y arquitecturas con tipado seguro de extremo a extremo.',
+    icon: "📘",
+    title: "Dominio de TypeScript Estricto",
+    description:
+      "Tipos avanzados, genéricos, utilidades de tipo y arquitecturas con tipado seguro de extremo a extremo.",
   },
   {
-    icon: '⚛️',
-    title: 'Maestría en React 19 & Next.js App Router',
-    description: 'Patrones de diseño modernos, Server Components, React Hooks complejos y optimización de renderizado.',
+    icon: "⚛️",
+    title: "React 19 & Next.js App Router",
+    description:
+      "Patrones de diseño modernos, Server Components, React Hooks complejos y optimización de renderizado.",
   },
   {
-    icon: '🦁',
-    title: 'Backend Senior con NestJS & Node.js',
-    description: 'Construcción de APIs empresariales estructuradas con inyección de dependencias, módulos y guards de seguridad.',
+    icon: "🦁",
+    title: "Backend Senior con NestJS & Node",
+    description:
+      "APIs empresariales estructuradas con inyección de dependencias, módulos y guards de seguridad.",
   },
   {
-    icon: '🐘',
-    title: 'Bases de Datos PostgreSQL & Prisma ORM',
-    description: 'Modelado relacional eficiente, migraciones de base de datos, índices y consultas complejas de alto rendimiento.',
+    icon: "🐘",
+    title: "PostgreSQL & Prisma ORM",
+    description:
+      "Modelado relacional eficiente, migraciones de base de datos, índices y consultas complejas.",
   },
   {
-    icon: '🏗️',
-    title: 'Arquitectura Limpia & Clean Code',
-    description: 'Aprende a estructurar proyectos desacoplados, aplicando principios SOLID y patrones de diseño profesionales.',
+    icon: "🏗️",
+    title: "Arquitectura Limpia & Clean Code",
+    description:
+      "Estructuración de proyectos desacoplados aplicando principios SOLID y patrones de diseño profesionales.",
   },
   {
-    icon: '🧪',
-    title: 'Testing Automatizado (Jest & Vitest)',
-    description: 'Implementación de pruebas unitarias, de integración y e2e para garantizar código robusto y sin regresiones.',
+    icon: "🧪",
+    title: "Testing Automatizado (Jest & Vitest)",
+    description:
+      "Implementación de pruebas unitarias, de integración y e2e para garantizar código robusto.",
   },
   {
-    icon: '💼',
-    title: 'Preparación para Entrevistas Tech & Freelancing',
-    description: 'Mejora tu perfil profesional, supera pruebas técnicas exigentes y aprende a cotizar proyectos como desarrollador senior.',
+    icon: "💼",
+    title: "Entrevistas Tech & Freelancing",
+    description:
+      "Mejora de perfil profesional, superación de pruebas técnicas y cotización de proyectos senior.",
   },
 ];
 ---
@@ -54,69 +63,170 @@ const mentorshipServices = [
 >
   <Navbar />
 
-  <main class="pt-28 bg-slate-900/40 dark:bg-slate-950 transition-colors duration-300">
+  <main
+    class="pt-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300"
+  >
     <!-- Hero Especializado Mentoría -->
-    <section id="hero" class="py-16 relative overflow-hidden">
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-purple-600/15 rounded-full blur-[140px] pointer-events-none"></div>
-
-      <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-        <span class="inline-flex items-center gap-2 rounded-full border border-purple-500/40 bg-purple-500/10 px-4 py-2 text-xs font-mono font-bold text-purple-600 dark:text-purple-300 mb-6">
-          🎓 Para Developers, Freelancers &amp; Estudiantes
-        </span>
-
-        <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
-          Mentoría Técnica 1-a-1 &amp; <span class="bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 bg-clip-text text-transparent">Maestría Full Stack</span>
-        </h1>
-
-        <p class="text-slate-600 dark:text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
-          Supera los bloqueos técnicos en tus proyectos. Te guiamos paso a paso en buenas prácticas de ingeniería, arquitectura limpia y código profesional.
-        </p>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="#contacto"
-            class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-purple-950/30 hover:scale-105 transition cursor-pointer flex items-center justify-center"
+    <section
+      id="hero"
+      class="py-16 md:py-24 relative border-b border-slate-200 dark:border-slate-800"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center"
+      >
+        <div class="lg:col-span-7 space-y-6">
+          <span
+            class="inline-flex items-center gap-2 rounded-lg border border-rose-200 dark:border-rose-900 bg-rose-50 dark:bg-rose-950/80 px-3.5 py-1.5 text-xs font-bold text-rose-700 dark:text-rose-300"
           >
-            Consultar Programa de Mentoría
-          </a>
-          <a
-            href="/"
-            class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white font-bold text-xs border border-slate-200 dark:border-slate-800 transition flex items-center justify-center"
+            🎓 Para Developers, Freelancers &amp; Estudiantes
+          </span>
+
+          <h1
+            class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-tight"
           >
-            ← Volver al Inicio
-          </a>
-        </div>
-      </div>
-    </section>
+            Mentoría Técnica 1-a-1 &amp; <span
+              class="text-rose-600 dark:text-rose-400">Maestría Full Stack</span
+            >
+          </h1>
 
-    <!-- Catálogo Especializado de Servicios Mentoría (8 Tarjetas) -->
-    <section id="beneficios" class="py-16 bg-slate-100/80 dark:bg-slate-900/60 border-t border-slate-200 dark:border-slate-800">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">Programa &amp; Módulos de Mentoría Técnica</h2>
-          <p class="text-slate-600 dark:text-slate-400 text-sm">Enfoque 100% práctico sobre proyectos reales para acelerar tu crecimiento profesional.</p>
+          <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+            Supera los bloqueos técnicos en tus proyectos. Te guiamos paso a
+            paso en buenas prácticas de ingeniería, arquitectura limpia y código
+            profesional sin rodeos teóricos.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
+            <a
+              href="#contacto"
+              class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition flex items-center justify-center"
+            >
+              Consultar Programa de Mentoría
+            </a>
+            <a
+              href="/"
+              class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center justify-center"
+            >
+              ← Volver al Inicio
+            </a>
+          </div>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-7">
-          {mentorshipServices.map((f) => (
-            <div class="p-7 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/80 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
-              <div>
-                <div class="text-3xl mb-4 p-3 rounded-2xl bg-purple-500/10 w-fit">{f.icon}</div>
-                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">{f.title}</h3>
-                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">{f.description}</p>
+        <!-- Mentorship Format Visual Card -->
+        <div class="lg:col-span-5">
+          <div
+            class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm space-y-4"
+          >
+            <div
+              class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800"
+            >
+              <span class="text-xs font-bold text-slate-900 dark:text-white"
+                >Formato del Entrenamiento 1-a-1</span
+              >
+              <span
+                class="text-[10px] font-mono font-bold text-rose-600 dark:text-rose-400"
+                >Personalizado</span
+              >
+            </div>
+
+            <div class="space-y-2.5 text-xs">
+              <div
+                class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center gap-2"
+              >
+                <span
+                  class="text-rose-600 dark:text-rose-400 font-bold font-mono"
+                  >✓</span
+                >
+                <span class="text-slate-700 dark:text-slate-300 font-medium"
+                  >Sesiones en vivo 1-a-1 con revisión de pantalla</span
+                >
               </div>
-              <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-900">
-                <a href="#contacto" class="text-xs font-bold text-purple-600 dark:text-purple-400 hover:underline flex items-center gap-1">
-                  <span>Consultar módulo</span> →
-                </a>
+              <div
+                class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center gap-2"
+              >
+                <span
+                  class="text-rose-600 dark:text-rose-400 font-bold font-mono"
+                  >✓</span
+                >
+                <span class="text-slate-700 dark:text-slate-300 font-medium"
+                  >Code Reviews exhaustivos en Pull Requests reales</span
+                >
+              </div>
+              <div
+                class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center gap-2"
+              >
+                <span
+                  class="text-rose-600 dark:text-rose-400 font-bold font-mono"
+                  >✓</span
+                >
+                <span class="text-slate-700 dark:text-slate-300 font-medium"
+                  >Resolución de bugs y arquitectura en tu proyecto</span
+                >
+              </div>
+              <div
+                class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center gap-2"
+              >
+                <span
+                  class="text-rose-600 dark:text-rose-400 font-bold font-mono"
+                  >✓</span
+                >
+                <span class="text-slate-700 dark:text-slate-300 font-medium"
+                  >Chat directo continuo para dudas rápidas</span
+                >
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Formulario de Captura de Leads Dedicado con Selección Automática -->
+    <!-- Roadmap de Aprendizaje Timeline por Fases (Componente Modular) -->
+    <MentorshipRoadmap />
+
+    <!-- Catálogo de Módulos Mentoría -->
+    <section id="beneficios" class="scroll-mt-20 py-16 bg-slate-50 dark:bg-slate-950">
+
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">
+            Módulos &amp; Especialidades
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">
+            Enfoque 100% práctico sobre proyectos reales para acelerar tu
+            crecimiento.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {
+            mentorshipServices.map((f) => (
+              <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between hover:border-rose-400 transition">
+                <div>
+                  <div class="text-2xl mb-3 p-2.5 rounded-xl bg-rose-50 dark:bg-rose-950/60 w-fit">
+                    {f.icon}
+                  </div>
+                  <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">
+                    {f.title}
+                  </h3>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
+                    {f.description}
+                  </p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800">
+                  <a
+                    href="#contacto"
+                    class="text-xs font-bold text-rose-600 dark:text-rose-400 hover:underline flex items-center gap-1"
+                  >
+                    <span>Consultar módulo</span> →
+                  </a>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulario de Captura de Leads Dedicado -->
     <ContactSection defaultService="Mentoría & Capacitación Full Stack" />
   </main>
 

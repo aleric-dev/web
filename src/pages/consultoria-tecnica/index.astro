@@ -1,49 +1,58 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Navbar from '../../components/Navbar.astro';
-import ContactSection from '../../components/ContactSection.astro';
-import Footer from '../../components/Footer.astro';
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import AuditPillars from "../../components/AuditPillars.astro";
+import ContactSection from "../../components/ContactSection.astro";
+import Footer from "../../components/Footer.astro";
 
 const consultingServices = [
   {
-    icon: '🔍',
-    title: 'Auditoría de Código & Deuda Técnica',
-    description: 'Revisión minuciosa de repositorios para detectar malas prácticas, problemas de arquitectura y cuellos de botella de rendimiento.',
+    icon: "🔍",
+    title: "Auditoría de Código & Deuda Técnica",
+    description:
+      "Revisión minuciosa para detectar malas prácticas, problemas de arquitectura y cuellos de botella.",
   },
   {
-    icon: '🩹',
-    title: 'Rescate de Proyectos Legacy & Inconclusos',
-    description: 'Saneamiento y recuperación de aplicaciones abandonadas o con errores críticos para ponerlas operativas rápidamente.',
+    icon: "🩹",
+    title: "Rescate de Proyectos Legacy",
+    description:
+      "Saneamiento y recuperación de aplicaciones abandonadas o con errores críticos para ponerlas operativas.",
   },
   {
-    icon: '🛡️',
-    title: 'Inspección de Proveedores Externos',
-    description: 'Evaluación técnica imparcial del trabajo entregado por agencias o freelancers contratados para validar su calidad real.',
+    icon: "🛡️",
+    title: "Inspección de Proveedores Externos",
+    description:
+      "Evaluación técnica imparcial del trabajo entregado por agencias o freelancers contratados.",
   },
   {
-    icon: '🚀',
-    title: 'Optimización de Desempeño & Bases de Datos',
-    description: 'Tuning de consultas SQL/NoSQL, indexación y estrategias de almacenamiento en caché con Redis.',
+    icon: "🚀",
+    title: "Optimización de Desempeño & SQL",
+    description:
+      "Tuning de consultas SQL/NoSQL, indexación y estrategias de almacenamiento en caché con Redis.",
   },
   {
-    icon: '🔒',
-    title: 'Auditoría de Seguridad & Vulnerabilidades',
-    description: 'Escaneo de fallos de seguridad (OWASP Top 10), fuga de credenciales y desconfiguración de servidores.',
+    icon: "🔒",
+    title: "Auditoría de Seguridad (OWASP)",
+    description:
+      "Escaneo de fallos de seguridad, fuga de credenciales y desconfiguración de servidores.",
   },
   {
-    icon: '🏛️',
-    title: 'Asesoría de Arquitectura CTO as a Service',
-    description: 'Dirección técnica senior para la toma de decisiones estratégicas de stack, infraestructura cloud y contratación.',
+    icon: "🏛️",
+    title: "Asesoría CTO as a Service",
+    description:
+      "Dirección técnica senior para toma de decisiones de stack, arquitectura cloud y contratación.",
   },
   {
-    icon: '☁️',
-    title: 'Migración & Optimización de Infraestructura Cloud',
-    description: 'Transición eficiente a servicios en AWS, GCP o VPS optimizando costos y escalabilidad.',
+    icon: "☁️",
+    title: "Migración & Optimización Cloud",
+    description:
+      "Transición eficiente a servicios en AWS, GCP o VPS optimizando costos y escalabilidad.",
   },
   {
-    icon: '📋',
-    title: 'Definición de Buenas Prácticas & CI/CD',
-    description: 'Implementación de pipelines de integración continua, pruebas automatizadas y estándares de código en tu equipo.',
+    icon: "📋",
+    title: "Buenas Prácticas & Pipelines CI/CD",
+    description:
+      "Implementación de integración continua, pruebas automatizadas y estándares de código.",
   },
 ];
 ---
@@ -54,69 +63,107 @@ const consultingServices = [
 >
   <Navbar />
 
-  <main class="pt-28 bg-slate-900/40 dark:bg-slate-950 transition-colors duration-300">
+  <main
+    class="pt-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300"
+  >
     <!-- Hero Especializado Consultoría Técnica -->
-    <section id="hero" class="py-16 relative overflow-hidden">
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-amber-600/15 rounded-full blur-[140px] pointer-events-none"></div>
-
-      <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-        <span class="inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/10 px-4 py-2 text-xs font-mono font-bold text-amber-600 dark:text-amber-300 mb-6">
-          🛡️ Para CTOs, Fundadores &amp; Líderes de Tecnología
-        </span>
-
-        <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
-          Consultoría Técnica Senior &amp; <span class="bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent">Auditoría de Código</span>
-        </h1>
-
-        <p class="text-slate-600 dark:text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
-          ¿Tu software está lento, fallando o estancado? Diagnosticamos la causa raíz de los problemas técnicos y te entregamos un plan de acción claro.
-        </p>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="#contacto"
-            class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-amber-950/30 hover:scale-105 transition cursor-pointer flex items-center justify-center"
+    <section
+      id="hero"
+      class="py-16 md:py-24 relative border-b border-slate-200 dark:border-slate-800"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center"
+      >
+        <div class="lg:col-span-7 space-y-6">
+          <span
+            class="inline-flex items-center gap-2 rounded-lg border border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/80 px-3.5 py-1.5 text-xs font-bold text-amber-700 dark:text-amber-300"
           >
-            Solicitar Auditoría / Diagnóstico
-          </a>
-          <a
-            href="/"
-            class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white font-bold text-xs border border-slate-200 dark:border-slate-800 transition flex items-center justify-center"
+            🛡️ Para CTOs, Fundadores &amp; Líderes de Tecnología
+          </span>
+
+          <h1
+            class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-tight"
           >
-            ← Volver al Inicio
-          </a>
+            Consultoría Técnica Senior &amp; <span
+              class="text-amber-600 dark:text-amber-400"
+              >Auditoría de Código</span
+            >
+          </h1>
+
+          <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+            ¿Tu software está lento, fallando o estancado? Diagnosticamos la
+            causa raíz de los problemas técnicos y te entregamos un plan de
+            acción claro e imparcial.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
+            <a
+              href="#contacto"
+              class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition flex items-center justify-center"
+            >
+              Solicitar Auditoría / Diagnóstico
+            </a>
+            <a
+              href="/"
+              class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center justify-center"
+            >
+              ← Volver al Inicio
+            </a>
+          </div>
+        </div>
+
+        <!-- Audit Scorecard Dashboard Component (Componente Modular) -->
+        <div class="lg:col-span-5">
+          <AuditPillars />
         </div>
       </div>
     </section>
 
-    <!-- Catálogo Especializado de Servicios Consultoría (8 Tarjetas) -->
-    <section id="beneficios" class="py-16 bg-slate-100/80 dark:bg-slate-900/60 border-t border-slate-200 dark:border-slate-800">
+    <!-- Catálogo de Servicios Consultoría -->
+    <section id="beneficios" class="scroll-mt-20 py-16 bg-slate-50 dark:bg-slate-950">
+
       <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">Catálogo de Servicios de Consultoría &amp; Auditoría</h2>
-          <p class="text-slate-600 dark:text-slate-400 text-sm">Transparencia, diagnóstico imparcial y soluciones de ingeniería comprobadas.</p>
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">
+            Servicios de Consultoría &amp; Auditoría
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">
+            Transparencia, diagnóstico imparcial y soluciones de ingeniería
+            comprobadas.
+          </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-7">
-          {consultingServices.map((f) => (
-            <div class="p-7 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/80 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
-              <div>
-                <div class="text-3xl mb-4 p-3 rounded-2xl bg-amber-500/10 w-fit">{f.icon}</div>
-                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">{f.title}</h3>
-                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">{f.description}</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {
+            consultingServices.map((f) => (
+              <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between hover:border-amber-400 transition">
+                <div>
+                  <div class="text-2xl mb-3 p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/60 w-fit">
+                    {f.icon}
+                  </div>
+                  <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">
+                    {f.title}
+                  </h3>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
+                    {f.description}
+                  </p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800">
+                  <a
+                    href="#contacto"
+                    class="text-xs font-bold text-amber-600 dark:text-amber-400 hover:underline flex items-center gap-1"
+                  >
+                    <span>Solicitar auditoría</span> →
+                  </a>
+                </div>
               </div>
-              <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-900">
-                <a href="#contacto" class="text-xs font-bold text-amber-600 dark:text-amber-400 hover:underline flex items-center gap-1">
-                  <span>Solicitar auditoría</span> →
-                </a>
-              </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
     </section>
 
-    <!-- Formulario de Captura de Leads Dedicado con Selección Automática -->
+    <!-- Formulario de Captura de Leads Dedicado -->
     <ContactSection defaultService="Consultoría & Auditoría Técnica Senior" />
   </main>
 

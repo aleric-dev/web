@@ -1,64 +1,63 @@
 ---
 const techCategories = [
   {
-    title: 'Frontend & UI',
-    description: 'Interfaces ultra-responsivas, dinámicas y optimizadas para máxima velocidad.',
+    title: 'Diseño Web & Experiencia de Usuario',
+    description: 'Páginas adaptadas a celulares y computadores, diseñadas para captar clientes desde el primer segundo.',
     techs: ['TypeScript', 'React', 'Astro', 'Tailwind CSS', 'Next.js'],
     icon: '💻',
   },
   {
-    title: 'Backend & APIs',
-    description: 'Arquitecturas robustas, desacopladas, seguras y de alto rendimiento.',
+    title: 'Sistemas & Motores de Negocio',
+    description: 'Plataformas seguras y estables que procesan tus datos y transacciones sin interrupciones.',
     techs: ['Node.js', 'NestJS', 'Express', 'Python', 'REST APIs', 'GraphQL'],
     icon: '⚙️',
   },
   {
-    title: 'Bases de Datos & Caché',
-    description: 'Persistencia eficiente, modelado estricto e indexación acelerada.',
+    title: 'Bases de Datos & Almacenamiento',
+    description: 'Guarda la información de tus clientes y productos de forma segura, organizada y ultrarrápida.',
     techs: ['PostgreSQL', 'Redis', 'Prisma ORM', 'TypeORM', 'MongoDB'],
     icon: '🗄️',
   },
   {
-    title: 'Automatización & WhatsApp',
-    description: 'Flujos operativos automáticos sin fricción ni fallas.',
+    title: 'Automatización & WhatsApp Comercial',
+    description: 'Respuestas automáticas 24/7 para que no pierdas ventas ni prospectos por demora en atender.',
     techs: ['n8n', 'WhatsApp Cloud API', 'Chatwoot', 'Webhooks', 'Python Bots'],
     icon: '⚡',
   },
 ];
 ---
 
-<section id="stack" class="py-24 bg-slate-900/60 relative overflow-hidden border-t border-slate-800">
-  <div class="absolute top-0 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+<section id="stack" class="scroll-mt-20 py-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300 border-t border-slate-200 dark:border-slate-800">
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
 
-    <!-- Performance Lighthouse Highlight Banner -->
-    <div id="rendimiento" class="mb-20 rounded-3xl border border-indigo-500/30 bg-gradient-to-r from-slate-950 via-indigo-950/40 to-slate-950 p-8 sm:p-12 shadow-2xl backdrop-blur-xl relative overflow-hidden">
-      <div class="absolute -right-10 -bottom-10 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      
+    <!-- Performance Lighthouse Highlight Banner (Explicación para Clientes No Técnicos) -->
+    <div id="rendimiento" class="mb-16 rounded-2xl border border-indigo-200 dark:border-indigo-900 bg-white dark:bg-slate-900 p-8 sm:p-12 shadow-sm transition-colors duration-300">
       <div class="grid lg:grid-cols-12 gap-8 items-center">
         <div class="lg:col-span-7 space-y-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold">
-            <span>⚡ Garantía de Calidad Técnica</span>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-xs font-mono font-bold">
+            <span>⚡ La Máxima Calificación de Google</span>
           </div>
-          <h3 class="text-2xl sm:text-4xl font-extrabold text-white">
-            100/100 en Google Lighthouse &amp; Cero Bloatware
+          <h3 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+            ¿Por qué tener <span class="text-emerald-600 dark:text-emerald-400">100/100 en Google</span> hace crecer tu negocio?
           </h3>
-          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-            Construimos con la <strong class="text-white">Astro Island Architecture</strong> para enviar 0 bytes de JavaScript innecesario al cliente. Tus usuarios disfrutarán de una velocidad de carga instantánea y la mejor indexación SEO posible.
+          <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+            Google evalúa las páginas web de 0 a 100 en velocidad, facilidad de uso y posicionamiento. Alcanzar la puntuación máxima de <strong>100/100</strong> garantiza que tus clientes no abandonen tu sitio por lentitud y que Google te ubique por encima de tu competencia.
           </p>
+
+          <!-- Beneficios Reales de Negocio -->
           <div class="grid sm:grid-cols-3 gap-4 pt-2 font-mono text-xs">
-            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-300">
-              <span class="block text-emerald-400 font-bold text-lg">100%</span>
-              <span>Performance Score</span>
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300">
+              <span class="block text-emerald-600 dark:text-emerald-400 font-bold text-base mb-1"> Más Ventas</span>
+              <span class="text-[11px] leading-tight block text-slate-500">Carga instantánea en menos de 1 segundo para no perder clientes.</span>
             </div>
-            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-300">
-              <span class="block text-emerald-400 font-bold text-lg">100%</span>
-              <span>SEO Optimization</span>
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300">
+              <span class="block text-emerald-600 dark:text-emerald-400 font-bold text-base mb-1"> Top en Google</span>
+              <span class="text-[11px] leading-tight block text-slate-500">Google posiciona primero las páginas más rápidas y seguras.</span>
             </div>
-            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-300">
-              <span class="block text-emerald-400 font-bold text-lg">0.2s</span>
-              <span>First Contentful Paint</span>
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300">
+              <span class="block text-emerald-600 dark:text-emerald-400 font-bold text-base mb-1"> 100% Celulares</span>
+              <span class="text-[11px] leading-tight block text-slate-500">Funciona fluido incluso con datos móviles 4G o conexiones lentas.</span>
             </div>
           </div>
         </div>
@@ -66,29 +65,33 @@ const techCategories = [
         <!-- Lighthouse Visual Badges Grid -->
         <div class="lg:col-span-5 flex justify-center">
           <div class="grid grid-cols-2 gap-4 w-full max-w-sm">
-            <div class="p-4 rounded-2xl bg-slate-900/90 border border-emerald-500/30 text-center shadow-lg">
-              <div class="w-14 h-14 mx-auto rounded-full border-4 border-emerald-400 flex items-center justify-center font-extrabold text-emerald-400 text-lg mb-2">
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-emerald-300 dark:border-emerald-800 text-center shadow-sm">
+              <div class="w-14 h-14 mx-auto rounded-full border-4 border-emerald-500 flex items-center justify-center font-extrabold text-emerald-600 dark:text-emerald-400 text-lg mb-2">
                 100
               </div>
-              <span class="text-xs font-mono font-bold text-slate-200">Performance</span>
+              <span class="text-xs font-bold text-slate-700 dark:text-slate-200 block">Velocidad</span>
+              <span class="text-[10px] text-slate-400">Carga inmediata</span>
             </div>
-            <div class="p-4 rounded-2xl bg-slate-900/90 border border-emerald-500/30 text-center shadow-lg">
-              <div class="w-14 h-14 mx-auto rounded-full border-4 border-emerald-400 flex items-center justify-center font-extrabold text-emerald-400 text-lg mb-2">
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-emerald-300 dark:border-emerald-800 text-center shadow-sm">
+              <div class="w-14 h-14 mx-auto rounded-full border-4 border-emerald-500 flex items-center justify-center font-extrabold text-emerald-600 dark:text-emerald-400 text-lg mb-2">
                 100
               </div>
-              <span class="text-xs font-mono font-bold text-slate-200">Accessibility</span>
+              <span class="text-xs font-bold text-slate-700 dark:text-slate-200 block">Fácil de Usar</span>
+              <span class="text-[10px] text-slate-400">Excelente diseño</span>
             </div>
-            <div class="p-4 rounded-2xl bg-slate-900/90 border border-emerald-500/30 text-center shadow-lg">
-              <div class="w-14 h-14 mx-auto rounded-full border-4 border-emerald-400 flex items-center justify-center font-extrabold text-emerald-400 text-lg mb-2">
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-emerald-300 dark:border-emerald-800 text-center shadow-sm">
+              <div class="w-14 h-14 mx-auto rounded-full border-4 border-emerald-500 flex items-center justify-center font-extrabold text-emerald-600 dark:text-emerald-400 text-lg mb-2">
                 100
               </div>
-              <span class="text-xs font-mono font-bold text-slate-200">Best Practices</span>
+              <span class="text-xs font-bold text-slate-700 dark:text-slate-200 block">Buenas Prácticas</span>
+              <span class="text-[10px] text-slate-400">Seguridad total</span>
             </div>
-            <div class="p-4 rounded-2xl bg-slate-900/90 border border-emerald-500/30 text-center shadow-lg">
-              <div class="w-14 h-14 mx-auto rounded-full border-4 border-emerald-400 flex items-center justify-center font-extrabold text-emerald-400 text-lg mb-2">
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-emerald-300 dark:border-emerald-800 text-center shadow-sm">
+              <div class="w-14 h-14 mx-auto rounded-full border-4 border-emerald-500 flex items-center justify-center font-extrabold text-emerald-600 dark:text-emerald-400 text-lg mb-2">
                 100
               </div>
-              <span class="text-xs font-mono font-bold text-slate-200">SEO</span>
+              <span class="text-xs font-bold text-slate-700 dark:text-slate-200 block">Posicionamiento</span>
+              <span class="text-[10px] text-slate-400">Indexado en Google</span>
             </div>
           </div>
         </div>
@@ -97,34 +100,34 @@ const techCategories = [
 
     <!-- Tech Stack Categories Title -->
     <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-      <span class="inline-block px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-bold uppercase tracking-widest">
-        Stack Tecnológico
+      <span class="inline-block px-3.5 py-1 rounded-lg bg-indigo-100 dark:bg-indigo-950 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider">
+        Tecnología de Alto Nivel
       </span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
-        Herramientas de Clase Mundial
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+        Herramientas que impulsan tu proyecto
       </h2>
-      <p class="text-slate-400 text-sm sm:text-base">
-        Seleccionamos con rigor las mejores tecnologías para garantizar robustez, mantenibilidad y rapidez.
+      <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+        Utilizamos las mismas tecnologías que usan grandes empresas globales para asegurar que tu sistema sea rápido, seguro y fácil de escalar.
       </p>
     </div>
 
     <!-- Tech Stack Cards -->
     <div class="grid md:grid-cols-2 gap-8">
       {techCategories.map((cat) => (
-        <div class="rounded-3xl border border-slate-800 bg-slate-950/80 p-8 shadow-xl hover:border-slate-700 transition">
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-sm">
           <div class="flex items-center gap-4 mb-4">
-            <div class="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-2xl">
+            <div class="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-2xl">
               {cat.icon}
             </div>
             <div>
-              <h3 class="text-xl font-bold text-white">{cat.title}</h3>
-              <p class="text-xs text-slate-400">{cat.description}</p>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">{cat.title}</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">{cat.description}</p>
             </div>
           </div>
           
-          <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-900">
+          <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-100 dark:border-slate-800">
             {cat.techs.map((tech) => (
-              <span class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-mono font-semibold text-indigo-300 hover:border-indigo-500/40 hover:text-white transition">
+              <span class="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs font-mono font-semibold text-indigo-600 dark:text-indigo-400">
                 {tech}
               </span>
             ))}
@@ -135,3 +138,5 @@ const techCategories = [
 
   </div>
 </section>
+
+

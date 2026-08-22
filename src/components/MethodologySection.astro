@@ -1,0 +1,38 @@
+---
+const processSteps = [
+  { step: '01', title: 'Diagnóstico & Alcance', desc: 'Entendemos los objetivos de tu empresa y definimos la arquitectura sin asumir supuestos.' },
+  { step: '02', title: 'Arquitectura & Diseño', desc: 'Diseñamos la estructura de datos, componentes y flujos con enfoque en usabilidad y velocidad.' },
+  { step: '03', title: 'Desarrollo Ágil', desc: 'Construcción en iteraciones cortas con código limpio, tipado estricto y pruebas constantes.' },
+  { step: '04', title: 'Despliegue & Soporte', desc: 'Lanzamiento a producción con monitoreo, optimización de velocidad y soporte continuo.' },
+];
+---
+
+<section class="py-20 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+      <span class="inline-block px-3.5 py-1 rounded-lg bg-indigo-100 dark:bg-indigo-950 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider">
+        Nuestra Metodología
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+        Cómo trabajamos en tu proyecto
+      </h2>
+      <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+        Proceso transparente orientado a cumplir entregas a tiempo y sin fricción técnica.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {processSteps.map((s) => (
+        <div class="p-7 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 flex flex-col justify-between">
+          <div>
+            <span class="text-3xl font-black text-indigo-600 dark:text-indigo-400 font-mono block mb-4">
+              {s.step}
+            </span>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">{s.title}</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{s.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

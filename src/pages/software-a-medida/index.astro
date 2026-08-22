@@ -1,49 +1,58 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Navbar from '../../components/Navbar.astro';
-import ContactSection from '../../components/ContactSection.astro';
-import Footer from '../../components/Footer.astro';
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import SoftwareLifecycle from "../../components/SoftwareLifecycle.astro";
+import ContactSection from "../../components/ContactSection.astro";
+import Footer from "../../components/Footer.astro";
 
 const softwareServices = [
   {
-    icon: '☁️',
-    title: 'Plataformas SaaS Multi-tenant',
-    description: 'Arquitectura de software como servicio con aislamiento seguro de datos por cliente y suscripciones recurrentes.',
+    icon: "☁️",
+    title: "Plataformas SaaS Multi-tenant",
+    description:
+      "Arquitectura de software como servicio con aislamiento seguro de datos por cliente y suscripciones.",
   },
   {
-    icon: '📊',
-    title: 'Sistemas CRM & ERP a la Medida',
-    description: 'Plataformas de gestión comercial y operacional construidas a la medida exacta de tus flujos de trabajo.',
+    icon: "📊",
+    title: "Sistemas CRM & ERP a la Medida",
+    description:
+      "Plataformas de gestión comercial y operacional construidas a la medida exacta de tus flujos.",
   },
   {
-    icon: '🖥️',
-    title: 'Paneles de Control & Dashboards',
-    description: 'Tableros de control interactivos con gráficas en tiempo real, métricas clave (KPIs) y analítica empresarial.',
+    icon: "🖥️",
+    title: "Paneles de Control & Dashboards",
+    description:
+      "Tableros de control interactivos con gráficas en tiempo real, métricas clave (KPIs) y analítica.",
   },
   {
-    icon: '🔗',
-    title: 'Desarrollo de APIs REST & GraphQL',
-    description: 'Interfaces de programación robustas y seguras para comunicar aplicaciones móviles, web y sistemas externos.',
+    icon: "🔗",
+    title: "Desarrollo de APIs REST & GraphQL",
+    description:
+      "Interfaces de programación robustas y seguras para comunicar aplicaciones web y sistemas externos.",
   },
   {
-    icon: '💳',
-    title: 'Integración de Pasarelas de Pago',
-    description: 'Conexiones con Stripe, MercadoPago, PayU y Wompi con facturación electrónica y gestión de cobros.',
+    icon: "💳",
+    title: "Pasarelas de Pago & Cobros",
+    description:
+      "Conexiones con Stripe, MercadoPago, PayU y Wompi con facturación electrónica automatizada.",
   },
   {
-    icon: '🧩',
-    title: 'Arquitectura de Microservicios',
-    description: 'Descomposición de sistemas monolíticos en servicios independientes desacoplados para alta disponibilidad.',
+    icon: "🧩",
+    title: "Arquitectura de Microservicios",
+    description:
+      "Descomposición de sistemas monolíticos en servicios independientes desacoplados para alta disponibilidad.",
   },
   {
-    icon: '🔐',
-    title: 'Control de Acceso & Roles (RBAC)',
-    description: 'Módulos avanzados de seguridad, autenticación JWT/OAuth2 y permisos detallados por rol de usuario.',
+    icon: "🔐",
+    title: "Control de Acceso & Roles (RBAC)",
+    description:
+      "Módulos avanzados de seguridad, autenticación JWT/OAuth2 y permisos detallados por rol.",
   },
   {
-    icon: '📄',
-    title: 'Generación Automática de Documentos',
-    description: 'Motores de generación masiva de PDFs (facturas, reportes, certificados) e informes financieros.',
+    icon: "📄",
+    title: "Motores de Documentos & Reportes",
+    description:
+      "Generación masiva de PDFs (facturas, reportes, certificados) e informes financieros instantáneos.",
   },
 ];
 ---
@@ -54,70 +63,155 @@ const softwareServices = [
 >
   <Navbar />
 
-  <main class="pt-28 bg-slate-900/40 dark:bg-slate-950 transition-colors duration-300">
+  <main
+    class="pt-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300"
+  >
     <!-- Hero Especializado Software a Medida -->
-    <section id="hero" class="py-16 relative overflow-hidden">
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-indigo-600/15 rounded-full blur-[140px] pointer-events-none"></div>
-
-      <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-        <span class="inline-flex items-center gap-2 rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-2 text-xs font-mono font-bold text-indigo-600 dark:text-indigo-300 mb-6">
-          🚀 Para Startups &amp; Empresas en Crecimiento
-        </span>
-
-        <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
-          Desarrollo de Software &amp; <span class="bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">Plataformas SaaS a la Medida</span>
-        </h1>
-
-        <p class="text-slate-600 dark:text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
-          Creamos herramientas tecnológicas exclusivas para tu negocio. Automatiza tu operación, gestiona datos complejos y escala sin límites de software comercial.
-        </p>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="#contacto"
-            class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-indigo-950/30 hover:scale-105 transition cursor-pointer flex items-center justify-center"
+    <section
+      id="hero"
+      class="py-16 md:py-24 relative border-b border-slate-200 dark:border-slate-800"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center"
+      >
+        <div class="lg:col-span-7 space-y-6">
+          <span
+            class="inline-flex items-center gap-2 rounded-lg border border-indigo-200 dark:border-indigo-900 bg-indigo-50 dark:bg-indigo-950/80 px-3.5 py-1.5 text-xs font-bold text-indigo-700 dark:text-indigo-300"
           >
-            Cotizar Proyecto de Software
-          </a>
-          <a
-            href="/"
-            class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white font-bold text-xs border border-slate-200 dark:border-slate-800 transition flex items-center justify-center"
+            🚀 Para Startups &amp; Empresas en Crecimiento
+          </span>
+
+          <h1
+            class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-tight"
           >
-            ← Volver al Inicio
-          </a>
-        </div>
-      </div>
-    </section>
+            Desarrollo de Software &amp; <span
+              class="text-indigo-600 dark:text-indigo-400"
+              >Plataformas SaaS a la Medida</span
+            >
+          </h1>
 
-    <!-- Catálogo Especializado de Servicios Software (8 Tarjetas) -->
-    <section id="beneficios" class="py-16 bg-slate-100/80 dark:bg-slate-900/60 border-t border-slate-200 dark:border-slate-800">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">Catálogo de Soluciones de Software a la Medida</h2>
-          <p class="text-slate-600 dark:text-slate-400 text-sm">Construcción de arquitectura tecnológica robusta adaptada a la lógica exacta de tu empresa.</p>
+          <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+            Creamos herramientas tecnológicas exclusivas para tu negocio.
+            Automatiza tu operación, gestiona datos complejos y escala sin las
+            limitaciones del software comercial genérico.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
+            <a
+              href="#contacto"
+              class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition flex items-center justify-center"
+            >
+              Cotizar Proyecto de Software
+            </a>
+            <a
+              href="/"
+              class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center justify-center"
+            >
+              ← Volver al Inicio
+            </a>
+          </div>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-7">
-          {softwareServices.map((f) => (
-            <div class="p-7 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/80 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
-              <div>
-                <div class="text-3xl mb-4 p-3 rounded-2xl bg-indigo-500/10 w-fit">{f.icon}</div>
-                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">{f.title}</h3>
-                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">{f.description}</p>
+        <!-- Architecture Stack Card Visual -->
+        <div class="lg:col-span-5">
+          <div
+            class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm space-y-4"
+          >
+            <h3
+              class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400"
+            >
+              Arquitectura de Software Profesional
+            </h3>
+            <div class="space-y-2.5 text-xs font-mono">
+              <div
+                class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex justify-between"
+              >
+                <span class="text-slate-500">Frontend:</span>
+                <span class="font-bold text-slate-900 dark:text-white"
+                  >React 19 / Next.js / TypeScript</span
+                >
               </div>
-              <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-900">
-                <a href="#contacto" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
-                  <span>Cotizar proyecto</span> →
-                </a>
+              <div
+                class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex justify-between"
+              >
+                <span class="text-slate-500">Backend:</span>
+                <span class="font-bold text-slate-900 dark:text-white"
+                  >NestJS / Node.js / Python</span
+                >
+              </div>
+              <div
+                class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex justify-between"
+              >
+                <span class="text-slate-500">Base de Datos:</span>
+                <span class="font-bold text-slate-900 dark:text-white"
+                  >PostgreSQL / Redis / Prisma</span
+                >
+              </div>
+              <div
+                class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex justify-between"
+              >
+                <span class="text-slate-500">Infraestructura:</span>
+                <span class="font-bold text-slate-900 dark:text-white"
+                  >Docker / AWS / Cloudflare</span
+                >
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Formulario de Captura de Leads Dedicado con Selección Automática -->
-    <ContactSection defaultService="Desarrollo de Software & SaaS a la Medida" />
+    <!-- Ciclo de Vida del Desarrollo de Software (Componente Modular) -->
+    <SoftwareLifecycle />
+
+    <!-- Catálogo Especializado de Servicios Software -->
+    <section id="beneficios" class="scroll-mt-20 py-16 bg-slate-50 dark:bg-slate-950">
+
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">
+            Catálogo de Soluciones a la Medida
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">
+            Construcción de herramientas digitales adaptadas a la lógica exacta
+            de tu empresa.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {
+            softwareServices.map((f) => (
+              <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between hover:border-indigo-400 transition">
+                <div>
+                  <div class="text-2xl mb-3 p-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 w-fit">
+                    {f.icon}
+                  </div>
+                  <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">
+                    {f.title}
+                  </h3>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
+                    {f.description}
+                  </p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800">
+                  <a
+                    href="#contacto"
+                    class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1"
+                  >
+                    <span>Cotizar proyecto</span> →
+                  </a>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulario de Captura de Leads Dedicado -->
+    <ContactSection
+      defaultService="Desarrollo de Software & SaaS a la Medida"
+    />
   </main>
 
   <Footer />

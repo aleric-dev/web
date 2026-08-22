@@ -3,8 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import CommercialHero from '../components/CommercialHero.astro';
 import { ProfileRouter } from '../components/ProfileRouter';
+import MethodologySection from '../components/MethodologySection.astro';
+import WhyUsSection from '../components/WhyUsSection.astro';
 import ContactSection from '../components/ContactSection.astro';
 import Footer from '../components/Footer.astro';
+
 
 // JSON-LD Schema para SEO indexable por Google y otros motores
 const jsonLd = {
@@ -72,17 +75,24 @@ const jsonLd = {
 
   <Navbar />
 
-  <main class="min-h-[85vh] flex flex-col justify-between">
-    <!-- Hero Comercial Minimalista -->
+  <main class="flex flex-col">
+    <!-- Hero Comercial Limpio -->
     <CommercialHero />
 
-    <!-- Orquestador Principal de Opciones & Soluciones -->
+    <!-- Orquestador Principal de Soluciones Especializadas -->
     <ProfileRouter client:load />
 
-    <!-- Sección de Formulario de Captura de Leads Directo -->
+    <!-- Metodología de Trabajo en 4 Pasos (Componente Modular) -->
+    <MethodologySection />
+
+    <!-- Por Qué Elegirnos / Pilares de Ingeniería (Componente Modular) -->
+    <WhyUsSection />
+
+
+    <!-- Formulario de Captura de Leads Directo -->
     <ContactSection />
 
-    <!-- Sección Semántica SEO para Indexación de Motores de Búsqueda -->
+    <!-- Sección Semántica SEO para Indexación -->
     <section class="sr-only">
       <h2>Agencia de Desarrollo Web, Software a Medida y Automatizaciones</h2>
       <p>
@@ -102,3 +112,5 @@ const jsonLd = {
 
   <Footer />
 </Layout>
+
+

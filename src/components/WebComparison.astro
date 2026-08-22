@@ -1,0 +1,40 @@
+---
+const comparisonData = [
+  { feature: 'Tiempo de Carga Promedio', trad: '3.5 - 6.0 segundos (Lento)', aleric: '< 0.5 segundos (Instantáneo)' },
+  { feature: 'Puntuación Google Lighthouse', trad: '35 - 60 / 100', aleric: '98 - 100 / 100' },
+  { feature: 'Seguridad & Vulnerabilidades', trad: 'Vulnerable a plugins legacy', aleric: 'Arquitectura Estática Inviolable' },
+  { feature: 'Costo de Mantenimiento', trad: 'Alto (Actualizaciones constantes)', aleric: 'Mínimo / Cero mantenimiento de servidor' },
+];
+---
+
+<section class="py-16 bg-white dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-800">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-2">
+        Sitio Web Tradicional vs Aleric Web Stack
+      </h2>
+      <p class="text-slate-600 dark:text-slate-400 text-sm">¿Por qué nuestras páginas convierten mejor?</p>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-xs sm:text-sm border-collapse">
+        <thead>
+          <tr class="border-b border-slate-200 dark:border-slate-800 text-slate-500">
+            <th class="py-3 px-4 font-bold">Característica</th>
+            <th class="py-3 px-4 font-bold text-slate-400">Web Tradicional (WordPress)</th>
+            <th class="py-3 px-4 font-bold text-cyan-600 dark:text-cyan-400">Aleric Web Stack</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+          {comparisonData.map((row) => (
+            <tr>
+              <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">{row.feature}</td>
+              <td class="py-4 px-4 text-slate-500 dark:text-slate-400">{row.trad}</td>
+              <td class="py-4 px-4 font-bold text-cyan-600 dark:text-cyan-400 bg-cyan-50/50 dark:bg-cyan-950/20">{row.aleric}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

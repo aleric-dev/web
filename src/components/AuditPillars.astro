@@ -1,0 +1,24 @@
+---
+const auditPillars = [
+  { title: 'Deuda Técnica', status: 'Evaluación de mantenibilidad y acoplamiento' },
+  { title: 'Rendimiento & Latencia', status: 'Detección de consultas lentas N+1 y memory leaks' },
+  { title: 'Seguridad OWASP', status: 'Identificación de vulnerabilidades de inyección y auth' },
+  { title: 'Escalabilidad Cloud', status: 'Análisis de costos e infraestructura de servidores' },
+];
+---
+
+<div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm space-y-4">
+  <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+    <span class="text-xs font-bold text-slate-900 dark:text-white">Scorecard de Auditoría Técnica</span>
+    <span class="text-[10px] font-mono font-bold text-amber-600 dark:text-amber-400">Reporte Ejecutivo</span>
+  </div>
+  
+  <div class="space-y-2.5">
+    {auditPillars.map((p) => (
+      <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs">
+        <div class="font-bold text-slate-900 dark:text-white mb-0.5">{p.title}</div>
+        <div class="text-slate-500 text-[11px]">{p.status}</div>
+      </div>
+    ))}
+  </div>
+</div>

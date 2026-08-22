@@ -1,0 +1,54 @@
+---
+const whyUsPillars = [
+  {
+    icon: '🔑',
+    title: 'Propiedad 100% Tuya & Cero Ataduras',
+    description: 'Te entregamos el código fuente completo y repositorios. Sin licencias ocultas ni dependencia de plataformas cerradas.',
+  },
+  {
+    icon: '💬',
+    title: 'Ingeniería Senior Sin Intermediarios',
+    description: 'Hablas directamente con los desarrolladores del proyecto. Comunicación fluida, transparente y en español.',
+  },
+  {
+    icon: '🚀',
+    title: 'Arquitectura Escalable desde el Día 1',
+    description: 'Diseñamos sistemas preparados para crecer en tráfico y usuarios sin tener que reconstruir la plataforma a futuro.',
+  },
+  {
+    icon: '🛡️',
+    title: 'Garantía & Monitoreo Post-Entrega',
+    description: 'No te abandonamos tras el lanzamiento. Ofrecemos acompañamiento continuo, soporte técnico y actualizaciones.',
+  },
+];
+---
+
+<section id="porque-nosotros" class="scroll-mt-20 py-20 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+      <span class="inline-block px-3.5 py-1 rounded-lg bg-indigo-100 dark:bg-indigo-950 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider">
+        ¿Por qué Aleric.dev?
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+        Tranquilidad y Calidad de Ingeniería para tu Empresa
+      </h2>
+      <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+        Nos enfocamos en entregar resultados reales con código profesional y comunicación transparente.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {whyUsPillars.map((p) => (
+        <div class="p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm flex items-start gap-5 hover:border-indigo-400 dark:hover:border-indigo-600 transition">
+          <div class="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 flex items-center justify-center text-2xl shrink-0">
+            {p.icon}
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">{p.title}</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-normal">{p.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

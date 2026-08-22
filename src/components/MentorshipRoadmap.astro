@@ -1,0 +1,29 @@
+---
+const roadmapPhases = [
+  { step: 'Fase 01', title: 'Fundamentos de Ingeniería & TypeScript', desc: 'Tipado estricto, estructuras complejas, configuración de entorno profesional y Git avanzado.' },
+  { step: 'Fase 02', title: 'Arquitectura Backend con NestJS', desc: 'Diseño de APIs REST/GraphQL, autenticación JWT, RBAC, ORM con Prisma y PostgreSQL.' },
+  { step: 'Fase 03', title: 'Frontend Moderno con React 19', desc: 'State management, custom hooks, Server Actions, optimización de performance y Tailwind CSS.' },
+  { step: 'Fase 04', title: 'Testing, CI/CD & Despliegue', desc: 'Testing con Vitest/Playwright, GitHub Actions, Docker containers y despliegue a producción.' },
+];
+---
+
+<section class="py-16 bg-white dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-800">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-2">
+        Ruta de Aprendizaje Full Stack
+      </h2>
+      <p class="text-slate-600 dark:text-slate-400 text-sm">Contenido estructurado adaptable a tu nivel técnico actual.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {roadmapPhases.map((r) => (
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+          <span class="text-xs font-mono font-bold text-rose-600 dark:text-rose-400 block mb-2">{r.step}</span>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">{r.title}</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{r.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

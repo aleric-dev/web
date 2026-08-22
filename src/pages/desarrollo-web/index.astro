@@ -1,49 +1,60 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Navbar from '../../components/Navbar.astro';
-import ContactSection from '../../components/ContactSection.astro';
-import Footer from '../../components/Footer.astro';
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import WebComparison from "../../components/WebComparison.astro";
+import TechStack from "../../components/TechStack.astro";
+import ContactSection from "../../components/ContactSection.astro";
+import Footer from "../../components/Footer.astro";
+
 
 const webServices = [
   {
-    icon: '⚡',
-    title: 'Landings de Alta Conversión (CRO)',
-    description: 'Páginas promocionales de un solo producto o servicio optimizadas rigurosamente para captar prospectos y leads cualificados.',
+    icon: "⚡",
+    title: "Landings de Alta Conversión (CRO)",
+    description:
+      "Páginas promocionales optimizadas rigurosamente para captar prospectos y leads cualificados.",
   },
   {
-    icon: '🏢',
-    title: 'Sitios Web Corporativos e Institucionales',
-    description: 'Portales de marcas y empresas con arquitectura limpia, velocidad extrema y presentación profesional que inspira confianza.',
+    icon: "🏢",
+    title: "Sitios Web Corporativos",
+    description:
+      "Portales de marcas y empresas con arquitectura limpia, velocidad extrema y presentación profesional.",
   },
   {
-    icon: '🛍️',
-    title: 'Tiendas E-commerce Escalables',
-    description: 'Catálogos digitales y plataformas de venta en línea con carritos de compra, pasarelas de pago y navegación fluida.',
+    icon: "🛍️",
+    title: "Tiendas E-commerce Escalables",
+    description:
+      "Plataformas de venta en línea con carritos de compra, pasarelas de pago y navegación fluida.",
   },
   {
-    icon: '🚀',
-    title: 'Optimizaciones Lighthouse 100/100',
-    description: 'Saneamiento técnico de sitios lentos para lograr puntuaciones máximas de rendimiento, accesibilidad y SEO técnico.',
+    icon: "🚀",
+    title: "Optimizaciones Lighthouse 100/100",
+    description:
+      "Saneamiento técnico de sitios lentos para lograr puntuaciones máximas de rendimiento y SEO.",
   },
   {
-    icon: '🏡',
-    title: 'Portales Inmobiliarios & Catálogos',
-    description: 'Plataformas interactivas para búsqueda de propiedades, automóviles o catálogos complejos con filtros dinámicos.',
+    icon: "🏡",
+    title: "Portales Inmobiliarios & Catálogos",
+    description:
+      "Plataformas interactivas para búsqueda de propiedades o catálogos complejos con filtros dinámicos.",
   },
   {
-    icon: '🔄',
-    title: 'Rediseño & Migración Web Legacy',
-    description: 'Modernización completa de sitios antiguos o lentos basados en WordPress a código moderno ultraveloz.',
+    icon: "🔄",
+    title: "Rediseño & Migración Legacy",
+    description:
+      "Modernización completa de sitios antiguos o lentos basados en WordPress a código moderno ultraveloz.",
   },
   {
-    icon: '📲',
-    title: 'Progressive Web Apps (PWA)',
-    description: 'Sitios web avanzados instalables en dispositivos móviles que funcionan offline y envían notificaciones push.',
+    icon: "📲",
+    title: "Progressive Web Apps (PWA)",
+    description:
+      "Sitios web avanzados instalables en dispositivos móviles que funcionan offline.",
   },
   {
-    icon: '🔍',
-    title: 'Posicionamiento SEO Técnico Nativo',
-    description: 'Estructuración de datos Schema.org, sitemaps y renderizado estático para destacar en los primeros lugares de Google.',
+    icon: "🔍",
+    title: "Posicionamiento SEO Técnico Nativo",
+    description:
+      "Estructuración de datos Schema.org, sitemaps y renderizado estático para destacar en Google.",
   },
 ];
 ---
@@ -54,70 +65,162 @@ const webServices = [
 >
   <Navbar />
 
-  <main class="pt-28 bg-slate-900/40 dark:bg-slate-950 transition-colors duration-300">
-    <!-- Hero Especializado Desarrollo Web -->
-    <section id="hero" class="py-16 relative overflow-hidden">
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-cyan-600/15 rounded-full blur-[140px] pointer-events-none"></div>
-
-      <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-        <span class="inline-flex items-center gap-2 rounded-full border border-cyan-500/40 bg-cyan-500/10 px-4 py-2 text-xs font-mono font-bold text-cyan-600 dark:text-cyan-300 mb-6">
-          🌐 Soluciones Web Comerciales &amp; PyMEs
-        </span>
-
-        <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
-          Páginas Web &amp; Landings diseñadas para <span class="bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">Multiplicar tus Ventas</span>
-        </h1>
-
-        <p class="text-slate-600 dark:text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
-          Olvídate de sitios lentos o plantillas genéricas. Desarrollamos presencia digital de alto nivel que atrapa la atención y convierte visitas en clientes.
-        </p>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="#contacto"
-            class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-cyan-950/30 hover:scale-105 transition cursor-pointer flex items-center justify-center"
+  <main
+    class="pt-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300"
+  >
+    <!-- Hero Split Especializado Desarrollo Web -->
+    <section
+      id="hero"
+      class="py-16 md:py-24 relative border-b border-slate-200 dark:border-slate-800"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center"
+      >
+        <div class="lg:col-span-7 space-y-6">
+          <span
+            class="inline-flex items-center gap-2 rounded-lg border border-cyan-200 dark:border-cyan-900 bg-cyan-50 dark:bg-cyan-950/80 px-3.5 py-1.5 text-xs font-bold text-cyan-700 dark:text-cyan-300"
           >
-            Cotizar Sitio Web / Landing Page
-          </a>
-          <a
-            href="/"
-            class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white font-bold text-xs border border-slate-200 dark:border-slate-800 transition flex items-center justify-center"
+            🌐 Soluciones Web Comerciales &amp; PyMEs
+          </span>
+
+          <h1
+            class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-tight"
           >
-            ← Volver al Inicio
-          </a>
-        </div>
-      </div>
-    </section>
+            Páginas Web &amp; Landings para <span
+              class="text-cyan-600 dark:text-cyan-400"
+              >Multiplicar tus Ventas</span
+            >
+          </h1>
 
-    <!-- Catálogo Especializado de Servicios Web (8 Tarjetas) -->
-    <section id="beneficios" class="py-16 bg-slate-100/80 dark:bg-slate-900/60 border-t border-slate-200 dark:border-slate-800">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">Catálogo de Soluciones de Desarrollo Web</h2>
-          <p class="text-slate-600 dark:text-slate-400 text-sm">Explora las especialidades de ingeniería web que ponemos a disposición de tu empresa.</p>
+          <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+            Olvídate de sitios lentos o plantillas genéricas. Desarrollamos
+            presencia digital de alto nivel con arquitectura limpia que atrapa
+            la atención y convierte visitas en clientes.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
+            <a
+              href="#contacto"
+              class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition flex items-center justify-center"
+            >
+              Cotizar Sitio Web / Landing Page
+            </a>
+            <a
+              href="/"
+              class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center justify-center"
+            >
+              ← Volver al Inicio
+            </a>
+          </div>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-7">
-          {webServices.map((f) => (
-            <div class="p-7 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/80 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
-              <div>
-                <div class="text-3xl mb-4 p-3 rounded-2xl bg-cyan-500/10 w-fit">{f.icon}</div>
-                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">{f.title}</h3>
-                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">{f.description}</p>
+        <!-- Metric Scorecard Visual Component -->
+        <div class="lg:col-span-5">
+          <div
+            class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm space-y-4"
+          >
+            <div
+              class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800"
+            >
+              <span class="text-xs font-bold text-slate-900 dark:text-white"
+                >Auditoría de Rendimiento</span
+              >
+              <span
+                class="text-[11px] font-mono font-bold text-emerald-600 dark:text-emerald-400"
+                >Lighthouse Certified</span
+              >
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 font-mono text-center">
+              <div
+                class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800"
+              >
+                <span
+                  class="block text-2xl font-black text-emerald-600 dark:text-emerald-400"
+                  >100/100</span
+                >
+                <span class="text-[10px] text-slate-500 uppercase"
+                  >Performance</span
+                >
               </div>
-              <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-900">
-                <a href="#contacto" class="text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1">
-                  <span>Cotizar servicio</span> →
-                </a>
+              <div
+                class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800"
+              >
+                <span
+                  class="block text-2xl font-black text-cyan-600 dark:text-cyan-400"
+                  >&lt; 0.4s</span
+                >
+                <span class="text-[10px] text-slate-500 uppercase"
+                  >Speed Index</span
+                >
               </div>
             </div>
-          ))}
+
+            <div
+              class="p-4 rounded-xl bg-cyan-50 dark:bg-cyan-950/40 border border-cyan-200 dark:border-cyan-900 text-xs text-cyan-900 dark:text-cyan-200 leading-relaxed font-medium"
+            >
+              💡 <strong>Impacto Comercial:</strong> Sitios web que cargan en menos
+              de 1 segundo incrementan las conversiones directas hasta un +35%.
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Formulario de Captura de Leads Dedicado con Selección Automática -->
-    <ContactSection defaultService="Desarrollo Web & Landings de Alta Conversión" />
+    <!-- Matriz Comparativa: WordPress vs Aleric Stack (Componente Modular) -->
+    <WebComparison />
+
+    <!-- Catálogo de Servicios Web -->
+    <section id="beneficios" class="scroll-mt-20 py-16 bg-slate-50 dark:bg-slate-950">
+
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">
+            Especialidades de Ingeniería Web
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">
+            Construimos la solución exacta que tu negocio necesita para crecer.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {
+            webServices.map((f) => (
+              <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between hover:border-cyan-400 transition">
+                <div>
+                  <div class="text-2xl mb-3 p-2.5 rounded-xl bg-cyan-50 dark:bg-cyan-950/60 w-fit">
+                    {f.icon}
+                  </div>
+                  <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">
+                    {f.title}
+                  </h3>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
+                    {f.description}
+                  </p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800">
+                  <a
+                    href="#contacto"
+                    class="text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1"
+                  >
+                    <span>Cotizar servicio</span> →
+                  </a>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Stack Tecnológico & Calidad Google Lighthouse 100/100 -->
+    <TechStack />
+
+    <!-- Formulario de Captura de Leads Dedicado -->
+
+    <ContactSection
+      defaultService="Desarrollo Web & Landings de Alta Conversión"
+    />
   </main>
 
   <Footer />
