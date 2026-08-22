@@ -101,10 +101,11 @@ const OPTIONS: ProfileOption[] = [
     icon: <MessageSquare className="w-6 h-6 text-slate-700 dark:text-slate-300" />,
     iconBg: 'bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700',
     starFeatures: [
-      'Propuesta Comercial Personalizada',
+      'Reunión de Diagnóstico 1-a-1',
       'Evaluación de Viabilidad Técnica',
       'Respuesta en menos de 24 Horas',
     ],
+
   },
 ];
 
