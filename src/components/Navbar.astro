@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import ThemeToggle from './ThemeToggle.astro';
 
 const pathname = Astro.url.pathname;
@@ -23,19 +24,19 @@ const isActive = (href: string) => {
     <!-- Left: Brand Logo -->
     <a href="/" class="flex items-center shrink-0 group">
       <!-- Light Mode Logo -->
-      <img
-        src="/logo dark.png"
+      <Image
+        src="/logo-dark.png"
         alt="Aleric.dev Logo"
-        width="180"
-        height="48"
+        width={180}
+        height={48}
         class="h-11 sm:h-12 w-auto object-contain dark:hidden group-hover:opacity-90 transition duration-200"
       />
       <!-- Dark Mode Logo -->
-      <img
+      <Image
         src="/logo.png"
         alt="Aleric.dev Logo Dark"
-        width="180"
-        height="48"
+        width={180}
+        height={48}
         class="h-11 sm:h-12 w-auto object-contain hidden dark:block group-hover:opacity-90 transition duration-200"
       />
     </a>
