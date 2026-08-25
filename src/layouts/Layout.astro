@@ -8,12 +8,17 @@ import FloatingContactButton from '../components/FloatingContactButton.astro';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
 }
 
 const {
-  title = "Aleric.dev | Software a Medida, Automatizaciones & Consultoría Técnica",
-  description = "Transformamos procesos caóticos en software de alto rendimiento. Construcción de sistemas a la medida, automatizaciones sin fricción y arquitectura sólida."
+  title = "Aleric.dev | Agencia de Desarrollo de Software, Automatizaciones Avanzadas & Consultoría CTO",
+  description = "Transformamos procesos caóticos en software de alto rendimiento. Construcción de sistemas a la medida, automatizaciones sin fricción y arquitectura sólida.",
+  image = "/logo-dark-horizontal.png"
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin);
+const imageURL = new URL(image, Astro.url.origin).href;
 ---
 
 <!DOCTYPE html>
@@ -22,6 +27,7 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL.href} />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Astro Native View Transitions Router -->
@@ -33,16 +39,21 @@ const {
     <meta name="keywords" content="Aleric.dev, desarrollo web, software a medida, automatizacion n8n, whatsapp api, nestjs, react, typescript, consultoria tecnica, mentoría full stack" />
     <meta name="author" content="Aleric.dev" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Facebook / WhatsApp / LinkedIn Card -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageURL} />
+    <meta property="og:image:alt" content={title} />
     <meta property="og:site_name" content="Aleric.dev" />
 
-    <!-- Twitter -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL.href} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageURL} />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
