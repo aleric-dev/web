@@ -1,7 +1,4 @@
 interface Env {
-  EMAIL?: any;
-  SEND_EMAIL?: any;
-  SEB?: any;
   RESEND_API_KEY?: string;
   RESEND_FROM_EMAIL?: string;
 }
@@ -30,9 +27,25 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       );
     }
 
+    const apiKey = context.env?.RESEND_API_KEY || (typeof process !== 'undefined' ? process.env?.RESEND_API_KEY : undefined);
+
+    if (!apiKey) {
+      console.error('RESEND_API_KEY no configurada');
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: 'Falta configurar RESEND_API_KEY en las variables de entorno.',
+        }),
+        {
+          status: 500,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+    }
+
     const recipient = 'contacto@aleric.dev';
-    const emailBinding = context.env.EMAIL || context.env.SEND_EMAIL || context.env.SEB;
     const subject = `Nuevo Lead desde Aleric.dev: ${name} (${service_type || 'General'})`;
+    const fromAddress = context.env?.RESEND_FROM_EMAIL || (typeof process !== 'undefined' ? process.env?.RESEND_FROM_EMAIL : undefined) || 'Aleric.dev <contacto@aleric.dev>';
 
     // Plantilla de correo limpia, clara y minimalista
     const htmlBody = `<!DOCTYPE html>
@@ -184,112 +197,66 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
 </body>
 </html>`;
 
-    // 1. Send via Cloudflare Native Email Routing Binding (send_email)
-    if (emailBinding && typeof emailBinding.send === 'function') {
-      try {
-        // @ts-ignore - Módulo nativo provisto en runtime por Cloudflare Pages/Workers
-        const { EmailMessage } = await import('cloudflare:email');
+    // Envío directo y único mediante Resend API
+    let res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: fromAddress,
+        to: [recipient],
+        reply_to: email,
+        subject,
+        html: htmlBody,
+      }),
+    });
 
-        const rawEmail = [
-          `From: "Aleric.dev Web" <${recipient}>`,
-          `To: <${recipient}>`,
-          `Reply-To: <${email}>`,
-          `Subject: ${subject}`,
-          `MIME-Version: 1.0`,
-          `Content-Type: text/html; charset=UTF-8`,
-          ``,
-          htmlBody,
-        ].join('\r\n');
+    // Si falla por dominio no verificado aún en Resend, reintentar con el remitente de prueba oficial
+    if (!res.ok) {
+      const firstError = await res.text();
+      console.warn('Primer intento con remitente personalizado falló, probando con onboarding@resend.dev:', firstError);
 
-        const messageObj = new EmailMessage(recipient, recipient, rawEmail);
-        await emailBinding.send(messageObj);
-
-        return new Response(JSON.stringify({ success: true, provider: 'cloudflare_email' }), {
-          status: 200,
-          headers: { 'Content-Type': 'application/json' },
-        });
-      } catch (cfEmailError: any) {
-        console.error('Error with Cloudflare email binding:', cfEmailError);
-        // Continue to fallback if present
-      }
-    }
-
-    // 2. Envío a través de Resend API
-    if (context.env.RESEND_API_KEY) {
-      const fromAddress = context.env.RESEND_FROM_EMAIL || 'Aleric.dev <contacto@aleric.dev>';
-      
-      let res = await fetch('https://api.resend.com/emails', {
+      res = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${context.env.RESEND_API_KEY}`,
+          Authorization: `Bearer ${apiKey}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: fromAddress,
+          from: 'Aleric.dev <onboarding@resend.dev>',
           to: [recipient],
           reply_to: email,
           subject,
           html: htmlBody,
         }),
       });
-
-      // Si falla porque el dominio aleric.dev aún no está verificado en Resend, reintenta con onboarding@resend.dev
-      if (!res.ok) {
-        const errorDetails = await res.text();
-        console.warn('Primer intento Resend falló, reintentando con remitente de prueba:', errorDetails);
-
-        res = await fetch('https://api.resend.com/emails', {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${context.env.RESEND_API_KEY}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            from: 'Aleric.dev <onboarding@resend.dev>',
-            to: [recipient],
-            reply_to: email,
-            subject,
-            html: htmlBody,
-          }),
-        });
-      }
-
-      if (res.ok) {
-        return new Response(JSON.stringify({ success: true, provider: 'resend' }), {
-          status: 200,
-          headers: { 'Content-Type': 'application/json' },
-        });
-      } else {
-        const finalError = await res.text();
-        console.error('Error final Resend:', finalError);
-        return new Response(
-          JSON.stringify({
-            success: false,
-            error: 'No se pudo enviar el correo por Resend. Verifica tu API Key o la verificación del dominio.',
-            details: finalError,
-          }),
-          {
-            status: 502,
-            headers: { 'Content-Type': 'application/json' },
-          }
-        );
-      }
     }
 
-    // 3. Fallback response if binding is awaiting dashboard activation
-    return new Response(
-      JSON.stringify({
-        success: true,
-        provider: 'registered',
-        message: 'Solicitud recibida. Notificación procesada.',
-      }),
-      {
+    if (res.ok) {
+      const responseData = await res.json();
+      return new Response(JSON.stringify({ success: true, provider: 'resend', data: responseData }), {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
-      }
-    );
+      });
+    } else {
+      const finalError = await res.text();
+      console.error('Error al enviar con Resend:', finalError);
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: 'No se pudo enviar el correo por Resend. Revisa tu RESEND_API_KEY o el estado de tu cuenta.',
+          details: finalError,
+        }),
+        {
+          status: 502,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+    }
   } catch (error: any) {
-    console.error('Error processing contact form:', error);
+    console.error('Error procesando formulario:', error);
     return new Response(
       JSON.stringify({ success: false, error: error.message || 'Error interno al procesar el formulario' }),
       {
