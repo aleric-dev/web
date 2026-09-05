@@ -162,16 +162,16 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       padding: 32px 28px;
     }
     .brand {
-      font-size: 16px;
-      font-weight: 800;
-      color: #0f172a;
-      letter-spacing: -0.02em;
-      padding-bottom: 16px;
+      padding-bottom: 18px;
       border-bottom: 1px solid #e2e8f0;
       margin-bottom: 24px;
     }
-    .brand span {
-      color: #4f46e5;
+    .brand-logo {
+      height: 34px;
+      width: auto;
+      max-width: 170px;
+      display: block;
+      border: 0;
     }
     .title {
       font-size: 18px;
@@ -241,7 +241,12 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
 <body>
   <div class="container">
     <div class="brand">
-      Aleric<span>.dev</span>
+      <img
+        src="https://aleric.dev/logo-dark-horizontal.png"
+        alt="Aleric Dev"
+        class="brand-logo"
+        style="height: 34px; width: auto; max-width: 170px; display: block; border: 0;"
+      />
     </div>
 
     <h1 class="title">Nuevo contacto recibido</h1>
