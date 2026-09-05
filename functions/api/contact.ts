@@ -29,6 +29,27 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       );
     }
 
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email.trim())) {
+      return new Response(
+        JSON.stringify({ success: false, error: 'Por favor ingresa un correo electrónico válido (ejemplo: tu@empresa.com).' }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+    }
+
+    if (message.trim().length > 200) {
+      return new Response(
+        JSON.stringify({ success: false, error: 'El detalle del proyecto no puede superar los 200 caracteres.' }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+    }
+
     const apiKey = context.env?.RESEND_API_KEY || (typeof process !== 'undefined' ? process.env?.RESEND_API_KEY : undefined);
 
     if (!apiKey) {

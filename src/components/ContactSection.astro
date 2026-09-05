@@ -27,22 +27,22 @@ const CONTACT_EMAIL = 'contacto@aleric.dev';
         </p>
 
         <!-- Direct Email Option Box (Toda la fila) -->
-        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-2xl shrink-0">
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-xl shrink-0">
               ✉️
             </div>
             <div>
-              <h3 class="text-base font-bold text-slate-900 dark:text-white">Correo Oficial de Contacto</h3>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Escríbenos directamente para requerimientos formales, consultas técnicas o RFPs.</p>
+              <h3 class="text-sm font-bold text-slate-900 dark:text-white">Correo Oficial de Contacto</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Escríbenos directamente para requerimientos formales, consultas técnicas o RFPs.</p>
             </div>
           </div>
 
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            class="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 font-mono font-bold text-sm tracking-wider transition cursor-pointer border border-slate-300 dark:border-slate-700 active:scale-95"
+            class="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-mono font-bold text-xs tracking-wider transition cursor-pointer border border-slate-300 dark:border-slate-700 active:scale-95"
           >
-            <svg class="w-4 h-4 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-3.5 h-3.5 fill-none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
             <span>{CONTACT_EMAIL}</span>
@@ -55,15 +55,15 @@ const CONTACT_EMAIL = 'contacto@aleric.dev';
         <div class="p-8 sm:p-10 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
           <div>
             <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Queremos Escuchar tu Idea</h3>
-            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Cuéntanos qué quieres construir. Revisamos tu proyecto con atención y te escribimos personalmente en menos de 24 horas para ver cómo podemos ayudarte.</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Cuéntanos qué quieres construir. Revisamos tu proyecto con atención y te escribimos personalmente en menos de 24 horas para ver cómo podemos ayudarte.</p>
           </div>
 
-          <form id="lead-capture-form" class="space-y-5">
+          <form id="lead-capture-form" class="space-y-4">
             <input type="hidden" name="subject" value={`Nuevo Lead desde Aleric.dev: ${defaultService || 'Consulta General'}`} />
 
             <!-- Row 1: Nombre Completo -->
             <div>
-              <label for="lead-name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+              <label for="lead-name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                 Nombre Completo / Empresa *
               </label>
               <input
@@ -72,13 +72,13 @@ const CONTACT_EMAIL = 'contacto@aleric.dev';
                 name="name"
                 required
                 placeholder="Ej. Carlos Mendoza"
-                class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3.5 text-sm sm:text-base text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none transition"
+                class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-indigo-500 focus:outline-none transition"
               />
             </div>
 
             <!-- Row 2: Correo Electrónico (Toda la fila) -->
             <div>
-              <label for="lead-email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+              <label for="lead-email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                 Correo Electrónico *
               </label>
               <input
@@ -86,22 +86,24 @@ const CONTACT_EMAIL = 'contacto@aleric.dev';
                 id="lead-email"
                 name="email"
                 required
+                pattern="[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}"
+                title="Ingresa un correo electrónico válido, por ejemplo: nombre@empresa.com"
                 placeholder="tu@empresa.com"
-                class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3.5 text-sm sm:text-base text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none transition"
+                class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-indigo-500 focus:outline-none transition"
               />
             </div>
 
             <!-- Row 3: Servicio Requerido & Presupuesto Estimado (Obligatorio) -->
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
-                <label for="lead-service" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+                <label for="lead-service" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                   Tipo de Servicio Requerido *
                 </label>
                 <select
                   id="lead-service"
                   name="service_type"
                   required
-                  class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3.5 text-sm sm:text-base text-slate-900 dark:text-slate-100 focus:border-indigo-500 focus:outline-none transition cursor-pointer"
+                  class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-xs text-slate-900 dark:text-slate-100 focus:border-indigo-500 focus:outline-none transition cursor-pointer"
                 >
                   <option value="" disabled selected={!defaultService}>-- Selecciona el servicio * --</option>
                   <option value="Desarrollo Web & Landings de Alta Conversión" selected={defaultService === 'Desarrollo Web & Landings de Alta Conversión'}>🌐 Desarrollo Web &amp; Landings de Alta Conversión</option>
@@ -115,14 +117,14 @@ const CONTACT_EMAIL = 'contacto@aleric.dev';
               </div>
 
               <div>
-                <label for="lead-budget" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+                <label for="lead-budget" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
                   Presupuesto Estimado *
                 </label>
                 <select
                   id="lead-budget"
                   name="budget"
                   required
-                  class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3.5 text-sm sm:text-base text-slate-900 dark:text-slate-100 focus:border-indigo-500 focus:outline-none transition cursor-pointer"
+                  class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-xs text-slate-900 dark:text-slate-100 focus:border-indigo-500 focus:outline-none transition cursor-pointer"
                 >
                   <option value="" disabled selected>-- Selecciona rango o flexible * --</option>
                   <option value="Flexible / Por definir">✨ Flexible / Por definir / Abierto a propuestas</option>
@@ -134,18 +136,24 @@ const CONTACT_EMAIL = 'contacto@aleric.dev';
               </div>
             </div>
 
-            <!-- Row 4: Mensaje / Detalle del Proyecto -->
+            <!-- Row 4: Mensaje / Detalle del Proyecto (Con límite de 200 caracteres y contador) -->
             <div>
-              <label for="lead-message" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
-                Detalle del Proyecto / Requerimientos *
-              </label>
+              <div class="flex items-center justify-between mb-1.5">
+                <label for="lead-message" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                  Detalle del Proyecto / Requerimientos *
+                </label>
+                <span class="text-[11px] font-mono text-slate-400 dark:text-slate-500">
+                  <span id="char-count">0</span>/200
+                </span>
+              </div>
               <textarea
                 id="lead-message"
                 name="message"
-                rows="4"
+                rows="3"
+                maxlength="200"
                 required
-                placeholder="Cuéntanos brevemente los objetivos, tiempos o funcionalidades que necesitas..."
-                class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 text-sm sm:text-base text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none transition resize-none leading-relaxed"
+                placeholder="Cuéntanos brevemente los objetivos, tiempos o funcionalidades que necesitas (máx. 200 caracteres)..."
+                class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-indigo-500 focus:outline-none transition resize-none leading-relaxed"
               ></textarea>
             </div>
 
@@ -154,13 +162,13 @@ const CONTACT_EMAIL = 'contacto@aleric.dev';
               <button
                 type="submit"
                 id="lead-submit-btn"
-                class="w-full py-4 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm uppercase tracking-wider shadow-sm active:scale-95 transition cursor-pointer flex items-center justify-center gap-2 border border-indigo-500"
+                class="w-full py-4 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm active:scale-95 transition cursor-pointer flex items-center justify-center gap-2 border border-indigo-500"
               >
                 <span>CUÉNTANOS TU PROYECTO →</span>
               </button>
             </div>
 
-            <div id="lead-form-status" class="hidden text-sm text-center font-medium p-3.5 rounded-xl"></div>
+            <div id="lead-form-status" class="hidden text-xs text-center font-medium p-3 rounded-xl"></div>
           </form>
         </div>
       </div>
@@ -174,15 +182,44 @@ const CONTACT_EMAIL = 'contacto@aleric.dev';
     const form = document.getElementById('lead-capture-form');
     const statusDiv = document.getElementById('lead-form-status');
     const submitBtn = document.getElementById('lead-submit-btn');
+    const messageInput = document.getElementById('lead-message');
+    const charCount = document.getElementById('char-count');
+
+    // Contador de caracteres en vivo
+    if (messageInput && charCount) {
+      const updateCount = () => {
+        const len = messageInput.value.length;
+        charCount.textContent = len;
+        if (len >= 200) {
+          charCount.classList.add('text-amber-500', 'font-bold');
+        } else {
+          charCount.classList.remove('text-amber-500', 'font-bold');
+        }
+      };
+      messageInput.addEventListener('input', updateCount);
+      updateCount();
+    }
 
     if (form && statusDiv && submitBtn) {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        submitBtn.disabled = true;
-        submitBtn.innerText = 'Enviando mensaje...';
 
         const formData = new FormData(form);
         const object = Object.fromEntries(formData);
+
+        // Validación estricta de email
+        const emailVal = (object.email || '').trim();
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(emailVal)) {
+          statusDiv.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-700', 'border-emerald-200');
+          statusDiv.classList.add('bg-rose-50', 'dark:bg-rose-950/60', 'text-rose-700', 'dark:text-rose-400', 'border', 'border-rose-200', 'dark:border-rose-800');
+          statusDiv.innerText = 'Por favor ingresa un correo electrónico válido (ejemplo: tu@empresa.com).';
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'Enviando mensaje...';
+
         const json = JSON.stringify(object);
 
         try {
@@ -202,6 +239,7 @@ const CONTACT_EMAIL = 'contacto@aleric.dev';
             statusDiv.classList.add('bg-emerald-50', 'dark:bg-emerald-950/60', 'text-emerald-700', 'dark:text-emerald-400', 'border', 'border-emerald-200', 'dark:border-emerald-800');
             statusDiv.innerText = '¡Gracias! Tu solicitud ha sido enviada directamente a nuestro equipo. Te responderemos en menos de 24 horas.';
             form.reset();
+            if (charCount) charCount.textContent = '0';
           } else {
             statusDiv.classList.add('bg-rose-50', 'dark:bg-rose-950/60', 'text-rose-700', 'dark:text-rose-400', 'border', 'border-rose-200', 'dark:border-rose-800');
             statusDiv.innerText = result.error || 'Ocurrió un error al enviar el formulario. Por favor escríbenos directamente a contacto@aleric.dev';
@@ -209,7 +247,7 @@ const CONTACT_EMAIL = 'contacto@aleric.dev';
         } catch (err) {
           statusDiv.classList.remove('hidden');
           statusDiv.classList.add('bg-rose-50', 'dark:bg-rose-950/60', 'text-rose-700', 'dark:text-rose-400', 'border', 'border-rose-200', 'dark:border-rose-800');
-          statusDiv.innerText = 'Ocurrió un error de conexión. Por favor escríbenos directamente a contacto@aleric.dev o por WhatsApp.';
+          statusDiv.innerText = 'Ocurrió un error de conexión. Por favor escríbenos directamente a contacto@aleric.dev.';
         } finally {
           submitBtn.disabled = false;
           submitBtn.innerText = 'CUÉNTANOS TU PROYECTO →';
