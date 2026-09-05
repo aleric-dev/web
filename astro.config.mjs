@@ -2,7 +2,6 @@ import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
-import { onRequestPost } from './functions/api/contact.ts';
 
 function localContactApiPlugin() {
   return {
@@ -18,6 +17,8 @@ function localContactApiPlugin() {
           });
           req.on('end', async () => {
             try {
+              const { onRequestPost } = await server.ssrLoadModule('./functions/api/contact.ts');
+
               const dummyRequest = new Request('http://localhost/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

@@ -244,8 +244,8 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       <img
         src="https://aleric.dev/logo-dark-horizontal.png"
         alt="Aleric Dev"
-        class="brand-logo"
-        style="height: 34px; width: auto; max-width: 170px; display: block; border: 0;"
+        width="180"
+        style="display: block; width: 180px; max-width: 180px; height: auto; border: 0;"
       />
     </div>
 
@@ -387,8 +387,8 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       <img
         src="https://aleric.dev/logo-dark-horizontal.png"
         alt="Aleric Dev"
-        class="brand-logo"
-        style="height: 34px; width: auto; max-width: 170px; display: block; border: 0;"
+        width="180"
+        style="display: block; width: 180px; max-width: 180px; height: auto; border: 0;"
       />
     </div>
 
@@ -477,8 +477,9 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     const internalEmailData = await res.json();
 
     // 2. Envío de confirmación automática al cliente (Mensaje nuevo independiente)
+    let clientEmailData = null;
     try {
-      await fetch('https://api.resend.com/emails', {
+      const clientRes = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${apiKey}`,
@@ -492,11 +493,24 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
           html: clientHtmlBody,
         }),
       });
+
+      if (clientRes.ok) {
+        clientEmailData = await clientRes.json();
+        console.log('[Confirmación Cliente] Correo enviado exitosamente:', clientEmailData);
+      } else {
+        const clientErrText = await clientRes.text();
+        console.warn('[Confirmación Cliente] Error al enviar correo al cliente:', clientRes.status, clientErrText);
+      }
     } catch (clientErr) {
-      console.warn('No se pudo enviar confirmación al cliente, pero la notificación interna fue exitosa:', clientErr);
+      console.warn('[Confirmación Cliente] Excepción al enviar confirmación al cliente:', clientErr);
     }
 
-    return new Response(JSON.stringify({ success: true, provider: 'resend', data: internalEmailData }), {
+    return new Response(JSON.stringify({
+      success: true,
+      provider: 'resend',
+      data: internalEmailData,
+      clientData: clientEmailData,
+    }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
