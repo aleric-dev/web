@@ -40,9 +40,9 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       );
     }
 
-    if (message.trim().length > 200) {
+    if (message.trim().length > 1000) {
       return new Response(
-        JSON.stringify({ success: false, error: 'El detalle del proyecto no puede superar los 200 caracteres.' }),
+        JSON.stringify({ success: false, error: 'El detalle del proyecto no puede superar los 1000 caracteres.' }),
         {
           status: 400,
           headers: { 'Content-Type': 'application/json' },
