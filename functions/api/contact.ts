@@ -282,18 +282,144 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       <div class="message-box">${escapeHtml(message)}</div>
     </div>
 
-    <div class="reply-hint">
-      <strong>Responder directo:</strong> Puedes darle a "Responder" en tu cliente de correo (Gmail/Outlook) y le llegará directo a <strong>${escapeHtml(email)}</strong>.
-    </div>
-
     <div class="footer">
-      Mensaje enviado desde aleric.dev • Enrutado a contacto@aleric.dev
+      Mensaje enviado desde aleric.dev
     </div>
   </div>
 </body>
 </html>`;
 
-    // Envío directo y único mediante Resend API
+    // Plantilla de confirmación para el cliente (Nuevo mensaje independiente)
+    const clientHtmlBody = `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hemos recibido tu solicitud - Aleric.dev</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f1f5f9;
+      margin: 0;
+      padding: 30px 15px;
+      color: #0f172a;
+    }
+    .container {
+      max-width: 580px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 36px 30px;
+    }
+    .brand {
+      padding-bottom: 20px;
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 24px;
+    }
+    .brand-logo {
+      height: 34px;
+      width: auto;
+      max-width: 170px;
+      display: block;
+      border: 0;
+    }
+    .title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 10px 0;
+    }
+    .text {
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.6;
+      margin: 0 0 18px 0;
+    }
+    .summary-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 24px 0;
+    }
+    .summary-item {
+      font-size: 13px;
+      color: #475569;
+      margin-bottom: 8px;
+    }
+    .summary-item:last-child {
+      margin-bottom: 0;
+    }
+    .summary-item strong {
+      color: #0f172a;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: #e0e7ff;
+      color: #3730a3;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 14px;
+    }
+    .footer {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #f1f5f9;
+      font-size: 12px;
+      color: #94a3b8;
+      text-align: center;
+      line-height: 1.5;
+    }
+    .footer a {
+      color: #4f46e5;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="brand">
+      <img
+        src="https://aleric.dev/logo-dark-horizontal.png"
+        alt="Aleric Dev"
+        class="brand-logo"
+        style="height: 34px; width: auto; max-width: 170px; display: block; border: 0;"
+      />
+    </div>
+
+    <div class="badge">Solicitud Recibida</div>
+    <h1 class="title">¡Hola, ${escapeHtml(name)}!</h1>
+    <p class="text">
+      Confirmamos que hemos recibido tu solicitud correctamente. Nuestro equipo técnico y de asesoría ya está revisando los detalles de tu proyecto para brindarte una respuesta personalizada.
+    </p>
+    <p class="text">
+      Uno de nuestros asesores se pondrá en contacto contigo a este correo en <strong>menos de 24 horas</strong>.
+    </p>
+
+    <div class="summary-card">
+      <div class="summary-item"><strong>Servicio de interés:</strong> ${escapeHtml(service_type || 'Desarrollo de Software / Web')}</div>
+      <div class="summary-item"><strong>Presupuesto estimado:</strong> ${escapeHtml(budget || 'Flexible / Por definir')}</div>
+      ${formattedPhone ? `<div class="summary-item"><strong>Teléfono / WhatsApp:</strong> ${escapeHtml(formattedPhone)}</div>` : ''}
+    </div>
+
+    <p class="text" style="font-size: 13px; color: #64748b;">
+      Si necesitas añadir algún detalle extra o documento antes de que te contactemos, puedes responder directamente a este mensaje.
+    </p>
+
+    <div class="footer">
+      <strong>Aleric.dev</strong> • Soluciones de Software, Web & Automatización B2B<br>
+      <a href="https://aleric.dev">https://aleric.dev</a> • <a href="mailto:contacto@aleric.dev">contacto@aleric.dev</a>
+    </div>
+  </div>
+</body>
+</html>`;
+
+    // 1. Envío de notificación interna a contacto@aleric.dev
     let res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -309,11 +435,13 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       }),
     });
 
-    // Si falla por dominio no verificado aún en Resend, reintentar con el remitente de prueba oficial
+    // Si falla el remitente personalizado, reintentar con onboarding@resend.dev
+    let effectiveFrom = fromAddress;
     if (!res.ok) {
       const firstError = await res.text();
-      console.warn('Primer intento con remitente personalizado falló, probando con onboarding@resend.dev:', firstError);
+      console.warn('Primer intento falló, probando con onboarding@resend.dev:', firstError);
 
+      effectiveFrom = 'Aleric.dev <onboarding@resend.dev>';
       res = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
@@ -321,7 +449,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'Aleric.dev <onboarding@resend.dev>',
+          from: effectiveFrom,
           to: [recipient],
           reply_to: email,
           subject,
@@ -330,13 +458,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       });
     }
 
-    if (res.ok) {
-      const responseData = await res.json();
-      return new Response(JSON.stringify({ success: true, provider: 'resend', data: responseData }), {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    } else {
+    if (!res.ok) {
       const finalError = await res.text();
       console.error('Error al enviar con Resend:', finalError);
       return new Response(
@@ -351,6 +473,33 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
         }
       );
     }
+
+    const internalEmailData = await res.json();
+
+    // 2. Envío de confirmación automática al cliente (Mensaje nuevo independiente)
+    try {
+      await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: effectiveFrom,
+          to: [email.trim()],
+          reply_to: 'contacto@aleric.dev',
+          subject: `Hemos recibido tu solicitud en Aleric.dev (${name})`,
+          html: clientHtmlBody,
+        }),
+      });
+    } catch (clientErr) {
+      console.warn('No se pudo enviar confirmación al cliente, pero la notificación interna fue exitosa:', clientErr);
+    }
+
+    return new Response(JSON.stringify({ success: true, provider: 'resend', data: internalEmailData }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
   } catch (error: any) {
     console.error('Error procesando formulario:', error);
     return new Response(
