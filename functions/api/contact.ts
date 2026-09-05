@@ -130,7 +130,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
 
     const recipient = 'contacto@aleric.dev';
     const subject = `Nuevo Lead desde Aleric.dev: ${name} (${service_type || 'General'})`;
-    const fromAddress = context.env?.RESEND_FROM_EMAIL || (typeof process !== 'undefined' ? process.env?.RESEND_FROM_EMAIL : undefined) || 'Aleric.dev <notification@aleric.dev>';
+    const fromAddress = 'Aleric.dev <notification@aleric.dev>';
 
     // Plantilla de correo limpia, clara y minimalista
     const htmlBody = `<!DOCTYPE html>

@@ -4,10 +4,9 @@ interface Props {
 }
 
 const { defaultService = "" } = Astro.props;
-// Lectura directa de variables públicas (sin fallbacks)
-const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE;
-const CONTACT_EMAIL = import.meta.env.PUBLIC_CONTACT_EMAIL;
-const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+const PHONE_NUMBER = "573013229292";
+const CONTACT_EMAIL = "contacto@aleric.dev";
+const TURNSTILE_SITE_KEY = "0x4AAAAAAEpemWjfnKV8eBVg";
 ---
 
 <!-- Cloudflare Turnstile API Script -->
