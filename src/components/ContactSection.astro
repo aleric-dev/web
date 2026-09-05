@@ -87,98 +87,98 @@ const CONTACT_EMAIL = 'contacto@aleric.dev';
       <div class="lg:col-span-7">
         <div class="p-8 sm:p-10 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
           <div>
-            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Queremos Escuchar tu Idea</h3>
-            <p class="text-xs text-slate-500 dark:text-slate-400">Cuéntanos qué quieres construir. Revisamos tu proyecto con atención y te escribimos personalmente en menos de 24 horas para ver cómo podemos ayudarte.</p>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-1.5">Queremos Escuchar tu Idea</h3>
+            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">Cuéntanos qué quieres construir. Revisamos tu proyecto con atención y te escribimos personalmente en menos de 24 horas para ver cómo podemos ayudarte.</p>
           </div>
 
           <form id="lead-capture-form" class="space-y-4">
             <input type="hidden" name="subject" value={`Nuevo Lead desde Aleric.dev: ${defaultService || 'Consulta General'}`} />
 
-            <!-- Row 1: Nombre Completo -->
-            <div>
-              <label for="lead-name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
-                Nombre Completo / Empresa *
-              </label>
-              <input
-                type="text"
-                id="lead-name"
-                name="name"
-                required
-                placeholder="Ej. Carlos Mendoza"
-                class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-indigo-500 focus:outline-none transition"
-              />
-            </div>
-
-            <!-- Row 2: Correo Electrónico (Toda la fila) -->
-            <div>
-              <label for="lead-email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
-                Correo Electrónico *
-              </label>
-              <input
-                type="email"
-                id="lead-email"
-                name="email"
-                required
-                pattern="[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}"
-                title="Ingresa un correo electrónico válido, por ejemplo: nombre@empresa.com"
-                placeholder="tu@empresa.com"
-                class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-indigo-500 focus:outline-none transition"
-              />
-            </div>
-
-            <!-- Row 3: Servicio Requerido & Presupuesto Estimado (Obligatorio) -->
+            <!-- Row 1: Nombre Completo & Correo Electrónico (En la misma fila) -->
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
-                <label for="lead-service" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
-                  Tipo de Servicio Requerido *
+                <label for="lead-name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+                  Nombre Completo / Empresa *
                 </label>
-                <div class="relative">
-                  <select
-                    id="lead-service"
-                    name="service_type"
-                    required
-                    class="w-full appearance-none rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 pr-10 text-xs text-slate-900 dark:text-slate-100 focus:border-indigo-500 focus:outline-none transition cursor-pointer"
-                  >
-                    <option value="" disabled selected={!defaultService} class="bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400">-- Selecciona el servicio * --</option>
-                    <option value="Desarrollo Web & Landings de Alta Conversión" selected={defaultService === 'Desarrollo Web & Landings de Alta Conversión'} class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">🌐 Desarrollo Web &amp; Landings de Alta Conversión</option>
-                    <option value="Desarrollo de Software & SaaS a la Medida" selected={defaultService === 'Desarrollo de Software & SaaS a la Medida'} class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">🚀 Desarrollo de Software &amp; SaaS a la Medida</option>
-                    <option value="Automatización de Operaciones & WhatsApp API" selected={defaultService === 'Automatización de Operaciones & WhatsApp API'} class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">⚡ Automatización de Operaciones &amp; WhatsApp API</option>
-                    <option value="Consultoría & Auditoría Técnica Senior" selected={defaultService === 'Consultoría & Auditoría Técnica Senior'} class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">🛡️ Consultoría &amp; Auditoría Técnica Senior</option>
-                    <option value="Mentoría & Capacitación Full Stack" selected={defaultService === 'Mentoría & Capacitación Full Stack'} class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">🎓 Mentoría &amp; Capacitación Full Stack 1-a-1</option>
-                    <option value="Consulta General / Proyecto Especial" selected={defaultService === 'Consulta General / Proyecto Especial'} class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">💬 Consulta General / Proyecto Especial</option>
-                    <option value="No estoy seguro / Necesito asesoría" class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">🤔 No estoy seguro / Necesito asesoría inicial</option>
-                  </select>
-                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400 dark:text-slate-400">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </div>
-                </div>
+                <input
+                  type="text"
+                  id="lead-name"
+                  name="name"
+                  required
+                  placeholder="Ej. Carlos Mendoza"
+                  class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-indigo-500 focus:outline-none transition"
+                />
               </div>
 
               <div>
-                <label for="lead-budget" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
-                  Presupuesto Estimado *
+                <label for="lead-email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+                  Correo Electrónico *
                 </label>
-                <div class="relative">
-                  <select
-                    id="lead-budget"
-                    name="budget"
-                    required
-                    class="w-full appearance-none rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 pr-10 text-xs text-slate-900 dark:text-slate-100 focus:border-indigo-500 focus:outline-none transition cursor-pointer"
-                  >
-                    <option value="" disabled selected class="bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400">-- Selecciona rango o flexible * --</option>
-                    <option value="Flexible / Por definir" class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">✨ Flexible / Por definir / Abierto a propuestas</option>
-                    <option value="< $500 USD" class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">&lt; $500 USD</option>
-                    <option value="$500 - $1,500 USD" class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">$500 - $1,500 USD</option>
-                    <option value="$1,500 - $3,000 USD" class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">$1,500 - $3,000 USD</option>
-                    <option value="$3,000+ USD" class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">$3,000+ USD</option>
-                  </select>
-                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400 dark:text-slate-400">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </div>
+                <input
+                  type="email"
+                  id="lead-email"
+                  name="email"
+                  required
+                  pattern="[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}"
+                  title="Ingresa un correo electrónico válido, por ejemplo: nombre@empresa.com"
+                  placeholder="tu@empresa.com"
+                  class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-indigo-500 focus:outline-none transition"
+                />
+              </div>
+            </div>
+
+            <!-- Row 2: Tipo de Servicio Requerido (Fila Completa) -->
+            <div>
+              <label for="lead-service" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+                Tipo de Servicio Requerido *
+              </label>
+              <div class="relative">
+                <select
+                  id="lead-service"
+                  name="service_type"
+                  required
+                  class="w-full appearance-none rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 pr-10 text-xs text-slate-900 dark:text-slate-100 focus:border-indigo-500 focus:outline-none transition cursor-pointer"
+                >
+                  <option value="" disabled selected={!defaultService} class="bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400">-- Selecciona el servicio * --</option>
+                  <option value="Desarrollo Web & Landings de Alta Conversión" selected={defaultService === 'Desarrollo Web & Landings de Alta Conversión'} class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">🌐 Desarrollo Web &amp; Landings de Alta Conversión</option>
+                  <option value="Desarrollo de Software & SaaS a la Medida" selected={defaultService === 'Desarrollo de Software & SaaS a la Medida'} class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">🚀 Desarrollo de Software &amp; SaaS a la Medida</option>
+                  <option value="Automatización de Operaciones & WhatsApp API" selected={defaultService === 'Automatización de Operaciones & WhatsApp API'} class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">⚡ Automatización de Operaciones &amp; WhatsApp API</option>
+                  <option value="Consultoría & Auditoría Técnica Senior" selected={defaultService === 'Consultoría & Auditoría Técnica Senior'} class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">🛡️ Consultoría &amp; Auditoría Técnica Senior</option>
+                  <option value="Mentoría & Capacitación Full Stack" selected={defaultService === 'Mentoría & Capacitación Full Stack'} class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">🎓 Mentoría &amp; Capacitación Full Stack 1-a-1</option>
+                  <option value="Consulta General / Proyecto Especial" selected={defaultService === 'Consulta General / Proyecto Especial'} class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">💬 Consulta General / Proyecto Especial</option>
+                  <option value="No estoy seguro / Necesito asesoría" class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">🤔 No estoy seguro / Necesito asesoría inicial</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400 dark:text-slate-400">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 3: Presupuesto Estimado (Fila Completa) -->
+            <div>
+              <label for="lead-budget" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
+                Presupuesto Estimado *
+              </label>
+              <div class="relative">
+                <select
+                  id="lead-budget"
+                  name="budget"
+                  required
+                  class="w-full appearance-none rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 pr-10 text-xs text-slate-900 dark:text-slate-100 focus:border-indigo-500 focus:outline-none transition cursor-pointer"
+                >
+                  <option value="" disabled selected class="bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400">-- Selecciona rango o flexible * --</option>
+                  <option value="Flexible / Por definir" class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">✨ Flexible / Por definir / Abierto a propuestas</option>
+                  <option value="< $500 USD" class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">&lt; $500 USD</option>
+                  <option value="$500 - $1,500 USD" class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">$500 - $1,500 USD</option>
+                  <option value="$1,500 - $3,000 USD" class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">$1,500 - $3,000 USD</option>
+                  <option value="$3,000+ USD" class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">$3,000+ USD</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400 dark:text-slate-400">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
                 </div>
               </div>
             </div>
