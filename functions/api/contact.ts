@@ -1,3 +1,5 @@
+declare const process: any;
+
 interface Env {
   RESEND_API_KEY?: string;
   RESEND_FROM_EMAIL?: string;
@@ -45,7 +47,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
 
     const recipient = 'contacto@aleric.dev';
     const subject = `Nuevo Lead desde Aleric.dev: ${name} (${service_type || 'General'})`;
-    const fromAddress = context.env?.RESEND_FROM_EMAIL || (typeof process !== 'undefined' ? process.env?.RESEND_FROM_EMAIL : undefined) || 'Aleric.dev <contacto@aleric.dev>';
+    const fromAddress = context.env?.RESEND_FROM_EMAIL || (typeof process !== 'undefined' ? process.env?.RESEND_FROM_EMAIL : undefined) || 'Aleric.dev <notification@aleric.dev>';
 
     // Plantilla de correo limpia, clara y minimalista
     const htmlBody = `<!DOCTYPE html>
