@@ -29,6 +29,7 @@ function localContactApiPlugin() {
                 env: {
                   RESEND_API_KEY: env.RESEND_API_KEY || process.env.RESEND_API_KEY,
                   RESEND_FROM_EMAIL: env.RESEND_FROM_EMAIL || process.env.RESEND_FROM_EMAIL,
+                  TURNSTILE_SECRET_KEY: env.TURNSTILE_SECRET_KEY || process.env.TURNSTILE_SECRET_KEY,
                 },
               });
 

@@ -3,21 +3,69 @@ declare const process: any;
 interface Env {
   RESEND_API_KEY?: string;
   RESEND_FROM_EMAIL?: string;
+  TURNSTILE_SECRET_KEY?: string;
 }
 
 interface ContactPayload {
   name?: string;
   email?: string;
   phone?: string;
+  country_code?: string;
+  phone_number?: string;
   service_type?: string;
   budget?: string;
   message?: string;
+  _company_website_hp?: string;
+  'cf-turnstile-response'?: string;
 }
 
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
   try {
     const data: ContactPayload = await context.request.json();
-    const { name, email, phone, service_type, budget, message } = data;
+    const { name, email, phone, country_code, phone_number, service_type, budget, message, _company_website_hp } = data;
+
+    // 1. Detección de Bot vía Honeypot (trampa invisible)
+    if (_company_website_hp) {
+      console.warn('[Anti-Bot] Honeypot activado. Rechazando solicitud de bot.');
+      return new Response(JSON.stringify({ success: true }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    // 2. Validación de Cloudflare Turnstile (si está configurado el token o secret)
+    const turnstileToken = data['cf-turnstile-response'];
+    const turnstileSecret = context.env?.TURNSTILE_SECRET_KEY || (typeof process !== 'undefined' ? process.env?.TURNSTILE_SECRET_KEY : undefined);
+
+    if (turnstileSecret && turnstileToken) {
+      try {
+        const formData = new URLSearchParams();
+        formData.append('secret', turnstileSecret);
+        formData.append('response', turnstileToken);
+
+        const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const outcome: any = await verifyRes.json();
+        if (!outcome.success) {
+          console.warn('[Anti-Bot] Verificación Turnstile fallida:', outcome['error-codes']);
+          return new Response(
+            JSON.stringify({
+              success: false,
+              error: 'Validación de seguridad fallida. Por favor recarga e intenta de nuevo.',
+            }),
+            {
+              status: 400,
+              headers: { 'Content-Type': 'application/json' },
+            }
+          );
+        }
+      } catch (err) {
+        console.error('Error al verificar Turnstile:', err);
+      }
+    }
 
     if (!name || !email || !budget || !message) {
       return new Response(
@@ -48,6 +96,14 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
           headers: { 'Content-Type': 'application/json' },
         }
       );
+    }
+
+    // Formatear teléfono con código de país si viene separado
+    let formattedPhone = (phone || '').trim();
+    if (!formattedPhone && phone_number) {
+      const code = (country_code || '').trim();
+      const num = phone_number.trim();
+      formattedPhone = code ? `${code} ${num}` : num;
     }
 
     const apiKey = context.env?.RESEND_API_KEY || (typeof process !== 'undefined' ? process.env?.RESEND_API_KEY : undefined);
@@ -191,7 +247,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
 
     <div class="item">
       <div class="label">Teléfono / WhatsApp</div>
-      <div class="value">${phone ? `<a href="https://wa.me/${phone.replace(/[^0-9]/g, '')}">${escapeHtml(phone)}</a>` : 'No proporcionado'}</div>
+      <div class="value">${formattedPhone ? `<a href="https://wa.me/${formattedPhone.replace(/[^0-9]/g, '')}">${escapeHtml(formattedPhone)}</a>` : 'No proporcionado'}</div>
     </div>
 
     <div class="item">
