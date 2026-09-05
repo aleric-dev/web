@@ -22,10 +22,30 @@ interface ContactPayload {
 
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
   try {
+    // 1. Obtener claves desde el entorno de Cloudflare / Runtime (sin fallbacks)
+    const turnstileSecret = context.env?.TURNSTILE_SECRET_KEY || (typeof process !== 'undefined' ? process.env?.TURNSTILE_SECRET_KEY : undefined);
+    const apiKey = context.env?.RESEND_API_KEY || (typeof process !== 'undefined' ? process.env?.RESEND_API_KEY : undefined);
+
+    if (!turnstileSecret) {
+      console.error('Falta la clave secreta de Turnstile');
+      return new Response(
+        JSON.stringify({ success: false, error: 'Falta la clave secreta de Turnstile en las variables de entorno' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (!apiKey) {
+      console.error('Falta la clave de API de Resend');
+      return new Response(
+        JSON.stringify({ success: false, error: 'Falta la clave de API de Resend en las variables de entorno' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
     const data: ContactPayload = await context.request.json();
     const { name, email, phone, country_code, phone_number, service_type, budget, message, _company_website_hp } = data;
 
-    // 1. Detección de Bot vía Honeypot (trampa invisible)
+    // 2. Detección de Bot vía Honeypot (trampa invisible)
     if (_company_website_hp) {
       console.warn('[Anti-Bot] Honeypot activado. Rechazando solicitud de bot.');
       return new Response(JSON.stringify({ success: true }), {
@@ -34,49 +54,39 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       });
     }
 
-    // 2. Validación de Cloudflare Turnstile
+    // 3. Validación obligatoria y estricta de Cloudflare Turnstile
     const turnstileToken = data['cf-turnstile-response'];
-    const turnstileSecret = context.env?.TURNSTILE_SECRET_KEY || (typeof process !== 'undefined' ? process.env?.TURNSTILE_SECRET_KEY : undefined);
+    if (!turnstileToken) {
+      return new Response(
+        JSON.stringify({ success: false, error: 'Falta la verificación de seguridad (Turnstile).' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
 
-    if (turnstileSecret && turnstileToken) {
-      try {
-        const formData = new URLSearchParams();
-        formData.append('secret', turnstileSecret);
-        formData.append('response', turnstileToken);
+    const formData = new URLSearchParams();
+    formData.append('secret', turnstileSecret);
+    formData.append('response', turnstileToken);
 
-        const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-          method: 'POST',
-          body: formData,
-        });
+    const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body: formData,
+    });
 
-        const outcome: any = await verifyRes.json();
-        console.log('[Turnstile Verify Result]:', outcome);
+    const outcome: any = await verifyRes.json();
+    console.log('[Turnstile Verify Result]:', outcome);
 
-        if (!outcome.success) {
-          console.warn('[Anti-Bot] Verificación Turnstile fallida:', outcome['error-codes']);
-
-          // En desarrollo local (localhost o 127.0.0.1), Cloudflare puede tardar minutos en propagar el hostname
-          // o requerir headers específicos. En local no bloqueamos las pruebas del desarrollador:
-          const isLocalhost = context.env?.IS_LOCAL_DEV === 'true' || context.request.url.includes('localhost') || context.request.url.includes('127.0.0.1') || (typeof process !== 'undefined' && process.env?.NODE_ENV !== 'production');
-          
-          if (!isLocalhost) {
-            return new Response(
-              JSON.stringify({
-                success: false,
-                error: 'Validación de seguridad fallida. Por favor recarga e intenta de nuevo.',
-              }),
-              {
-                status: 400,
-                headers: { 'Content-Type': 'application/json' },
-              }
-            );
-          } else {
-            console.log('[Anti-Bot Local Pass] Entorno local detectado: permitiendo envío de prueba.');
-          }
+    if (!outcome.success) {
+      console.warn('[Anti-Bot] Verificación Turnstile fallida:', outcome['error-codes']);
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: 'Verificación de seguridad fallida. Por favor completa la verificación de nuevo.',
+        }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
         }
-      } catch (err) {
-        console.error('Error al verificar Turnstile:', err);
-      }
+      );
     }
 
     if (!name || !email || !budget || !message) {
@@ -116,22 +126,6 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       const code = (country_code || '').trim();
       const num = phone_number.trim();
       formattedPhone = code ? `${code} ${num}` : num;
-    }
-
-    const apiKey = context.env?.RESEND_API_KEY || (typeof process !== 'undefined' ? process.env?.RESEND_API_KEY : undefined);
-
-    if (!apiKey) {
-      console.error('RESEND_API_KEY no configurada');
-      return new Response(
-        JSON.stringify({
-          success: false,
-          error: 'Falta configurar RESEND_API_KEY en las variables de entorno.',
-        }),
-        {
-          status: 500,
-          headers: { 'Content-Type': 'application/json' },
-        }
-      );
     }
 
     const recipient = 'contacto@aleric.dev';
@@ -525,6 +519,9 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     );
   }
 };
+
+// Alias para compatibilidad con estándares Astro / Cloudflare
+export const POST = onRequestPost;
 
 function escapeHtml(text: string): string {
   return String(text)
