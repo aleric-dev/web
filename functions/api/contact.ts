@@ -19,9 +19,9 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     const data: ContactPayload = await context.request.json();
     const { name, email, phone, service_type, budget, message } = data;
 
-    if (!name || !email || !message) {
+    if (!name || !email || !budget || !message) {
       return new Response(
-        JSON.stringify({ success: false, error: 'Por favor completa los campos obligatorios (Nombre, Correo y Mensaje).' }),
+        JSON.stringify({ success: false, error: 'Por favor completa los campos obligatorios (Nombre, Correo, Presupuesto y Mensaje).' }),
         {
           status: 400,
           headers: { 'Content-Type': 'application/json' },
