@@ -3,6 +3,7 @@ interface Env {
   SEND_EMAIL?: any;
   SEB?: any;
   RESEND_API_KEY?: string;
+  RESEND_FROM_EMAIL?: string;
 }
 
 interface ContactPayload {
@@ -213,16 +214,18 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       }
     }
 
-    // 2. Fallback: Resend API if token exists
+    // 2. Envío a través de Resend API
     if (context.env.RESEND_API_KEY) {
-      const res = await fetch('https://api.resend.com/emails', {
+      const fromAddress = context.env.RESEND_FROM_EMAIL || 'Aleric.dev <contacto@aleric.dev>';
+      
+      let res = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${context.env.RESEND_API_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'Aleric.dev <contacto@aleric.dev>',
+          from: fromAddress,
           to: [recipient],
           reply_to: email,
           subject,
@@ -230,11 +233,46 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
         }),
       });
 
+      // Si falla porque el dominio aleric.dev aún no está verificado en Resend, reintenta con onboarding@resend.dev
+      if (!res.ok) {
+        const errorDetails = await res.text();
+        console.warn('Primer intento Resend falló, reintentando con remitente de prueba:', errorDetails);
+
+        res = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${context.env.RESEND_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: 'Aleric.dev <onboarding@resend.dev>',
+            to: [recipient],
+            reply_to: email,
+            subject,
+            html: htmlBody,
+          }),
+        });
+      }
+
       if (res.ok) {
         return new Response(JSON.stringify({ success: true, provider: 'resend' }), {
           status: 200,
           headers: { 'Content-Type': 'application/json' },
         });
+      } else {
+        const finalError = await res.text();
+        console.error('Error final Resend:', finalError);
+        return new Response(
+          JSON.stringify({
+            success: false,
+            error: 'No se pudo enviar el correo por Resend. Verifica tu API Key o la verificación del dominio.',
+            details: finalError,
+          }),
+          {
+            status: 502,
+            headers: { 'Content-Type': 'application/json' },
+          }
+        );
       }
     }
 
