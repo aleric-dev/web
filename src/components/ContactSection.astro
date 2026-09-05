@@ -4,15 +4,15 @@ interface Props {
 }
 
 const { defaultService = '' } = Astro.props;
-const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY || '987dd1cc-25dd-4512-8bc3-4eac1d116b44';
 const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE || '573013229292';
+const CONTACT_EMAIL = 'contacto@aleric.dev';
 ---
 
 <section id="contacto" class="scroll-mt-20 pt-12 pb-20 relative bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 transition-colors duration-300">
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="grid lg:grid-cols-12 gap-12 items-center">
       
-      <!-- Left Column: Value Proposition & Direct WhatsApp Option -->
+      <!-- Left Column: Value Proposition & Direct WhatsApp/Email Options -->
       <div class="lg:col-span-5 space-y-6">
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-xs font-mono font-bold uppercase tracking-wider">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
@@ -24,36 +24,62 @@ const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE || '573013229292';
         </h2>
 
         <p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed">
-          Déjanos tus datos o contáctanos por WhatsApp. Evaluamos la viabilidad técnica de tu proyecto y te enviamos una propuesta detallada en menos de 24 horas.
+          Déjanos tus datos o contáctanos directamente. Evaluamos la viabilidad técnica de tu proyecto y te enviamos una propuesta detallada en menos de 24 horas.
         </p>
 
-        <!-- Direct WhatsApp Option Box (Secundaria y Equilibrada) -->
-        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-          <div class="flex items-start gap-3">
-            <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-xl shrink-0">
-              💬
+        <!-- Direct Contact Boxes (WhatsApp & Email) -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-1 gap-4">
+          <!-- WhatsApp Direct -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-xl shrink-0">
+                💬
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">WhatsApp Directo</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Respuesta promedio: ~15 min.</p>
+              </div>
             </div>
-            <div>
-              <h3 class="text-sm font-bold text-slate-900 dark:text-white">¿Prefieres atención inmediata?</h3>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Chatea con nosotros directamente. Respuesta promedio: ~15 minutos.</p>
-            </div>
+
+            <a
+              href={`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(
+                defaultService
+                  ? `Hola Aleric.dev, me gustaría solicitar información y cotizar el servicio de ${defaultService}.`
+                  : 'Hola Aleric.dev, me gustaría solicitar información y cotización para un proyecto.'
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition cursor-pointer border border-emerald-500 active:scale-95"
+            >
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"></path>
+              </svg>
+              <span>Chatear por WhatsApp</span>
+            </a>
           </div>
 
-          <a
-            href={`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(
-              defaultService
-                ? `Hola Aleric.dev, me gustaría solicitar información y cotizar el servicio de ${defaultService}.`
-                : 'Hola Aleric.dev, me gustaría solicitar información y cotización para un proyecto.'
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-full flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition cursor-pointer border border-emerald-500 active:scale-95"
-          >
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"></path>
-            </svg>
-            <span>Hablar por WhatsApp Directo</span>
-          </a>
+          <!-- Email Direct -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-xl shrink-0">
+                ✉️
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">Correo Oficial</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Para RFPs o propuestas formales.</p>
+              </div>
+            </div>
+
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              class="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-mono font-bold text-xs tracking-wider transition cursor-pointer border border-slate-300 dark:border-slate-700 active:scale-95"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <span>{CONTACT_EMAIL}</span>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -65,10 +91,7 @@ const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE || '573013229292';
             <p class="text-xs text-slate-500 dark:text-slate-400">Cuéntanos qué quieres construir. Revisamos tu proyecto con atención y te escribimos personalmente en menos de 24 horas para ver cómo podemos ayudarte.</p>
           </div>
 
-
-
           <form id="lead-capture-form" class="space-y-4">
-            <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
             <input type="hidden" name="subject" value={`Nuevo Lead desde Aleric.dev: ${defaultService || 'Consulta General'}`} />
 
             <!-- Row 1: Nombre Completo -->
@@ -116,7 +139,7 @@ const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE || '573013229292';
               </div>
             </div>
 
-            <!-- Row 3: Servicio Requerido & Presupuesto Estimado (Opcional) -->
+            <!-- Row 3: Servicio Requerido & Presupuesto Estimado (Flexible / Opcional) -->
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
                 <label for="lead-service" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
@@ -134,19 +157,22 @@ const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE || '573013229292';
                   <option value="Automatización de Operaciones & WhatsApp API" selected={defaultService === 'Automatización de Operaciones & WhatsApp API'}>⚡ Automatización de Operaciones &amp; WhatsApp API</option>
                   <option value="Consultoría & Auditoría Técnica Senior" selected={defaultService === 'Consultoría & Auditoría Técnica Senior'}>🛡️ Consultoría &amp; Auditoría Técnica Senior</option>
                   <option value="Mentoría & Capacitación Full Stack" selected={defaultService === 'Mentoría & Capacitación Full Stack'}>🎓 Mentoría &amp; Capacitación Full Stack 1-a-1</option>
+                  <option value="Consulta General / Proyecto Especial" selected={defaultService === 'Consulta General / Proyecto Especial'}>💬 Consulta General / Proyecto Especial</option>
+                  <option value="No estoy seguro / Necesito asesoría">🤔 No estoy seguro / Necesito asesoría inicial</option>
                 </select>
               </div>
 
               <div>
                 <label for="lead-budget" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
-                  Presupuesto Estimado (Opcional)
+                  Presupuesto Estimado (Opcional / Flexible)
                 </label>
                 <select
                   id="lead-budget"
                   name="budget"
                   class="w-full rounded-xl border border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-xs text-slate-900 dark:text-slate-100 focus:border-indigo-500 focus:outline-none transition cursor-pointer"
                 >
-                  <option value="" disabled selected>-- Selecciona un rango --</option>
+                  <option value="" disabled selected>-- Selecciona rango o flexible --</option>
+                  <option value="Flexible / Por definir">✨ Flexible / Por definir / Abierto a propuestas</option>
                   <option value="< $500 USD">&lt; $500 USD</option>
                   <option value="$500 - $1,500 USD">$500 - $1,500 USD</option>
                   <option value="$1,500 - $3,000 USD">$1,500 - $3,000 USD</option>
@@ -200,14 +226,14 @@ const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE || '573013229292';
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         submitBtn.disabled = true;
-        submitBtn.innerText = 'Enviando...';
+        submitBtn.innerText = 'Enviando mensaje...';
 
         const formData = new FormData(form);
         const object = Object.fromEntries(formData);
         const json = JSON.stringify(object);
 
         try {
-          const response = await fetch('https://api.web3forms.com/submit', {
+          const response = await fetch('/api/contact', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -217,22 +243,20 @@ const PHONE_NUMBER = import.meta.env.PUBLIC_WHATSAPP_PHONE || '573013229292';
           });
 
           const result = await response.json();
-          statusDiv.classList.remove('hidden', 'bg-rose-500/20', 'text-rose-300', 'bg-emerald-500/20', 'text-emerald-300');
+          statusDiv.classList.remove('hidden', 'bg-rose-50', 'text-rose-700', 'border-rose-200', 'bg-emerald-50', 'text-emerald-700', 'border-emerald-200', 'dark:bg-emerald-950/60', 'dark:text-emerald-400', 'dark:border-emerald-800', 'dark:bg-rose-950/60', 'dark:text-rose-400', 'dark:border-rose-800');
 
           if (result.success) {
             statusDiv.classList.add('bg-emerald-50', 'dark:bg-emerald-950/60', 'text-emerald-700', 'dark:text-emerald-400', 'border', 'border-emerald-200', 'dark:border-emerald-800');
-            statusDiv.innerText = '¡Gracias! Tu mensaje ha sido enviado correctamente. Te contactaremos pronto.';
+            statusDiv.innerText = '¡Gracias! Tu solicitud ha sido enviada directamente a nuestro equipo. Te responderemos en menos de 24 horas.';
             form.reset();
           } else {
-            statusDiv.classList.add('bg-emerald-50', 'dark:bg-emerald-950/60', 'text-emerald-700', 'dark:text-emerald-400', 'border', 'border-emerald-200', 'dark:border-emerald-800');
-            statusDiv.innerText = '¡Solicitud registrada! Nos pondremos en contacto contigo.';
-            form.reset();
+            statusDiv.classList.add('bg-rose-50', 'dark:bg-rose-950/60', 'text-rose-700', 'dark:text-rose-400', 'border', 'border-rose-200', 'dark:border-rose-800');
+            statusDiv.innerText = result.error || 'Ocurrió un error al enviar el formulario. Por favor escríbenos directamente a contacto@aleric.dev';
           }
         } catch (err) {
           statusDiv.classList.remove('hidden');
-          statusDiv.classList.add('bg-emerald-50', 'dark:bg-emerald-950/60', 'text-emerald-700', 'dark:text-emerald-400', 'border', 'border-emerald-200', 'dark:border-emerald-800');
-          statusDiv.innerText = '¡Solicitud registrada! Nos pondremos en contacto contigo.';
-          form.reset();
+          statusDiv.classList.add('bg-rose-50', 'dark:bg-rose-950/60', 'text-rose-700', 'dark:text-rose-400', 'border', 'border-rose-200', 'dark:border-rose-800');
+          statusDiv.innerText = 'Ocurrió un error de conexión. Por favor escríbenos directamente a contacto@aleric.dev o por WhatsApp.';
         } finally {
           submitBtn.disabled = false;
           submitBtn.innerText = 'CUÉNTANOS TU PROYECTO →';

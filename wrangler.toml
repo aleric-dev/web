@@ -1,0 +1,8 @@
+name = "aleric-dev-web"
+pages_build_output_dir = "dist"
+compatibility_date = "2024-09-01"
+
+# Cloudflare Email Routing binding nativo para envio directo a contacto@aleric.dev
+send_email = [
+  { name = "EMAIL", destination_address = "contacto@aleric.dev" }
+]
