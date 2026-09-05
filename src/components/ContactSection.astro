@@ -459,9 +459,9 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000
             </div>
 
             <!-- Row 6: Fila 50/50: Cloudflare Turnstile (Izquierda) + Checkbox Política de Datos (Derecha) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch pt-1">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch pt-1">
               <!-- Turnstile Izquierda (50%) -->
-              <div class="flex items-center justify-center sm:justify-start min-h-[65px] h-full overflow-hidden">
+              <div class="flex items-center justify-center md:justify-start min-h-[65px] h-full overflow-hidden">
                 <div
                   class="cf-turnstile"
                   data-sitekey={TURNSTILE_SITE_KEY}
@@ -498,7 +498,8 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000
               <button
                 type="submit"
                 id="lead-submit-btn"
-                class="w-full py-4 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm active:scale-[0.99] transition duration-200 cursor-pointer flex items-center justify-center gap-2 border border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+                disabled
+                class="w-full py-4 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-indigo-600 text-white font-bold text-xs uppercase tracking-wider shadow-sm active:scale-[0.99] transition duration-200 cursor-pointer flex items-center justify-center gap-2 border border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
               >
                 <span>CUÉNTANOS TU PROYECTO →</span>
               </button>
@@ -520,39 +521,37 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000
 <!-- Modal Accesible: Política de Tratamiento de Datos Personales (Habeas Data) -->
 <div
   id="privacy-policy-modal"
-  class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm transition-opacity duration-200"
-  aria-hidden="true"
   role="dialog"
   aria-modal="true"
   aria-labelledby="privacy-modal-title"
+  class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4 hidden"
 >
-  <div class="relative w-full max-w-lg rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto">
-    <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
-      <div class="flex items-center gap-2">
-        <span class="text-xl">🛡️</span>
-        <h4 id="privacy-modal-title" class="text-base font-bold text-slate-900 dark:text-white">
-          Tratamiento de Datos Personales
-        </h4>
-      </div>
+  <div
+    class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl max-h-[85vh] overflow-y-auto space-y-4"
+  >
+    <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+      <h4 id="privacy-modal-title" class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+        <span>🛡️</span> Política de Tratamiento de Datos
+      </h4>
       <button
         type="button"
         id="close-privacy-modal-btn"
         aria-label="Cerrar modal"
-        class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg p-1.5 transition cursor-pointer"
+        class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 rounded-lg transition cursor-pointer"
       >
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
 
-    <div class="space-y-3 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+    <div class="text-xs text-slate-600 dark:text-slate-300 space-y-3 leading-relaxed">
       <p>
-        En cumplimiento de la legislación aplicable sobre protección de datos personales (Habeas Data), <strong>Aleric.dev</strong> informa que:
+        En <strong>Aleric.dev</strong> protegemos la privacidad y confidencialidad de la información que nos compartes conforme a las normativas de protección de datos (Ley 1581 de 2012 / Habeas Data y estándares internacionales).
       </p>
-      <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 space-y-2.5">
+      <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-xl space-y-2 border border-slate-100 dark:border-slate-800">
         <p>
-          <strong>1. Finalidad Exclusiva:</strong> Tus datos (nombre, correo, teléfono y detalle del proyecto) son recopilados únicamente para evaluar la viabilidad técnica, responder a tu solicitud y estructurar una propuesta comercial personalizada.
+          <strong>1. Finalidad Exclusiva:</strong> La información suministrada (nombre, correo, teléfono y detalles del proyecto) será utilizada únicamente para responder a tu solicitud de cotización, asesoría técnica o propuesta de servicios de software.
         </p>
         <p>
           <strong>2. No Cesión:</strong> Tus datos nunca serán compartidos, vendidos, alquilados ni transferidos a terceras empresas o plataformas publicitarias.
@@ -583,8 +582,66 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000
     const form = document.getElementById("lead-capture-form");
     const statusDiv = document.getElementById("lead-form-status");
     const submitBtn = document.getElementById("lead-submit-btn");
+    const nameInput = document.getElementById("lead-name");
+    const emailInput = document.getElementById("lead-email");
+    const serviceInput = document.getElementById("lead-service");
+    const budgetInput = document.getElementById("lead-budget");
     const messageInput = document.getElementById("lead-message");
     const charCount = document.getElementById("char-count");
+    const privacyConsentCheckbox = document.getElementById("privacy-consent");
+
+    // Función reactiva para habilitar/deshabilitar el botón de envío
+    const updateSubmitButtonState = () => {
+      if (!submitBtn) return;
+
+      const hasName = !!(nameInput && nameInput.value.trim());
+      const emailVal = emailInput ? emailInput.value.trim() : "";
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const hasEmail = emailRegex.test(emailVal);
+      const hasService = !!(serviceInput && serviceInput.value.trim());
+      const hasBudget = !!(budgetInput && budgetInput.value.trim());
+      const hasMessage = !!(messageInput && messageInput.value.trim());
+      const hasConsent = !!(privacyConsentCheckbox && privacyConsentCheckbox.checked);
+
+      // Validar Cloudflare Turnstile
+      let hasTurnstile = false;
+      if (window.turnstile) {
+        try {
+          const resp = window.turnstile.getResponse();
+          if (resp && resp.length > 0) hasTurnstile = true;
+        } catch (e) {}
+      } else {
+        const turnstileInput = form ? form.querySelector('[name="cf-turnstile-response"]') : null;
+        if (turnstileInput && turnstileInput.value) hasTurnstile = true;
+      }
+
+      const isFormValid = hasName && hasEmail && hasService && hasBudget && hasMessage && hasConsent && hasTurnstile;
+      submitBtn.disabled = !isFormValid;
+    };
+
+    // Monitoreo recurrente ligero para detectar resolución de Turnstile
+    const turnstileCheckInterval = setInterval(() => {
+      updateSubmitButtonState();
+      if (window.turnstile) {
+        try {
+          if (window.turnstile.getResponse()) {
+            clearInterval(turnstileCheckInterval);
+          }
+        } catch (e) {}
+      }
+    }, 500);
+
+    // Escuchar eventos en los campos obligatorios
+    [nameInput, emailInput, serviceInput, budgetInput, messageInput].forEach((el) => {
+      if (el) {
+        el.addEventListener("input", updateSubmitButtonState);
+        el.addEventListener("change", updateSubmitButtonState);
+      }
+    });
+
+    if (privacyConsentCheckbox) {
+      privacyConsentCheckbox.addEventListener("change", updateSubmitButtonState);
+    }
 
     // Contador de caracteres en vivo (hasta 500)
     if (messageInput && charCount) {
@@ -675,13 +732,14 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000
       }
     };
 
-    const privacyConsentCheckbox = document.getElementById("privacy-consent");
-
     if (openPrivacyBtn) openPrivacyBtn.addEventListener("click", openModal);
     if (closePrivacyBtn) closePrivacyBtn.addEventListener("click", closeModal);
     if (confirmPrivacyBtn) {
       confirmPrivacyBtn.addEventListener("click", () => {
-        if (privacyConsentCheckbox) privacyConsentCheckbox.checked = true;
+        if (privacyConsentCheckbox) {
+          privacyConsentCheckbox.checked = true;
+          updateSubmitButtonState();
+        }
         closeModal();
       });
     }
@@ -703,29 +761,6 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        // Validar obligatoriedad de aceptación de Política de Tratamiento de Datos
-        if (privacyConsentCheckbox && !privacyConsentCheckbox.checked) {
-          statusDiv.classList.remove(
-            "hidden",
-            "bg-emerald-50",
-            "text-emerald-700",
-            "border-emerald-200"
-          );
-          statusDiv.classList.add(
-            "bg-rose-50",
-            "dark:bg-rose-950/60",
-            "text-rose-700",
-            "dark:text-rose-400",
-            "border",
-            "border-rose-200",
-            "dark:border-rose-800"
-          );
-          statusDiv.innerText =
-            "Debes aceptar la Política de Tratamiento de Datos para poder enviar el requerimiento.";
-          privacyConsentCheckbox.focus();
-          return;
-        }
-
         const formData = new FormData(form);
         const object = Object.fromEntries(formData);
 
@@ -739,30 +774,6 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000
           } catch (err) {
             console.warn("Turnstile getResponse error:", err);
           }
-        }
-
-        // Validación estricta de email
-        const emailVal = (object.email || "").trim();
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        if (!emailRegex.test(emailVal)) {
-          statusDiv.classList.remove(
-            "hidden",
-            "bg-emerald-50",
-            "text-emerald-700",
-            "border-emerald-200"
-          );
-          statusDiv.classList.add(
-            "bg-rose-50",
-            "dark:bg-rose-950/60",
-            "text-rose-700",
-            "dark:text-rose-400",
-            "border",
-            "border-rose-200",
-            "dark:border-rose-800"
-          );
-          statusDiv.innerText =
-            "Por favor ingresa un correo electrónico válido (ejemplo: tu@empresa.com).";
-          return;
         }
 
         submitBtn.disabled = true;
@@ -812,6 +823,7 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000
             form.reset();
             if (charCount) charCount.textContent = "0";
             if (window.turnstile) window.turnstile.reset();
+            updateSubmitButtonState();
           } else {
             statusDiv.classList.add(
               "bg-rose-50",
@@ -826,6 +838,7 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000
               result.error ||
               "Ocurrió un error al enviar el formulario. Por favor escríbenos directamente a contacto@aleric.dev";
             if (window.turnstile) window.turnstile.reset();
+            updateSubmitButtonState();
           }
         } catch (err) {
           statusDiv.classList.remove("hidden");
@@ -841,11 +854,15 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000
           statusDiv.innerText =
             "Ocurrió un error de conexión. Por favor escríbenos directamente a contacto@aleric.dev.";
           if (window.turnstile) window.turnstile.reset();
+          updateSubmitButtonState();
         } finally {
-          submitBtn.disabled = false;
           submitBtn.innerText = "CUÉNTANOS TU PROYECTO →";
+          updateSubmitButtonState();
         }
       });
     }
+
+    // Inicializar estado del botón al cargar
+    updateSubmitButtonState();
   });
 </script>
