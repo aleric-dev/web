@@ -1,6 +1,6 @@
 # Portafolio de Servicios y Oferta Comercial — Aleric.dev
 
-Este documento recopila la totalidad de la oferta comercial, estructura de servicios, público objetivo, propuesta de valor y modelos de entrega de **Aleric.dev**.
+Este documento recopila la totalidad de la oferta comercial, estructura de servicios, público objetivo, propuesta de valor, modelos de entrega y **tabuladores de precios de referencia (USD para mercado internacional y COP para Colombia)** de **Aleric.dev**.
 
 ---
 
@@ -53,6 +53,14 @@ Este documento recopila la totalidad de la oferta comercial, estructura de servi
 4. **Cotización Rápida y Entrega Express**:
    - Tiempos de entrega ágiles (desde 3 a 7 días hábiles para landings comerciales) para que puedas lanzar tus ofertas de inmediato.
 
+#### Variaciones y Precios de Referencia (Desarrollo Web)
+
+| Solución / Variación | Alcance y Entregables | Rango USD (Internacional) | Rango COP (Colombia) | Plazo Típico |
+| :--- | :--- | :--- | :--- | :--- |
+| **Landing Page Comercial Express** | 1 página ultraveloz, copy comercial enfocado en conversión, botón flotante a WhatsApp, formulario calificador, analítica y píxeles (Meta/Google). | **$250 – $450 USD** | **$950.000 – $1.800.000 COP** | 3 a 5 días hábiles |
+| **Sitio Web Corporativo** | 3 a 5 secciones, arquitectura de marca, catálogo de servicios, páginas secundarias, formulario y optimización SEO local. | **$450 – $850 USD** | **$1.800.000 – $3.400.000 COP** | 5 a 10 días hábiles |
+| **E-commerce / Tienda Online Ágil** | Catálogo con carrito express, checkout integrado (Wompi, PSE, Stripe, Bold o Mercado Pago), cierre directo a WhatsApp y panel de pedidos. | **$700 – $1.400 USD** | **$2.800.000 – $5.500.000 COP** | 7 a 15 días hábiles |
+
 ---
 
 ### 2.2. Desarrollo de Software & SaaS a la Medida
@@ -69,6 +77,14 @@ Este documento recopila la totalidad de la oferta comercial, estructura de servi
    - Construimos plataformas 100% ajustadas a la lógica y flujos exactos de tu empresa, de las cuales eres el dueño absoluto.
 3. **Desarrollo de Ideas de Negocio (Aplicaciones Web y Móviles B2C)**:
    - Convertimos ideas innovadoras en productos digitales listos para monetizar: portales de membresía, marketplaces, aplicaciones de pedidos, directorios interactivos y apps móviles intuitivas para clientes finales.
+
+#### Variaciones y Precios de Referencia (Software a Medida)
+
+| Solución / Variación | Alcance y Entregables | Rango USD (Internacional) | Rango COP (Colombia) | Plazo Típico |
+| :--- | :--- | :--- | :--- | :--- |
+| **Migración de Excel a Panel Web** | Modelado en base de datos PostgreSQL, panel de control administrativo, importación de datos históricos, roles y permisos de usuario. | **$900 – $1.800 USD** | **$3.500.000 – $7.000.000 COP** | 2 a 3 semanas |
+| **Plataforma Web Empresarial a Medida** | Sistema operativo propio (inventarios, flujo de caja, control de despachos, dashboards de ventas), adaptado al 100% a tus reglas operativas. | **$1.800 – $3.800 USD** | **$7.000.000 – $15.000.000 COP** | 3 a 6 semanas |
+| **MVP de Negocio / App B2C** | Producto digital completo web/móvil con registro de usuarios, pasarelas de pago recurrentes o billeteras, panel de administrador y analítica. | **$2.200 – $5.000+ USD** | **$8.500.000 – $20.000.000+ COP** | 4 a 8 semanas |
 
 ---
 
@@ -90,6 +106,14 @@ Este documento recopila la totalidad de la oferta comercial, estructura de servi
      - **WhatsApp Cloud API Oficial**: Sin riesgo de bloqueos de línea por parte de Meta.
      - **n8n**: Orquestador visual de flujos que conecta formularios, correos y bases de datos.
      - **Chatwoot**: Bandeja multiagente para que varios asesores atiendan desde un único número oficial.
+
+#### Variaciones y Precios de Referencia (Automatizaciones)
+
+| Solución / Variación | Alcance y Entregables | Rango USD (Internacional) | Rango COP (Colombia) | Plazo Típico |
+| :--- | :--- | :--- | :--- | :--- |
+| **Bot de Atención & Calificación 24/7** | Configuración de WhatsApp Cloud API oficial de Meta, menú de bienvenida interactivo, filtro automático de clientes y pase al asesor humano. | **$280 – $500 USD** | **$1.100.000 – $2.000.000 COP** | 3 a 6 días hábiles |
+| **Cotizador o Cobranzas en Chat** | Generador automático de cotizaciones en PDF o mensajes dinámicos con botones, o sistema de recordatorios de cobro con links directos de pago. | **$500 – $1.100 USD** | **$2.000.000 – $4.400.000 COP** | 5 a 10 días hábiles |
+| **Flujo Integral n8n + Chatwoot + CRM** | Bandeja multiagente compartida para varios asesores con un solo número, pipelines de n8n sincronizados con CRM, bases de datos o Google Sheets. | **$800 – $1.600 USD** | **$3.200.000 – $6.500.000 COP** | 7 a 14 días hábiles |
 
 ---
 
@@ -114,13 +138,39 @@ Este documento recopila la totalidad de la oferta comercial, estructura de servi
 5. **Mentoría Técnica 1-a-1 & Capacitación de Equipos**:
    - Acompañamiento personalizado a programadores para dominar arquitectura limpia, patrones de diseño y estándares senior de ingeniería.
 
+#### Variaciones y Precios de Referencia (Consultoría Técnica)
+
+| Solución / Variación | Alcance y Entregables | Rango USD (Internacional) | Rango COP (Colombia) | Modalidad de Cobro |
+| :--- | :--- | :--- | :--- | :--- |
+| **Mentoría Técnica 1-a-1 / Sesión Puntual** | Sesión de diagnóstico, resolución de bugs críticos, revisión de arquitectura o capacitación senior personalizada. | **$35 – $60 USD / hora** | **$140.000 – $240.000 COP / hora** | Por hora ejecutada |
+| **Integración Siigo ERP API** | Facturación electrónica directa, emisión de notas crédito, consulta de inventarios y creación de terceros sincronizados con tu plataforma. | **$500 – $1.200 USD** | **$2.000.000 – $4.800.000 COP** | Por proyecto |
+| **Auditoría de Código & OWASP** | Análisis forense de código, benchmarks de latencia, reporte de vulnerabilidades y plan paso a paso de refactorización. | **$600 – $1.200 USD** | **$2.400.000 – $4.800.000 COP** | Por proyecto |
+| **Retainer Mensual de Soporte & DevOps** | Bolsa de 15 a 30 horas al mes para evolución continua de sistemas, monitoreo de bases de datos, despliegues y asistencia prioritaria. | **$800 – $1.800 USD / mes** | **$3.200.000 – $7.200.000 COP / mes** | Suscripción mensual |
+
 ---
 
-## 3. Matriz Comparativa de Oferta
+## 3. Matriz Comparativa y Tabulador Consolidado
 
-| Línea de Servicio | Enfoque Principal | Problema que Soluciona | Plazo Típico | Tipo de Entrega |
-| :--- | :--- | :--- | :--- | :--- |
-| **Desarrollo Web** | Comercial y Conversión | Sitios lentos, baja conversión en publicidad, falta de ventas online | 3 a 10 días | Código estático ultraveloz + Hosting CDN |
-| **Software a Medida** | Operativo y Escalabilidad | Caos en Excel, software genérico costoso, desarrollo de MVPs B2C | 2 a 8 semanas | Plataforma Web/Móvil + Base de Datos |
-| **Automatizaciones** | Productividad 24/7 | Prospectos ignorados en WhatsApp, cobranza manual, tareas repetitivas | 3 a 14 días | Flujos n8n + WhatsApp Cloud API |
-| **Consultoría Técnica** | Ingeniería Senior | Sistemas lentos, fallas de arquitectura, integración Siigo/APIs, mentoría | Por horas / Proyecto | Informe de auditoría + Código refactorizado |
+| Línea de Servicio | Enfoque Principal | Problema que Soluciona | Plazo Típico | Rango USD (Internacional) | Rango COP (Colombia) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Desarrollo Web** | Comercial y Ventas | Sitios lentos, baja conversión en pauta publicitaria | 3 a 10 días | **$250 – $1.400 USD** | **$950.000 – $5.500.000 COP** |
+| **Software a Medida** | Operaciones y Nuevas Apps | Caos en Excel, software rígido, lanzamiento de MVPs | 2 a 8 semanas | **$900 – $5.000+ USD** | **$3.500.000 – $20.000.000+ COP** |
+| **Automatizaciones** | Productividad 24/7 | Chats perdidos en WhatsApp, cobros y cotizaciones manuales | 3 a 14 días | **$280 – $1.600 USD** | **$1.100.000 – $6.500.000 COP** |
+| **Consultoría Técnica** | Ingeniería Senior | Proyectos estancados, Siigo ERP, auditoría y mentoría | Por h / proyecto | **$35/h ó $500 – $1.800 USD** | **$140k/h ó $2M – $7.2M COP** |
+
+---
+
+## 4. Políticas Comerciales, Facturación y Condiciones de Contratación
+
+### 4.1. Esquema de Pagos Estándar
+- **Anticipo para Inicio de Proyecto**: **50%** al momento de firmar la propuesta comercial y antes de iniciar el cronograma de trabajo.
+- **Saldo Contra Entrega**: **50%** restante al finalizar la fase de implementación, demostración de funcionalidades a satisfacción y antes de la entrega final de credenciales y repositorio de código en producción.
+- **Servicios por Horas o Retainers**: Pago por anticipado para paquetes de mentoría técnica o al inicio de cada mes en retainers recurrentes de ingeniería.
+
+### 4.2. Métodos de Pago Habilitados
+- **Clientes Locales (Colombia)**: Transferencia Bancolombia, PSE, tarjetas de débito/crédito a través de Wompi / Bold.
+- **Clientes Internacionales**: Stripe (tarjetas internacionales), PayPal, o transferencias internacionales vía Wise / Deel / Wire Transfer.
+
+### 4.3. Costos de Infraestructura y Terceros
+- Los precios indicados corresponden estrictamente a los **honorarios profesionales de diseño, desarrollo, configuración e ingeniería**.
+- Costos de infraestructura externa (servidores VPS, hosting Cloudflare/Vercel/AWS, dominios, licencias pagas de Siigo API, tarifas de Meta por conversación de WhatsApp o consumo de OpenAI) son contratados directamente por el cliente y quedan bajo su titularidad absoluta.
