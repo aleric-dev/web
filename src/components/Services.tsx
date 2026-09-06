@@ -90,7 +90,7 @@ const SERVICES: ServiceItem[] = [
   },
   {
     id: 'mentorship',
-    route: '/mentoria-fullstack',
+    route: '/consultoria-tecnica',
     icon: <GraduationCap className="w-7 h-7 text-purple-600 dark:text-purple-400" />,
     title: 'Mentoría & Capacitación Devs',
     tagline: 'Full Stack Mastery 1-a-1',

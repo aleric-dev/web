@@ -2,93 +2,94 @@
 import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import WhatsAppBenefits from "../../components/WhatsAppBenefits.astro";
+import WhyUsSection from "../../components/WhyUsSection.astro";
 import ContactSection from "../../components/ContactSection.astro";
 import Footer from "../../components/Footer.astro";
 
 const automationServices = [
   {
     icon: "💬",
-    title: "Bots de WhatsApp Cloud API (Oficial)",
+    title: "Rescate de Conversaciones Perdidas",
     description:
-      "Atención automática de clientes, respuestas frecuentes y calificación de leads por WhatsApp 24/7.",
+      "Responde a cada cliente en menos de 2 segundos. Evita que prospectos calificados se vayan con tu competencia por falta de tiempo.",
   },
   {
     icon: "⚡",
-    title: "Flujos Complejos en n8n & Make",
+    title: "Cotizaciones Inmediatas en WhatsApp",
     description:
-      "Orquestación de procesos entre aplicaciones (Google Sheets, CRMs, Email, Webhooks) sin fricción.",
+      "El cliente responde un par de preguntas guiadas y recibe su cotización estimada al instante, listo para cerrar con tu asesor.",
+  },
+  {
+    icon: "💰",
+    title: "Cobranzas y Recordatorios de Pago",
+    description:
+      "Avisos automáticos amables con link directo de pago (PSE, transferencias) antes y el día del vencimiento. Reduce tu cartera morosa sin desgaste.",
   },
   {
     icon: "👥",
-    title: "Integración Chatwoot Multiagente",
+    title: "Bandeja Multiagente para tu Equipo",
     description:
-      "Plataforma centralizada para que múltiples asesores gestionen canales de WhatsApp y redes en un solo lugar.",
-  },
-  {
-    icon: "🐍",
-    title: "Scripts Python & Web Scraping",
-    description:
-      "Extracción automatizada de datos, monitoreo de precios y procesamiento masivo de información.",
+      "Conecta a todos tus asesores al mismo número oficial de WhatsApp con Chatwoot. Cada vendedor atiende sus propios chats sin prestarse el celular.",
   },
   {
     icon: "🔄",
-    title: "Sincronización CRM / ERP",
+    title: "Conexión de Sistemas sin Fricción (n8n)",
     description:
-      "Conexión en tiempo real para mantener inventarios, ventas y contactos sincronizados entre sistemas.",
-  },
-  {
-    icon: "📈",
-    title: "Reportes & Alertas Automáticas",
-    description:
-      "Envíos periódicos automatizados de informes de gestión a correo o canales de Telegram/Slack.",
+      "Orquestamos tus flujos para que los leads de formularios, compras o mensajes se guarden solos en tu base de datos o CRM.",
   },
   {
     icon: "📑",
-    title: "Facturación & Recordatorios",
+    title: "Generación de Recibos y Confirmaciones",
     description:
-      "Envío automático de recordatorios de pago por WhatsApp y generación inmediata de recibos.",
+      "Envío instantáneo de comprobantes, recibos de pago o confirmaciones de agendamiento por WhatsApp tan pronto el cliente paga.",
   },
   {
-    icon: "🔔",
-    title: "Webhooks & Eventos Instantáneos",
+    icon: "⏰",
+    title: "Seguimiento Automático de Prospectos",
     description:
-      "Recepción en tiempo real de eventos desde plataformas de pago o formularios para disparar flujos.",
+      "Mensajes de reactivación a los prospectos que dejaron de contestar, recordándoles su cotización y facilitando la decisión de compra.",
+  },
+  {
+    icon: "🛡️",
+    title: "Conexión Oficial Meta (Cero Bloqueos)",
+    description:
+      "Implementación con WhatsApp Cloud API oficial. Cero riesgos de que Meta bloquee o suspenda el número de tu empresa.",
   },
 ];
 
 const flowSteps = [
   {
-    step: "1. Evento Disparador",
-    detail: "Nuevo Lead en Formulario / Pago Recibido",
+    step: "1. Llega un Mensaje a Cualquier Hora",
+    detail: "Un cliente escribe un domingo o a las 11 PM preguntando precios o disponibilidad.",
   },
   {
-    step: "2. Orquestador n8n",
-    detail: "Validación de datos y enriquecimiento en CRM",
+    step: "2. Respuesta Inmediata & Guiada",
+    detail: "El bot oficial responde con botones y opciones claras para atender la necesidad en segundos.",
   },
   {
-    step: "3. WhatsApp Cloud API",
-    detail: "Envío inmediato de mensaje oficial interactivo",
+    step: "3. Cotización o Cobro Automático",
+    detail: "Se genera el presupuesto estimado o se entrega el link directo de pago sin intervención humana.",
   },
   {
-    step: "4. Inbox Multiagente",
-    detail: "Asignación a asesor humano si requiere cierre",
+    step: "4. Pase Inteligente al Asesor Humano",
+    detail: "Si el cliente solicita atención personalizada o ya está listo para pagar, un asesor continúa la conversación.",
   },
 ];
 ---
 
 <Layout
-  title="Aleric.dev | Automatización de Procesos & WhatsApp API Cloud"
-  description="Conectamos tus sistemas y automatizamos la atención comercial por WhatsApp. Flujos en n8n, bots oficiales y optimización operativa sin fricción."
+  title="Aleric.dev | Automatización de WhatsApp, Cobranzas & Atención al Cliente 24/7"
+  description="Automatiza la atención comercial de WhatsApp, cotizaciones y cobranzas. Recupera clientes perdidos y elimina tareas repetitivas con herramientas oficiales."
 >
   <Navbar />
 
   <main
-    class="pt-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300"
+    class="pt-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300"
   >
     <!-- Hero Especializado Automatizaciones -->
     <section
       id="hero"
-      class="py-16 md:py-24 relative border-b border-slate-200 dark:border-slate-800"
+      class="pt-3 pb-12 md:pt-5 md:pb-14 relative border-b border-slate-200 dark:border-slate-800"
     >
       <div
         class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center"
@@ -97,22 +98,20 @@ const flowSteps = [
           <span
             class="inline-flex items-center gap-2 rounded-lg border border-emerald-200 dark:border-emerald-900 bg-emerald-50 dark:bg-emerald-950/80 px-3.5 py-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-300"
           >
-            ⚡ Para Equipos de Operaciones &amp; Ventas
+            ⚡ Atención Inmediata &amp; Cero Ventas Perdidas
           </span>
 
           <h1
             class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-tight"
           >
-            Automatización Operativa &amp; <span
+            No pierdas más clientes en WhatsApp por <span
               class="text-emerald-600 dark:text-emerald-400"
-              >Bots de WhatsApp API</span
+              >demorarte en responder</span
             >
           </h1>
 
           <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
-            Elimina tareas manuales repetitivas. Conectamos tus ventas, CRM e
-            inventarios para trabajar automáticamente 24 horas al día, 7 días a
-            la semana sin margen de error.
+            ¿Tu equipo se satura de chats, no alcanza a contestar a tiempo o se le olvidan los seguimientos? Automatizamos la <strong>atención de clientes, las cotizaciones y los cobros por WhatsApp 24/7</strong> para que tu negocio nunca duerma y ningún prospecto quede desatendido.
           </p>
 
           <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
@@ -120,7 +119,7 @@ const flowSteps = [
               href="#contacto"
               class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition flex items-center justify-center"
             >
-              Cotizar Automatización de Procesos
+              Automatizar Mi WhatsApp &amp; Procesos
             </a>
             <a
               href="/"
@@ -140,7 +139,7 @@ const flowSteps = [
               class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800"
             >
               <span class="text-xs font-bold text-slate-900 dark:text-white"
-                >Flujo Operativo Automatizado</span
+                >Cómo Funciona en la Vida Real</span
               >
               <span
                 class="text-[10px] font-mono font-bold text-emerald-600 dark:text-emerald-400"
@@ -162,6 +161,59 @@ const flowSteps = [
                 ))
               }
             </div>
+
+            <div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900 text-xs text-emerald-900 dark:text-emerald-200">
+              💡 <strong>Herramientas que usamos:</strong> WhatsApp Cloud API oficial de Meta (sin bloqueos), orquestadores visuales como n8n y plataformas multiagente como Chatwoot.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Especial: Dolor de WhatsApp & Cobranzas -->
+    <section class="py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+          <span class="inline-block px-3.5 py-1 rounded-lg bg-emerald-100 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider">
+            Solución a Problemas Frecuentes
+          </span>
+          <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">
+            ¿Cuántas ventas se te están escapando por falta de tiempo?
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+            El 70% de las ventas en Latinoamérica inician en WhatsApp, pero la mayoría de empresas fallan en la rapidez y el seguimiento.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="p-7 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 flex items-center justify-center text-2xl font-bold">
+              🕒
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Demoras que Matan Ventas</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Tardar más de 10 minutos en responder a un prospecto nuevo hace que busque a tu competencia. Con nuestros flujos, la respuesta inicial tarda menos de 2 segundos.
+            </p>
+          </div>
+
+          <div class="p-7 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 flex items-center justify-center text-2xl font-bold">
+              📑
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Cotizaciones Inmediatas</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              En vez de hacer esperar horas al cliente para enviarle un presupuesto básico, el sistema recopila los datos y le envía la cotización en el mismo chat.
+            </p>
+          </div>
+
+          <div class="p-7 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 flex items-center justify-center text-2xl font-bold">
+              💳
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Cobranzas Sin Desgaste</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Cobrar a mano es incómodo y consume horas. El sistema envía recordatorios automáticos y amigables con botón de pago, mejorando el flujo de caja de tu empresa.
+            </p>
           </div>
         </div>
       </div>
@@ -172,22 +224,20 @@ const flowSteps = [
 
     <!-- Catálogo de Servicios Automatización -->
     <section id="beneficios" class="scroll-mt-20 py-16 bg-slate-50 dark:bg-slate-950">
-
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center max-w-2xl mx-auto mb-14">
           <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">
-            Soluciones de Automatización
+            Procesos que Automatizamos para tu Negocio
           </h2>
           <p class="text-slate-600 dark:text-slate-400 text-sm">
-            Elimina errores humanos e incrementa la velocidad de respuesta de tu
-            empresa.
+            Deja las tareas monótonas en manos de la tecnología y enfoca a tu equipo en vender.
           </p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {
             automationServices.map((f) => (
-              <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between hover:border-emerald-400 transition">
+              <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between hover:border-emerald-400 transition shadow-sm">
                 <div>
                   <div class="text-2xl mb-3 p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 w-fit">
                     {f.icon}
@@ -204,8 +254,7 @@ const flowSteps = [
                     href="#contacto"
                     class="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1"
                   >
-                    <span>Consultar automatización</span> →
-
+                    <span>Cotizar esta automatización</span> →
                   </a>
                 </div>
               </div>
@@ -214,6 +263,9 @@ const flowSteps = [
         </div>
       </div>
     </section>
+
+    <!-- Metodología de Trabajo & Garantías de Ingeniería (Componente Unificado) -->
+    <WhyUsSection />
 
     <!-- Formulario de Captura de Leads Dedicado -->
     <ContactSection

@@ -4,8 +4,11 @@
 <!-- Controles Flotantes (Esquina Inferior Derecha) -->
 <div class="fixed bottom-6 right-6 z-40 flex flex-col items-center gap-3">
   
-  <!-- Botón 1: Ir Arriba (Flecha) -->
-  <div class="relative group flex items-center">
+  <!-- Botón 1: Ir Arriba (Flecha - Oculto al inicio, visible al scrollear) -->
+  <div
+    id="scroll-to-top-wrapper"
+    class="relative group flex items-center transition-all duration-300 opacity-0 invisible translate-y-2 pointer-events-none"
+  >
     <!-- Tooltip al hacer hover -->
     <span class="absolute right-full mr-3 px-3 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-800 text-white text-xs font-semibold whitespace-nowrap shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none">
       Ir arriba
@@ -50,6 +53,21 @@
     function initFloatingControls() {
       const contactBtn = document.getElementById('floating-contact-btn');
       const topBtn = document.getElementById('scroll-to-top-btn');
+      const topWrapper = document.getElementById('scroll-to-top-wrapper');
+
+      function handleScroll() {
+        if (!topWrapper) return;
+        if (window.scrollY > 300) {
+          topWrapper.classList.remove('opacity-0', 'invisible', 'translate-y-2', 'pointer-events-none');
+          topWrapper.classList.add('opacity-100', 'visible', 'translate-y-0', 'pointer-events-auto');
+        } else {
+          topWrapper.classList.add('opacity-0', 'invisible', 'translate-y-2', 'pointer-events-none');
+          topWrapper.classList.remove('opacity-100', 'visible', 'translate-y-0', 'pointer-events-auto');
+        }
+      }
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
 
       if (contactBtn) {
         contactBtn.onclick = (e) => {

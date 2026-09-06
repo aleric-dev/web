@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import CommercialHero from '../components/CommercialHero.astro';
 import { ProfileRouter } from '../components/ProfileRouter';
-import MethodologySection from '../components/MethodologySection.astro';
 import WhyUsSection from '../components/WhyUsSection.astro';
 import ContactSection from '../components/ContactSection.astro';
 import Footer from '../components/Footer.astro';
@@ -14,7 +13,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Aleric.dev",
-  "description": "Agencia especializada en desarrollo web de alta conversión, aplicaciones a la medida, automatizaciones de WhatsApp API y consultoría técnica.",
+  "description": "Agencia de desarrollo web comercial, plataformas de software a la medida, automatizaciones de WhatsApp y consultoría técnica senior.",
   "url": "https://aleric.dev",
   "areaServed": "Global",
   "hasOfferCatalog": {
@@ -49,16 +48,8 @@ const jsonLd = {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Consultoría & Auditoría Técnica",
+          "name": "Consultoría Técnica Senior",
           "url": "https://aleric.dev/consultoria-tecnica"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Mentoría & Capacitación Full Stack",
-          "url": "https://aleric.dev/mentoria-fullstack"
         }
       }
     ]
@@ -67,8 +58,8 @@ const jsonLd = {
 ---
 
 <Layout
-  title="Aleric.dev | Agencia de Desarrollo de Software, Automatizaciones Avanzadas & Consultoría CTO"
-  description="Soluciones de software y automatización comercial. Desarrollo de páginas web de alta conversión, plataformas a la medida, bots de WhatsApp API y consultoría técnica."
+  title="Aleric.dev | Páginas Web que Venden, Software a la Medida y Automatizaciones"
+  description="Soluciones digitales para hacer crecer tu empresa: páginas web de alta velocidad, software a tu medida para salir de Excel y automatización de WhatsApp 24/7."
 >
   <!-- Inyección de Schema para SEO Indexable -->
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
@@ -79,33 +70,28 @@ const jsonLd = {
     <!-- Hero Comercial Limpio -->
     <CommercialHero />
 
-    <!-- Orquestador Principal de Soluciones Especializadas -->
+    <!-- Orquestador Principal de Soluciones Especializadas en Secciones Protagonistas -->
     <ProfileRouter client:load />
 
-    <!-- Metodología de Trabajo en 4 Pasos (Componente Modular) -->
-    <MethodologySection />
-
-    <!-- Por Qué Elegirnos / Pilares de Ingeniería (Componente Modular) -->
+    <!-- Metodología de Trabajo & Garantías de Ingeniería (Componente Unificado) -->
     <WhyUsSection />
-
 
     <!-- Formulario de Captura de Leads Directo -->
     <ContactSection />
 
     <!-- Sección Semántica SEO para Indexación -->
     <section class="sr-only">
-      <h2>Agencia de Desarrollo Web, Software a Medida y Automatizaciones</h2>
+      <h2>Agencia de Desarrollo Web, Software a Medida, Automatizaciones y Consultoría Técnica</h2>
       <p>
-        En Aleric.dev ofrecemos servicios especializados en creación de páginas web corporativas, landings de alta conversión,
-        desarrollo de plataformas SaaS a la medida, integración de WhatsApp Cloud API, flujos automáticos en n8n, auditoría de código legacy
-        y mentoría técnica Full Stack.
+        En Aleric.dev ayudamos a empresas y marcas a digitalizarse y crecer con páginas web comerciales de alta velocidad,
+        plataformas de software a la medida para centralizar operaciones y salir de Excel, flujos de atención y cobranza automática en WhatsApp API,
+        y consultoría técnica senior para auditorías, rescate de plataformas e integraciones con Siigo ERP y n8n.
       </p>
       <ul>
         <li><a href="/desarrollo-web">Desarrollo Web &amp; Landings de Alta Conversión</a></li>
-        <li><a href="/software-a-medida">Desarrollo de Software &amp; SaaS a Medida</a></li>
-        <li><a href="/automatizaciones">Automatización de Procesos &amp; WhatsApp API</a></li>
-        <li><a href="/consultoria-tecnica">Consultoría &amp; Auditoría Técnica Senior</a></li>
-        <li><a href="/mentoria-fullstack">Mentoría &amp; Capacitación Full Stack 1-a-1</a></li>
+        <li><a href="/software-a-medida">Desarrollo de Software &amp; SaaS a la Medida</a></li>
+        <li><a href="/automatizaciones">Automatización de Operaciones &amp; WhatsApp API</a></li>
+        <li><a href="/consultoria-tecnica">Consultoría Técnica Senior</a></li>
       </ul>
     </section>
   </main>

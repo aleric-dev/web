@@ -3,7 +3,6 @@ declare const process: any;
 interface Env {
   RESEND_API_KEY?: string;
   RESEND_FROM_EMAIL?: string;
-  TURNSTILE_SECRET_KEY?: string;
   IS_LOCAL_DEV?: string;
 }
 
@@ -17,22 +16,12 @@ interface ContactPayload {
   budget?: string;
   message?: string;
   _company_website_hp?: string;
-  'cf-turnstile-response'?: string;
 }
 
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
   try {
-    // 1. Obtener claves desde el entorno de Cloudflare / Runtime (sin fallbacks)
-    const turnstileSecret = context.env?.TURNSTILE_SECRET_KEY || (typeof process !== 'undefined' ? process.env?.TURNSTILE_SECRET_KEY : undefined);
+    // 1. Obtener clave de Resend desde el entorno de Cloudflare / Runtime
     const apiKey = context.env?.RESEND_API_KEY || (typeof process !== 'undefined' ? process.env?.RESEND_API_KEY : undefined);
-
-    if (!turnstileSecret) {
-      console.error('Falta la clave secreta de Turnstile');
-      return new Response(
-        JSON.stringify({ success: false, error: 'Falta la clave secreta de Turnstile en las variables de entorno' }),
-        { status: 500, headers: { 'Content-Type': 'application/json' } }
-      );
-    }
 
     if (!apiKey) {
       console.error('Falta la clave de API de Resend');
@@ -52,41 +41,6 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
         status: 200,
         headers: { 'Content-Type': 'application/json' },
       });
-    }
-
-    // 3. Validación obligatoria y estricta de Cloudflare Turnstile
-    const turnstileToken = data['cf-turnstile-response'];
-    if (!turnstileToken) {
-      return new Response(
-        JSON.stringify({ success: false, error: 'Falta la verificación de seguridad (Turnstile).' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
-      );
-    }
-
-    const formData = new URLSearchParams();
-    formData.append('secret', turnstileSecret);
-    formData.append('response', turnstileToken);
-
-    const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-      method: 'POST',
-      body: formData,
-    });
-
-    const outcome: any = await verifyRes.json();
-    console.log('[Turnstile Verify Result]:', outcome);
-
-    if (!outcome.success) {
-      console.warn('[Anti-Bot] Verificación Turnstile fallida:', outcome['error-codes']);
-      return new Response(
-        JSON.stringify({
-          success: false,
-          error: 'Verificación de seguridad fallida. Por favor completa la verificación de nuevo.',
-        }),
-        {
-          status: 400,
-          headers: { 'Content-Type': 'application/json' },
-        }
-      );
     }
 
     if (!name || !email || !budget || !message) {

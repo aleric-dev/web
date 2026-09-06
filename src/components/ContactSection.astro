@@ -6,11 +6,7 @@ interface Props {
 const { defaultService = "" } = Astro.props;
 const PHONE_NUMBER = "573013229292";
 const CONTACT_EMAIL = "contacto@aleric.dev";
-const TURNSTILE_SITE_KEY = "0x4AAAAAAEpemWjfnKV8eBVg";
 ---
-
-<!-- Cloudflare Turnstile API Script -->
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 <section
   id="contacto"
@@ -133,7 +129,7 @@ const TURNSTILE_SITE_KEY = "0x4AAAAAAEpemWjfnKV8eBVg";
               Queremos Escuchar tu Idea
             </h3>
             <p
-              class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed"
+              class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed"
             >
               Cuéntanos qué quieres construir. Revisamos tu proyecto con
               atención y te escribimos personalmente en menos de 24 horas para
@@ -458,20 +454,9 @@ const TURNSTILE_SITE_KEY = "0x4AAAAAAEpemWjfnKV8eBVg";
               ></textarea>
             </div>
 
-            <!-- Row 6: Fila 50/50: Cloudflare Turnstile (Izquierda) + Checkbox Política de Datos (Derecha) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch pt-1">
-              <!-- Turnstile Izquierda (50%) -->
-              <div class="flex items-center justify-center md:justify-start min-h-[65px] h-full overflow-hidden">
-                <div
-                  class="cf-turnstile"
-                  data-sitekey={TURNSTILE_SITE_KEY}
-                  data-theme="auto"
-                  data-size="flexible"
-                ></div>
-              </div>
-
-              <!-- Checkbox Política de Datos Derecha (50%) -->
-              <div class="flex items-center gap-3 px-3.5 py-2.5 min-h-[65px] h-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40">
+            <!-- Row 6: Checkbox Política de Tratamiento de Datos Personales (Ancho Completo) -->
+            <div class="pt-1">
+              <div class="flex items-center gap-3.5 px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/50">
                 <input
                   type="checkbox"
                   id="privacy-consent"
@@ -488,7 +473,7 @@ const TURNSTILE_SITE_KEY = "0x4AAAAAAEpemWjfnKV8eBVg";
                   >
                     Política de Tratamiento de Datos
                   </button>
-                  . Usamos tu información solo para responder a tu requerimiento comercial. *
+                  . Usamos tu información únicamente para responder a tu consulta comercial. *
                 </label>
               </div>
             </div>
@@ -603,33 +588,9 @@ const TURNSTILE_SITE_KEY = "0x4AAAAAAEpemWjfnKV8eBVg";
       const hasMessage = !!(messageInput && messageInput.value.trim());
       const hasConsent = !!(privacyConsentCheckbox && privacyConsentCheckbox.checked);
 
-      // Validar Cloudflare Turnstile
-      let hasTurnstile = false;
-      if (window.turnstile) {
-        try {
-          const resp = window.turnstile.getResponse();
-          if (resp && resp.length > 0) hasTurnstile = true;
-        } catch (e) {}
-      } else {
-        const turnstileInput = form ? form.querySelector('[name="cf-turnstile-response"]') : null;
-        if (turnstileInput && turnstileInput.value) hasTurnstile = true;
-      }
-
-      const isFormValid = hasName && hasEmail && hasService && hasBudget && hasMessage && hasConsent && hasTurnstile;
+      const isFormValid = hasName && hasEmail && hasService && hasBudget && hasMessage && hasConsent;
       submitBtn.disabled = !isFormValid;
     };
-
-    // Monitoreo recurrente ligero para detectar resolución de Turnstile
-    const turnstileCheckInterval = setInterval(() => {
-      updateSubmitButtonState();
-      if (window.turnstile) {
-        try {
-          if (window.turnstile.getResponse()) {
-            clearInterval(turnstileCheckInterval);
-          }
-        } catch (e) {}
-      }
-    }, 500);
 
     // Escuchar eventos en los campos obligatorios
     [nameInput, emailInput, serviceInput, budgetInput, messageInput].forEach((el) => {
@@ -764,18 +725,6 @@ const TURNSTILE_SITE_KEY = "0x4AAAAAAEpemWjfnKV8eBVg";
         const formData = new FormData(form);
         const object = Object.fromEntries(formData);
 
-        // Extraer token de Turnstile
-        if (window.turnstile) {
-          try {
-            const turnstileResponse = window.turnstile.getResponse();
-            if (turnstileResponse) {
-              object["cf-turnstile-response"] = turnstileResponse;
-            }
-          } catch (err) {
-            console.warn("Turnstile getResponse error:", err);
-          }
-        }
-
         submitBtn.disabled = true;
         submitBtn.innerText = "Enviando mensaje...";
 
@@ -822,7 +771,6 @@ const TURNSTILE_SITE_KEY = "0x4AAAAAAEpemWjfnKV8eBVg";
               "¡Gracias! Tu solicitud ha sido enviada directamente a nuestro equipo. Te responderemos en menos de 24 horas.";
             form.reset();
             if (charCount) charCount.textContent = "0";
-            if (window.turnstile) window.turnstile.reset();
             updateSubmitButtonState();
           } else {
             statusDiv.classList.add(
@@ -837,7 +785,6 @@ const TURNSTILE_SITE_KEY = "0x4AAAAAAEpemWjfnKV8eBVg";
             statusDiv.innerText =
               result.error ||
               "Ocurrió un error al enviar el formulario. Por favor escríbenos directamente a contacto@aleric.dev";
-            if (window.turnstile) window.turnstile.reset();
             updateSubmitButtonState();
           }
         } catch (err) {
@@ -853,7 +800,6 @@ const TURNSTILE_SITE_KEY = "0x4AAAAAAEpemWjfnKV8eBVg";
           );
           statusDiv.innerText =
             "Ocurrió un error de conexión. Por favor escríbenos directamente a contacto@aleric.dev.";
-          if (window.turnstile) window.turnstile.reset();
           updateSubmitButtonState();
         } finally {
           submitBtn.innerText = "CUÉNTANOS TU PROYECTO →";

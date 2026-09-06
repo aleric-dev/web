@@ -2,74 +2,98 @@
 import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import AuditPillars from "../../components/AuditPillars.astro";
+import WhyUsSection from "../../components/WhyUsSection.astro";
 import ContactSection from "../../components/ContactSection.astro";
 import Footer from "../../components/Footer.astro";
 
-const consultingServices = [
+const technicalSpecialties = [
+  {
+    icon: "📘",
+    title: "Fullstack TypeScript (NestJS & React 19 / Next.js)",
+    description:
+      "Arquitecturas limpias y desacopladas con tipado estricto end-to-end. Backend escalable con NestJS (inyección de dependencias, CQRS, guards) y frontend moderno con React 19 y Next.js App Router.",
+  },
+  {
+    icon: "🐘",
+    title: "PostgreSQL Avanzado & Optimización SQL",
+    description:
+      "Modelado de bases de datos relacionales, optimización de queries con EXPLAIN ANALYZE, índices compuestos y GIN, Row Level Security (RLS) multi-tenant y migraciones con Prisma y Drizzle ORM.",
+  },
+  {
+    icon: "⚙️",
+    title: "Orquestación de Flujos con n8n Self-Hosted",
+    description:
+      "Automatización de pipelines empresariales con n8n alojado en Docker/VPS. Webhooks idempotentes, gestión de errores y sincronización en tiempo real entre sistemas heterogéneos.",
+  },
+  {
+    icon: "🐍",
+    title: "Python (FastAPI & Scripts Asíncronos)",
+    description:
+      "Microservicios ultrarrápidos con FastAPI y Pydantic, scripts de procesamiento por lotes, extracción y transformación de datos (ETL) y tareas en segundo plano con Redis y Celery.",
+  },
+  {
+    icon: "💬",
+    title: "WhatsApp Cloud API Oficial (Meta)",
+    description:
+      "Integración nativa con la API oficial de Meta mediante webhooks con firma criptográfica, envío de plantillas interactivas y arquitectura tolerante a fallos sin emuladores.",
+  },
+  {
+    icon: "🧾",
+    title: "Integración Siigo ERP & Facturación Electrónica",
+    description:
+      "Conexión con la API REST de Siigo para emisión de facturación electrónica automática, creación de terceros, recibos de caja y sincronización de catálogo e inventarios en tiempo real.",
+  },
   {
     icon: "🔍",
-    title: "Auditoría de Código & Deuda Técnica",
+    title: "Auditoría de Código & Seguridad OWASP",
     description:
-      "Revisión minuciosa para detectar malas prácticas, problemas de arquitectura y cuellos de botella.",
+      "Inspección minuciosa de repositorios para detectar deuda técnica, cuellos de botella de latencia, fugas de memoria, vulnerabilidades de inyección y evaluación de proveedores externos.",
   },
   {
-    icon: "🩹",
-    title: "Rescate de Proyectos Legacy",
+    icon: "🎓",
+    title: "Capacitación Técnica & Mentoría 1-a-1",
     description:
-      "Saneamiento y recuperación de aplicaciones abandonadas o con errores críticos para ponerlas operativas.",
+      "Acompañamiento a desarrolladores y equipos tech en buenas prácticas de ingeniería, code reviews en vivo, pruebas automatizadas (Jest/Vitest) y preparación para retos técnicos senior.",
+  },
+];
+
+const deepStackDetails = [
+  {
+    category: "Fullstack TypeScript",
+    tags: ["NestJS", "Node.js", "React 19", "Next.js 15", "TypeScript 5.8", "Zod", "Tailwind CSS"],
+    highlight: "Tipado estricto de extremo a extremo para eliminar errores en tiempo de ejecución.",
   },
   {
-    icon: "🛡️",
-    title: "Inspección de Proveedores Externos",
-    description:
-      "Evaluación técnica imparcial del trabajo entregado por agencias o freelancers contratados.",
+    category: "Bases de Datos & Persistencia",
+    tags: ["PostgreSQL", "Prisma ORM", "Drizzle", "Redis Cache", "Supabase", "Row Level Security"],
+    highlight: "Consultas optimizadas sin N+1, índices estratégicos y aislamiento de datos.",
   },
   {
-    icon: "🚀",
-    title: "Optimización de Desempeño & SQL",
-    description:
-      "Tuning de consultas SQL/NoSQL, indexación y estrategias de almacenamiento en caché con Redis.",
+    category: "Automatización & Conectores",
+    tags: ["n8n Self-Hosted", "WhatsApp Cloud API", "Siigo ERP REST", "Chatwoot", "Webhooks HMAC"],
+    highlight: "Integraciones empresariales oficiales sin riesgo de bloqueos de cuenta.",
   },
   {
-    icon: "🔒",
-    title: "Auditoría de Seguridad (OWASP)",
-    description:
-      "Escaneo de fallos de seguridad, fuga de credenciales y desconfiguración de servidores.",
-  },
-  {
-    icon: "🏛️",
-    title: "Asesoría CTO as a Service",
-    description:
-      "Dirección técnica senior para toma de decisiones de stack, arquitectura cloud y contratación.",
-  },
-  {
-    icon: "☁️",
-    title: "Migración & Optimización Cloud",
-    description:
-      "Transición eficiente a servicios en AWS, GCP o VPS optimizando costos y escalabilidad.",
-  },
-  {
-    icon: "📋",
-    title: "Buenas Prácticas & Pipelines CI/CD",
-    description:
-      "Implementación de integración continua, pruebas automatizadas y estándares de código.",
+    category: "Python & Microservicios",
+    tags: ["Python 3.12", "FastAPI", "Pydantic v2", "Uvicorn", "AsyncIO", "Web Scraping"],
+    highlight: "Rendimiento asíncrono con validación de tipos automática y OpenAPI.",
   },
 ];
 ---
 
 <Layout
-  title="Aleric.dev | Consultoría Técnica Senior & Auditoría de Código"
-  description="Evaluamos, diagnosticamos y saneamos proyectos de software. Auditoría de código, rescate de plataformas legacy e inspección de proveedores externos."
+  title="Aleric.dev | Consultoría Técnica Senior & Auditoría de Software"
+  description="Consultoría técnica senior, auditoría de código, rescate legacy, integración con Siigo ERP, WhatsApp Cloud API, n8n, Python FastAPI y mentoría Fullstack."
 >
   <Navbar />
 
   <main
-    class="pt-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300"
+    class="pt-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300"
   >
     <!-- Hero Especializado Consultoría Técnica -->
     <section
       id="hero"
-      class="py-16 md:py-24 relative border-b border-slate-200 dark:border-slate-800"
+      class="pt-3 pb-12 md:pt-5 md:pb-14 relative border-b border-slate-200 dark:border-slate-800"
     >
       <div
         class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center"
@@ -78,22 +102,20 @@ const consultingServices = [
           <span
             class="inline-flex items-center gap-2 rounded-lg border border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/80 px-3.5 py-1.5 text-xs font-bold text-amber-700 dark:text-amber-300"
           >
-            🛡️ Para CTOs, Fundadores &amp; Líderes de Tecnología
+            🛡️ Para CTOs, Líderes Tech, Empresas &amp; Desarrolladores
           </span>
 
           <h1
             class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-tight"
           >
-            Consultoría Técnica Senior &amp; <span
+            Consultoría Técnica <span
               class="text-amber-600 dark:text-amber-400"
-              >Auditoría de Código</span
+              >Senior &amp; Ingeniería de Software</span
             >
           </h1>
 
           <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
-            ¿Tu software está lento, fallando o estancado? Diagnosticamos la
-            causa raíz de los problemas técnicos y te entregamos un plan de
-            acción claro e imparcial.
+            ¿Tu plataforma está lenta, fallando o estancada? Diagnosticamos la causa raíz con <strong>auditorías de código profundas</strong>, rescatamos proyectos críticos, conectamos sistemas complejos (<strong>Siigo ERP, WhatsApp API, n8n</strong>) y capacitamos a tu equipo en el stack más demandado: <strong>Fullstack TypeScript, PostgreSQL y Python FastAPI</strong>.
           </p>
 
           <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
@@ -101,7 +123,7 @@ const consultingServices = [
               href="#contacto"
               class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition flex items-center justify-center"
             >
-              Solicitar Auditoría / Diagnóstico
+              Agendar Sesión de Consultoría
             </a>
             <a
               href="/"
@@ -112,31 +134,110 @@ const consultingServices = [
           </div>
         </div>
 
-        <!-- Audit Scorecard Dashboard Component (Componente Modular) -->
+        <!-- Architecture Stack Card Visual -->
         <div class="lg:col-span-5">
-          <AuditPillars />
+          <div
+            class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm space-y-4"
+          >
+            <div
+              class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800"
+            >
+              <span
+                class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400"
+                >Stack Técnico Especializado</span
+              >
+              <span
+                class="text-[11px] font-mono font-bold text-emerald-600 dark:text-emerald-400"
+                >Senior Verified</span
+              >
+            </div>
+
+            <div class="space-y-3 font-mono text-xs">
+              <div
+                class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800"
+              >
+                <div class="text-slate-500 text-[10px] uppercase font-bold mb-0.5">Fullstack TypeScript</div>
+                <div class="font-bold text-slate-900 dark:text-white">NestJS / Node.js / React 19 / Next.js</div>
+              </div>
+
+              <div
+                class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800"
+              >
+                <div class="text-slate-500 text-[10px] uppercase font-bold mb-0.5">Base de Datos &amp; Rendimiento</div>
+                <div class="font-bold text-slate-900 dark:text-white">PostgreSQL / Tuning SQL / Prisma / Redis</div>
+              </div>
+
+              <div
+                class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800"
+              >
+                <div class="text-slate-500 text-[10px] uppercase font-bold mb-0.5">Integraciones &amp; Automatización</div>
+                <div class="font-bold text-slate-900 dark:text-white">Siigo ERP API / n8n / WhatsApp Cloud API</div>
+              </div>
+
+              <div
+                class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800"
+              >
+                <div class="text-slate-500 text-[10px] uppercase font-bold mb-0.5">Microservicios Python</div>
+                <div class="font-bold text-slate-900 dark:text-white">FastAPI / Pydantic / AsyncIO / ETLs</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Catálogo de Servicios Consultoría -->
-    <section id="beneficios" class="scroll-mt-20 py-16 bg-slate-50 dark:bg-slate-950">
+    <!-- Pilares de Auditoría de Código (Componente Modular) -->
+    <AuditPillars />
 
+    <!-- Desglose Técnico Exhaustivo por Área -->
+    <section class="py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+          <span class="inline-block px-3.5 py-1 rounded-lg bg-amber-100 dark:bg-amber-950 border border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300 text-xs font-bold uppercase tracking-wider">
+            Dominio Tecnológico
+          </span>
+          <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">
+            Ingeniería Senior sin Vicios Técnicos
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+            No improvisamos. Aplicamos patrones de arquitectura probados, principios SOLID y tipado estricto.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          {deepStackDetails.map((item) => (
+            <div class="p-7 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-4">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">{item.category}</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-mono">{item.highlight}</p>
+              <div class="flex flex-wrap gap-2 pt-2">
+                {item.tags.map((tag) => (
+                  <span class="px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] font-mono text-slate-700 dark:text-slate-300">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo de Servicios de Consultoría Técnica -->
+    <section id="beneficios" class="scroll-mt-20 py-16 bg-slate-50 dark:bg-slate-950">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center max-w-2xl mx-auto mb-14">
           <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">
-            Servicios de Consultoría &amp; Auditoría
+            Servicios de Consultoría &amp; Acompañamiento
           </h2>
           <p class="text-slate-600 dark:text-slate-400 text-sm">
-            Transparencia, diagnóstico imparcial y soluciones de ingeniería
-            comprobadas.
+            Diagnóstico, resolución de fallas críticas y formación técnica para tu equipo.
           </p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {
-            consultingServices.map((f) => (
-              <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between hover:border-amber-400 transition">
+            technicalSpecialties.map((f) => (
+              <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between hover:border-amber-400 transition shadow-sm">
                 <div>
                   <div class="text-2xl mb-3 p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/60 w-fit">
                     {f.icon}
@@ -153,7 +254,7 @@ const consultingServices = [
                     href="#contacto"
                     class="text-xs font-bold text-amber-600 dark:text-amber-400 hover:underline flex items-center gap-1"
                   >
-                    <span>Solicitar auditoría</span> →
+                    <span>Consultar servicio</span> →
                   </a>
                 </div>
               </div>
@@ -163,8 +264,68 @@ const consultingServices = [
       </div>
     </section>
 
+    <!-- Sección de Mentoría y Capacitación Técnica Integrada -->
+    <section class="py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-7 space-y-4">
+            <span class="inline-block px-3.5 py-1 rounded-lg bg-amber-100 dark:bg-amber-950 border border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300 text-xs font-bold uppercase tracking-wider">
+              Capacitación &amp; Transferencia de Conocimiento
+            </span>
+            <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">
+              Mentoría Técnica 1-a-1 &amp; Formación de Equipos de Desarrollo
+            </h2>
+            <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              No solo intervenimos sistemas; también transferimos estándares senior de ingeniería a tus programadores. Sesiones prácticas de code review, resolución de bloqueos en producción, diseño de arquitectura de software y adopción de TypeScript estricto, PostgreSQL y testing automatizado.
+            </p>
+            <div class="grid sm:grid-cols-2 gap-3 pt-2 text-xs text-slate-600 dark:text-slate-400 font-medium">
+              <div class="flex items-center gap-2">
+                <span class="text-amber-500 font-bold">✓</span> Code reviews en vivo de proyectos reales
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-amber-500 font-bold">✓</span> Limpieza de deuda técnica y refactorización
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-amber-500 font-bold">✓</span> Pruebas unitarias e integración con Vitest
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-amber-500 font-bold">✓</span> Acompañamiento a CTOs y líderes técnicos
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-4">
+              <h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider font-mono">
+                Modalidades de Consultoría
+              </h4>
+              <div class="space-y-2 text-xs">
+                <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                  <div class="font-bold text-amber-600 dark:text-amber-400">Diagnóstico Puntual / Auditoría</div>
+                  <p class="text-slate-500 dark:text-slate-400 text-[11px]">Revisión integral de código y arquitectura con reporte escrito de hallazgos y prioridades.</p>
+                </div>
+                <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                  <div class="font-bold text-amber-600 dark:text-amber-400">Bolsa de Horas de Ingeniería</div>
+                  <p class="text-slate-500 dark:text-slate-400 text-[11px]">Acompañamiento continuo, resolución de bugs críticos e integración de APIs (Siigo, Meta).</p>
+                </div>
+                <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                  <div class="font-bold text-amber-600 dark:text-amber-400">Mentoría Técnica Personalizada</div>
+                  <p class="text-slate-500 dark:text-slate-400 text-[11px]">Sesiones individuales en vivo para acelerar la madurez técnica de desarrolladores.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Metodología de Trabajo & Garantías de Ingeniería (Componente Unificado) -->
+    <WhyUsSection />
+
     <!-- Formulario de Captura de Leads Dedicado -->
-    <ContactSection defaultService="Consultoría & Auditoría Técnica Senior" />
+    <ContactSection
+      defaultService="Consultoría Técnica"
+    />
   </main>
 
   <Footer />
