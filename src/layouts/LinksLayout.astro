@@ -1,9 +1,6 @@
 ---
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
-import FloatingContactButton from '../components/FloatingContactButton.astro';
-
-
 
 interface Props {
   title?: string;
@@ -12,8 +9,8 @@ interface Props {
 }
 
 const {
-  title = "Aleric.dev | Agencia de Desarrollo de Software, Automatizaciones Avanzadas & Consultoría CTO",
-  description = "Transformamos procesos caóticos en software de alto rendimiento. Construcción de sistemas a la medida, automatizaciones sin fricción y arquitectura sólida.",
+  title = "Aleric.dev | Enlaces Oficiales & Contacto Directo",
+  description = "Accede a nuestro sitio web oficial, WhatsApp de cotizaciones, Instagram y LinkedIn. Soluciones de desarrollo web, software a medida y automatizaciones.",
   image = "/logo-dark-horizontal.png",
 } = Astro.props;
 
@@ -36,11 +33,11 @@ const imageURL = new URL(image, Astro.url.origin).href;
     <!-- SEO Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="Aleric.dev, desarrollo web, software a medida, automatizacion n8n, whatsapp api, nestjs, react, typescript, consultoria tecnica, mentoría full stack" />
+    <meta name="keywords" content="Aleric.dev, enlaces oficiales, bio links, whatsapp, desarrollo web, software a medida, automatizaciones" />
     <meta name="author" content="Aleric.dev" />
 
-    <!-- Open Graph / Facebook / WhatsApp / LinkedIn Card -->
-    <meta property="og:type" content="website" />
+    <!-- Open Graph / WhatsApp / Instagram / LinkedIn Card -->
+    <meta property="og:type" content="profile" />
     <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -59,41 +56,8 @@ const imageURL = new URL(image, Astro.url.origin).href;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-    <!-- Theme Preference Initialization Script (Pre-render) -->
-    <script is:inline>
-      (function() {
-        const theme = localStorage.getItem('theme');
-        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-      })();
-    </script>
   </head>
-  <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-600 selection:text-white relative transition-colors duration-300">
+  <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-600 selection:text-white relative">
     <slot />
-
-    <!-- Botón Flotante Global de Contacto / Agendar Reunión -->
-    <FloatingContactButton />
-
-
-
-    <!-- Script de soporte para desplazarse suavemente a la sección de contacto (#contacto) -->
-    <script is:inline>
-      document.addEventListener('click', (e) => {
-        const trigger = e.target.closest('[data-trigger-whatsapp], [data-trigger-contact]');
-        if (trigger) {
-          e.preventDefault();
-          const contactEl = document.getElementById('contacto');
-          if (contactEl) {
-            contactEl.scrollIntoView({ behavior: 'smooth' });
-          } else {
-            window.location.href = '/#contacto';
-          }
-        }
-      });
-    </script>
   </body>
 </html>
