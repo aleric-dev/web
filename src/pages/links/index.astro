@@ -222,28 +222,43 @@ const actionButtons = [
       if (!shareBtn || !shareText) return;
 
       shareBtn.onclick = async () => {
+        const shareUrl = 'https://aleric.dev';
+
+        const shareMessage = `¡Hola! Te presento a Aleric.dev 🚀
+
+Somos el equipo de tecnología que tu empresa necesita para crecer sin dolores de cabeza operativos. Nos encargamos de construir soluciones a la medida de tu negocio:
+
+🌐 Páginas web y landings rápidas diseñadas para vender más.
+💬 Automatizaciones de WhatsApp 24/7, cotizaciones y cobranzas.
+🚀 Software propio para centralizar tus procesos y dejar atrás Excel.
+🛡️ Consultoría y soporte técnico para mejorar tus plataformas actuales.
+
+Menos fricción y más resultados, sin ataduras a terceros.
+
+Échale un vistazo y hablemos aquí:
+${shareUrl}`;
+
         const shareData = {
-          title: 'Aleric.dev | Enlaces Oficiales',
-          text: 'Páginas web que venden, software a la medida y automatizaciones de WhatsApp.',
-          url: window.location.href,
+          title: 'Aleric.dev | Boutique de Software & Automatizaciones',
+          text: shareMessage,
         };
 
         if (navigator.share) {
           try {
             await navigator.share(shareData);
           } catch (err) {
-            // Usuario canceló
+            // Usuario canceló o no soportado
           }
         } else if (navigator.clipboard) {
           try {
-            await navigator.clipboard.writeText(window.location.href);
+            await navigator.clipboard.writeText(shareMessage);
             const originalText = shareText.textContent;
-            shareText.textContent = '¡Copiado!';
+            shareText.textContent = '¡Mensaje Copiado!';
             shareBtn.classList.add('border-emerald-500', 'text-emerald-400');
             setTimeout(() => {
               shareText.textContent = originalText;
               shareBtn.classList.remove('border-emerald-500', 'text-emerald-400');
-            }, 2000);
+            }, 2500);
           } catch (e) {
             // Fallback
           }

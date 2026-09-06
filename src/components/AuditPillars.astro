@@ -1,23 +1,33 @@
 ---
 const auditPillars = [
-  { title: 'Deuda Técnica', status: 'Evaluación de mantenibilidad y acoplamiento' },
-  { title: 'Rendimiento & Latencia', status: 'Detección de consultas lentas N+1 y memory leaks' },
-  { title: 'Seguridad OWASP', status: 'Identificación de vulnerabilidades de inyección y auth' },
-  { title: 'Escalabilidad Cloud', status: 'Análisis de costos e infraestructura de servidores' },
+  { icon: '📉', title: 'Deuda Técnica', status: 'Evaluación de mantenibilidad, acoplamiento y legibilidad de código' },
+  { icon: '⚡', title: 'Rendimiento & Latencia', status: 'Detección de consultas lentas N+1, cuellos de botella y memory leaks' },
+  { icon: '🛡️', title: 'Seguridad OWASP', status: 'Identificación de vulnerabilidades de inyección, autenticación y permisos' },
+  { icon: '☁️', title: 'Escalabilidad Cloud', status: 'Análisis de costos de cómputo, Docker e infraestructura de servidores' },
 ];
 ---
 
-<div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm space-y-4">
+<div class="p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm space-y-4">
   <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
-    <span class="text-xs font-bold text-slate-900 dark:text-white">Scorecard de Auditoría Técnica</span>
-    <span class="text-[10px] font-mono font-bold text-amber-600 dark:text-amber-400">Reporte Ejecutivo</span>
+    <div>
+      <span class="text-sm font-bold text-slate-900 dark:text-white block">Scorecard de Auditoría Técnica</span>
+      <span class="text-[11px] text-slate-500 dark:text-slate-400">Evaluación exhaustiva de 4 ejes críticos</span>
+    </div>
+    <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-amber-50 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
+      Reporte Ejecutivo
+    </span>
   </div>
   
-  <div class="space-y-2.5">
+  <div class="space-y-3">
     {auditPillars.map((p) => (
-      <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs">
-        <div class="font-bold text-slate-900 dark:text-white mb-0.5">{p.title}</div>
-        <div class="text-slate-500 text-[11px]">{p.status}</div>
+      <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs flex items-start gap-3">
+        <span class="p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm shrink-0 shadow-sm">
+          {p.icon}
+        </span>
+        <div class="min-w-0">
+          <div class="font-bold text-slate-900 dark:text-white mb-0.5">{p.title}</div>
+          <div class="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed">{p.status}</div>
+        </div>
       </div>
     ))}
   </div>
