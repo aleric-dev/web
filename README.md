@@ -18,13 +18,18 @@ Documento maestro con la especificación integral de servicios, propuesta de val
 
 ## 🛠️ 2. Desglose Detallado por Áreas de Especialidad
 
-```mermaid
-graph TD
-    A[Aleric.dev] --> B[1. Desarrollo Web & CRO]
-    A --> C[2. Software & SaaS a la Medida]
-    A --> D[3. Automatizaciones & WhatsApp API]
-    A --> E[4. Consultoría & Auditoría Técnica]
-    A --> F[5. Mentoría Full Stack 1-a-1]
+```text
+                           ┌──────────────────────────────┐
+                           │          Aleric.dev          │
+                           └──────────────┬───────────────┘
+                                          │
+      ┌──────────────────┬────────────────┼────────────────┬──────────────────┐
+      ▼                  ▼                ▼                ▼                  ▼
+┌──────────────┐   ┌──────────────┐ ┌──────────────┐ ┌──────────────┐   ┌──────────────┐
+│  Desarrollo  │   │  Software a  │ │ Automatiza-  │ │ Consultoría  │   │   Mentoría   │
+│    Web &     │   │   Medida &   │ │   ciones &   │ │   Técnica    │   │  Full Stack  │
+│ Landings CRO │   │     SaaS     │ │ WhatsApp API │ │    Senior    │   │    1-a-1     │
+└──────────────┘   └──────────────┘ └──────────────┘ └──────────────┘   └──────────────┘
 ```
 
 ---
@@ -98,23 +103,36 @@ graph TD
 
 El flujo de ventas y atención en Aleric.dev está estructurado en 6 etapas secuenciales para garantizar alta conversión y excelente experiencia de usuario:
 
-```mermaid
-sequenceDiagram
-    autonumber
-    participant Cliente as Prospecto / Cliente
-    participant Web as Aleric.dev (Web)
-    participant Router as ProfileRouter
-    participant Lead as ContactSection
-    participant Team as Equipo Aleric.dev
-
-    Cliente->>Web: Visita la Landing Page
-    Web->>Router: Explora la oferta por nicho de interés
-    Router->>Cliente: Muestra soluciones especializadas
-    Cliente->>Lead: Envía mensaje en "Queremos Escuchar tu Idea"
-    Lead->>Team: Notificación instantánea del proyecto
-    Team->>Cliente: Agenda "Reunión de Diagnóstico Gratuita" (24h)
-    Team->>Cliente: Presenta Propuesta & Alcance Técnico
-    Cliente->>Team: Aprobación e Inicio de Desarrollo
+```text
+┌────────────────────────────────────────────────────────────────────────┐
+│ 1. Atracción & Segmentación                                            │
+│    El prospecto visita la web y explora soluciones en el ProfileRouter │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│ 2. Captura Humana & Contacto                                           │
+│    Envía formulario ("Queremos Escuchar tu Idea") o abre WhatsApp      │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│ 3. Notificación Instantánea                                            │
+│    El equipo recibe la alerta del proyecto en la bandeja comercial     │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│ 4. Diagnóstico Gratuito (< 24h)                                        │
+│    Discovery Call de 20-30 min para evaluar factibilidad y objetivos   │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│ 5. Propuesta & Contrato                                                │
+│    Presentación de alcance, cronograma e hitos de pago (50/50)         │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│ 6. Desarrollo Ágil & Entrega 100% Propia                               │
+│    Construcción en repo privado, pruebas y cesión total de derechos    │
+└────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Detalle de las Etapas del Embudo
@@ -165,33 +183,81 @@ El sitio web está desarrollado sobre la última versión de **Astro**, utilizan
 
 ```text
 web/
+├── AGENTS.md                        # Directrices para asistentes de inteligencia artificial
+├── README.md                        # Blueprint del negocio y guía de despliegue
+├── DOCS/                            # Centro de documentación integral (Libro)
+│   ├── index.md                     # Índice maestro y mapa de lectura
+│   ├── 1-portafolio-de-servicios-y-oferta-comercial.md # Portafolio y precios USD / COP
+│   ├── 2-arquitectura-tecnica-y-stack.md          # Stack canónico (Web, Software, Automatizaciones)
+│   ├── 3-modelo-operativo-conversion-y-ventas.md  # Funnel y plantillas legales (Contrato, Cotización, Entrega)
+│   └── 4-ideas-contenido-redes-sociales.md        # 70 ideas de contenido no técnico para redes
+├── functions/
+│   └── api/
+│       └── contact.ts               # Endpoint serverless Cloudflare Pages + Resend API
+├── public/                          # Recursos estáticos (imágenes, logos, favicons)
 ├── src/
-│   ├── components/
-│   │   ├── Navbar.astro             # Menú superior unificado
-│   │   ├── CommercialHero.astro     # Héroe principal comercial
-│   │   ├── ProfileRouter.tsx        # Selector interactivo de 6 soluciones
-│   │   ├── MethodologySection.astro # Metodología en 4 pasos
-│   │   ├── WhyUsSection.astro       # Pilares "Por qué elegirnos"
-│   │   ├── TechStack.astro          # Stack & Puntuación 100/100 Lighthouse
-│   │   ├── ContactSection.astro     # Formulario humano "Queremos Escuchar tu Idea"
-│   │   ├── FloatingContactButton.astro # Botones flotantes circulares + tooltips
-│   │   ├── Footer.astro             # Pie de página estructurado en 3 columnas
-│   │   ├── WebComparison.astro      # Cuadro WordPress vs Aleric Stack
-│   │   ├── SoftwareLifecycle.astro  # Roadmap de 4 fases de SaaS
-│   │   ├── WhatsAppBenefits.astro   # Beneficios oficiales WhatsApp Cloud API
-│   │   ├── AuditPillars.astro       # 4 pilares de auditoría técnica
-│   │   └── MentorshipRoadmap.astro  # Syllabus de mentoría Full Stack
-│   ├── pages/
-│   │   ├── index.astro              # Página principal (Root)
-│   │   ├── desarrollo-web/          # Nicho Desarrollo Web
-│   │   ├── software-a-medida/       # Nicho Software & SaaS
-│   │   ├── automatizaciones/        # Nicho Automatizaciones & WhatsApp
-│   │   ├── consultoria-tecnica/     # Nicho Consultoría & Auditoría
-│   │   └── mentoria-fullstack/      # Nicho Mentoría Full Stack
-│   └── styles/
-│       └── global.css               # Estilos globales y tokens CSS
-└── README.md                        # Documento maestro del negocio
+│   ├── components/                  # Componentes modulares Astro y React Islands
+│   ├── pages/                       # Rutas estáticas de la plataforma
+│   └── styles/                      # Estilos globales y variables semánticas
+└── tailwind.config.mjs              # Configuración del sistema de diseño
 ```
 
 ---
+
+## 🚀 6. Guía de Despliegue, Infraestructura y Comandos
+
+El frontend de Aleric.dev está optimizado para compilarse y distribuirse globalmente a través de la red perimetral de **Cloudflare Pages**, con procesamiento serverless para el formulario de contacto.
+
+### Parámetros de Compilación en Cloudflare Pages
+* **Framework Preset**: `Astro`
+* **Build Command**: `npm run build`
+* **Build Output Directory**: `dist`
+* **Node.js Version**: `18.x` o superior (definida mediante variable `NODE_VERSION: 18.20.0` o archivo `.nvmrc`).
+
+### Variables de Entorno en Producción
+En el panel de Cloudflare Pages (*Settings -> Environment Variables*), se deben configurar los siguientes secretos:
+
+| Variable | Descripción | Sensible | Requerida |
+| :--- | :--- | :---: | :---: |
+| `RESEND_API_KEY` | Clave secreta de la API de Resend para despacho de correos | **Sí** | Sí |
+| `RESEND_FROM_EMAIL` | Dirección de remitente verificada (ej. `Aleric.dev <notification@aleric.dev>`) | **No** | Recomendada |
+
+> 🛡️ **Nota de Seguridad Anti-Spam**: El formulario implementa un **Honeypot invisible** (`_company_website_hp`) y sanitización estricta en el servidor, eliminando la necesidad de captchas intrusivos como Turnstile o reCAPTCHA para asegurar máxima velocidad de carga.
+
+### Comandos de Ejecución Local
+```bash
+# 1. Instalar dependencias
+npm install
+
+# 2. Iniciar servidor local de desarrollo (http://localhost:4321)
+npm run dev
+
+# 3. Compilar bundle estático de producción (carpeta /dist)
+npm run build
+
+# 4. Previsualizar compilación localmente
+npm run preview
+```
+
+### Estándares de Rendimiento y SEO
+Todas las páginas deben mantener los siguientes umbrales de calidad antes de cada publicación:
+1. **Google Lighthouse**: Rendimiento > 95/100, Accesibilidad 100/100, Buenas Prácticas 100/100, SEO 100/100.
+2. **Schema.org**: Microdatos JSON-LD estructurados para `ProfessionalService` con catálogo de ofertas.
+3. **OpenGraph**: Metadatos visuales completos para WhatsApp, LinkedIn y Twitter Cards.
+
+---
+
+## 📚 7. Centro de Documentación y Recursos
+
+Para profundizar en los aspectos comerciales, técnicos, operativos y de marketing, consulta la carpeta [`DOCS/`](./DOCS/):
+
+* 📖 **[Índice Maestro de Documentación (DOCS/index.md)](./DOCS/index.md)**: Mapa general estilo libro.
+* 💼 **[1. Portafolio de Servicios y Oferta Comercial](./DOCS/1-portafolio-de-servicios-y-oferta-comercial.md)**: Tabuladores de precios USD y COP, entregables y líneas de negocio.
+* 🛠️ **[2. Arquitectura Técnica y Stack Tecnológico](./DOCS/2-arquitectura-tecnica-y-stack.md)**: Stack canónico para Web, Software a la Medida y Automatizaciones.
+* ⚖️ **[3. Modelo Operativo, Conversión y Documentación Legal](./DOCS/3-modelo-operativo-conversion-y-ventas.md)**: Embudo, plantillas completas de Cotización, Contrato con cesión de derechos 100% y Acta de Entrega.
+* 📱 **[4. Ideas de Contenido para Redes Sociales](./DOCS/4-ideas-contenido-redes-sociales.md)**: 70 ideas estructuradas para perfiles no técnicos con ganchos, guiones y CTAs.
+* 🤖 **[Directrices para Asistentes de IA (AGENTS.md)](./AGENTS.md)**: Manual de referencia rápida para pair programming asistido por IA.
+
+---
 *© Aleric.dev — Todos los derechos reservados.*
+
