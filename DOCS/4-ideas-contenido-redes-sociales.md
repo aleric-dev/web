@@ -535,7 +535,7 @@ A **dueños de negocio, gerentes, directores comerciales y emprendedores**. Son 
   - **Color de Acento:** #4F46E5 (Índigo eléctrico)
   - **Fuente Títulos/Tags (Canva):** Space Mono (Negrita, Color: #4F46E5 o #FFFFFF)
   - **Fuente Cuerpo (Canva):** Inter (Regular, Color: #E5E7EB en Modo Oscuro o #0F172A en Modo Claro)
-  - **Elemento Destacado:** Lista de archivos duplicados confusos vs Tarjeta única con enlace al panel web en índigo (#4F46E5).
+  - **Elemento Destacado:** Lista de archivos duplicados confusos vs Tarjeta única con enlace al panel web en índigo (#4F46E5). 
 
 ### Idea 32: Antes vs Después: De Excel desordenado a panel moderno
 - **Categoría:** Desarrollo a la Medida
