@@ -21,7 +21,7 @@
 
 ## 1. Posicionamiento y Propuesta de Valor
 
-**Aleric.dev** opera como una boutique de ingeniería de software y automatización comercial orientada al mercado hispanohablante. Diseñamos soluciones digitales enfocadas en resultados de negocio tangibles: **aumentar ventas, eliminar tareas manuales repetitivas y entregar a las empresas tecnología de su propiedad exclusiva**.
+En **Aleric.dev** somos desarrolladores de software enfocados en ayudarte a crecer como empresa. Diseñamos soluciones digitales enfocadas en resultados de negocio tangibles: **aumentar tus ventas con desarrollo web CRO, modernizar tu operación con software y SaaS a la medida, automatizar flujos repetitivos con WhatsApp Cloud API / n8n y entregar a tu empresa tecnología cloud de su propiedad 100% exclusiva**.
 
 ### 🌟 Pilares Fundamentales de la Marca
 * **🔑 Propiedad 100% del Cliente**: Transferencia completa de código fuente, repositorios privados y cuentas de infraestructura. Cero ataduras a suscripciones propietarias o plataformas cautivas.

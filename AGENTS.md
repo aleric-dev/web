@@ -8,7 +8,7 @@
 
 ## 📌 1. Visión y Propósito del Proyecto
 
-Este repositorio contiene la plataforma web comercial de **Aleric.dev**, una boutique de ingeniería de software y automatizaciones para el mercado hispanohablante.
+Este repositorio contiene la plataforma web comercial de **Aleric.dev**, desarrolladores de software enfocados en ayudarte a crecer como empresa. Especialistas en desarrollo web de alta conversión (CRO), plataformas y SaaS a la medida, automatizaciones comerciales con WhatsApp y arquitectura cloud de alto rendimiento para el mercado hispanohablante.
 
 ### Principio Fundamental de Ingeniería
 * **Rendimiento Máximo y Cero Bloatware**: El sitio debe mantener puntuaciones de **95-100 en Google Lighthouse** (Rendimiento, Accesibilidad, Buenas Prácticas y SEO).

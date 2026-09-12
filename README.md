@@ -6,7 +6,7 @@ Documento maestro con la especificación integral de servicios, propuesta de val
 
 ## 📌 1. Visión General & Posicionamiento de Marca
 
-**Aleric.dev** opera como una boutique de ingeniería de software senior y consultoría tecnológica orientada al mercado hispanohablante. La propuesta de marca se fundamenta en eliminar la fricción técnica y ofrecer soluciones digitales de alto rendimiento con total transparencia.
+En **Aleric.dev** somos desarrolladores de software enfocados en ayudarte a crecer como empresa. Acompañamos a negocios y startups mediante desarrollo web de alto rendimiento (CRO), software y plataformas SaaS a la medida, automatizaciones comerciales con WhatsApp y arquitectura cloud con entrega de código 100% de tu propiedad. Nuestra propuesta se fundamenta en eliminar la fricción técnica y ofrecer soluciones digitales de alto impacto con total transparencia.
 
 ### Pilares Fundamentales de Marca
 - **🔑 Propiedad 100% del Cliente**: Código limpio, repositorios privados y transferencia total de propiedad sin licencias ocultas ni ataduras a plataformas propietarias.

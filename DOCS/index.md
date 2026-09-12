@@ -1,6 +1,6 @@
 # 📚 Índice General de Documentación — Aleric.dev
 
-Bienvenido al centro de documentación oficial de **Aleric.dev**. Este repositorio de documentos reúne la visión comercial, la arquitectura técnica, los modelos operativos con plantillas contractuales y la estrategia de contenidos de la boutique tecnológica.
+Bienvenido al centro de documentación oficial de **Aleric.dev**. Este repositorio de documentos reúne la visión comercial, la arquitectura técnica, los modelos operativos con plantillas contractuales y la estrategia de contenidos de nuestro equipo de desarrollo de software enfocado en el crecimiento empresarial.
 
 Está diseñado para servir como referencia integral tanto para el equipo interno (ingenieros, comerciales, creadores de contenido) como para clientes y aliados estratégicos.
 

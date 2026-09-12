@@ -1087,7 +1087,7 @@ A **dueños de negocio, gerentes, directores comerciales y emprendedores**. Son 
 - **Idea/Contenido:**
   - **Formato**: Post estático de marca (Instagram / LinkedIn).
   - **Gancho (Hook)**: *"Menos fricción técnica. Más resultados de negocio. Bienvenidos a Aleric.dev."*
-  - **Concepto Simple**: Declaración de principios de la boutique y llamado abierto a conectar.
+  - **Concepto Simple**: Declaración de principios de nuestro equipo de desarrollo y llamado abierto a conectar.
   - **CTA**: *"Conoce nuestra oferta completa en https://aleric.dev."*
 - **🎨 Especificaciones Visuales Canva:**
   - **Fondo:** #0F172A (Modo Oscuro Principal) o #E5E7EB (Segunda Opción / Tarjeta Destacada)
