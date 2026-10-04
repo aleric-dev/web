@@ -53,6 +53,7 @@ function localContactApiPlugin() {
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://aleric.dev',
   vite: {
     plugins: [localContactApiPlugin()],
   },

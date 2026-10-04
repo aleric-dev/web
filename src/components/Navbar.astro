@@ -22,21 +22,17 @@ const isActive = (href: string) => {
   <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
     <!-- Left: Brand Logo -->
     <a href="/" class="flex items-center shrink-0 group">
-      <!-- Light Mode Logo -->
-      <Image
-        src="/logo-dark.png"
+      <!-- Light Mode Logo (Dark Glyphs) -->
+      <img
+        src="/logo-text-dark.svg"
         alt="Aleric.dev Logo"
-        width={180}
-        height={48}
-        class="h-11 sm:h-12 w-auto object-contain dark:hidden group-hover:opacity-90 transition duration-200"
+        class="h-8 sm:h-9 w-auto object-contain dark:hidden group-hover:opacity-90 transition duration-200"
       />
-      <!-- Dark Mode Logo -->
-      <Image
-        src="/logo.png"
-        alt="Aleric.dev Logo Dark"
-        width={180}
-        height={48}
-        class="h-11 sm:h-12 w-auto object-contain hidden dark:block group-hover:opacity-90 transition duration-200"
+      <!-- Dark Mode Logo (White Glyphs) -->
+      <img
+        src="/logo-text-light.svg"
+        alt="Aleric.dev Logo"
+        class="h-8 sm:h-9 w-auto object-contain hidden dark:block group-hover:opacity-90 transition duration-200"
       />
     </a>
 

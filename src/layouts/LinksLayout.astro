@@ -11,11 +11,12 @@ interface Props {
 const {
   title = "Aleric.dev | Enlaces Oficiales & Contacto Directo",
   description = "Accede a nuestro sitio web oficial, WhatsApp de cotizaciones, Instagram y LinkedIn. Soluciones de desarrollo web, software a medida y automatizaciones.",
-  image = "/logo-dark-horizontal.png",
+  image = "/og-image.png",
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin);
-const imageURL = new URL(image, Astro.url.origin).href;
+const siteOrigin = Astro.site ? Astro.site.origin : 'https://aleric.dev';
+const canonicalURL = new URL(Astro.url.pathname, siteOrigin);
+const imageURL = new URL(image, siteOrigin).href;
 ---
 
 <!DOCTYPE html>

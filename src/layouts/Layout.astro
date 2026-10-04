@@ -12,13 +12,14 @@ interface Props {
 }
 
 const {
-  title = "Aleric.dev | Agencia de Desarrollo de Software, Automatizaciones Avanzadas & Consultoría CTO",
-  description = "Transformamos procesos caóticos en software de alto rendimiento. Construcción de sistemas a la medida, automatizaciones sin fricción y arquitectura sólida.",
-  image = "/logo-dark-horizontal.png",
+  title = "Aleric.dev | Software, Web & Automatizaciones",
+  description = "Desarrollo de páginas web de alta conversión, software a la medida y automatización comercial con WhatsApp.",
+  image = "/og-image.png",
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin);
-const imageURL = new URL(image, Astro.url.origin).href;
+const siteOrigin = Astro.site ? Astro.site.origin : 'https://aleric.dev';
+const canonicalURL = new URL(Astro.url.pathname, siteOrigin);
+const imageURL = new URL(image, siteOrigin).href;
 ---
 
 <!DOCTYPE html>
@@ -45,7 +46,11 @@ const imageURL = new URL(image, Astro.url.origin).href;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={imageURL} />
-    <meta property="og:image:alt" content={title} />
+    <meta property="og:image:secure_url" content={imageURL} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Aleric.dev - Software a la Medida, Web y Automatizaciones" />
     <meta property="og:site_name" content="Aleric.dev" />
 
     <!-- Twitter Card -->
