@@ -1,32 +1,35 @@
 ---
-import { Image } from 'astro:assets';
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="bg-slate-950 border-t border-slate-800/80 text-slate-400 md:py-12 py-8 relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-6">
-    <!-- Top Grid: 3 Columnas Limpias (En móvil se apilan 1 por 1) -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 pb-10 border-b border-slate-800/80 items-start text-center md:text-left">
+    <!-- Top Grid: 4 Columnas Limpias (Responsive: 1 col móvil, 2 cols tablet, 4 cols desktop) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 pb-10 border-b border-slate-800/80 items-start text-left">
       
-      <!-- Column 1: Brand & Bio -->
-      <div class="space-y-3 flex flex-col items-center md:items-start">
-        <a href="/" class="inline-block group shrink-0">
-          <!-- Logo vectorial blanco sin fondo para footer permanente oscuro -->
+      <!-- Columna 1: Logo arriba y abajo datos de Aleric Dev -->
+      <div class="space-y-3">
+        <a href="/" class="inline-block group">
           <img
             src="/logo-text-light.svg"
             alt="Aleric.dev Logo"
-            class="h-9 sm:h-10 w-auto object-contain group-hover:opacity-90 transition duration-200"
+            class="h-8 w-auto object-contain group-hover:opacity-90 transition duration-200"
           />
         </a>
 
-        <p class="text-xs text-slate-400 leading-relaxed max-w-sm mx-auto md:mx-0">
-          Desarrollo de páginas web que venden, software a tu medida para salir de Excel y automatizaciones de WhatsApp para que tu negocio crezca sin dolores de cabeza.
-        </p>
+        <div class="space-y-2">
+          <p class="text-xs font-semibold text-slate-200">
+            Aleric.dev · Estudio de Software
+          </p>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Páginas web de alta conversión, software a la medida y automatizaciones de WhatsApp para acelerar el crecimiento de tu empresa.
+          </p>
+        </div>
       </div>
 
-      <!-- Column 2: Soluciones Principales -->
-      <div class="space-y-3 md:pl-6">
-        <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">Soluciones Principales</h4>
+      <!-- Columna 2: Verticales -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">Verticales</h4>
         <ul class="space-y-2.5 text-xs">
           <li><a href="/desarrollo-web" class="text-slate-400 hover:text-white transition-colors">Desarrollo Web &amp; Landings</a></li>
           <li><a href="/software-a-medida" class="text-slate-400 hover:text-white transition-colors">Software &amp; SaaS a la Medida</a></li>
@@ -35,39 +38,95 @@ const currentYear = new Date().getFullYear();
         </ul>
       </div>
 
-      <!-- Column 3: Cosas de Interés -->
-      <div class="space-y-3 md:pl-6">
+      <!-- Columna 3: Cosas de Interés -->
+      <div class="space-y-3">
         <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">Cosas de Interés</h4>
         <ul class="space-y-2.5 text-xs">
           <li><a href="/software-a-medida#beneficios" class="text-slate-400 hover:text-white transition-colors">Salir de las Hojas de Excel</a></li>
-          <li><a href="/desarrollo-web#beneficios" class="text-slate-400 hover:text-white transition-colors">Páginas Web de Carga Rápida</a></li>
+          <li><a href="/desarrollo-web#beneficios" class="text-slate-400 hover:text-white transition-colors">Velocidad Extrema en Celulares</a></li>
           <li><a href="/automatizaciones#beneficios" class="text-slate-400 hover:text-white transition-colors">Atención &amp; Cobranzas en WhatsApp</a></li>
-          <li><a href="/software-a-medida#beneficios" class="text-slate-400 hover:text-white transition-colors">Desarrollo de Apps Web y Móviles B2C</a></li>
+          <li><a href="/desarrollo-web#beneficios" class="text-slate-400 hover:text-white transition-colors">Tiendas E-commerce &amp; Catálogos</a></li>
           <li><a href="/consultoria-tecnica#beneficios" class="text-slate-400 hover:text-white transition-colors">Integración Facturación Siigo ERP</a></li>
         </ul>
       </div>
 
-    </div>
+      <!-- Columna 4: Contacto Tradicional -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">Contacto</h4>
+        <div class="space-y-3 text-xs">
+          <!-- Teléfono / WhatsApp Formateado -->
+          <div>
+            <a
+              href="https://wa.me/573013229292?text=Hola%20Aleric.dev,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-slate-300 hover:text-emerald-400 font-mono transition-colors inline-flex items-center gap-2 group"
+            >
+              <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <span class="font-medium text-slate-200 group-hover:text-emerald-400 transition-colors">(57) 301 3229292</span>
+            </a>
+          </div>
 
-    <!-- Middle Bar: Estado Técnico & Contacto Directo (En móvil queda ordenado después de las columnas) -->
-    <div class="py-6 border-b border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
-      <div class="flex items-center gap-2.5 text-emerald-400">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-        </span>
-        <span>Sistemas 100% Operativos</span>
+          <!-- Ubicación: Cali, Colombia -->
+          <div class="text-slate-400 flex items-center gap-2">
+            <svg class="w-4 h-4 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span>Cali, Colombia</span>
+          </div>
+
+          <!-- Iconos: Correo, Instagram, LinkedIn -->
+          <div class="pt-1 flex items-center gap-2.5">
+            <!-- Correo -->
+            <a
+              href="mailto:contacto@aleric.dev"
+              class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 hover:bg-slate-800 flex items-center justify-center transition shadow-sm"
+              title="contacto@aleric.dev"
+              aria-label="Enviar correo a contacto@aleric.dev"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </a>
+
+            <!-- Instagram -->
+            <a
+              href="https://instagram.com/aleric.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-pink-400 hover:border-slate-700 hover:bg-slate-800 flex items-center justify-center transition shadow-sm"
+              title="Instagram @aleric.dev"
+              aria-label="Instagram @aleric.dev"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="2"></rect>
+                <path stroke-width="2" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2.5" stroke-linecap="round"></line>
+              </svg>
+            </a>
+
+            <!-- LinkedIn -->
+            <a
+              href="https://linkedin.com/company/aleric-dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-sky-400 hover:border-slate-700 hover:bg-slate-800 flex items-center justify-center transition shadow-sm"
+              title="LinkedIn aleric-dev"
+              aria-label="LinkedIn aleric-dev"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-width="2" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path>
+                <rect x="2" y="9" width="4" height="12" stroke-width="2"></rect>
+                <circle cx="4" cy="4" r="2" stroke-width="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
 
-      <a
-        href="mailto:contacto@aleric.dev"
-        class="flex items-center gap-2 text-slate-400 hover:text-indigo-400 transition-colors"
-      >
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-        <span>contacto@aleric.dev</span>
-      </a>
     </div>
 
     <!-- Bottom Bar: Copyright y Slogan Inspiracional -->
