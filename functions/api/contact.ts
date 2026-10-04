@@ -190,7 +190,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
   <div class="container">
     <div class="brand">
       <img
-        src="https://aleric.dev/logo-dark-horizontal.png"
+        src="https://aleric.dev/logo-email.png"
         alt="Aleric Dev"
         width="180"
         style="display: block; width: 180px; max-width: 180px; height: auto; border: 0;"
@@ -333,7 +333,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
   <div class="container">
     <div class="brand">
       <img
-        src="https://aleric.dev/logo-dark-horizontal.png"
+        src="https://aleric.dev/logo-email.png"
         alt="Aleric Dev"
         width="180"
         style="display: block; width: 180px; max-width: 180px; height: auto; border: 0;"
