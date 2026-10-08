@@ -50,7 +50,7 @@ const specialties: Specialty[] = [
       'Botones directos de compra, pasarelas de pago (PSE, tarjetas) y WhatsApp.',
       'Estructura de alta conversión (CRO) sin menús confusos donde el cliente se pierde.'
     ],
-    image: '/assets/solution-web.jpg',
+    image: '/assets/services/solution-web.jpg',
     imageAlt: 'Desarrollo de páginas web y tiendas online Aleric.dev',
     imageBadge: 'Carga < 0.5s · Alta Conversión',
     detailUrl: '/desarrollo-web',
@@ -75,7 +75,7 @@ const specialties: Specialty[] = [
       'Código 100% de tu propiedad: cero mensualidades forzadas por empleado o asiento.',
       'Acceso desde cualquier computador o celular con sincronización en tiempo real.'
     ],
-    image: '/assets/solution-software.jpg',
+    image: '/assets/services/solution-software.jpg',
     imageAlt: 'Plataforma de software a la medida Aleric.dev',
     imageBadge: 'Código 100% Tuyo · Cero Licencias',
     detailUrl: '/software-a-medida',
@@ -100,7 +100,7 @@ const specialties: Specialty[] = [
       'Cotización automática en el mismo chat y pase al asesor cuando están listos.',
       'WhatsApp Cloud API oficial: cero riesgos de bloqueos de número.'
     ],
-    image: '/assets/solution-automation.jpg',
+    image: '/assets/services/solution-automation.jpg',
     imageAlt: 'Automatización comercial de WhatsApp Aleric.dev',
     imageBadge: 'WhatsApp Cloud API · Respuestas 2s',
     detailUrl: '/automatizaciones',
@@ -125,7 +125,7 @@ const specialties: Specialty[] = [
       'Integración de sistemas empresariales, facturación electrónica y ERPs.',
       'Acompañamiento y mentoría técnica senior para tu equipo interno.'
     ],
-    image: '/assets/solution-consultancy.jpg',
+    image: '/assets/services/solution-consultancy.jpg',
     imageAlt: 'Consultoría técnica y auditoría de software Aleric.dev',
     imageBadge: 'Diagnóstico 48h · Ingeniería Senior',
     detailUrl: '/consultoria-tecnica',

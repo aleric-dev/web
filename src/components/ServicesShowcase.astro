@@ -2,13 +2,14 @@
 interface ServiceShowcaseItem {
   id: string;
   name: string;
-  category: string;
   colorName: string;
   badgeClass: string;
   dotClass: string;
   accentTextClass: string;
   buttonClass: string;
-  title: string;
+  titlePrefix: string;
+  titleHighlight: string;
+  titleSuffix?: string;
   description: string;
   bullets: string[];
   imageSrc: string;
@@ -22,13 +23,13 @@ const services: ServiceShowcaseItem[] = [
   {
     id: "web",
     name: "Desarrollo Web",
-    category: "01 // CONVERSIÓN & VELOCIDAD",
     colorName: "cyan",
     badgeClass: "border-cyan-200 dark:border-cyan-900 bg-cyan-50 dark:bg-cyan-950/60 text-cyan-700 dark:text-cyan-300",
     dotClass: "bg-cyan-500",
     accentTextClass: "text-cyan-600 dark:text-cyan-400",
     buttonClass: "bg-cyan-600 hover:bg-cyan-700 text-white shadow-cyan-600/20",
-    title: "Páginas web rápidas que convierten visitas en clientes reales",
+    titlePrefix: "Páginas web rápidas que ",
+    titleHighlight: "convierten visitas en clientes reales",
     description:
       "Tus clientes navegan desde el celular y no esperan páginas lentas. Construimos landings comerciales y tiendas con apertura en menos de un segundo y estructura de persuasión probada.",
     bullets: [
@@ -36,7 +37,7 @@ const services: ServiceShowcaseItem[] = [
       "Diseño enfocado 100% en ventas: sin menús confusos que distraigan al comprador.",
       "Integración directa de pasarelas de pago y botones con mensaje prellenado a WhatsApp."
     ],
-    imageSrc: "/assets/solution-web.jpg",
+    imageSrc: "/assets/services/solution-web.jpg",
     imageAlt: "Desarrollo Web de Alta Conversión y Tiendas Online Aleric.dev",
     imagePill: "Carga < 0.5s · CRO de Alta Conversión",
     detailUrl: "/desarrollo-web",
@@ -45,13 +46,14 @@ const services: ServiceShowcaseItem[] = [
   {
     id: "software",
     name: "Software a Medida",
-    category: "02 // CONTROL OPERATIVO & ESCALABILIDAD",
     colorName: "indigo",
     badgeClass: "border-indigo-200 dark:border-indigo-900 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300",
     dotClass: "bg-indigo-500",
     accentTextClass: "text-indigo-600 dark:text-indigo-400",
     buttonClass: "bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-600/20",
-    title: "Plataformas que reemplazan el desorden de Excel y centralizan tu empresa",
+    titlePrefix: "Plataformas que ",
+    titleHighlight: "reemplazan el desorden de Excel",
+    titleSuffix: " y centralizan tu empresa",
     description:
       "Diseñamos portales de gestión, paneles de clientes y sistemas internos adaptados exactamente a cómo opera tu empresa. Cero plantillas rígidas y cero cobros por cada empleado nuevo.",
     bullets: [
@@ -59,7 +61,7 @@ const services: ServiceShowcaseItem[] = [
       "Inventarios, pedidos y facturación sincronizados en una base de datos segura.",
       "Propiedad total de la empresa: el software, código y datos te pertenecen al 100%."
     ],
-    imageSrc: "/assets/solution-software.jpg",
+    imageSrc: "/assets/services/solution-software.jpg",
     imageAlt: "Plataformas y Software a la Medida Aleric.dev",
     imagePill: "Arquitectura Empresarial · 100% Propiedad",
     detailUrl: "/software-a-medida",
@@ -68,13 +70,13 @@ const services: ServiceShowcaseItem[] = [
   {
     id: "whatsapp",
     name: "Ventas por WhatsApp",
-    category: "03 // CIERRE COMERCIAL & ATENCIÓN 24/7",
     colorName: "emerald",
     badgeClass: "border-emerald-200 dark:border-emerald-900 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300",
     dotClass: "bg-emerald-500",
     accentTextClass: "text-emerald-600 dark:text-emerald-400",
     buttonClass: "bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-600/20",
-    title: "Atención inmediata en WhatsApp API para que ningún cliente se escape",
+    titlePrefix: "Atención inmediata en WhatsApp para ",
+    titleHighlight: "que ningún cliente se escape",
     description:
       "Automatizamos tus canales de venta y cobranza con la API oficial de WhatsApp: respuestas en 2 segundos, catálogos interactivos y cotizaciones automáticas las 24 horas del día.",
     bullets: [
@@ -82,7 +84,7 @@ const services: ServiceShowcaseItem[] = [
       "Cotizaciones guiadas automáticas y traspaso inteligente a asesor solo al momento de pago.",
       "Cobranza programada y amigable que acelera el recaudo sin desgastar a tu equipo."
     ],
-    imageSrc: "/assets/solution-automation.jpg",
+    imageSrc: "/assets/services/solution-automation.jpg",
     imageAlt: "Automatización Comercial y WhatsApp Cloud API Aleric.dev",
     imagePill: "WhatsApp API Oficial · Respuestas < 2s",
     detailUrl: "/automatizaciones",
@@ -91,13 +93,14 @@ const services: ServiceShowcaseItem[] = [
   {
     id: "consultoria",
     name: "Consultoría Técnica",
-    category: "04 // DIAGNÓSTICO & ARQUITECTURA SENIOR",
     colorName: "amber",
     badgeClass: "border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300",
     dotClass: "bg-amber-500",
     accentTextClass: "text-amber-600 dark:text-amber-400",
     buttonClass: "bg-amber-600 hover:bg-amber-700 text-white shadow-amber-600/20",
-    title: "Auditoría imparcial, rescate de sistemas e integración empresarial",
+    titlePrefix: "Auditoría imparcial, ",
+    titleHighlight: "rescate de software",
+    titleSuffix: " e integración empresarial",
     description:
       "Si tu software está fallando, tus desarrolladores están estancados o necesitas conectar tu plataforma con facturación electrónica y ERPs, auditamos y blindamos tu infraestructura.",
     bullets: [
@@ -105,7 +108,7 @@ const services: ServiceShowcaseItem[] = [
       "Conexión con facturación electrónica e integraciones contables sin reprocesos.",
       "Mentoría 1-a-1 y acompañamiento a líderes técnicos para garantizar código limpio."
     ],
-    imageSrc: "/assets/solution-consultancy.jpg",
+    imageSrc: "/assets/services/solution-consultancy.jpg",
     imageAlt: "Consultoría Técnica Senior y Rescate de Software Aleric.dev",
     imagePill: "Auditoría CTO · Saneamiento & Rescate",
     detailUrl: "/consultoria-tecnica",
@@ -167,18 +170,19 @@ const services: ServiceShowcaseItem[] = [
           <div class={`lg:col-span-6 space-y-6 ${service.reverse ? "lg:col-start-1" : ""}`}>
             
             <div class="space-y-3">
-              <div class="flex items-center gap-2">
+              <!-- Badge Limpio con Nombre Oficial y Punto de Color (Sin números 01 //) -->
+              <div class="flex items-center">
                 <span class={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg border font-mono text-[11px] font-bold uppercase tracking-wider ${service.badgeClass}`}>
                   <span class={`w-1.5 h-1.5 rounded-full ${service.dotClass}`}></span>
                   {service.name}
                 </span>
-                <span class="text-xs font-mono text-slate-400 dark:text-slate-500">
-                  {service.category}
-                </span>
               </div>
 
+              <!-- Título con Palabras Clave en el Color de la Vertical -->
               <h3 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
-                {service.title}
+                {service.titlePrefix}
+                <span class={service.accentTextClass}>{service.titleHighlight}</span>
+                {service.titleSuffix ? service.titleSuffix : ""}
               </h3>
             </div>
 
