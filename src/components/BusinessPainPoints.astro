@@ -1,0 +1,122 @@
+---
+interface LeakItem {
+  tag: string;
+  badge: string;
+  badgeColor: string;
+  image: string;
+  alt: string;
+  title: string;
+  lossMetric: string;
+  href: string;
+}
+
+const leaks: LeakItem[] = [
+  {
+    tag: "Ventas por WhatsApp",
+    badge: "❌ Venta Perdida",
+    badgeColor: "bg-rose-600 text-white",
+    image: "/assets/leak-whatsapp.jpg",
+    alt: "Fuga comercial en WhatsApp por demora en respuestas",
+    title: "El mensaje que se enfrió",
+    lossMetric: "Tardar más de 5 minutos hace que el cliente compre a tu competencia.",
+    href: "/automatizaciones",
+  },
+  {
+    tag: "Desarrollo Web",
+    badge: "⏱️ 4.8s de Carga",
+    badgeColor: "bg-amber-600 text-white",
+    image: "/assets/leak-slow-web.jpg",
+    alt: "Página web lenta que hace perder el presupuesto de pauta",
+    title: "La web lenta que espanta visitas",
+    lossMetric: "Más del 60% de tus visitas se van antes de ver tus productos.",
+    href: "/desarrollo-web",
+  },
+  {
+    tag: "Software a Medida",
+    badge: "⚠️ Fórmulas Rotas",
+    badgeColor: "bg-rose-600 text-white",
+    image: "/assets/leak-excel.jpg",
+    alt: "Desorden operativo y errores por hojas de cálculo compartidas",
+    title: "El descontrol de Excel compartido",
+    lossMetric: "Pedidos duplicados, inventario descuadrado y datos sin seguridad.",
+    href: "/software-a-medida",
+  },
+  {
+    tag: "Consultoría Técnica",
+    badge: "🛑 Error 502 Offline",
+    badgeColor: "bg-slate-900 text-white dark:bg-rose-600",
+    image: "/assets/leak-system.jpg",
+    alt: "Sistema caído o código abandonado por el proveedor anterior",
+    title: "El sistema caído o abandonado",
+    lossMetric: "Operación parada y dinero atrapado en un software sin soporte.",
+    href: "/consultoria-tecnica",
+  },
+];
+---
+
+<section id="fugas-operativas" class="py-16 sm:py-24 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Encabezado Directo y Visual -->
+    <div class="max-w-3xl mb-12 sm:mb-16 space-y-3">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-rose-500/30 bg-rose-500/10 font-mono text-[11px] font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">
+        <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
+        Ejemplos Reales Visibles
+      </div>
+      <h2 class="text-2xl sm:text-4xl lg:text-[2.6rem] font-black text-slate-900 dark:text-white tracking-tight leading-[1.15]">
+        ¿Reconoces alguna de estas 4 fugas en tu empresa?
+      </h2>
+      <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+        Situaciones reales que le cuestan clientes y horas a las empresas todos los días:
+      </p>
+    </div>
+
+    <!-- Galería Visual de Casos Reales (Sin cards de texto) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {leaks.map((item) => (
+        <a 
+          href={item.href}
+          class="group flex flex-col space-y-3.5 focus:outline-hidden"
+        >
+          <!-- Imagen Real de la Fuga con Badge Integrado -->
+          <div class="relative aspect-square w-full rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-800/90 bg-slate-100 dark:bg-slate-900 shadow-sm transition-all duration-300 group-hover:border-slate-400 dark:group-hover:border-slate-600 group-hover:shadow-md">
+            <img 
+              src={item.image} 
+              alt={item.alt}
+              class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+              width="600"
+              height="600"
+            />
+            
+            <!-- Etiqueta Superior de Estado -->
+            <div class="absolute top-3 left-3">
+              <span class={`inline-flex items-center px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold tracking-wide shadow-sm ${item.badgeColor}`}>
+                {item.badge}
+              </span>
+            </div>
+
+            <!-- Tag de Categoría Inferior -->
+            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-xs text-white text-[10px] font-mono uppercase tracking-wider font-semibold">
+                {item.tag}
+              </span>
+            </div>
+          </div>
+
+          <!-- Micro Texto Conciso (2 líneas máximo) -->
+          <div class="space-y-1">
+            <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors flex items-center justify-between">
+              <span>{item.title}</span>
+              <span class="text-xs text-slate-400 group-hover:translate-x-1 transition-transform">→</span>
+            </h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-normal">
+              {item.lossMetric}
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</section>

@@ -1,334 +1,327 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Globe, 
   Rocket, 
   Zap, 
   ShieldCheck, 
   ArrowRight, 
-  CheckCircle2 
+  CheckCircle2,
+  ExternalLink
 } from 'lucide-react';
 
+interface Specialty {
+  id: string;
+  name: string;
+  category: string;
+  icon: React.ComponentType<{ className?: string }>;
+  accentColor: string;
+  badgeBg: string;
+  badgeText: string;
+  tabActiveClass: string;
+  tabInactiveClass: string;
+  titlePrefix: string;
+  highlightedText: string;
+  description: string;
+  bullets: string[];
+  image: string;
+  imageAlt: string;
+  imageBadge: string;
+  detailUrl: string;
+  contactService: string;
+  quickSummary: string;
+}
+
+const specialties: Specialty[] = [
+  {
+    id: 'web',
+    name: 'Desarrollo Web',
+    category: 'Ventas & Tráfico',
+    icon: Globe,
+    accentColor: 'text-cyan-600 dark:text-cyan-400',
+    badgeBg: 'bg-cyan-50 dark:bg-cyan-950/70 border-cyan-200 dark:border-cyan-800',
+    badgeText: 'text-cyan-700 dark:text-cyan-300',
+    tabActiveClass: 'bg-cyan-600 text-white border-cyan-600 shadow-md shadow-cyan-500/25 scale-[1.02]',
+    tabInactiveClass: 'border-cyan-200 dark:border-cyan-800/70 text-cyan-700 dark:text-cyan-300 bg-cyan-50/60 dark:bg-cyan-950/40 hover:bg-cyan-100 dark:hover:bg-cyan-900/60',
+    titlePrefix: 'Páginas web y tiendas para ',
+    highlightedText: 'multiplicar tus ventas',
+    description: 'Diseñamos landings comerciales ultrarrápidas que atrapan la atención y llevan a cada visitante a comprar o escribirte por WhatsApp en menos de un segundo.',
+    bullets: [
+      'Carga en < 0.5s en celular: cero dinero perdido en publicidad por demoras.',
+      'Botones directos de compra, pasarelas de pago (PSE, tarjetas) y WhatsApp.',
+      'Estructura de alta conversión (CRO) sin menús confusos donde el cliente se pierde.'
+    ],
+    image: '/assets/solution-web.jpg',
+    imageAlt: 'Desarrollo de páginas web y tiendas online Aleric.dev',
+    imageBadge: 'Carga < 0.5s · Alta Conversión',
+    detailUrl: '/desarrollo-web',
+    contactService: 'Desarrollo Web & Landings de Alta Conversión',
+    quickSummary: 'Landings y tiendas en línea con apertura instantánea (< 1s) para que no pierdas visitas de publicidad.'
+  },
+  {
+    id: 'software',
+    name: 'Software a Medida',
+    category: 'Operaciones & Sal de Excel',
+    icon: Rocket,
+    accentColor: 'text-indigo-600 dark:text-indigo-400',
+    badgeBg: 'bg-indigo-50 dark:bg-indigo-950/70 border-indigo-200 dark:border-indigo-800',
+    badgeText: 'text-indigo-700 dark:text-indigo-300',
+    tabActiveClass: 'bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-500/25 scale-[1.02]',
+    tabInactiveClass: 'border-indigo-200 dark:border-indigo-800/70 text-indigo-700 dark:text-indigo-300 bg-indigo-50/60 dark:bg-indigo-950/40 hover:bg-indigo-100 dark:hover:bg-indigo-900/60',
+    titlePrefix: 'Sal del desorden de Excel con tu ',
+    highlightedText: 'propio software a medida',
+    description: 'Reemplaza hojas de cálculo desordenadas o licencias mensuales caras por una plataforma web propia y segura, con control de inventarios, pedidos y clientes.',
+    bullets: [
+      'Roles y permisos estrictos: cada empleado ve únicamente lo que le corresponde.',
+      'Código 100% de tu propiedad: cero mensualidades forzadas por empleado o asiento.',
+      'Acceso desde cualquier computador o celular con sincronización en tiempo real.'
+    ],
+    image: '/assets/solution-software.jpg',
+    imageAlt: 'Plataforma de software a la medida Aleric.dev',
+    imageBadge: 'Código 100% Tuyo · Cero Licencias',
+    detailUrl: '/software-a-medida',
+    contactService: 'Desarrollo de Software & SaaS a la Medida',
+    quickSummary: 'Plataformas web propias para centralizar pedidos, clientes e inventarios sin riesgo de fórmulas rotas.'
+  },
+  {
+    id: 'automatizaciones',
+    name: 'Ventas por WhatsApp',
+    category: 'Atención 24/7 & Cobranzas',
+    icon: Zap,
+    accentColor: 'text-emerald-600 dark:text-emerald-400',
+    badgeBg: 'bg-emerald-50 dark:bg-emerald-950/70 border-emerald-200 dark:border-emerald-800',
+    badgeText: 'text-emerald-700 dark:text-emerald-300',
+    tabActiveClass: 'bg-emerald-600 text-white border-emerald-600 shadow-md shadow-emerald-500/25 scale-[1.02]',
+    tabInactiveClass: 'border-emerald-200 dark:border-emerald-800/70 text-emerald-700 dark:text-emerald-300 bg-emerald-50/60 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/60',
+    titlePrefix: 'Atención y ventas comerciales automáticas por ',
+    highlightedText: 'WhatsApp las 24 horas',
+    description: 'Responde a prospectos en 2 segundos, genera cotizaciones guiadas al instante y envía recordatorios de cobranza amables sin desgastar a tu equipo.',
+    bullets: [
+      'Respuestas inmediatas día y noche: no vuelvas a perder clientes por demoras.',
+      'Cotización automática en el mismo chat y pase al asesor cuando están listos.',
+      'WhatsApp Cloud API oficial: cero riesgos de bloqueos de número.'
+    ],
+    image: '/assets/solution-automation.jpg',
+    imageAlt: 'Automatización comercial de WhatsApp Aleric.dev',
+    imageBadge: 'WhatsApp Cloud API · Respuestas 2s',
+    detailUrl: '/automatizaciones',
+    contactService: 'Automatización de Operaciones & WhatsApp API',
+    quickSummary: 'Flujos oficiales en WhatsApp Cloud API para responder en 2s, cotizar y recordar pagos sin intervención manual.'
+  },
+  {
+    id: 'consultoria',
+    name: 'Consultoría Técnica',
+    category: 'Auditoría & Rescate Cloud',
+    icon: ShieldCheck,
+    accentColor: 'text-amber-600 dark:text-amber-400',
+    badgeBg: 'bg-amber-50 dark:bg-amber-950/70 border-amber-200 dark:border-amber-800',
+    badgeText: 'text-amber-700 dark:text-amber-300',
+    tabActiveClass: 'bg-amber-600 text-white border-amber-600 shadow-md shadow-amber-500/25 scale-[1.02]',
+    tabInactiveClass: 'border-amber-200 dark:border-amber-800/70 text-amber-700 dark:text-amber-300 bg-amber-50/60 dark:bg-amber-950/40 hover:bg-amber-100 dark:hover:bg-amber-900/60',
+    titlePrefix: 'Diagnóstico senior y rescate de ',
+    highlightedText: 'plataformas con problemas',
+    description: 'Identificamos cuellos de botella de lentitud, solucionamos fallas críticas, auditamos código legacy e integramos APIs complejas (ERP, facturación, pasarelas).',
+    bullets: [
+      'Diagnóstico en 48 horas de cuellos de botella, bugs y vulnerabilidades.',
+      'Integración de sistemas empresariales, facturación electrónica y ERPs.',
+      'Acompañamiento y mentoría técnica senior para tu equipo interno.'
+    ],
+    image: '/assets/solution-consultancy.jpg',
+    imageAlt: 'Consultoría técnica y auditoría de software Aleric.dev',
+    imageBadge: 'Diagnóstico 48h · Ingeniería Senior',
+    detailUrl: '/consultoria-tecnica',
+    contactService: 'Consultoría Técnica Senior',
+    quickSummary: 'Auditoría de código, rescate de sistemas caídos y conexión de APIs complejas (facturación, ERPs).'
+  }
+];
+
 export const ProfileRouter: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<string>('web');
+
+  const activeSpecialty = specialties.find(s => s.id === activeTab) || specialties[0];
+  const ActiveIcon = activeSpecialty.icon;
+
   return (
-    <div id="soluciones" className="scroll-mt-20 flex flex-col divide-y divide-slate-200 dark:divide-slate-800/80">
-      
-      {/* Barra de Selección Rápida de Soluciones */}
-      <div className="py-6 bg-white dark:bg-slate-900/90 border-b border-slate-200/80 dark:border-slate-800 transition-colors">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-center sm:text-left">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-              Especialidades Comerciales
-            </span>
-            <p className="text-sm font-extrabold text-slate-900 dark:text-white">
-              ¿Qué necesita tu empresa hoy?
+    <section id="soluciones" className="scroll-mt-20 py-16 sm:py-24 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 transition-colors">
+      <div className="max-w-7xl mx-auto px-6">
+        
+        {/* Encabezado Principal de Especialidades Comerciales */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 font-mono text-[11px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+            Especialidades Comerciales
+          </div>
+          <h2 className="text-2xl sm:text-4xl lg:text-[2.6rem] font-black text-slate-900 dark:text-white tracking-tight leading-[1.15]">
+            ¿Qué necesita tu empresa hoy?
+          </h2>
+          <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+            Presiona cada servicio para conocer cómo resolvemos cada reto de tu operación:
+          </p>
+
+          {/* Selector de Pestañas Interactivas con Nombres Oficiales y Colores de Servicio */}
+          <div className="pt-4 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+            {specialties.map((s) => {
+              const Icon = s.icon;
+              const isActive = s.id === activeTab;
+              return (
+                <button
+                  key={s.id}
+                  onClick={() => setActiveTab(s.id)}
+                  type="button"
+                  className={`px-4 sm:px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm border transition-all duration-200 flex items-center gap-2 cursor-pointer shadow-2xs ${
+                    isActive ? s.tabActiveClass : s.tabInactiveClass
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  <span>{s.name}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Panel Protagonista de la Especialidad Seleccionada */}
+        <div className="p-6 sm:p-10 lg:p-12 rounded-3xl bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 shadow-xs mb-16 transition-all duration-300">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* Columna Izquierda: Información de Negocio */}
+            <div className="lg:col-span-6 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+              
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
+                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg border text-xs font-bold uppercase tracking-wider ${activeSpecialty.badgeBg} ${activeSpecialty.badgeText}`}>
+                  <ActiveIcon className="w-3.5 h-3.5" />
+                  <span>{activeSpecialty.category}</span>
+                </span>
+                <span className="font-mono text-xs font-bold text-slate-400 dark:text-slate-500">
+                  {activeSpecialty.name}
+                </span>
+              </div>
+
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-snug">
+                {activeSpecialty.titlePrefix}
+                <span className={activeSpecialty.accentColor}>{activeSpecialty.highlightedText}</span>
+              </h3>
+
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+                {activeSpecialty.description}
+              </p>
+
+              {/* Puntos Clave de Valor */}
+              <div className="space-y-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 text-left w-full pt-1">
+                {activeSpecialty.bullets.map((bullet, idx) => (
+                  <div key={idx} className="flex items-start gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <span>{bullet}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Botones de Invitación al Detalle */}
+              <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 w-full sm:w-auto">
+                <a
+                  href={activeSpecialty.detailUrl}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-bold text-xs uppercase tracking-wider shadow-sm transition group"
+                >
+                  <span>Ver Detalle de {activeSpecialty.name}</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </a>
+
+                <a
+                  href="#contacto"
+                  className="inline-flex items-center justify-center px-5 py-3.5 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-xs uppercase tracking-wider border border-slate-300 dark:border-slate-800 transition shadow-2xs"
+                >
+                  Cotizar esta Solución
+                </a>
+              </div>
+
+            </div>
+
+            {/* Columna Derecha: Imagen Real de la Solución */}
+            <div className="lg:col-span-6 w-full">
+              <div className="relative rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-800/90 bg-white dark:bg-slate-950 shadow-md group">
+                <img
+                  src={activeSpecialty.image}
+                  alt={activeSpecialty.imageAlt}
+                  className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-102"
+                  width="640"
+                  height="480"
+                  loading="lazy"
+                />
+                <div className="absolute bottom-3 left-3 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs border border-slate-200 dark:border-slate-800 rounded-lg px-3 py-1.5 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  <span>{activeSpecialty.imageBadge}</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* ========================================================================= */}
+        {/* PARTE INFERIOR: VISTA BREVE DE TODAS LAS ESPECIALIDADES */}
+        {/* ========================================================================= */}
+        <div className="border-t border-slate-200 dark:border-slate-800/80 pt-12">
+          <div className="text-center sm:text-left mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                Resumen Ejecutivo
+              </span>
+              <h4 className="text-lg font-bold text-slate-900 dark:text-white">
+                Los 4 Servicios en Breve
+              </h4>
+            </div>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Haz clic en cualquier servicio para ver su alcance completo
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-bold">
-            <a
-              href="#desarrollo-web-solucion"
-              className="px-3.5 py-2 rounded-xl bg-cyan-50 dark:bg-cyan-950/60 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/70 hover:bg-cyan-100 transition flex items-center gap-1.5"
-            >
-              <Globe className="w-3.5 h-3.5" />
-              <span>01. Páginas Web</span>
-            </a>
-            <a
-              href="#software-medida-solucion"
-              className="px-3.5 py-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/70 hover:bg-indigo-100 transition flex items-center gap-1.5"
-            >
-              <Rocket className="w-3.5 h-3.5" />
-              <span>02. Software a Medida</span>
-            </a>
-            <a
-              href="#automatizaciones-solucion"
-              className="px-3.5 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/70 hover:bg-emerald-100 transition flex items-center gap-1.5"
-            >
-              <Zap className="w-3.5 h-3.5" />
-              <span>03. Automatizaciones</span>
-            </a>
-            <a
-              href="#consultoria-solucion"
-              className="px-3.5 py-2 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/70 hover:bg-amber-100 transition flex items-center gap-1.5"
-            >
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>04. Consultoría</span>
-            </a>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {specialties.map((item) => {
+              const Icon = item.icon;
+              const isSelected = item.id === activeTab;
+              return (
+                <div
+                  key={item.id}
+                  onClick={() => setActiveTab(item.id)}
+                  className={`p-5 rounded-2xl border transition-all duration-200 flex flex-col justify-between cursor-pointer ${
+                    isSelected
+                      ? 'bg-slate-100 dark:bg-slate-900 border-indigo-500/50 shadow-xs'
+                      : 'bg-white dark:bg-slate-900/40 border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
+                  }`}
+                >
+                  <div className="space-y-2.5">
+                    <div className="flex items-center justify-between">
+                      <Icon className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+                      <span className="text-[10px] font-mono text-slate-400">
+                        {item.category}
+                      </span>
+                    </div>
+
+                    <h5 className="font-bold text-sm text-slate-900 dark:text-white">
+                      {item.name}
+                    </h5>
+
+                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
+                      {item.quickSummary}
+                    </p>
+                  </div>
+
+                  <div className="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+                    <a
+                      href={item.detailUrl}
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-1 text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline"
+                    >
+                      <span>Ver Detalle</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
+
       </div>
-
-      {/* ========================================================================= */}
-      {/* SECCIÓN 1: DESARROLLO WEB & LANDINGS DE ALTA CONVERSIÓN */}
-      {/* ========================================================================= */}
-      <section id="desarrollo-web-solucion" className="scroll-mt-24 py-16 sm:py-24 bg-white dark:bg-slate-950 transition-colors duration-300 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            
-            {/* Contenido Izquierda */}
-            <div className="lg:col-span-6 space-y-5 text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-50 dark:bg-cyan-950/70 border border-cyan-200 dark:border-cyan-800 text-cyan-700 dark:text-cyan-300 text-xs font-bold uppercase tracking-wider">
-                <Globe className="w-4 h-4" />
-                <span>Solución 01 · Páginas Web &amp; Ventas</span>
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
-                Páginas web y tiendas para <span className="text-cyan-600 dark:text-cyan-400">multiplicar tus ventas</span>
-              </h2>
-
-              <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
-                Olvídate de páginas lentas y menús confusos que hacen que tus clientes se vayan. Diseñamos <strong>landings comerciales ultrarrápidas</strong> que atrapan la atención y llevan a cada visitante a comprar o escribirte por WhatsApp.
-              </p>
-
-              <div className="space-y-3 pt-1 text-sm text-slate-700 dark:text-slate-300">
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-600 dark:text-cyan-400 shrink-0" />
-                  <span><strong>Carga en &lt; 1s en celular:</strong> tus campañas publicitarias y anuncios no pierden dinero por esperas.</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-600 dark:text-cyan-400 shrink-0" />
-                  <span><strong>Pagos y pedidos fáciles:</strong> integración con PSE, tarjetas de crédito y WhatsApp directo.</span>
-                </div>
-              </div>
-
-              <div className="pt-2 flex flex-col sm:flex-row items-center gap-3.5">
-                <a
-                  href="/desarrollo-web"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-cyan-500/20 transition group"
-                >
-                  <span>Ver Solución Web</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </a>
-                <a
-                  href="#contacto"
-                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-xs uppercase tracking-wider border border-slate-300 dark:border-slate-800 transition"
-                >
-                  Cotizar mi Página
-                </a>
-              </div>
-            </div>
-
-            {/* Imagen Derecha */}
-            <div className="lg:col-span-6 w-full">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/90 dark:border-slate-800/90 bg-white dark:bg-slate-900 group">
-                <img
-                  src="/assets/solution-web.jpg"
-                  alt="Desarrollo de páginas web y tiendas online Aleric.dev"
-                  className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-[1.02]"
-                  width="640"
-                  height="480"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* SECCIÓN 2: SOFTWARE & SISTEMAS A LA MEDIDA */}
-      {/* ========================================================================= */}
-      <section id="software-medida-solucion" className="scroll-mt-24 py-16 sm:py-24 bg-slate-50 dark:bg-slate-950/60 transition-colors duration-300 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            
-            {/* Imagen Izquierda (Layout Invertido) */}
-            <div className="lg:col-span-6 w-full order-2 lg:order-1">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/90 dark:border-slate-800/90 bg-white dark:bg-slate-900 group">
-                <img
-                  src="/assets/solution-software.jpg"
-                  alt="Plataforma de software a la medida Aleric.dev"
-                  className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-[1.02]"
-                  width="640"
-                  height="480"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-
-            {/* Contenido Derecha */}
-            <div className="lg:col-span-6 space-y-5 text-left order-1 lg:order-2">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider">
-                <Rocket className="w-4 h-4" />
-                <span>Solución 02 · Sal de Excel &amp; Centraliza tu Empresa</span>
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
-                Sal del desorden de Excel con tu <span className="text-indigo-600 dark:text-indigo-400">propio software</span>
-              </h2>
-
-              <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
-                Hacer crecer tu negocio sobre hojas de cálculo compartidas que se desconfiguran o pagar mensualidades caras por software rígido frena tu operación. Desarrollamos <strong>tu propia plataforma web a la medida</strong> para que tengas el control total de ventas, clientes e inventario.
-              </p>
-
-              <div className="space-y-3 pt-1 text-sm text-slate-700 dark:text-slate-300">
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-indigo-600 dark:text-indigo-400 shrink-0" />
-                  <span><strong>Roles seguros por empleado:</strong> cada persona solo ve y edita lo que le corresponde.</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-indigo-600 dark:text-indigo-400 shrink-0" />
-                  <span><strong>Código 100% tuyo:</strong> cero ataduras ni pagos mensuales abusivos por usuario.</span>
-                </div>
-              </div>
-
-              <div className="pt-2 flex flex-col sm:flex-row items-center gap-3.5">
-                <a
-                  href="/software-a-medida"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-indigo-500/20 transition group"
-                >
-                  <span>Conocer Software a Medida</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </a>
-                <a
-                  href="#contacto"
-                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-xs uppercase tracking-wider border border-slate-300 dark:border-slate-800 transition shadow-xs"
-                >
-                  Cuéntanos tu Necesidad
-                </a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* SECCIÓN 3: AUTOMATIZACIONES & WHATSAPP PARA TU NEGOCIO */}
-      {/* ========================================================================= */}
-      <section id="automatizaciones-solucion" className="scroll-mt-24 py-16 sm:py-24 bg-white dark:bg-slate-950 transition-colors duration-300 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            
-            {/* Contenido Izquierda */}
-            <div className="lg:col-span-6 space-y-5 text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/70 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider">
-                <Zap className="w-4 h-4" />
-                <span>Solución 03 · Ventas &amp; Atención por WhatsApp</span>
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
-                Atiende y cobra por WhatsApp en <span className="text-emerald-600 dark:text-emerald-400">menos de 2 segundos</span>
-              </h2>
-
-              <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
-                Cuando un cliente te escribe listo para comprar y nadie le contesta rápido, se va con tu competencia. Automatizamos <strong>respuestas inmediatas, cotizaciones en vivo y recordatorios de pago</strong> para que tu empresa nunca duerma.
-              </p>
-
-              <div className="space-y-3 pt-1 text-sm text-slate-700 dark:text-slate-300">
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                  <span><strong>Cero clientes esperando:</strong> atención comercial guiada 24/7 con API oficial de WhatsApp (sin bloqueos).</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                  <span><strong>Cobranza sin desgaste:</strong> recordatorios amables con link de pago directo y recibo al instante.</span>
-                </div>
-              </div>
-
-              <div className="pt-2 flex flex-col sm:flex-row items-center gap-3.5">
-                <a
-                  href="/automatizaciones"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition group"
-                >
-                  <span>Ver Ventas por WhatsApp</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </a>
-                <a
-                  href="#contacto"
-                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-xs uppercase tracking-wider border border-slate-300 dark:border-slate-800 transition"
-                >
-                  Cotizar WhatsApp
-                </a>
-              </div>
-            </div>
-
-            {/* Imagen Derecha */}
-            <div className="lg:col-span-6 w-full">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/90 dark:border-slate-800/90 bg-white dark:bg-slate-900 group">
-                <img
-                  src="/assets/solution-automation.jpg"
-                  alt="Automatización comercial de WhatsApp Aleric.dev"
-                  className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-[1.02]"
-                  width="640"
-                  height="480"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* SECCIÓN 4: CONSULTORÍA TÉCNICA SENIOR */}
-      {/* ========================================================================= */}
-      <section id="consultoria-solucion" className="scroll-mt-24 py-16 sm:py-24 bg-slate-50 dark:bg-slate-950/60 transition-colors duration-300 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            
-            {/* Imagen Izquierda (Layout Invertido) */}
-            <div className="lg:col-span-6 w-full order-2 lg:order-1">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/90 dark:border-slate-800/90 bg-white dark:bg-slate-900 group">
-                <img
-                  src="/assets/solution-consultancy.jpg"
-                  alt="Consultoría técnica y auditoría de software Aleric.dev"
-                  className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-[1.02]"
-                  width="640"
-                  height="480"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-
-            {/* Contenido Derecha */}
-            <div className="lg:col-span-6 space-y-5 text-left order-1 lg:order-2">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 dark:bg-amber-950/70 border border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300 text-xs font-bold uppercase tracking-wider">
-                <ShieldCheck className="w-4 h-4" />
-                <span>Solución 04 · Respaldo de Ingeniería Senior</span>
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
-                Diagnóstico, rescate de plataformas y <span className="text-amber-600 dark:text-amber-400">dirección técnica</span>
-              </h2>
-
-              <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
-                ¿Tu software actual se cae, está lento o tu proveedor anterior te dejó el sistema a medias? Realizamos <strong>auditorías imparciales</strong> para encontrar la causa raíz, rescatamos código crítico y conectamos tus plataformas con <strong>tus sistemas contables y ERP</strong>.
-              </p>
-
-              <div className="space-y-3 pt-1 text-sm text-slate-700 dark:text-slate-300">
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0" />
-                  <span><strong>Diagnóstico certero:</strong> te explicamos en español claro qué está fallando y cómo solucionarlo.</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0" />
-                  <span><strong>Integraciones que funcionan:</strong> conectamos facturación electrónica, sistemas contables, CRM y pasarelas de pago.</span>
-                </div>
-              </div>
-
-              <div className="pt-2 flex flex-col sm:flex-row items-center gap-3.5">
-                <a
-                  href="/consultoria-tecnica"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-amber-500/20 transition group"
-                >
-                  <span>Ver Consultoría Técnica</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </a>
-                <a
-                  href="#contacto"
-                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-xs uppercase tracking-wider border border-slate-300 dark:border-slate-800 transition shadow-xs"
-                >
-                  Agendar Diagnóstico
-                </a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-    </div>
+    </section>
   );
 };

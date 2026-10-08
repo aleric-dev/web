@@ -87,14 +87,14 @@ const isActive = (href: string) => {
   </div>
 
   <!-- Mobile Dropdown Menu -->
-  <div id="mobile-menu" class="hidden xl:hidden bg-white/98 dark:bg-slate-900/98 border-b border-slate-200 dark:border-slate-800 px-6 py-6 space-y-3 backdrop-blur-lg">
+  <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-6 space-y-3 shadow-2xl relative z-50">
     <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">Especialidades &amp; Páginas</div>
     {servicePages.map((page) => {
       const active = isActive(page.href);
       return (
         <a
           href={page.href}
-          class={`block px-3 py-2 rounded-xl text-sm font-semibold transition ${
+          class={`block px-3 py-2.5 rounded-xl text-sm font-semibold transition ${
             active
               ? 'bg-indigo-600 text-white'
               : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
@@ -107,7 +107,7 @@ const isActive = (href: string) => {
     <div class="pt-3 border-t border-slate-200 dark:border-slate-800">
       <a
         href="#contacto"
-        class="block w-full py-3 rounded-xl bg-indigo-600 text-white font-bold text-xs uppercase tracking-wider text-center shadow-sm"
+        class="block w-full py-3.5 rounded-xl bg-indigo-600 text-white font-bold text-xs uppercase tracking-wider text-center shadow-md hover:bg-indigo-700 transition"
       >
         Agendar Reunión de Diagnóstico
       </a>
@@ -123,27 +123,22 @@ const isActive = (href: string) => {
       const btn = document.getElementById('mobile-menu-btn');
       const menu = document.getElementById('mobile-menu');
 
-      // 1. Manejo del menú móvil
-      if (btn && menu) {
-        btn.onclick = () => {
-          menu.classList.toggle('hidden');
-        };
-        menu.querySelectorAll('a').forEach(link => {
-          link.onclick = () => menu.classList.add('hidden');
-        });
-      }
-
-      // 2. Manejo de integración reactiva al scroll
+      // 1. Manejo reactivo al scroll
       function handleScroll() {
         if (!header) return;
-        const isScrolled = window.scrollY > 20;
+        const isMenuOpen = menu && !menu.classList.contains('hidden');
+        if (isMenuOpen) {
+          header.classList.remove('bg-transparent', 'border-transparent');
+          header.classList.add('bg-white', 'dark:bg-slate-900', 'border-slate-200', 'dark:border-slate-800', 'shadow-sm');
+          return;
+        }
 
+        const isScrolled = window.scrollY > 20;
         if (isScrolled) {
-          // Estado Sticky con Glassmorphism integrado
           header.classList.remove('bg-transparent', 'border-transparent', 'py-3', 'sm:py-4');
           header.classList.add(
-            'bg-white/90',
-            'dark:bg-slate-950/90',
+            'bg-white/95',
+            'dark:bg-slate-950/95',
             'backdrop-blur-md',
             'border-slate-200/80',
             'dark:border-slate-800/80',
@@ -152,10 +147,9 @@ const isActive = (href: string) => {
             'sm:py-2.5'
           );
         } else {
-          // Estado Inicial integrado en el Hero
           header.classList.remove(
-            'bg-white/90',
-            'dark:bg-slate-950/90',
+            'bg-white/95',
+            'dark:bg-slate-950/95',
             'backdrop-blur-md',
             'border-slate-200/80',
             'dark:border-slate-800/80',
@@ -165,6 +159,26 @@ const isActive = (href: string) => {
           );
           header.classList.add('bg-transparent', 'border-transparent', 'py-3', 'sm:py-4');
         }
+      }
+
+      // 2. Manejo del menú móvil
+      if (btn && menu) {
+        btn.onclick = () => {
+          const isOpening = menu.classList.contains('hidden');
+          menu.classList.toggle('hidden');
+          if (isOpening) {
+            header.classList.remove('bg-transparent', 'border-transparent');
+            header.classList.add('bg-white', 'dark:bg-slate-900', 'border-slate-200', 'dark:border-slate-800', 'shadow-sm');
+          } else {
+            handleScroll();
+          }
+        };
+        menu.querySelectorAll('a').forEach(link => {
+          link.onclick = () => {
+            menu.classList.add('hidden');
+            handleScroll();
+          };
+        });
       }
 
       window.removeEventListener('scroll', handleScroll);

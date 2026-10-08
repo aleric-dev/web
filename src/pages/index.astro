@@ -2,7 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import CommercialHero from '../components/CommercialHero.astro';
-import { ProfileRouter } from '../components/ProfileRouter';
+import BusinessPainPoints from '../components/BusinessPainPoints.astro';
+import BusinessGuarantees from '../components/BusinessGuarantees.astro';
+import ServicesShowcase from '../components/ServicesShowcase.astro';
+import BeforeAfterTransform from '../components/BeforeAfterTransform.astro';
 import WhyUsSection from '../components/WhyUsSection.astro';
 import FaqSection from '../components/FaqSection.astro';
 import ContactSection from '../components/ContactSection.astro';
@@ -71,16 +74,25 @@ const jsonLd = {
     <!-- Hero Comercial Limpio -->
     <CommercialHero />
 
-    <!-- Orquestador Principal de Soluciones Especializadas en Secciones Protagonistas -->
-    <ProfileRouter client:load />
+    <!-- 1. ANTES DE LAS SOLUCIONES: Diagnóstico de Fugas Operativas de Negocio -->
+    <BusinessPainPoints />
 
-    <!-- Metodología de Trabajo & Garantías de Ingeniería (Componente Unificado) -->
+    <!-- 2. SERVICIOS & ESPECIALIDADES COMERCIALES (Flujo Vertical Continuo) -->
+    <ServicesShowcase />
+
+    <!-- 3. LUEGO DE LOS SERVICIOS: Garantías de Valor (Desarrollo a Medida, Propiedad y Soporte) -->
+    <BusinessGuarantees />
+
+    <!-- 4. TRANSFORMACIÓN TANGIBLE: Transformación Real Antes vs. Con Aleric -->
+    <BeforeAfterTransform />
+
+    <!-- 5. Metodología de Trabajo & Cronograma en 4 Pasos -->
     <WhyUsSection />
 
-    <!-- Preguntas Frecuentes Reales & Garantías Blindadas -->
+    <!-- 6. Preguntas Frecuentes Reales & Garantías Blindadas -->
     <FaqSection />
 
-    <!-- Formulario de Captura de Leads Directo -->
+    <!-- 7. Formulario de Captura de Leads Directo -->
     <ContactSection />
 
     <!-- Sección Semántica SEO para Indexación -->

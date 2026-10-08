@@ -1,9 +1,10 @@
 ---
 interface Props {
   defaultService?: string;
+  isStandalone?: boolean;
 }
 
-const { defaultService = "" } = Astro.props;
+const { defaultService = "", isStandalone = false } = Astro.props;
 const PHONE_NUMBER = "573013229292";
 const CONTACT_EMAIL = "contacto@aleric.dev";
 
@@ -22,8 +23,23 @@ const initialService = defaultService || "Desarrollo Web & Landings de Alta Conv
 
 <section
   id="contacto"
-  class="scroll-mt-20 py-16 sm:py-20 relative bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300"
+  class={`relative bg-slate-50 dark:bg-slate-950 transition-colors duration-300 overflow-hidden ${
+    isStandalone
+      ? "pt-28 sm:pt-36 pb-16 sm:pb-24"
+      : "scroll-mt-20 py-16 sm:py-20 border-t border-slate-200 dark:border-slate-800"
+  }`}
 >
+  {isStandalone && (
+    <>
+      <!-- Cuadrícula sutil de fondo para textura de ingeniería y conexión con Navbar -->
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#cbd5e115_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e115_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1e293b20_1px,transparent_1px),linear-gradient(to_bottom,#1e293b20_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_20%,#000_70%,transparent_100%)] pointer-events-none" />
+      
+      <!-- Resplandores ambientales superiores integrados al Navbar -->
+      <div class="absolute -top-12 left-1/4 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-600/15 rounded-full blur-3xl pointer-events-none" />
+      <div class="absolute top-1/4 -right-16 w-80 h-80 bg-cyan-500/10 dark:bg-cyan-600/10 rounded-full blur-3xl pointer-events-none" />
+    </>
+  )}
+
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
       
@@ -303,53 +319,237 @@ const initialService = defaultService || "Desarrollo Web & Landings de Alta Conv
   </div>
 </section>
 
-<!-- Modal Accesible: Política de Privacidad -->
+<!-- Modal Accesible: Política de Privacidad & Tratamiento de Datos -->
 <div
   id="privacy-policy-modal"
   role="dialog"
   aria-modal="true"
   aria-labelledby="privacy-modal-title"
-  class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4 hidden"
+  class="fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 hidden"
 >
   <div
-    class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl max-h-[85vh] overflow-y-auto space-y-4"
+    class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-2xl w-full shadow-2xl max-h-[85vh] sm:max-h-[88vh] flex flex-col overflow-hidden animate-fade-in-up"
   >
-    <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
-      <h4 id="privacy-modal-title" class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
-        <span>🛡️</span> Política de Tratamiento de Datos
-      </h4>
+    <!-- Header Fijo del Modal (No hace scroll) -->
+    <div class="shrink-0 flex items-center justify-between border-b border-slate-200/80 dark:border-slate-800 px-6 py-4 bg-slate-50/80 dark:bg-slate-950/80">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200 dark:border-indigo-800 flex items-center justify-center text-sm">
+          🛡️
+        </div>
+        <div>
+          <h4 id="privacy-modal-title" class="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-tight">
+            Política de Tratamiento de Datos Personales
+          </h4>
+          <p class="text-[11px] text-slate-500 dark:text-slate-400">
+            Aleric.dev · Régimen General de Habeas Data (Ley 1581 de 2012)
+          </p>
+        </div>
+      </div>
       <button
         type="button"
         id="close-privacy-modal-btn"
         aria-label="Cerrar modal"
-        class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 rounded-xl transition cursor-pointer"
+        class="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
       >
         ✕
       </button>
     </div>
 
-    <div class="text-xs text-slate-600 dark:text-slate-300 space-y-3 leading-relaxed">
-      <p>
-        En <strong>Aleric.dev</strong> protegemos la privacidad y confidencialidad de la información que nos compartes conforme a las normativas de protección de datos (Habeas Data y estándares internacionales).
-      </p>
-      <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-xl space-y-2 border border-slate-100 dark:border-slate-800">
-        <p>
-          <strong>1. Finalidad Exclusiva:</strong> La información suministrada será utilizada únicamente para responder a tu solicitud de cotización o propuesta técnica.
+    <!-- Contenedor de Texto con Scrollbar Interno (El scroll ocurre ÚNICAMENTE aquí adentro) -->
+    <div
+      class="flex-1 overflow-y-auto px-6 py-5 space-y-4 text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed divide-y divide-slate-100 dark:divide-slate-800/60"
+      style="scrollbar-width: thin; scrollbar-color: rgba(148, 163, 184, 0.5) transparent;"
+    >
+      <div class="space-y-2 pb-1">
+        <p class="font-medium text-slate-800 dark:text-slate-200">
+          En <strong>Aleric.dev</strong> valoramos y protegemos la privacidad de cada uno de nuestros clientes, prospectos y visitantes. La presente Política de Tratamiento de la Información describe de manera rigurosa, transparente y detallada los principios, finalidades, derechos y procedimientos aplicables a la recolección, almacenamiento, uso y protección de los datos personales suministrados a través de nuestro sitio web (<a href="https://aleric.dev" class="text-indigo-600 dark:text-indigo-400 underline font-semibold">https://aleric.dev</a>), formularios de contacto, canales oficiales de WhatsApp y correos electrónicos corporativos.
         </p>
         <p>
-          <strong>2. Cero Spam:</strong> Tus datos nunca serán compartidos ni vendidos a terceros ni a plataformas publicitarias.
+          Este documento se rige estrictamente bajo las disposiciones de la <strong>Constitución Política de Colombia (Art. 15)</strong>, la <strong>Ley Estatutaria 1581 de 2012</strong>, su <strong>Decreto Reglamentario 1377 de 2013</strong> (compilado en el Decreto Único Reglamentario 1074 de 2015) y los estándares internacionales de seguridad y privacidad digital.
+        </p>
+      </div>
+
+      <!-- 1. Responsable del Tratamiento -->
+      <div class="pt-3 space-y-1.5">
+        <h5 class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm flex items-center gap-1.5">
+          <span>1.</span> Identificación del Responsable del Tratamiento
+        </h5>
+        <p>
+          El responsable del tratamiento de los datos recolectados es <strong>Aleric.dev</strong>, equipo especializado en arquitectura de software, desarrollo web y automatizaciones comerciales.
+        </p>
+        <ul class="list-disc pl-5 space-y-1 text-slate-600 dark:text-slate-300">
+          <li><strong>Página Web Oficial:</strong> <a href="https://aleric.dev" class="text-indigo-600 dark:text-indigo-400 underline">https://aleric.dev</a></li>
+          <li><strong>Correo Electrónico de Contacto y PQRS:</strong> <a href={`mailto:${CONTACT_EMAIL}`} class="text-indigo-600 dark:text-indigo-400 underline font-semibold">{CONTACT_EMAIL}</a></li>
+          <li><strong>Línea Oficial WhatsApp Comercial:</strong> <a href={`https://wa.me/${PHONE_NUMBER}`} target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 underline">+57 301 322 9292</a></li>
+          <li><strong>Naturaleza de Actividad:</strong> Prestación de servicios profesionales de desarrollo web, software a medida, automatizaciones comerciales y consultoría técnica senior.</li>
+        </ul>
+      </div>
+
+      <!-- 2. Definiciones Relevantes -->
+      <div class="pt-3 space-y-1.5">
+        <h5 class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm flex items-center gap-1.5">
+          <span>2.</span> Definiciones Normativas Clave
+        </h5>
+        <p>
+          Para la adecuada interpretación y cumplimiento de esta política, se adoptan las definiciones legales de la Ley 1581 de 2012:
+        </p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>Autorización:</strong> Consentimiento previo, expreso e informado del Titular para llevar a cabo el Tratamiento de sus datos personales.</li>
+          <li><strong>Base de Datos:</strong> Conjunto organizado de datos personales que sea objeto de Tratamiento.</li>
+          <li><strong>Dato Personal:</strong> Cualquier información vinculada o que pueda asociarse a una o varias personas naturales o jurídicas determinadas o determinables.</li>
+          <li><strong>Dato Público:</strong> Es el dato que no sea semiprivado, privado o sensible, calificado como tal por la ley.</li>
+          <li><strong>Titular:</strong> Persona natural o jurídica cuyos datos personales sean objeto de Tratamiento.</li>
+          <li><strong>Tratamiento:</strong> Cualquier operación o conjunto de operaciones sobre datos personales, tales como la recolección, almacenamiento, uso, circulación o supresión.</li>
+        </ul>
+      </div>
+
+      <!-- 3. Principios Rectores -->
+      <div class="pt-3 space-y-1.5">
+        <h5 class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm flex items-center gap-1.5">
+          <span>3.</span> Principios Rectores del Tratamiento
+        </h5>
+        <p>
+          Aleric.dev aplica de forma irrestricta los principios rectores de la protección de datos:
+        </p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>Principio de Legalidad:</strong> El Tratamiento de datos se sujeta en todo momento a las normas vigentes.</li>
+          <li><strong>Principio de Finalidad:</strong> La recolección obedece a una finalidad legítima de carácter comercial y técnico que se informa con claridad al Titular.</li>
+          <li><strong>Principio de Libertad:</strong> Solo se tratan datos con el consentimiento previo, expreso e informado del Titular.</li>
+          <li><strong>Principio de Veracidad y Calidad:</strong> La información debe ser veraz, completa, exacta, actualizada y comprensible.</li>
+          <li><strong>Principio de Transparencia:</strong> Se garantiza el derecho del Titular a obtener en cualquier momento información sobre sus datos.</li>
+          <li><strong>Principio de Seguridad y Confidencialidad:</strong> Se implementan controles tecnológicos para prevenir adulteración, pérdida, acceso no autorizado o fraude.</li>
+        </ul>
+      </div>
+
+      <!-- 4. Datos Personales Objeto de Tratamiento -->
+      <div class="pt-3 space-y-1.5">
+        <h5 class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm flex items-center gap-1.5">
+          <span>4.</span> Datos Personales Recolectados
+        </h5>
+        <p>
+          Aleric.dev recolecta de manera exclusiva los datos de contacto y negocio suministrados de manera voluntaria por el Titular al diligenciar el formulario de cotización o entablar conversación vía WhatsApp o correo electrónico:
+        </p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Nombre y apellido o razón social del solicitante.</li>
+          <li>Dirección de correo electrónico corporativo o personal.</li>
+          <li>Número de teléfono móvil y canal de WhatsApp.</li>
+          <li>Nombre de la empresa, marca o proyecto y sector económico.</li>
+          <li>Descripción del requerimiento técnico, alcance solicitado y objetivos del proyecto.</li>
+        </ul>
+        <div class="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 text-xs">
+          <strong>No Tratamiento de Datos Sensibles:</strong> Aleric.dev <strong>NO solicita, no recolecta ni procesa datos sensibles</strong> (tales como origen racial, convicciones religiosas o filosóficas, pertenencia a sindicatos, datos biométricos o de salud, ni orientación sexual). Asimismo, nuestros servicios están destinados exclusivamente a mayores de edad; no recolectamos intencionalmente datos de menores de 18 años.
+        </div>
+      </div>
+
+      <!-- 5. Finalidad del Tratamiento -->
+      <div class="pt-3 space-y-1.5">
+        <h5 class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm flex items-center gap-1.5">
+          <span>5.</span> Finalidad Exclusiva del Tratamiento
+        </h5>
+        <p>
+          Los datos personales recolectados serán tratados de manera exclusiva para los siguientes fines legítimos:
+        </p>
+        <ol class="list-decimal pl-5 space-y-1">
+          <li><strong>Atención y Cotización:</strong> Procesar su solicitud, elaborar y presentar propuestas comerciales, cotizaciones a la medida y valoraciones técnicas viables.</li>
+          <li><strong>Comunicación Precontractual y Contractual:</strong> Contactarle directamente mediante WhatsApp, correo electrónico o llamadas para coordinar reuniones de diagnóstico técnico y demostraciones de soluciones.</li>
+          <li><strong>Gestión Comercial y Operativa:</strong> Coordinar los requerimientos de desarrollo, elaboración de contratos de prestación de servicios, Acuerdos de Confidencialidad (NDA) y actas de entrega.</li>
+          <li><strong>Soporte Técnico y Facturación:</strong> Atender consultas sobre proyectos en curso y emitir comprobantes de cobro y facturación respectiva.</li>
+          <li><strong>Cumplimiento de Deberes Legales:</strong> Atender requerimientos de autoridades judiciales o administrativas en el marco legal.</li>
+        </ol>
+        <p class="font-medium text-slate-800 dark:text-slate-200">
+          <strong>Compromiso Cero Spam:</strong> Aleric.dev prohíbe categóricamente comercializar, vender, arrendar, licenciar o transferir bases de datos a terceros para propósitos de marketing masivo, publicidad invasiva o envío de spam.
+        </p>
+      </div>
+
+      <!-- 6. Derechos de los Titulares -->
+      <div class="pt-3 space-y-1.5">
+        <h5 class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm flex items-center gap-1.5">
+          <span>6.</span> Derechos que le Asisten como Titular (Habeas Data)
+        </h5>
+        <p>
+          De conformidad con el artículo 8 de la Ley 1581 de 2012, el Titular de los datos personales cuenta con los siguientes derechos:
+        </p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>Conocer, actualizar y rectificar</strong> sus datos personales frente a Aleric.dev en cualquier momento frente a datos parciales, inexactos, incompletos, fraccionados o que induzcan a error.</li>
+          <li><strong>Solicitar prueba de la autorización</strong> otorgada para el tratamiento, salvo cuando la ley exceptúe su requerimiento.</li>
+          <li><strong>Ser informado</strong> por Aleric.dev, previa solicitud, respecto del uso que se ha dado a sus datos personales.</li>
+          <li><strong>Presentar quejas ante la Superintendencia de Industria y Comercio (SIC)</strong> por presuntas infracciones a lo dispuesto en la Ley 1581 de 2012 y demás normas concordantes.</li>
+          <li><strong>Revocar la autorización y/o solicitar la supresión</strong> del dato cuando en el Tratamiento no se respeten los principios, derechos y garantías constitucionales y legales.</li>
+          <li><strong>Acceder de forma gratuita</strong> a sus datos personales que hayan sido objeto de Tratamiento.</li>
+        </ul>
+      </div>
+
+      <!-- 7. Procedimiento para Consultas y Reclamos -->
+      <div class="pt-3 space-y-1.5">
+        <h5 class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm flex items-center gap-1.5">
+          <span>7.</span> Canales y Procedimiento para el Ejercicio de sus Derechos (PQRS)
+        </h5>
+        <p>
+          Para ejercer sus derechos de consulta, actualización, rectificación o supresión de datos, el Titular o sus causahabientes pueden remitir una comunicación formal a nuestro canal oficial:
+        </p>
+        <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-1">
+          <p><strong>Canal de Recepción:</strong> <a href={`mailto:${CONTACT_EMAIL}`} class="text-indigo-600 dark:text-indigo-400 underline font-semibold">{CONTACT_EMAIL}</a></p>
+          <p><strong>Asunto del Correo:</strong> "Ejercicio de Derechos Habeas Data - [Nombre del Titular]"</p>
+          <p><strong>Información Requerida:</strong> Identificación completa del Titular, descripción clara de la solicitud (conocer, actualizar, rectificar o eliminar) y dirección de notificación.</p>
+        </div>
+        <p class="pt-1">
+          <strong>Términos de Respuesta Legales:</strong>
+        </p>
+        <ul class="list-disc pl-5 space-y-1 text-slate-600 dark:text-slate-300">
+          <li><strong>Consultas:</strong> Serán atendidas en un término máximo de <strong>diez (10) días hábiles</strong> contados a partir de la fecha de recibo. Si no fuere posible resolverla en dicho plazo, se informará al interesado los motivos y se responderá dentro de los <strong>cinco (5) días hábiles</strong> siguientes.</li>
+          <li><strong>Reclamos y Solicitudes de Supresión:</strong> Serán resueltos en un término máximo de <strong>quince (15) días hábiles</strong> contados a partir del día siguiente a la fecha de su recibo en debida forma.</li>
+        </ul>
+      </div>
+
+      <!-- 8. Medidas de Seguridad -->
+      <div class="pt-3 space-y-1.5">
+        <h5 class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm flex items-center gap-1.5">
+          <span>8.</span> Seguridad de la Información y Confidencialidad
+        </h5>
+        <p>
+          En Aleric.dev aplicamos estrictos estándares de ingeniería de software para salvaguardar sus datos:
+        </p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>Cifrado en Tránsito:</strong> Todas las conexiones y peticiones hacia nuestra plataforma utilizan cifrado SSL/TLS de 256 bits (HTTPS).</li>
+          <li><strong>Aislamiento de Infraestructura:</strong> Alojamiento en servidores cloud de alta seguridad (Cloudflare Edge y Supabase con RLS) con acceso restringido bajo el principio del menor privilegio.</li>
+          <li><strong>Honeypot Anti-Spam:</strong> Filtros automáticos en formularios que descartan bots maliciosos sin exponer datos privados de los usuarios.</li>
+          <li><strong>Deber de Secreto:</strong> Todos los miembros de Aleric.dev están sujetos a cláusulas estrictas de confidencialidad profesional respecto a la información tratada.</li>
+        </ul>
+      </div>
+
+      <!-- 9. Cookies y Almacenamiento Local -->
+      <div class="pt-3 space-y-1.5">
+        <h5 class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm flex items-center gap-1.5">
+          <span>9.</span> Uso de Cookies y Almacenamiento Local
+        </h5>
+        <p>
+          Nuestro sitio web no utiliza cookies invasivas de rastreo publicitario de terceros. Hacemos uso exclusivo de almacenamiento local (localStorage) técnicamente necesario para recordar su preferencia de visualización de modo oscuro o claro y garantizar la velocidad de carga de la plataforma.
+        </p>
+      </div>
+
+      <!-- 10. Periodo de Conservación y Modificaciones -->
+      <div class="pt-3 space-y-1.5">
+        <h5 class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm flex items-center gap-1.5">
+          <span>10.</span> Periodo de Conservación y Vigencia
+        </h5>
+        <p>
+          Los datos personales se conservarán únicamente durante el tiempo estrictamente necesario para cumplir las finalidades descritas, resolver cotizaciones y mantener el historial de comunicaciones acordado, o durante el tiempo exigido por las normas contables y tributarias vigentes.
         </p>
         <p>
-          <strong>3. Ejercicio de Derechos:</strong> Puedes solicitar actualizar o eliminar tus datos en cualquier momento escribiendo a <a href={`mailto:${CONTACT_EMAIL}`} class="text-indigo-600 dark:text-indigo-400 font-semibold underline">{CONTACT_EMAIL}</a>.
+          Esta Política entra en vigencia a partir de su publicación en nuestro sitio web. Aleric.dev se reserva el derecho de actualizarla para reflejar cambios legales o mejoras técnicas de servicio. Cualquier actualización sustancial será oportunamente notificada a través del portal <a href="https://aleric.dev" class="text-indigo-600 dark:text-indigo-400 underline">https://aleric.dev</a>.
         </p>
       </div>
     </div>
 
-    <div class="pt-2 flex justify-end">
+    <!-- Footer Fijo del Modal (No hace scroll) -->
+    <div class="shrink-0 border-t border-slate-200/80 dark:border-slate-800 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-50/80 dark:bg-slate-950/80">
+      <span class="text-[11px] text-slate-500 dark:text-slate-400 text-center sm:text-left">
+        Al enviar el formulario, confirmas haber leído y aceptado esta política.
+      </span>
       <button
         type="button"
         id="confirm-privacy-modal-btn"
-        class="h-9 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider transition cursor-pointer"
+        class="w-full sm:w-auto h-9 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider transition cursor-pointer shadow-sm active:scale-95"
       >
         Entendido
       </button>

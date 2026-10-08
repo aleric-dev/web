@@ -1,0 +1,224 @@
+---
+interface ServiceShowcaseItem {
+  id: string;
+  name: string;
+  category: string;
+  colorName: string;
+  badgeClass: string;
+  dotClass: string;
+  accentTextClass: string;
+  buttonClass: string;
+  title: string;
+  description: string;
+  bullets: string[];
+  imageSrc: string;
+  imageAlt: string;
+  imagePill: string;
+  detailUrl: string;
+  reverse: boolean;
+}
+
+const services: ServiceShowcaseItem[] = [
+  {
+    id: "web",
+    name: "Desarrollo Web",
+    category: "01 // CONVERSIÓN & VELOCIDAD",
+    colorName: "cyan",
+    badgeClass: "border-cyan-200 dark:border-cyan-900 bg-cyan-50 dark:bg-cyan-950/60 text-cyan-700 dark:text-cyan-300",
+    dotClass: "bg-cyan-500",
+    accentTextClass: "text-cyan-600 dark:text-cyan-400",
+    buttonClass: "bg-cyan-600 hover:bg-cyan-700 text-white shadow-cyan-600/20",
+    title: "Páginas web rápidas que convierten visitas en clientes reales",
+    description:
+      "Tus clientes navegan desde el celular y no esperan páginas lentas. Construimos landings comerciales y tiendas con apertura en menos de un segundo y estructura de persuasión probada.",
+    bullets: [
+      "Apertura en menos de 0.5 segundos en celulares con 100/100 en Google Lighthouse.",
+      "Diseño enfocado 100% en ventas: sin menús confusos que distraigan al comprador.",
+      "Integración directa de pasarelas de pago y botones con mensaje prellenado a WhatsApp."
+    ],
+    imageSrc: "/assets/solution-web.jpg",
+    imageAlt: "Desarrollo Web de Alta Conversión y Tiendas Online Aleric.dev",
+    imagePill: "Carga < 0.5s · CRO de Alta Conversión",
+    detailUrl: "/desarrollo-web",
+    reverse: false
+  },
+  {
+    id: "software",
+    name: "Software a Medida",
+    category: "02 // CONTROL OPERATIVO & ESCALABILIDAD",
+    colorName: "indigo",
+    badgeClass: "border-indigo-200 dark:border-indigo-900 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300",
+    dotClass: "bg-indigo-500",
+    accentTextClass: "text-indigo-600 dark:text-indigo-400",
+    buttonClass: "bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-600/20",
+    title: "Plataformas que reemplazan el desorden de Excel y centralizan tu empresa",
+    description:
+      "Diseñamos portales de gestión, paneles de clientes y sistemas internos adaptados exactamente a cómo opera tu empresa. Cero plantillas rígidas y cero cobros por cada empleado nuevo.",
+    bullets: [
+      "Roles y accesos restringidos: cada usuario ve únicamente lo que le corresponde.",
+      "Inventarios, pedidos y facturación sincronizados en una base de datos segura.",
+      "Propiedad total de la empresa: el software, código y datos te pertenecen al 100%."
+    ],
+    imageSrc: "/assets/solution-software.jpg",
+    imageAlt: "Plataformas y Software a la Medida Aleric.dev",
+    imagePill: "Arquitectura Empresarial · 100% Propiedad",
+    detailUrl: "/software-a-medida",
+    reverse: true
+  },
+  {
+    id: "whatsapp",
+    name: "Ventas por WhatsApp",
+    category: "03 // CIERRE COMERCIAL & ATENCIÓN 24/7",
+    colorName: "emerald",
+    badgeClass: "border-emerald-200 dark:border-emerald-900 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300",
+    dotClass: "bg-emerald-500",
+    accentTextClass: "text-emerald-600 dark:text-emerald-400",
+    buttonClass: "bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-600/20",
+    title: "Atención inmediata en WhatsApp API para que ningún cliente se escape",
+    description:
+      "Automatizamos tus canales de venta y cobranza con la API oficial de WhatsApp: respuestas en 2 segundos, catálogos interactivos y cotizaciones automáticas las 24 horas del día.",
+    bullets: [
+      "Respuestas en 2 segundos día y noche: no vuelvas a perder un cliente calificado.",
+      "Cotizaciones guiadas automáticas y traspaso inteligente a asesor solo al momento de pago.",
+      "Cobranza programada y amigable que acelera el recaudo sin desgastar a tu equipo."
+    ],
+    imageSrc: "/assets/solution-automation.jpg",
+    imageAlt: "Automatización Comercial y WhatsApp Cloud API Aleric.dev",
+    imagePill: "WhatsApp API Oficial · Respuestas < 2s",
+    detailUrl: "/automatizaciones",
+    reverse: false
+  },
+  {
+    id: "consultoria",
+    name: "Consultoría Técnica",
+    category: "04 // DIAGNÓSTICO & ARQUITECTURA SENIOR",
+    colorName: "amber",
+    badgeClass: "border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300",
+    dotClass: "bg-amber-500",
+    accentTextClass: "text-amber-600 dark:text-amber-400",
+    buttonClass: "bg-amber-600 hover:bg-amber-700 text-white shadow-amber-600/20",
+    title: "Auditoría imparcial, rescate de sistemas e integración empresarial",
+    description:
+      "Si tu software está fallando, tus desarrolladores están estancados o necesitas conectar tu plataforma con facturación electrónica y ERPs, auditamos y blindamos tu infraestructura.",
+    bullets: [
+      "Auditoría técnica honesta de proveedores anteriores o plataformas caídas.",
+      "Conexión con facturación electrónica e integraciones contables sin reprocesos.",
+      "Mentoría 1-a-1 y acompañamiento a líderes técnicos para garantizar código limpio."
+    ],
+    imageSrc: "/assets/solution-consultancy.jpg",
+    imageAlt: "Consultoría Técnica Senior y Rescate de Software Aleric.dev",
+    imagePill: "Auditoría CTO · Saneamiento & Rescate",
+    detailUrl: "/consultoria-tecnica",
+    reverse: true
+  }
+];
+---
+
+<section id="servicios" class="py-16 sm:py-24 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Encabezado de la Sección de Servicios -->
+    <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20 space-y-3">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 font-mono text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+        <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+        <span>Especialidades Comerciales</span>
+      </div>
+      
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.15]">
+        Lo que construimos para que <span class="text-indigo-600 dark:text-indigo-400">tu empresa crezca</span>
+      </h2>
+      
+      <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+        Soluciones de ingeniería desarrolladas para resolver las fugas operativas de tu día a día y convertir tu tecnología en un activo rentable:
+      </p>
+    </div>
+
+    <!-- Lista Vertical Continua de los 4 Servicios -->
+    <div class="space-y-20 sm:space-y-28">
+      {services.map((service, index) => (
+        <article 
+          id={service.id}
+          class={`grid lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-8 first:pt-0 border-t first:border-t-0 border-slate-200 dark:border-slate-800 ${
+            service.reverse ? "lg:grid-flow-dense" : ""
+          }`}
+        >
+          
+          <!-- Columna Visual (Imagen de Producto Real) -->
+          <div class={`lg:col-span-6 w-full ${service.reverse ? "lg:col-start-7" : ""}`}>
+            <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950 shadow-md group">
+              <img
+                src={service.imageSrc}
+                alt={service.imageAlt}
+                class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02]"
+                width="640"
+                height="480"
+                loading={index < 2 ? "eager" : "lazy"}
+              />
+              
+              <!-- Micro Badge Informativo sobre la Imagen -->
+              <div class="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 bg-slate-900/90 dark:bg-slate-950/90 backdrop-blur-md border border-slate-700/60 rounded-xl px-3 py-1.5 text-xs font-mono font-bold text-white shadow-lg flex items-center gap-2">
+                <span class={`w-2 h-2 rounded-full ${service.dotClass}`}></span>
+                <span>{service.imagePill}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Contenido & Argumentación Comercial -->
+          <div class={`lg:col-span-6 space-y-6 ${service.reverse ? "lg:col-start-1" : ""}`}>
+            
+            <div class="space-y-3">
+              <div class="flex items-center gap-2">
+                <span class={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg border font-mono text-[11px] font-bold uppercase tracking-wider ${service.badgeClass}`}>
+                  <span class={`w-1.5 h-1.5 rounded-full ${service.dotClass}`}></span>
+                  {service.name}
+                </span>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500">
+                  {service.category}
+                </span>
+              </div>
+
+              <h3 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
+                {service.title}
+              </h3>
+            </div>
+
+            <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              {service.description}
+            </p>
+
+            <!-- Bullets de Valor Concreto -->
+            <ul class="space-y-2.5 pt-1">
+              {service.bullets.map((bullet) => (
+                <li class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                  <span class={`mt-0.5 font-bold ${service.accentTextClass}`}>✓</span>
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+
+            <!-- Acciones Directas -->
+            <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <a
+                href={service.detailUrl}
+                class={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider shadow-sm transition hover:opacity-95 ${service.buttonClass}`}
+              >
+                <span>Explorar {service.name}</span>
+                <span aria-hidden="true">→</span>
+              </a>
+
+              <a
+                href="#contacto"
+                class="inline-flex items-center justify-center px-5 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs uppercase tracking-wider border border-slate-200 dark:border-slate-700 transition"
+              >
+                Cotizar Solución
+              </a>
+            </div>
+
+          </div>
+
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>

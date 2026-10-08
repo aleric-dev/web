@@ -10,7 +10,37 @@
 
 Este repositorio contiene la plataforma web comercial de **Aleric.dev**, desarrolladores de software enfocados en ayudarte a crecer como empresa. Especialistas en desarrollo web de alta conversión (CRO), plataformas y SaaS a la medida, automatizaciones comerciales con WhatsApp y arquitectura cloud de alto rendimiento para el mercado hispanohablante.
 
-### Principio Fundamental de Ingeniería
+### 💼 Regla Fundamental Comercial: Cero Jerga Técnica para Clientes de Negocio
+* **Al cliente final (empresario, director comercial, emprendedor) le da igual la tecnología o el stack**:
+  - No profundizar en tecnologías, nombres de frameworks (React, NestJS, Astro, Node, etc.) ni bases de datos en la narrativa comercial principal.
+  - La comunicación debe centrarse en tres dimensiones críticas para el cliente:
+    1. **Diagnóstico de Fugas Reales**: Cuánto dinero, tiempo o clientes está perdiendo hoy (WhatsApp sin responder a tiempo, páginas lentas que desperdician la pauta, desorden operativo en Excel, sistemas caídos).
+    2. **Los 3 Pilares y Garantías de Valor (Sostenibles y No Agotadores)**:
+       - *Desarrollo Personalizado Adaptado a tu Empresa*: Construido exactamente para la operación del cliente. Cero plantillas genéricas que le obliguen a cambiar cómo trabaja.
+       - *Propiedad 100% de la Empresa*: El código fuente, las bases de datos y la infraestructura son del cliente. Cero mensualidades forzadas por empleado o asiento.
+       - *Soporte Extendido por Suscripción*: Mantenimiento preventivo, soporte prioritario y evolución continua mediante una suscripción mensual predecible. El cliente nunca queda abandonado y el equipo técnico mantiene ingresos recurrentes sostenibles.
+    3. **Transformación Tangible (Antes vs. Después)**: Contraste honesto de cómo opera el negocio hoy (fricción, demoras, estrés) vs. cómo opera con Aleric (automatización 24/7, velocidad < 1s, control total).
+
+### 🎨 Estándar Visual Anti-IA Cliché (Ingeniería de Alta Gama)
+* **Terminantemente Prohibido**: Cards genéricas de IA (cajas flotantes con degradados morados/neón, sombras difusas exageradas `shadow-2xl`, emojis gigantes decorativos sin propósito comercial, o imágenes cuadradas gigantescas que saturan la pantalla).
+* **Estándar Requerido**: Interfaces estructurales y sobrias inspiradas en **Linear, Stripe, Raycast**:
+  - Rejillas geométricas y tableros comparativos *side-by-side*.
+  - Imágenes compactas panorámicas (16:9) con marcos nítidos y micro-pills informativas.
+  - Bordes nítidos de 1px (`border-slate-200 dark:border-slate-800`), fondos profundos (`bg-slate-50 dark:bg-slate-950`).
+  - Indicadores de estado funcionales (rojo/rose para dolor/fricción, esmeralda/índigo para solución).
+  - Tipografía jerárquica con micro-badges monoespaciados (`font-mono text-xs uppercase tracking-wider`).
+
+### 📐 Flujo Narrativo Canónico de Conversión
+1. `CommercialHero`: Promesa clara de ventas y crecimiento + tags de texto de las 4 especialidades.
+2. `BusinessPainPoints`: Diagnóstico visual de fugas reales con imágenes de casos concretos.
+3. `ProfileRouter` / Servicios: Sección interactiva desarrollada que invita a ver el detalle de cada especialidad con botón dedicado y resumen inferior.
+4. `BusinessGuarantees`: Los 3 pilares de valor (Desarrollo a la Medida, Propiedad Total y Soporte por Suscripción) con imágenes compactas 16:9.
+5. `BeforeAfterTransform`: Impacto real en el día a día (Antes vs. Con Aleric).
+6. `WhyUsSection`: Metodología ágil en 4 pasos (Diagnóstico ➔ Prototipo ➔ Construcción ➔ Lanzamiento).
+7. `FaqSection`: Preguntas frecuentes de negocio (tiempos, pagos y propiedad).
+8. `ContactSection`: Formulario directo de cotización.
+
+### Principio Fundamental de Rendimiento
 * **Rendimiento Máximo y Cero Bloatware**: El sitio debe mantener puntuaciones de **95-100 en Google Lighthouse** (Rendimiento, Accesibilidad, Buenas Prácticas y SEO).
 * **Cero JavaScript Innecesario**: Solo se despacha JavaScript al navegador en las islas interactivas que estrictamente lo requieran.
 
