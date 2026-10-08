@@ -8,7 +8,7 @@ const servicePages = [
   { name: 'Inicio', href: '/' },
   { name: 'Desarrollo Web', href: '/desarrollo-web' },
   { name: 'Software a Medida', href: '/software-a-medida' },
-  { name: 'Automatizaciones', href: '/automatizaciones' },
+  { name: 'Ventas por WhatsApp', href: '/automatizaciones' },
   { name: 'Consultoría Técnica', href: '/consultoria-tecnica' },
 ];
 
@@ -18,19 +18,22 @@ const isActive = (href: string) => {
 };
 ---
 
-<header class="fixed top-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-950/95 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300 backdrop-blur-md">
-  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
+<header
+  id="main-navbar"
+  class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-3 sm:py-4 bg-transparent border-b border-transparent"
+>
+  <div class="max-w-7xl mx-auto px-6 h-14 sm:h-16 flex items-center justify-between gap-4">
     <!-- Left: Brand Logo -->
     <a href="/" class="flex items-center shrink-0 group">
       <!-- Light Mode Logo (Dark Glyphs) -->
       <img
-        src="/logo-text-dark.svg"
+        src="/logo/logo-text-dark.svg"
         alt="Aleric.dev Logo"
         class="h-8 sm:h-9 w-auto object-contain dark:hidden group-hover:opacity-90 transition duration-200"
       />
       <!-- Dark Mode Logo (White Glyphs) -->
       <img
-        src="/logo-text-light.svg"
+        src="/logo/logo-text-light.svg"
         alt="Aleric.dev Logo"
         class="h-8 sm:h-9 w-auto object-contain hidden dark:block group-hover:opacity-90 transition duration-200"
       />
@@ -115,9 +118,12 @@ const isActive = (href: string) => {
 
 <script is:inline>
   (function() {
-    function initMobileMenu() {
+    function initNavbar() {
+      const header = document.getElementById('main-navbar');
       const btn = document.getElementById('mobile-menu-btn');
       const menu = document.getElementById('mobile-menu');
+
+      // 1. Manejo del menú móvil
       if (btn && menu) {
         btn.onclick = () => {
           menu.classList.toggle('hidden');
@@ -126,13 +132,52 @@ const isActive = (href: string) => {
           link.onclick = () => menu.classList.add('hidden');
         });
       }
+
+      // 2. Manejo de integración reactiva al scroll
+      function handleScroll() {
+        if (!header) return;
+        const isScrolled = window.scrollY > 20;
+
+        if (isScrolled) {
+          // Estado Sticky con Glassmorphism integrado
+          header.classList.remove('bg-transparent', 'border-transparent', 'py-3', 'sm:py-4');
+          header.classList.add(
+            'bg-white/90',
+            'dark:bg-slate-950/90',
+            'backdrop-blur-md',
+            'border-slate-200/80',
+            'dark:border-slate-800/80',
+            'shadow-sm',
+            'py-2',
+            'sm:py-2.5'
+          );
+        } else {
+          // Estado Inicial integrado en el Hero
+          header.classList.remove(
+            'bg-white/90',
+            'dark:bg-slate-950/90',
+            'backdrop-blur-md',
+            'border-slate-200/80',
+            'dark:border-slate-800/80',
+            'shadow-sm',
+            'py-2',
+            'sm:py-2.5'
+          );
+          header.classList.add('bg-transparent', 'border-transparent', 'py-3', 'sm:py-4');
+        }
+      }
+
+      window.removeEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll(); // Chequeo inicial
     }
+
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initMobileMenu);
+      document.addEventListener('DOMContentLoaded', initNavbar);
     } else {
-      initMobileMenu();
+      initNavbar();
     }
-    document.addEventListener('astro:after-swap', initMobileMenu);
+    document.addEventListener('astro:after-swap', initNavbar);
   })();
 </script>
 

@@ -2,59 +2,58 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-slate-950 border-t border-slate-800/80 text-slate-400 md:py-12 py-8 relative overflow-hidden">
+<footer class="bg-slate-950 border-t border-slate-800 text-slate-300 py-16 sm:py-20 relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-6">
-    <!-- Top Grid: 4 Columnas Limpias (Responsive: 1 col móvil, 2 cols tablet, 4 cols desktop) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 pb-10 border-b border-slate-800/80 items-start text-left">
+    
+    <!-- Top Grid: 4 Columnas Altas y Cómodas con texto legible de 14px (text-sm) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-12 border-b border-slate-800/80 items-start text-left">
       
-      <!-- Columna 1: Logo arriba y abajo datos de Aleric Dev -->
-      <div class="space-y-3">
+      <!-- Columna 1: Identidad Aleric Dev -->
+      <div class="space-y-4">
         <a href="/" class="inline-block group">
           <img
-            src="/logo-text-light.svg"
+            src="/logo/logo-text-light.svg"
             alt="Aleric.dev Logo"
-            class="h-8 w-auto object-contain group-hover:opacity-90 transition duration-200"
+            class="h-9 w-auto object-contain group-hover:opacity-90 transition duration-150"
           />
         </a>
 
         <div class="space-y-2">
-          <p class="text-xs font-semibold text-slate-200">
+          <p class="text-sm font-semibold text-white">
             Aleric.dev · Estudio de Software
           </p>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Páginas web de alta conversión, software a la medida y automatizaciones de WhatsApp para acelerar el crecimiento de tu empresa.
+          <p class="text-sm text-slate-400 leading-relaxed font-normal">
+            Páginas web de alta velocidad, software a la medida y ventas por WhatsApp para acelerar el crecimiento de tu empresa.
           </p>
         </div>
       </div>
 
-      <!-- Columna 2: Verticales -->
-      <div class="space-y-3">
-        <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">Verticales</h4>
-        <ul class="space-y-2.5 text-xs">
-          <li><a href="/desarrollo-web" class="text-slate-400 hover:text-white transition-colors">Desarrollo Web &amp; Landings</a></li>
-          <li><a href="/software-a-medida" class="text-slate-400 hover:text-white transition-colors">Software &amp; SaaS a la Medida</a></li>
-          <li><a href="/automatizaciones" class="text-slate-400 hover:text-white transition-colors">Automatización &amp; WhatsApp API</a></li>
+      <!-- Columna 2: Soluciones Especializadas -->
+      <div class="space-y-4">
+        <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">Soluciones</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="/desarrollo-web" class="text-slate-400 hover:text-white transition-colors">Desarrollo Web Comercial</a></li>
+          <li><a href="/software-a-medida" class="text-slate-400 hover:text-white transition-colors">Software a la Medida</a></li>
+          <li><a href="/automatizaciones" class="text-slate-400 hover:text-white transition-colors">Ventas &amp; Atención por WhatsApp</a></li>
           <li><a href="/consultoria-tecnica" class="text-slate-400 hover:text-white transition-colors">Consultoría Técnica Senior</a></li>
         </ul>
       </div>
 
-      <!-- Columna 3: Cosas de Interés -->
-      <div class="space-y-3">
-        <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">Cosas de Interés</h4>
-        <ul class="space-y-2.5 text-xs">
-          <li><a href="/software-a-medida#beneficios" class="text-slate-400 hover:text-white transition-colors">Salir de las Hojas de Excel</a></li>
+      <!-- Columna 3: Temas de Interés -->
+      <div class="space-y-4">
+        <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">De Interés</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="/software-a-medida#beneficios" class="text-slate-400 hover:text-white transition-colors">Salir del Desorden de Excel</a></li>
           <li><a href="/desarrollo-web#beneficios" class="text-slate-400 hover:text-white transition-colors">Velocidad Extrema en Celulares</a></li>
-          <li><a href="/automatizaciones#beneficios" class="text-slate-400 hover:text-white transition-colors">Atención &amp; Cobranzas en WhatsApp</a></li>
-          <li><a href="/desarrollo-web#beneficios" class="text-slate-400 hover:text-white transition-colors">Tiendas E-commerce &amp; Catálogos</a></li>
-          <li><a href="/consultoria-tecnica#beneficios" class="text-slate-400 hover:text-white transition-colors">Integración Facturación Siigo ERP</a></li>
+          <li><a href="/automatizaciones#beneficios" class="text-slate-400 hover:text-white transition-colors">Atención Inmediata por WhatsApp</a></li>
+          <li><a href="/consultoria-tecnica#beneficios" class="text-slate-400 hover:text-white transition-colors">Diagnóstico y Rescate de Software</a></li>
         </ul>
       </div>
 
-      <!-- Columna 4: Contacto Tradicional -->
-      <div class="space-y-3">
+      <!-- Columna 4: Contacto Directo -->
+      <div class="space-y-4">
         <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">Contacto</h4>
-        <div class="space-y-3 text-xs">
-          <!-- Teléfono / WhatsApp Formateado -->
+        <div class="space-y-3.5 text-sm">
           <div>
             <a
               href="https://wa.me/573013229292?text=Hola%20Aleric.dev,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto"
@@ -69,7 +68,6 @@ const currentYear = new Date().getFullYear();
             </a>
           </div>
 
-          <!-- Ubicación: Cali, Colombia -->
           <div class="text-slate-400 flex items-center gap-2">
             <svg class="w-4 h-4 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -78,12 +76,11 @@ const currentYear = new Date().getFullYear();
             <span>Cali, Colombia</span>
           </div>
 
-          <!-- Iconos: Correo, Instagram, LinkedIn -->
+          <!-- Redes Sociales Coherentes -->
           <div class="pt-1 flex items-center gap-2.5">
-            <!-- Correo -->
             <a
               href="mailto:contacto@aleric.dev"
-              class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 hover:bg-slate-800 flex items-center justify-center transition shadow-sm"
+              class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 hover:bg-slate-800 flex items-center justify-center transition shadow-xs"
               title="contacto@aleric.dev"
               aria-label="Enviar correo a contacto@aleric.dev"
             >
@@ -92,12 +89,11 @@ const currentYear = new Date().getFullYear();
               </svg>
             </a>
 
-            <!-- Instagram -->
             <a
               href="https://instagram.com/aleric.dev"
               target="_blank"
               rel="noopener noreferrer"
-              class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-pink-400 hover:border-slate-700 hover:bg-slate-800 flex items-center justify-center transition shadow-sm"
+              class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-pink-400 hover:border-slate-700 hover:bg-slate-800 flex items-center justify-center transition shadow-xs"
               title="Instagram @aleric.dev"
               aria-label="Instagram @aleric.dev"
             >
@@ -108,12 +104,11 @@ const currentYear = new Date().getFullYear();
               </svg>
             </a>
 
-            <!-- LinkedIn -->
             <a
               href="https://linkedin.com/company/aleric-dev"
               target="_blank"
               rel="noopener noreferrer"
-              class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-sky-400 hover:border-slate-700 hover:bg-slate-800 flex items-center justify-center transition shadow-sm"
+              class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-sky-400 hover:border-slate-700 hover:bg-slate-800 flex items-center justify-center transition shadow-xs"
               title="LinkedIn aleric-dev"
               aria-label="LinkedIn aleric-dev"
             >
@@ -129,15 +124,16 @@ const currentYear = new Date().getFullYear();
 
     </div>
 
-    <!-- Bottom Bar: Copyright y Slogan Inspiracional -->
-    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono text-center sm:text-left">
+    <!-- Barra Inferior de Derechos -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-500 font-mono text-center sm:text-left">
       <p>© {currentYear} Aleric.dev. Todos los derechos reservados.</p>
       
-      <div class="flex flex-wrap items-center justify-center gap-2 text-xs text-slate-400 font-sans font-medium">
-        <span class="text-indigo-400 font-semibold">Menos fricción, más resultados</span>
-        <span class="text-slate-600 hidden sm:inline">•</span>
-        <span class="text-slate-400">Código 100% propio sin ataduras</span>
+      <div class="flex flex-wrap items-center justify-center gap-2 text-slate-400 font-sans font-medium">
+        <span class="text-indigo-400 font-semibold">Menos palabras, más resultados</span>
+        <span class="text-slate-700 hidden sm:inline">•</span>
+        <span>Código 100% propio sin ataduras</span>
       </div>
     </div>
+
   </div>
 </footer>

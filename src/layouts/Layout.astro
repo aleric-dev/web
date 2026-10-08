@@ -3,8 +3,6 @@ import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import FloatingContactButton from '../components/FloatingContactButton.astro';
 
-
-
 interface Props {
   title?: string;
   description?: string;
@@ -14,7 +12,7 @@ interface Props {
 const {
   title = "Aleric.dev · Estudio de Software",
   description = "Desarrollo de páginas web de alta conversión, software a la medida y automatización comercial con WhatsApp.",
-  image = "/og-image.png",
+  image = "/assets/og-image.png",
 } = Astro.props;
 
 const siteOrigin = Astro.site ? Astro.site.origin : 'https://aleric.dev';
@@ -23,7 +21,7 @@ const imageURL = new URL(image, siteOrigin).href;
 ---
 
 <!DOCTYPE html>
-<html lang="es" class="dark scroll-smooth">
+<html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -37,7 +35,7 @@ const imageURL = new URL(image, siteOrigin).href;
     <!-- SEO Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="Aleric.dev, desarrollo web, software a medida, automatizacion n8n, whatsapp api, nestjs, react, typescript, consultoria tecnica, mentoría full stack" />
+    <meta name="keywords" content="Aleric.dev, desarrollo web, software a medida, automatizacion de procesos, integracion de sistemas, whatsapp api, nestjs, react, typescript, consultoria tecnica, ingenieria de software" />
     <meta name="author" content="Aleric.dev" />
 
     <!-- Open Graph / Facebook / WhatsApp / LinkedIn Card -->
@@ -60,16 +58,16 @@ const imageURL = new URL(image, siteOrigin).href;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageURL} />
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Plus Jakarta Sans (Headings) & Inter (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
 
     <!-- Theme Preference Initialization Script (Pre-render) -->
     <script is:inline>
       (function() {
         const theme = localStorage.getItem('theme');
-        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        if (theme === 'dark') {
           document.documentElement.classList.add('dark');
         } else {
           document.documentElement.classList.remove('dark');

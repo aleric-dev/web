@@ -43,9 +43,9 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       });
     }
 
-    if (!name || !email || !budget || !message) {
+    if (!name || !email || !message) {
       return new Response(
-        JSON.stringify({ success: false, error: 'Por favor completa los campos obligatorios (Nombre, Correo, Presupuesto y Mensaje).' }),
+        JSON.stringify({ success: false, error: 'Por favor completa los campos obligatorios (Nombre, Correo y Mensaje).' }),
         {
           status: 400,
           headers: { 'Content-Type': 'application/json' },
@@ -190,7 +190,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
   <div class="container">
     <div class="brand">
       <img
-        src="https://aleric.dev/logo-email.png"
+        src="https://aleric.dev/logo/logo-email.png"
         alt="Aleric Dev"
         width="180"
         style="display: block; width: 180px; max-width: 180px; height: auto; border: 0;"
@@ -333,7 +333,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
   <div class="container">
     <div class="brand">
       <img
-        src="https://aleric.dev/logo-email.png"
+        src="https://aleric.dev/logo/logo-email.png"
         alt="Aleric Dev"
         width="180"
         style="display: block; width: 180px; max-width: 180px; height: auto; border: 0;"

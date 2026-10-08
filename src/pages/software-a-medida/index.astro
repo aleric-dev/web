@@ -1,8 +1,10 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
+import VisualExcelTransform from "../../components/VisualExcelTransform.astro";
 import SoftwareLifecycle from "../../components/SoftwareLifecycle.astro";
 import WhyUsSection from "../../components/WhyUsSection.astro";
+import FaqSection from "../../components/FaqSection.astro";
 import ContactSection from "../../components/ContactSection.astro";
 import Footer from "../../components/Footer.astro";
 
@@ -65,12 +67,12 @@ const softwareServices = [
   <Navbar />
 
   <main
-    class="pt-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300"
+    class="bg-slate-50 dark:bg-slate-950 transition-colors duration-300"
   >
     <!-- Hero Especializado Software a Medida -->
     <section
       id="hero"
-      class="pt-3 pb-12 md:pt-5 md:pb-14 relative border-b border-slate-200 dark:border-slate-800"
+      class="pt-24 sm:pt-32 pb-12 md:pb-16 relative border-b border-slate-200 dark:border-slate-800"
     >
       <div
         class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center"
@@ -85,60 +87,52 @@ const softwareServices = [
           <h1
             class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-tight"
           >
-            Sal del desorden de Excel y crea tu <span
+            Software a la medida para <span
               class="text-indigo-600 dark:text-indigo-400"
-              >Propio Software a la Medida</span
+              >centralizar y ordenar tu empresa</span
             >
           </h1>
 
-          <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
-            Hojas de cálculo compartidas que se desconfiguran, datos que se pierden o software genérico de terceros que te cobra licencias mensuales abusivas y no se adapta a tus procesos. Construimos <strong>tu propia plataforma web y aplicaciones móviles B2C</strong> exactamente ajustadas a la lógica de tu empresa.
+          <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
+            Reemplaza hojas de cálculo desordenadas por una plataforma propia, segura y accesible desde cualquier lugar.
           </p>
 
-          <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
+          <div class="flex flex-col sm:flex-row items-center gap-3.5 pt-2">
             <a
               href="#contacto"
-              class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition flex items-center justify-center"
+              class="w-full sm:w-auto h-11 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider shadow-xs transition flex items-center justify-center"
             >
-              Cotizar Mi Software / App
+              Cotizar Software a Medida
             </a>
             <a
               href="/"
-              class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center justify-center"
+              class="w-full sm:w-auto h-11 px-5 rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center justify-center"
             >
               ← Volver al Inicio
             </a>
           </div>
         </div>
 
-        <!-- Architecture Stack Card Visual -->
-        <div class="lg:col-span-5">
-          <div
-            class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm space-y-4"
-          >
-            <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
-              <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-                La Diferencia Aleric
-              </span>
-              <span class="text-[11px] font-mono font-bold text-emerald-600 dark:text-emerald-400">
-                100% Adaptado a Ti
-              </span>
+        <!-- Visual Showcase Imagen Real -->
+        <div class="lg:col-span-5 w-full">
+          <div class="relative w-full max-w-lg lg:max-w-none mx-auto select-none">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/90 dark:border-slate-800/90 bg-white dark:bg-slate-900 group">
+              <img
+                src="/assets/solution-software.jpg"
+                alt="Plataforma de software a la medida Aleric.dev"
+                class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-[1.02]"
+                width="640"
+                height="480"
+                loading="eager"
+              />
             </div>
-
-            <div class="space-y-3 text-xs">
-              <div class="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 text-rose-900 dark:text-rose-200">
-                <span class="font-bold block mb-1">❌ El problema de Excel:</span>
-                "Fórmula borrada accidentalmente", "Archivo bloqueado porque otro lo tiene abierto", "No sabemos cuál es la última versión".
+            <div class="hidden sm:flex absolute -bottom-4 -left-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-2xl p-3 shadow-xl items-center gap-3">
+              <div class="w-8 h-8 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">
+                🔑
               </div>
-
-              <div class="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 text-amber-900 dark:text-amber-200">
-                <span class="font-bold block mb-1">❌ El problema del software genérico:</span>
-                Cobros en dólares por cada usuario, funciones que no necesitas y procesos propios que no puedes implementar.
-              </div>
-
-              <div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900 text-emerald-900 dark:text-emerald-200">
-                <span class="font-bold block mb-1">✅ Tu Solución con Aleric:</span>
-                Plataforma única, usuarios ilimitados si lo deseas, adaptada a tus reglas de negocio y con propiedad total del código.
+              <div>
+                <p class="text-xs font-bold text-slate-900 dark:text-white">Código 100% Tuyo</p>
+                <p class="text-[10px] text-slate-500 dark:text-slate-400">Sin licencias por usuario</p>
               </div>
             </div>
           </div>
@@ -172,6 +166,11 @@ const softwareServices = [
                 <span class="text-emerald-500 font-bold">✓</span> Permisos restringidos: los empleados solo ven lo que deben ver.
               </li>
             </ul>
+          </div>
+
+          <!-- Comparativa Visual Interactiva -->
+          <div>
+            <VisualExcelTransform />
           </div>
 
           <div class="space-y-4">
@@ -248,6 +247,9 @@ const softwareServices = [
 
     <!-- Metodología de Trabajo & Garantías de Ingeniería (Componente Unificado) -->
     <WhyUsSection />
+
+    <!-- Preguntas Frecuentes Reales & Garantías Blindadas -->
+    <FaqSection />
 
     <!-- Formulario de Captura de Leads Dedicado -->
     <ContactSection

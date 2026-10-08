@@ -1,0 +1,82 @@
+---
+// Componente de demostración visual de WhatsApp interactivo de alta fidelidad
+// Permite entender en 3 segundos cómo una automatización comercial cierra clientes
+---
+
+<div class="relative w-full max-w-md mx-auto select-none font-sans">
+  <!-- Efecto de profundidad -->
+  <div class="absolute -top-4 -right-4 w-48 h-48 bg-emerald-500/10 dark:bg-emerald-600/15 rounded-full blur-2xl pointer-events-none"></div>
+
+  <!-- Carcasa del Teléfono o Ventana de Chat WhatsApp -->
+  <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-[#efeae2] dark:bg-[#0b141a] shadow-xl overflow-hidden">
+    
+    <!-- Cabecera de WhatsApp Oficial -->
+    <div class="bg-[#075e54] dark:bg-[#202c33] px-4 py-3 text-white flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="relative w-9 h-9 rounded-full bg-emerald-700 dark:bg-emerald-600 flex items-center justify-center font-bold text-sm text-white shadow-inner">
+          🏢
+          <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 border-2 border-[#075e54] dark:border-[#202c33] rounded-full"></span>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-xs font-bold leading-tight">Asistente Comercial</span>
+            <svg class="w-3.5 h-3.5 text-sky-300" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+          </div>
+          <span class="text-[10px] text-emerald-100/80 block leading-tight">En línea · Respuesta en 2s</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-xs text-emerald-100 font-mono">
+        <span class="px-2 py-0.5 rounded-full bg-emerald-800/60 dark:bg-slate-800/80 text-[10px]">Cloud API</span>
+      </div>
+    </div>
+
+    <!-- Contenido del Diálogo Comercial -->
+    <div class="p-4 space-y-3 text-xs leading-relaxed">
+      
+      <!-- Mensaje Cliente -->
+      <div class="flex justify-end">
+        <div class="bg-[#d9fdd3] dark:bg-[#005c4b] text-slate-800 dark:text-slate-100 rounded-2xl rounded-tr-none px-3.5 py-2.5 shadow-xs max-w-[85%] space-y-1">
+          <p>Hola, quiero automatizar los pedidos y cobros de mi negocio. ¿Cómo funciona?</p>
+          <div class="flex items-center justify-end gap-1 text-[9px] text-slate-500 dark:text-emerald-200">
+            <span>10:42 AM</span>
+            <span>✓✓</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mensaje Automático del Bot -->
+      <div class="flex justify-start">
+        <div class="bg-white dark:bg-[#202c33] text-slate-800 dark:text-slate-100 rounded-2xl rounded-tl-none px-3.5 py-2.5 shadow-xs max-w-[88%] space-y-2 border border-slate-100 dark:border-transparent">
+          <p>¡Hola! 👋 Con gusto te ayudamos. Conectamos tu WhatsApp directamente con tus inventarios, sistema contable y pasarelas de pago (PSE/Tarjetas).</p>
+          
+          <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 space-y-1.5 text-[11px]">
+            <span class="font-bold text-emerald-700 dark:text-emerald-400 block">Beneficio inmediato:</span>
+            <ul class="space-y-1 text-slate-600 dark:text-slate-300">
+              <li>⚡ Cero clientes esperando respuesta.</li>
+              <li>💰 Generación automática de link de pago.</li>
+              <li>📑 Recibo emitido al instante.</li>
+            </ul>
+          </div>
+
+          <div class="flex items-center justify-end text-[9px] text-slate-400">
+            <span>10:42 AM</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón de Acción en WhatsApp -->
+      <div class="pt-1 flex justify-center">
+        <div class="w-full bg-white dark:bg-[#202c33] rounded-xl p-2 border border-slate-200 dark:border-slate-700 text-center shadow-xs">
+          <span class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 flex items-center justify-center gap-1.5">
+            <span>⚡</span> Demostración en Vivo en tu Celular
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

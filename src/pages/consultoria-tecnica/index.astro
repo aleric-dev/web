@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import AuditPillars from "../../components/AuditPillars.astro";
 import WhyUsSection from "../../components/WhyUsSection.astro";
+import FaqSection from "../../components/FaqSection.astro";
 import ContactSection from "../../components/ContactSection.astro";
 import Footer from "../../components/Footer.astro";
 
@@ -21,9 +22,9 @@ const technicalSpecialties = [
   },
   {
     icon: "⚙️",
-    title: "Orquestación de Flujos con n8n Self-Hosted",
+    title: "Orquestación de Flujos & Automatización",
     description:
-      "Automatización de pipelines empresariales con n8n alojado en Docker/VPS. Webhooks idempotentes, gestión de errores y sincronización en tiempo real entre sistemas heterogéneos.",
+      "Automatización de pipelines empresariales y tareas en segundo plano. Webhooks seguros, gestión de errores y sincronización en tiempo real entre sistemas heterogéneos.",
   },
   {
     icon: "🐍",
@@ -33,15 +34,15 @@ const technicalSpecialties = [
   },
   {
     icon: "💬",
-    title: "WhatsApp Cloud API Oficial (Meta)",
+    title: "WhatsApp Cloud API Oficial",
     description:
-      "Integración nativa con la API oficial de Meta mediante webhooks con firma criptográfica, envío de plantillas interactivas y arquitectura tolerante a fallos sin emuladores.",
+      "Integración nativa con la API oficial mediante webhooks seguros, envío de plantillas interactivas y arquitectura tolerante a fallos sin emuladores.",
   },
   {
     icon: "🧾",
-    title: "Integración Siigo ERP & Facturación Electrónica",
+    title: "Integración de Sistemas ERP & Facturación Electrónica",
     description:
-      "Conexión con la API REST de Siigo para emisión de facturación electrónica automática, creación de terceros, recibos de caja y sincronización de catálogo e inventarios en tiempo real.",
+      "Conexión directa con APIs empresariales para emisión de facturación electrónica automática, creación de clientes, recibos de caja y sincronización de catálogo e inventarios en tiempo real.",
   },
   {
     icon: "🔍",
@@ -70,7 +71,7 @@ const deepStackDetails = [
   },
   {
     category: "Automatización & Conectores",
-    tags: ["n8n Self-Hosted", "WhatsApp Cloud API", "Siigo ERP REST", "Chatwoot", "Webhooks HMAC"],
+    tags: ["Orquestación de Flujos", "WhatsApp Cloud API", "Integración ERP", "Paneles Multiagente", "Webhooks Seguros"],
     highlight: "Integraciones empresariales oficiales sin riesgo de bloqueos de cuenta.",
   },
   {
@@ -83,17 +84,17 @@ const deepStackDetails = [
 
 <Layout
   title="Aleric.dev | Consultoría Técnica Senior & Auditoría de Software"
-  description="Consultoría técnica senior, auditoría de código, rescate legacy, integración con Siigo ERP, WhatsApp Cloud API, n8n, Python FastAPI y mentoría Fullstack."
+  description="Consultoría técnica senior, auditoría de código, rescate legacy, integración de sistemas ERP, WhatsApp Cloud API, arquitectura en la nube y mentoría Fullstack."
 >
   <Navbar />
 
   <main
-    class="pt-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300"
+    class="bg-slate-50 dark:bg-slate-950 transition-colors duration-300"
   >
     <!-- Hero Especializado Consultoría Técnica -->
     <section
       id="hero"
-      class="pt-3 pb-12 md:pt-5 md:pb-14 relative border-b border-slate-200 dark:border-slate-800"
+      class="pt-24 sm:pt-32 pb-12 md:pb-16 relative border-b border-slate-200 dark:border-slate-800"
     >
       <div
         class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center"
@@ -108,77 +109,52 @@ const deepStackDetails = [
           <h1
             class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-tight"
           >
-            Consultoría Técnica <span
+            Diagnóstico técnico y rescate de <span
               class="text-amber-600 dark:text-amber-400"
-              >Senior &amp; Ingeniería de Software</span
+              >plataformas de software</span
             >
           </h1>
 
-          <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
-            ¿Tu plataforma está lenta, fallando o estancada? Diagnosticamos la causa raíz con <strong>auditorías de código profundas</strong>, rescatamos proyectos críticos, conectamos sistemas complejos (<strong>Siigo ERP, WhatsApp API, n8n</strong>) y capacitamos a tu equipo en el stack más demandado: <strong>Fullstack TypeScript, PostgreSQL y Python FastAPI</strong>.
+          <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
+            Identificamos causas de lentitud, solucionamos fallas críticas y conectamos tus sistemas con ingeniería senior.
           </p>
 
-          <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
+          <div class="flex flex-col sm:flex-row items-center gap-3.5 pt-2">
             <a
               href="#contacto"
-              class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition flex items-center justify-center"
+              class="w-full sm:w-auto h-11 px-6 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider shadow-xs transition flex items-center justify-center"
             >
-              Agendar Sesión de Consultoría
+              Agendar Diagnóstico Técnico
             </a>
             <a
               href="/"
-              class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center justify-center"
+              class="w-full sm:w-auto h-11 px-5 rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center justify-center"
             >
               ← Volver al Inicio
             </a>
           </div>
         </div>
 
-        <!-- Architecture Stack Card Visual -->
-        <div class="lg:col-span-5">
-          <div
-            class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm space-y-4"
-          >
-            <div
-              class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800"
-            >
-              <span
-                class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400"
-                >Stack Técnico Especializado</span
-              >
-              <span
-                class="text-[11px] font-mono font-bold text-emerald-600 dark:text-emerald-400"
-                >Senior Verified</span
-              >
+        <!-- Visual Showcase Imagen Real -->
+        <div class="lg:col-span-5 w-full">
+          <div class="relative w-full max-w-lg lg:max-w-none mx-auto select-none">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/90 dark:border-slate-800/90 bg-white dark:bg-slate-900 group">
+              <img
+                src="/assets/solution-consultancy.jpg"
+                alt="Consultoría técnica y auditoría de software Aleric.dev"
+                class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-[1.02]"
+                width="640"
+                height="480"
+                loading="eager"
+              />
             </div>
-
-            <div class="space-y-3 font-mono text-xs">
-              <div
-                class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800"
-              >
-                <div class="text-slate-500 text-[10px] uppercase font-bold mb-0.5">Fullstack TypeScript</div>
-                <div class="font-bold text-slate-900 dark:text-white">NestJS / Node.js / React 19 / Next.js</div>
+            <div class="hidden sm:flex absolute -bottom-4 -left-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-2xl p-3 shadow-xl items-center gap-3">
+              <div class="w-8 h-8 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm">
+                🛡️
               </div>
-
-              <div
-                class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800"
-              >
-                <div class="text-slate-500 text-[10px] uppercase font-bold mb-0.5">Base de Datos &amp; Rendimiento</div>
-                <div class="font-bold text-slate-900 dark:text-white">PostgreSQL / Tuning SQL / Prisma / Redis</div>
-              </div>
-
-              <div
-                class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800"
-              >
-                <div class="text-slate-500 text-[10px] uppercase font-bold mb-0.5">Integraciones &amp; Automatización</div>
-                <div class="font-bold text-slate-900 dark:text-white">Siigo ERP API / n8n / WhatsApp Cloud API</div>
-              </div>
-
-              <div
-                class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800"
-              >
-                <div class="text-slate-500 text-[10px] uppercase font-bold mb-0.5">Microservicios Python</div>
-                <div class="font-bold text-slate-900 dark:text-white">FastAPI / Pydantic / AsyncIO / ETLs</div>
+              <div>
+                <p class="text-xs font-bold text-slate-900 dark:text-white">Auditoría &amp; Respaldo</p>
+                <p class="text-[10px] text-slate-500 dark:text-slate-400">Diagnóstico imparcial</p>
               </div>
             </div>
           </div>
@@ -337,7 +313,7 @@ const deepStackDetails = [
                 </div>
                 <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                   <div class="font-bold text-amber-600 dark:text-amber-400">Bolsa de Horas de Ingeniería</div>
-                  <p class="text-slate-500 dark:text-slate-400 text-[11px]">Acompañamiento continuo, resolución de bugs críticos e integración de APIs (Siigo, Meta).</p>
+                  <p class="text-slate-500 dark:text-slate-400 text-[11px]">Acompañamiento continuo, resolución de bugs críticos e integración de APIs (ERP, WhatsApp, Pasarelas).</p>
                 </div>
                 <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                   <div class="font-bold text-amber-600 dark:text-amber-400">Mentoría Técnica Personalizada</div>
@@ -352,6 +328,9 @@ const deepStackDetails = [
 
     <!-- Metodología de Trabajo & Garantías de Ingeniería (Componente Unificado) -->
     <WhyUsSection />
+
+    <!-- Preguntas Frecuentes Reales & Garantías Blindadas -->
+    <FaqSection />
 
     <!-- Formulario de Captura de Leads Dedicado -->
     <ContactSection

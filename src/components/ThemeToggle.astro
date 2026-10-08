@@ -42,8 +42,7 @@
 
       function isDarkMode() {
         const stored = localStorage.getItem('theme');
-        if (stored) return stored === 'dark';
-        return window.matchMedia('(prefers-color-scheme: dark)').matches;
+        return stored === 'dark';
       }
 
       function applyTheme(isDark) {
@@ -56,7 +55,7 @@
         }
       }
 
-      // Initial check
+      // Initial check (respetando si ya tiene o no la clase dark)
       applyTheme(isDarkMode());
 
       btn.addEventListener('click', () => {

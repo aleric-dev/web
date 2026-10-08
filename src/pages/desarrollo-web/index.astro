@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import WebComparison from "../../components/WebComparison.astro";
 import WhyUsSection from "../../components/WhyUsSection.astro";
+import FaqSection from "../../components/FaqSection.astro";
 import ContactSection from "../../components/ContactSection.astro";
 import Footer from "../../components/Footer.astro";
 
@@ -65,12 +66,12 @@ const webServices = [
   <Navbar />
 
   <main
-    class="pt-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300"
+    class="bg-slate-50 dark:bg-slate-950 transition-colors duration-300"
   >
     <!-- Hero Split Especializado Desarrollo Web -->
     <section
       id="hero"
-      class="pt-3 pb-12 md:pt-5 md:pb-14 relative border-b border-slate-200 dark:border-slate-800"
+      class="pt-24 sm:pt-32 pb-12 md:pb-16 relative border-b border-slate-200 dark:border-slate-800"
     >
       <div
         class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center"
@@ -85,78 +86,53 @@ const webServices = [
           <h1
             class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-tight"
           >
-            Páginas Web &amp; Landings para <span
+            Páginas web rápidas diseñadas para <span
               class="text-cyan-600 dark:text-cyan-400"
-              >Multiplicar tus Ventas</span
+              >vender más todos los días</span
             >
           </h1>
 
-          <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
-            Olvídate de páginas lentas, menús confusos o plantillas genéricas que nadie lee. Creamos <strong>landings comerciales y tiendas online</strong> ultraeficientes que capturan clientes desde el primer clic y convierten el interés en ventas reales.
+          <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
+            Carga en celular en menos de un segundo y enfocada 100% en captar clientes.
           </p>
 
-          <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
+          <div class="flex flex-col sm:flex-row items-center gap-3.5 pt-2">
             <a
               href="#contacto"
-              class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition flex items-center justify-center"
+              class="w-full sm:w-auto h-11 px-6 rounded-xl bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-xs uppercase tracking-wider shadow-xs transition flex items-center justify-center"
             >
-              Cotizar Mi Sitio Web / Landing
+              Cotizar Página Web
             </a>
             <a
               href="/"
-              class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center justify-center"
+              class="w-full sm:w-auto h-11 px-5 rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center justify-center"
             >
               ← Volver al Inicio
             </a>
           </div>
         </div>
 
-        <!-- Metric Scorecard Visual Component -->
-        <div class="lg:col-span-5">
-          <div
-            class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm space-y-4"
-          >
-            <div
-              class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800"
-            >
-              <span class="text-xs font-bold text-slate-900 dark:text-white"
-                >Rendimiento Comercial Comprobado</span
-              >
-              <span
-                class="text-[11px] font-mono font-bold text-emerald-600 dark:text-emerald-400"
-                >Velocidad Garantizada</span
-              >
+        <!-- Visual Showcase Imagen Real -->
+        <div class="lg:col-span-5 w-full">
+          <div class="relative w-full max-w-lg lg:max-w-none mx-auto select-none">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/90 dark:border-slate-800/90 bg-white dark:bg-slate-900 group">
+              <img
+                src="/assets/solution-web.jpg"
+                alt="Páginas web y tiendas online de alta conversión Aleric.dev"
+                class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-[1.02]"
+                width="640"
+                height="480"
+                loading="eager"
+              />
             </div>
-
-            <div class="grid grid-cols-2 gap-3 font-mono text-center">
-              <div
-                class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800"
-              >
-                <span
-                  class="block text-2xl font-black text-cyan-600 dark:text-cyan-400"
-                  >&lt; 0.5s</span
-                >
-                <span class="text-[10px] text-slate-500 uppercase"
-                  >Carga en Móvil</span
-                >
+            <div class="hidden sm:flex absolute -bottom-4 -left-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-2xl p-3 shadow-xl items-center gap-3">
+              <div class="w-8 h-8 rounded-xl bg-cyan-50 dark:bg-cyan-950/60 text-cyan-600 dark:text-cyan-400 flex items-center justify-center font-bold text-sm">
+                ⚡
               </div>
-              <div
-                class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800"
-              >
-                <span
-                  class="block text-2xl font-black text-emerald-600 dark:text-emerald-400"
-                  >+35%</span
-                >
-                <span class="text-[10px] text-slate-500 uppercase"
-                  >Más Contactos</span
-                >
+              <div>
+                <p class="text-xs font-bold text-slate-900 dark:text-white">&lt; 0.5s en Celular</p>
+                <p class="text-[10px] text-slate-500 dark:text-slate-400">Apertura instantánea</p>
               </div>
-            </div>
-
-            <div
-              class="p-4 rounded-xl bg-cyan-50 dark:bg-cyan-950/40 border border-cyan-200 dark:border-cyan-900 text-xs text-cyan-900 dark:text-cyan-200 leading-relaxed font-medium"
-            >
-              💡 <strong>La regla de los 2 segundos:</strong> Si un visitante entra desde un anuncio en su celular y la página tarda en abrir, se devuelve inmediatamente. Con nuestras páginas el acceso es instantáneo.
             </div>
           </div>
         </div>
@@ -277,6 +253,9 @@ const webServices = [
 
     <!-- Metodología de Trabajo & Garantías de Ingeniería (Componente Unificado) -->
     <WhyUsSection />
+
+    <!-- Preguntas Frecuentes Reales & Garantías Blindadas -->
+    <FaqSection />
 
     <!-- Formulario de Captura de Leads Dedicado -->
     <ContactSection

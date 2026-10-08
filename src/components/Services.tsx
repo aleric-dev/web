@@ -57,13 +57,13 @@ const SERVICES: ServiceItem[] = [
     route: '/automatizaciones',
     icon: <Bot className="w-7 h-7 text-emerald-600 dark:text-emerald-400" />,
     title: 'Automatización & WhatsApp',
-    tagline: 'WhatsApp API, n8n & Bots',
-    snippet: 'Eliminamos tareas repetitivas conectando tus ventas y operaciones con bots inteligentes y flujos en n8n.',
+    tagline: 'WhatsApp API, Flujos & Bots',
+    snippet: 'Eliminamos tareas repetitivas conectando tus ventas y operaciones con bots inteligentes y flujos automáticos.',
     description:
-      'Eliminamos tareas repetitivas y cuellos de botella conectando tus sistemas mediante bots inteligentes, flujos en n8n y scripts personalizados.',
+      'Eliminamos tareas repetitivas y cuellos de botella conectando tus sistemas mediante bots inteligentes, flujos automáticos y scripts personalizados.',
     features: [
-      'Integraciones con WhatsApp API & Chatwoot',
-      'Flujos automatizados en n8n & webhooks',
+      'Integraciones con WhatsApp API & Bandeja Multicanal',
+      'Flujos automatizados de procesos & webhooks',
       'Sincronización en tiempo real entre sistemas',
     ],
     gradient: 'from-emerald-500/10 via-teal-500/5 to-transparent',

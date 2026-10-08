@@ -1,8 +1,10 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
+import VisualChatPreview from "../../components/VisualChatPreview.astro";
 import WhatsAppBenefits from "../../components/WhatsAppBenefits.astro";
 import WhyUsSection from "../../components/WhyUsSection.astro";
+import FaqSection from "../../components/FaqSection.astro";
 import ContactSection from "../../components/ContactSection.astro";
 import Footer from "../../components/Footer.astro";
 
@@ -29,13 +31,13 @@ const automationServices = [
     icon: "👥",
     title: "Bandeja Multiagente para tu Equipo",
     description:
-      "Conecta a todos tus asesores al mismo número oficial de WhatsApp con Chatwoot. Cada vendedor atiende sus propios chats sin prestarse el celular.",
+      "Conecta a todos tus asesores al mismo número oficial de WhatsApp en una sola plataforma. Cada vendedor atiende sus propios chats sin prestarse el celular.",
   },
   {
     icon: "🔄",
-    title: "Conexión de Sistemas sin Fricción (n8n)",
+    title: "Conexión de Sistemas sin Fricción",
     description:
-      "Orquestamos tus flujos para que los leads de formularios, compras o mensajes se guarden solos en tu base de datos o CRM.",
+      "Orquestamos tus flujos para que los leads de formularios, compras o mensajes se sincronicen solos en tu base de datos o CRM.",
   },
   {
     icon: "📑",
@@ -51,9 +53,9 @@ const automationServices = [
   },
   {
     icon: "🛡️",
-    title: "Conexión Oficial Meta (Cero Bloqueos)",
+    title: "Conexión Oficial WhatsApp (Cero Bloqueos)",
     description:
-      "Implementación con WhatsApp Cloud API oficial. Cero riesgos de que Meta bloquee o suspenda el número de tu empresa.",
+      "Implementación con WhatsApp Cloud API oficial. Cero riesgos de que bloqueen o suspendan el número de tu empresa.",
   },
 ];
 
@@ -78,18 +80,18 @@ const flowSteps = [
 ---
 
 <Layout
-  title="Aleric.dev | Automatización de WhatsApp, Cobranzas & Atención al Cliente 24/7"
-  description="Automatiza la atención comercial de WhatsApp, cotizaciones y cobranzas. Recupera clientes perdidos y elimina tareas repetitivas con herramientas oficiales."
+  title="Aleric.dev | Ventas & Atención Comercial por WhatsApp 24/7"
+  description="Automatiza la atención comercial de WhatsApp, cotizaciones guiadas y cobranzas. Vende las 24 horas sin clientes esperando."
 >
   <Navbar />
 
   <main
-    class="pt-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300"
+    class="bg-slate-50 dark:bg-slate-950 transition-colors duration-300"
   >
     <!-- Hero Especializado Automatizaciones -->
     <section
       id="hero"
-      class="pt-3 pb-12 md:pt-5 md:pb-14 relative border-b border-slate-200 dark:border-slate-800"
+      class="pt-24 sm:pt-32 pb-12 md:pb-16 relative border-b border-slate-200 dark:border-slate-800"
     >
       <div
         class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center"
@@ -104,66 +106,53 @@ const flowSteps = [
           <h1
             class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-tight"
           >
-            No pierdas más clientes en WhatsApp por <span
+            Ventas y atención comercial automática por <span
               class="text-emerald-600 dark:text-emerald-400"
-              >demorarte en responder</span
+              >WhatsApp las 24 horas</span
             >
           </h1>
 
-          <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
-            ¿Tu equipo se satura de chats, no alcanza a contestar a tiempo o se le olvidan los seguimientos? Automatizamos la <strong>atención de clientes, las cotizaciones y los cobros por WhatsApp 24/7</strong> para que tu negocio nunca duerma y ningún prospecto quede desatendido.
+          <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
+            Respuestas inmediatas en 2 segundos, cotizaciones guiadas y cobros automáticos sin clientes esperando.
           </p>
 
-          <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
+          <div class="flex flex-col sm:flex-row items-center gap-3.5 pt-2">
             <a
               href="#contacto"
-              class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition flex items-center justify-center"
+              class="w-full sm:w-auto h-11 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-xs transition flex items-center justify-center"
             >
-              Automatizar Mi WhatsApp &amp; Procesos
+              Cotizar WhatsApp Comercial
             </a>
             <a
               href="/"
-              class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center justify-center"
+              class="w-full sm:w-auto h-11 px-5 rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-300 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center justify-center"
             >
               ← Volver al Inicio
             </a>
           </div>
         </div>
 
-        <!-- Workflow Diagram Visual Component -->
-        <div class="lg:col-span-5">
-          <div
-            class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm space-y-3"
-          >
-            <div
-              class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800"
-            >
-              <span class="text-xs font-bold text-slate-900 dark:text-white"
-                >Cómo Funciona en la Vida Real</span
-              >
-              <span
-                class="text-[10px] font-mono font-bold text-emerald-600 dark:text-emerald-400"
-                >Sin Fricción</span
-              >
+        <!-- Visual Showcase Imagen Real -->
+        <div class="lg:col-span-5 w-full">
+          <div class="relative w-full max-w-lg lg:max-w-none mx-auto select-none">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/90 dark:border-slate-800/90 bg-white dark:bg-slate-900 group">
+              <img
+                src="/assets/solution-automation.jpg"
+                alt="Automatización comercial de WhatsApp Aleric.dev"
+                class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-[1.02]"
+                width="640"
+                height="480"
+                loading="eager"
+              />
             </div>
-
-            <div class="space-y-2.5">
-              {
-                flowSteps.map((node) => (
-                  <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs">
-                    <div class="font-bold text-emerald-600 dark:text-emerald-400 mb-0.5">
-                      {node.step}
-                    </div>
-                    <div class="text-slate-600 dark:text-slate-300 font-medium">
-                      {node.detail}
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-
-            <div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900 text-xs text-emerald-900 dark:text-emerald-200">
-              💡 <strong>Herramientas que usamos:</strong> WhatsApp Cloud API oficial de Meta (sin bloqueos), orquestadores visuales como n8n y plataformas multiagente como Chatwoot.
+            <div class="hidden sm:flex absolute -bottom-4 -left-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-2xl p-3 shadow-xl items-center gap-3">
+              <div class="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">
+                💬
+              </div>
+              <div>
+                <p class="text-xs font-bold text-slate-900 dark:text-white">WhatsApp Cloud API</p>
+                <p class="text-[10px] text-slate-500 dark:text-slate-400">Canal Oficial · Cero bloqueos</p>
+              </div>
             </div>
           </div>
         </div>
@@ -266,6 +255,9 @@ const flowSteps = [
 
     <!-- Metodología de Trabajo & Garantías de Ingeniería (Componente Unificado) -->
     <WhyUsSection />
+
+    <!-- Preguntas Frecuentes Reales & Garantías Blindadas -->
+    <FaqSection />
 
     <!-- Formulario de Captura de Leads Dedicado -->
     <ContactSection
