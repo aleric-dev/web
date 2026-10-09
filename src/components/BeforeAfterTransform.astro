@@ -32,64 +32,81 @@ const comparisons: ComparisonRow[] = [
 <section id="transformacion" class="py-16 sm:py-24 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
   <div class="max-w-7xl mx-auto px-6">
     
-    <!-- Encabezado Centrado con Tipografía Mayor -->
-    <div class="text-center max-w-4xl mx-auto mb-12 sm:mb-14">
+    <!-- Encabezado Centrado: Mejora con Aleric -->
+    <div class="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-xs font-mono font-semibold uppercase tracking-wider mb-4">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Transformación Tangible</span>
+      </div>
       <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-black text-slate-900 dark:text-white tracking-tight leading-[1.15]">
-        El impacto en tu día a día: <span class="text-indigo-600 dark:text-indigo-400">Antes vs. Con Aleric</span>
+        El impacto en tu día a día: <span class="text-emerald-600 dark:text-emerald-400">Mejora con Aleric</span>
       </h2>
+      <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mt-3">
+        El contraste real entre los dolores operativos comunes y la tranquilidad de operar con software desarrollado a la medida.
+      </p>
     </div>
 
-    <!-- Comparador Estructural Editorial (Tablero Side-by-Side Sin Imágenes Extras) -->
-    <div class="rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xs bg-slate-50 dark:bg-slate-950 divide-y divide-slate-200 dark:divide-slate-800">
-      
-      <!-- Cabecera de Columnas en Desktop -->
-      <div class="hidden md:grid md:grid-cols-12 bg-slate-100/90 dark:bg-slate-900/90 text-xs font-mono uppercase tracking-wider font-bold">
-        <div class="col-span-3 px-6 py-4 text-slate-600 dark:text-slate-400 border-r border-slate-200 dark:border-slate-800">
-          Área Operativa
-        </div>
-        <div class="col-span-4 px-6 py-4 text-rose-600 dark:text-rose-400 border-r border-slate-200 dark:border-slate-800 flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-rose-500"></span>
-          Antes de Aleric (Fricción)
-        </div>
-        <div class="col-span-5 px-6 py-4 text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          Con Aleric (Solución)
-        </div>
-      </div>
-
-      <!-- Filas de Comparación con Textos Ultra Sintetizados -->
-      {comparisons.map((row) => (
-        <div class="grid grid-cols-1 md:grid-cols-12 text-sm transition-colors hover:bg-white dark:hover:bg-slate-900/50">
+    <!-- Grid 2x2 para las 4 Transformaciones Clave -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7">
+      {comparisons.map((item) => (
+        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/60 p-6 sm:p-7 shadow-xs hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between">
           
-          <!-- Área -->
-          <div class="md:col-span-3 px-6 py-4 md:py-5 border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-800 bg-slate-100/40 dark:bg-slate-900/30 flex items-center">
-            <span class="font-bold text-slate-900 dark:text-white text-sm">
-              {row.area}
-            </span>
+          <div>
+            <!-- Área Operativa -->
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <span class="text-xs font-mono font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                {item.area}
+              </span>
+              <span class="text-[11px] font-mono font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/60 dark:border-emerald-800/40 px-2 py-0.5 rounded-md">
+                100% Resuelto
+              </span>
+            </div>
+
+            <!-- AHORA: En verde grande y destacado -->
+            <div class="p-4 sm:p-5 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-800/60 mb-4">
+              <div class="flex items-start gap-3">
+                <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-sm mt-0.5">
+                  ✓
+                </span>
+                <div class="flex-1">
+                  <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 block mb-1">
+                    Ahora con Aleric
+                  </span>
+                  <p class="text-base sm:text-lg lg:text-xl font-bold text-emerald-950 dark:text-emerald-100 leading-snug">
+                    {item.after}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!-- Antes (Fricción) -->
-          <div class="md:col-span-4 px-6 py-4 md:py-5 border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed flex items-start gap-2">
-            <span class="text-rose-500 font-bold shrink-0">✕</span>
-            <p>{row.before}</p>
+          <!-- ANTES: Abajo en rojo tachado pero legible -->
+          <div class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
+            <div class="flex items-start gap-2.5">
+              <span class="w-5 h-5 rounded-md bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+                ✕
+              </span>
+              <div class="flex-1">
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-rose-600/80 dark:text-rose-400/80 block mb-0.5">
+                  Antes (Fricción superada)
+                </span>
+                <p class="text-xs sm:text-sm text-rose-700/80 dark:text-rose-300/80 line-through decoration-rose-500/70 decoration-1 leading-relaxed">
+                  {item.before}
+                </p>
+              </div>
+            </div>
           </div>
 
-          <!-- Con Aleric (Escalabilidad) -->
-          <div class="md:col-span-5 px-6 py-4 md:py-5 text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed bg-emerald-50/20 dark:bg-emerald-950/10 flex items-start gap-2">
-            <span class="text-emerald-500 font-bold shrink-0">✓</span>
-            <p class="font-medium text-slate-900 dark:text-slate-100">{row.after}</p>
-          </div>
-
-        </div>
+        </article>
       ))}
-
     </div>
 
     <!-- Llamado a la Acción Inferior -->
-    <div class="mt-10 text-center">
+    <div class="mt-12 text-center">
       <a
         href="#contacto"
-        class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition"
+        class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition active:scale-95"
       >
         <span>Transformar la Operación de mi Empresa</span>
         <span aria-hidden="true">→</span>

@@ -4,31 +4,26 @@ const faqs = [
     question: '¿Cuánto tiempo tarda en estar listo un proyecto?',
     answer:
       'Una página web o landing comercial toma entre 5 y 10 días hábiles. Un desarrollo de software a medida o automatización de WhatsApp toma entre 2 y 4 semanas, con entregas funcionales semanales para que pruebes los avances en vivo.',
-    badge: 'Tiempos',
   },
   {
     question: '¿El código y los accesos son 100% de mi propiedad?',
     answer:
       'Totalmente sí. Desplegamos en tus propias cuentas y te entregamos la totalidad del código fuente sin letras pequeñas. Cero ataduras ni mensualidades obligatorias de permanencia. El software es tuyo.',
-    badge: 'Propiedad',
   },
   {
     question: '¿Cómo se maneja el esquema de pagos?',
     answer:
       'Trabajamos con hitos claros: 50% de anticipo para iniciar la arquitectura y desarrollo, y el 50% restante únicamente contra entrega final probada y aprobada a tu entera satisfacción.',
-    badge: 'Pagos',
   },
   {
     question: '¿Necesito tener conocimientos técnicos para trabajar con ustedes?',
     answer:
       'Para nada. Hablamos de tus procesos, ventas y clientes en español claro. Nosotros asumimos el 100% de la arquitectura, conexiones de bases de datos, seguridad y desarrollo técnico.',
-    badge: 'Cero tecnicismos',
   },
   {
     question: '¿Qué sucede si después del lanzamiento necesito ajustes o soporte?',
     answer:
       'Todos los proyectos incluyen período de soporte post-entrega para resolver cualquier duda o ajuste sin costo adicional. Además, cuentas con la opción de soporte mensual o bolsa de horas bajo demanda.',
-    badge: 'Soporte',
   },
 ];
 ---
@@ -56,15 +51,10 @@ const faqs = [
               {faq.question}
             </span>
 
-            <!-- Tag y flecha a la derecha -->
-            <div class="flex items-center gap-2.5 shrink-0">
-              <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[11px] font-mono font-medium">
-                {faq.badge}
-              </span>
-              <span class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center shrink-0 group-open:rotate-180 group-open:bg-emerald-500 group-open:text-white transition-all duration-200 text-xs">
-                ▼
-              </span>
-            </div>
+            <!-- Flecha interactiva a la derecha -->
+            <span class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center shrink-0 group-open:rotate-180 group-open:bg-emerald-500 group-open:text-white transition-all duration-200 text-xs">
+              ▼
+            </span>
           </summary>
           <div class="px-5 pb-5 pt-1 text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/80">
             {faq.answer}
