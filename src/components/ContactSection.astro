@@ -45,49 +45,50 @@ const initialService = defaultService || "Desarrollo Web & Landings de Alta Conv
       
       <!-- Columna Izquierda: Confianza, Beneficios y Contacto Directo (5 cols) -->
       <div class="lg:col-span-5 space-y-6">
-        <div
-          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-xs font-mono font-bold uppercase tracking-wider"
-        >
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-          <span>⚡ RESPUESTA EN &lt; 24 HORAS</span>
-        </div>
-
         <h2
           class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-snug"
         >
           ¿Tienes una idea en mente? <span class="text-indigo-600 dark:text-indigo-400">Hablemos hoy</span>
         </h2>
 
-        <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
-          Cuéntanos qué quieres construir. Evaluamos la viabilidad técnica y te enviamos una propuesta clara con precio cerrado y tiempos garantizados.
-        </p>
-
-        <!-- 3 Puntos Clave de Confianza -->
-        <div class="space-y-3 pt-1">
-          <div class="flex items-start gap-3 p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
-            <span class="text-lg shrink-0">🎯</span>
+        <!-- Lista Editorial de 3 Beneficios Clave (Sin cards ni cajas individuales) -->
+        <ul class="space-y-4 pt-1">
+          <li class="flex items-start gap-3.5">
+            <span class="w-8 h-8 rounded-xl bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200 dark:border-indigo-800 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
+              ⚡
+            </span>
             <div>
-              <h4 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Trato directo con ingenieros</h4>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Hablas con quienes diseñan y programan tu solución, sin comerciales intermedios.</p>
+              <h4 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Cotización rápida en &lt; 24 horas</h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">
+                Alcance definido, cronograma de entregas y presupuesto fijo por contrato.
+              </p>
             </div>
-          </div>
+          </li>
 
-          <div class="flex items-start gap-3 p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
-            <span class="text-lg shrink-0">⚡</span>
-            <div>
-              <h4 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Cotización rápida en &lt; 24h</h4>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Alcance definido, cronograma de entregas y presupuesto fijo por contrato.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-3 p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
-            <span class="text-lg shrink-0">🔒</span>
+          <li class="flex items-start gap-3.5">
+            <span class="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-emerald-950/70 border border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
+              🔒
+            </span>
             <div>
               <h4 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">100% Confidencial y de tu propiedad</h4>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">El código, los accesos y los datos son exclusivamente tuyos desde el día 1.</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">
+                El código, los accesos y los datos son exclusivamente tuyos desde el día 1.
+              </p>
             </div>
-          </div>
-        </div>
+          </li>
+
+          <li class="flex items-start gap-3.5">
+            <span class="w-8 h-8 rounded-xl bg-cyan-50 dark:bg-cyan-950/70 border border-cyan-200 dark:border-cyan-800 text-cyan-600 dark:text-cyan-400 flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
+              🛡️
+            </span>
+            <div>
+              <h4 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Soporte y evolución continua</h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">
+                Acompañamiento técnico preventivo y evolución ágil sin sorpresas.
+              </p>
+            </div>
+          </li>
+        </ul>
 
         <!-- Tarjeta de WhatsApp Directo para Respuesta Inmediata -->
         <div class="p-5 rounded-2xl bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/80 space-y-3">
@@ -121,18 +122,24 @@ const initialService = defaultService || "Desarrollo Web & Landings de Alta Conv
         <div
           class="p-7 sm:p-9 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6 sm:space-y-7"
         >
-          <!-- Encabezado del Formulario (Limpio y sin duplicar la descripción lateral) -->
+          <!-- Encabezado del Formulario -->
           <div class="border-b border-slate-100 dark:border-slate-800/80 pb-3">
             <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
               Cuéntanos sobre tu proyecto
             </h3>
           </div>
 
-          <form id="lead-capture-form" class="space-y-6">
+          <form id="lead-capture-form" class="space-y-5">
             <input
               type="hidden"
               name="subject"
               value={`Nuevo Lead desde Aleric.dev: ${defaultService || "Consulta General"}`}
+            />
+            <input
+              type="hidden"
+              id="lead-service"
+              name="service_type"
+              value={defaultService || "Consulta General"}
             />
 
             <!-- Anti-Bot Honeypot -->
@@ -147,47 +154,14 @@ const initialService = defaultService || "Desarrollo Web & Landings de Alta Conv
               />
             </div>
 
-            <!-- Paso 1: Tipo de Servicio en Chips (h-10) -->
-            <div class="space-y-2.5">
-              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
-                1. ¿Qué solución te interesa? <span class="text-indigo-500">*</span>
-              </label>
-              <div class="flex flex-wrap gap-2.5" id="service-chips-container">
-                {serviceChips.map((chip) => {
-                  const isSelected = chip.value === initialService;
-                  return (
-                    <button
-                      type="button"
-                      data-service-value={chip.value}
-                      class={`service-chip h-10 px-3.5 rounded-xl text-xs font-bold transition-all duration-150 cursor-pointer flex items-center gap-1.5 border ${
-                        isSelected
-                          ? "bg-indigo-600 text-white border-indigo-600 shadow-xs"
-                          : "bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-indigo-400"
-                      }`}
-                    >
-                      <span>{chip.icon}</span>
-                      <span>{chip.label}</span>
-                    </button>
-                  );
-                })}
-              </div>
-              <input
-                type="hidden"
-                id="lead-service"
-                name="service_type"
-                value={initialService}
-                required
-              />
-            </div>
-
-            <!-- Paso 2: Inputs de Contacto (Misma altura h-10 exacta de los chips) -->
-            <div class="space-y-4 pt-1">
+            <!-- Paso 1: Inputs de Contacto (De Nombre hacia abajo directo) -->
+            <div class="space-y-4">
               <div>
                 <label
                   for="lead-name"
                   class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5"
                 >
-                  2. Tu Nombre o Empresa <span class="text-indigo-500">*</span>
+                  Tu Nombre o Empresa <span class="text-indigo-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -246,14 +220,14 @@ const initialService = defaultService || "Desarrollo Web & Landings de Alta Conv
               </div>
             </div>
 
-            <!-- Paso 3: Detalle Breve -->
+            <!-- Paso 2: Detalle Breve -->
             <div class="space-y-1.5 pt-1">
               <div class="flex items-center justify-between mb-1">
                 <label
                   for="lead-message"
                   class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300"
                 >
-                  3. ¿Qué tienes en mente? <span class="text-indigo-500">*</span>
+                  ¿Qué necesitas construir o resolver? <span class="text-indigo-500">*</span>
                 </label>
                 <span class="text-[11px] font-mono text-slate-400 dark:text-slate-500">
                   <span id="char-count">0</span>/500
@@ -262,7 +236,7 @@ const initialService = defaultService || "Desarrollo Web & Landings de Alta Conv
               <textarea
                 id="lead-message"
                 name="message"
-                rows="2"
+                rows="3"
                 maxlength="500"
                 required
                 placeholder="Cuéntanos brevemente qué necesitas resolver, tiempos o funcionalidades principales..."
@@ -564,24 +538,6 @@ const initialService = defaultService || "Desarrollo Web & Landings de Alta Conv
     const submitBtn = document.getElementById("lead-submit-btn");
     const messageInput = document.getElementById("lead-message");
     const charCount = document.getElementById("char-count");
-    const serviceInput = document.getElementById("lead-service");
-
-    // Lógica interactiva para Chips de Servicio
-    const serviceChips = document.querySelectorAll(".service-chip");
-    serviceChips.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const val = btn.getAttribute("data-service-value");
-        if (serviceInput && val) {
-          serviceInput.value = val;
-        }
-        serviceChips.forEach((c) => {
-          c.classList.remove("bg-indigo-600", "text-white", "border-indigo-600", "shadow-xs");
-          c.classList.add("bg-slate-50", "dark:bg-slate-950", "text-slate-700", "dark:text-slate-300", "border-slate-200", "dark:border-slate-800");
-        });
-        btn.classList.remove("bg-slate-50", "dark:bg-slate-950", "text-slate-700", "dark:text-slate-300", "border-slate-200", "dark:border-slate-800");
-        btn.classList.add("bg-indigo-600", "text-white", "border-indigo-600", "shadow-xs");
-      });
-    });
 
     // Contador de caracteres en vivo
     if (messageInput && charCount) {

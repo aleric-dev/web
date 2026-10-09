@@ -1,55 +1,93 @@
 ---
 interface LeakItem {
-  tag: string;
-  badge: string;
-  badgeColor: string;
+  id: string;
   image: string;
   alt: string;
   title: string;
-  lossMetric: string;
+  description: string;
   href: string;
 }
 
 const leaks: LeakItem[] = [
   {
-    tag: "Ventas por WhatsApp",
-    badge: "❌ Venta Perdida",
-    badgeColor: "bg-rose-600 text-white",
+    id: "fuga-01",
     image: "/assets/leaks/leak-whatsapp.jpg",
     alt: "Fuga comercial en WhatsApp por demora en respuestas",
-    title: "El mensaje que se enfrió",
-    lossMetric: "Tardar más de 5 minutos hace que el cliente compre a tu competencia.",
+    title: "Mensajes que se enfrían",
+    description: "Tardar en responder hace que el cliente le compre a la competencia en minutos.",
     href: "/automatizaciones",
   },
   {
-    tag: "Desarrollo Web",
-    badge: "⏱️ 4.8s de Carga",
-    badgeColor: "bg-amber-600 text-white",
+    id: "fuga-02",
     image: "/assets/leaks/leak-slow-web.jpg",
     alt: "Página web lenta que hace perder el presupuesto de pauta",
-    title: "La web lenta que espanta visitas",
-    lossMetric: "Más del 60% de tus visitas se van antes de ver tus productos.",
+    title: "Páginas web lentas",
+    description: "Espantan visitas y desperdician tu presupuesto en pauta publicitaria.",
     href: "/desarrollo-web",
   },
   {
-    tag: "Software a Medida",
-    badge: "⚠️ Fórmulas Rotas",
-    badgeColor: "bg-rose-600 text-white",
+    id: "fuga-03",
     image: "/assets/leaks/leak-excel.jpg",
     alt: "Desorden operativo y errores por hojas de cálculo compartidas",
-    title: "El descontrol de Excel compartido",
-    lossMetric: "Pedidos duplicados, inventario descuadrado y datos sin seguridad.",
+    title: "El descontrol de Excel",
+    description: "Fórmulas rotas, pedidos duplicados y datos de tu empresa sin seguridad ni respaldo.",
     href: "/software-a-medida",
   },
   {
-    tag: "Consultoría Técnica",
-    badge: "🛑 Error 502 Offline",
-    badgeColor: "bg-slate-900 text-white dark:bg-rose-600",
+    id: "fuga-04",
     image: "/assets/leaks/leak-system.jpg",
     alt: "Sistema caído o código abandonado por el proveedor anterior",
-    title: "El sistema caído o abandonado",
-    lossMetric: "Operación parada y dinero atrapado en un software sin soporte.",
+    title: "Sistemas caídos o abandonados",
+    description: "Paralizan la operación y atrapan dinero en código que nadie puede mantener.",
     href: "/consultoria-tecnica",
+  },
+  {
+    id: "fuga-05",
+    image: "/assets/leaks/leak-quote-delay.jpg",
+    alt: "Cotizaciones demoradas por procesos comerciales manuales",
+    title: "Cotizaciones que tardan días",
+    description: "Tu equipo pasa horas armando propuestas mientras el cliente pierde interés.",
+    href: "/automatizaciones",
+  },
+  {
+    id: "fuga-06",
+    image: "/assets/leaks/leak-mobile-broken.jpg",
+    alt: "Sitio web que falla o se rompe en teléfonos móviles",
+    title: "Sitios rotos en móvil",
+    description: "El 70% de tus visitas navega en celulares y se va si la web no responde.",
+    href: "/desarrollo-web",
+  },
+  {
+    id: "fuga-07",
+    image: "/assets/leaks/leak-manual-billing.jpg",
+    alt: "Procesos manuales repetitivos y digitación en oficina",
+    title: "Digitación manual repetitiva",
+    description: "Horas de tu equipo perdidas cruzando inventarios y facturas a mano.",
+    href: "/software-a-medida",
+  },
+  {
+    id: "fuga-08",
+    image: "/assets/leaks/leak-server-crash.jpg",
+    alt: "Servidor colapsado por tráfico pico de campañas",
+    title: "Caídas en fechas de alta demanda",
+    description: "Tu plataforma colapsa justo cuando lanzas campañas y más clientes entran.",
+    href: "/consultoria-tecnica",
+  },
+  {
+    id: "fuga-09",
+    image: "/assets/leaks/leak-lost-leads.jpg",
+    alt: "Prospectos de campañas sin contactar ni registrar",
+    title: "Leads olvidados en la bandeja",
+    description: "Prospectos calificados que nunca son contactados por falta de un flujo ágil.",
+    href: "/automatizaciones",
+  },
+  {
+    id: "fuga-10",
+    image: "/assets/leaks/leak-expensive-saas.jpg",
+    alt: "Sobrecostos mensuales por licencias de software genérico",
+    title: "Cobros forzados por empleado",
+    description: "Pagar mensualidades crecientes por software genérico que limita tu operación.",
+    href: "/software-a-medida",
   },
 ];
 ---
@@ -57,66 +95,172 @@ const leaks: LeakItem[] = [
 <section id="fugas-operativas" class="py-16 sm:py-24 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
   <div class="max-w-7xl mx-auto px-6">
     
-    <!-- Encabezado Directo y Visual -->
-    <div class="max-w-3xl mb-12 sm:mb-16 space-y-3">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-rose-500/30 bg-rose-500/10 font-mono text-[11px] font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">
-        <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
-        Ejemplos Reales Visibles
-      </div>
-      <h2 class="text-2xl sm:text-4xl lg:text-[2.6rem] font-black text-slate-900 dark:text-white tracking-tight leading-[1.15]">
-        ¿Reconoces alguna de estas 4 fugas en tu empresa?
+    <!-- Encabezado 100% Centrado -->
+    <div class="text-center max-w-4xl mx-auto mb-10 sm:mb-12">
+      <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-black text-slate-900 dark:text-white tracking-tight leading-[1.15]">
+        ¿Reconoces alguna de estas <span class="text-rose-600 dark:text-rose-400">fugas operativas</span> en tu empresa?
       </h2>
-      <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
-        Situaciones reales que le cuestan clientes y horas a las empresas todos los días:
-      </p>
     </div>
 
-    <!-- Galería Visual de Casos Reales (Sin cards de texto) -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {leaks.map((item) => (
-        <a 
-          href={item.href}
-          class="group flex flex-col space-y-3.5 focus:outline-hidden"
-        >
-          <!-- Imagen Real de la Fuga con Badge Integrado -->
-          <div class="relative aspect-square w-full rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-800/90 bg-slate-100 dark:bg-slate-900 shadow-sm transition-all duration-300 group-hover:border-slate-400 dark:group-hover:border-slate-600 group-hover:shadow-md">
-            <img 
-              src={item.image} 
-              alt={item.alt}
-              class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
-              width="600"
-              height="600"
-            />
-            
-            <!-- Etiqueta Superior de Estado -->
-            <div class="absolute top-3 left-3">
-              <span class={`inline-flex items-center px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold tracking-wide shadow-sm ${item.badgeColor}`}>
-                {item.badge}
-              </span>
+    <!-- Carrusel Deslizante Infinito de Tarjetas -->
+    <div
+      id="leaks-slider-track"
+      class="flex gap-5 sm:gap-6 overflow-x-auto scroll-smooth pb-4 pt-1 px-1 -mx-1 scrollbar-none"
+      style="scrollbar-width: none; -ms-overflow-style: none;"
+    >
+      {leaks.map((leak) => (
+        <article class="w-[82vw] sm:w-[330px] lg:w-[350px] shrink-0 flex flex-col justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/90 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all p-4 sm:p-5">
+          
+          <div>
+            <!-- Imagen 16:9 Limpia -->
+            <div class="relative rounded-xl overflow-hidden border border-slate-200/80 dark:border-slate-800 aspect-16/9 bg-slate-100 dark:bg-slate-800 mb-3.5">
+              <img
+                src={leak.image}
+                alt={leak.alt}
+                class="w-full h-full object-cover"
+                width="480"
+                height="270"
+                loading="lazy"
+              />
             </div>
 
-            <!-- Tag de Categoría Inferior -->
-            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-              <span class="px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-xs text-white text-[10px] font-mono uppercase tracking-wider font-semibold">
-                {item.tag}
-              </span>
-            </div>
-          </div>
-
-          <!-- Micro Texto Conciso (2 líneas máximo) -->
-          <div class="space-y-1">
-            <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors flex items-center justify-between">
-              <span>{item.title}</span>
-              <span class="text-xs text-slate-400 group-hover:translate-x-1 transition-transform">→</span>
+            <!-- Título del Problema en Rojo -->
+            <h3 class="text-sm sm:text-[15px] font-extrabold text-rose-600 dark:text-rose-400 leading-snug tracking-tight">
+              {leak.title}
             </h3>
-            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-normal">
-              {item.lossMetric}
+
+            <!-- Descripción Breve con Tipografía Menor y Espaciado Reducido -->
+            <p class="text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 leading-snug mt-1.5">
+              {leak.description}
             </p>
           </div>
-        </a>
+
+          <!-- Mensaje Sutil de Enlace 'Valida la solución' -->
+          <div class="pt-4 mt-auto">
+            <a
+              href={leak.href}
+              class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group/link cursor-pointer"
+            >
+              <span>Valida la solución</span>
+              <span class="transition-transform duration-200 group-hover/link:translate-x-1" aria-hidden="true">→</span>
+            </a>
+          </div>
+
+        </article>
       ))}
+    </div>
+
+    <!-- Controles de Deslizamiento Centrados -->
+    <div class="flex items-center justify-center gap-3 mt-6 sm:mt-8">
+      <button
+        type="button"
+        id="leaks-scroll-prev"
+        class="w-11 h-11 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center transition active:scale-95 cursor-pointer shadow-md"
+        aria-label="Deslizar fugas hacia la izquierda"
+        title="Fuga anterior"
+      >
+        <span class="text-base font-bold">←</span>
+      </button>
+      <button
+        type="button"
+        id="leaks-scroll-next"
+        class="w-11 h-11 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center transition active:scale-95 cursor-pointer shadow-md"
+        aria-label="Deslizar fugas hacia la derecha"
+        title="Fuga siguiente"
+      >
+        <span class="text-base font-bold">→</span>
+      </button>
     </div>
 
   </div>
 </section>
+
+<style>
+  #leaks-slider-track::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    function initLeaksSlider() {
+      const track = document.getElementById('leaks-slider-track');
+      const prevBtn = document.getElementById('leaks-scroll-prev');
+      const nextBtn = document.getElementById('leaks-scroll-next');
+
+      if (!track || !prevBtn || !nextBtn) return;
+
+      let isHovered = false;
+      let autoplayTimer = null;
+
+      const getStep = () => {
+        const firstCard = track.querySelector('article');
+        if (!firstCard) return 350;
+        return firstCard.offsetWidth + 24; // ancho de tarjeta + gap
+      };
+
+      const scrollNext = () => {
+        const step = getStep();
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        if (track.scrollLeft >= maxScroll - 30) {
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: step, behavior: 'smooth' });
+        }
+      };
+
+      const scrollPrev = () => {
+        const step = getStep();
+        if (track.scrollLeft <= 30) {
+          const maxScroll = track.scrollWidth - track.clientWidth;
+          track.scrollTo({ left: maxScroll, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: -step, behavior: 'smooth' });
+        }
+      };
+
+      prevBtn.onclick = (e) => {
+        e.preventDefault();
+        scrollPrev();
+        restartAutoplay();
+      };
+
+      nextBtn.onclick = (e) => {
+        e.preventDefault();
+        scrollNext();
+        restartAutoplay();
+      };
+
+      // Pausar autoplay al hacer hover o tocar con el dedo
+      track.onmouseenter = () => { isHovered = true; };
+      track.onmouseleave = () => { isHovered = false; };
+      track.ontouchstart = () => { isHovered = true; };
+      track.ontouchend = () => { 
+        isHovered = false;
+        restartAutoplay();
+      };
+
+      function startAutoplay() {
+        if (autoplayTimer) clearInterval(autoplayTimer);
+        autoplayTimer = setInterval(() => {
+          if (!isHovered) {
+            scrollNext();
+          }
+        }, 5000);
+      }
+
+      function restartAutoplay() {
+        startAutoplay();
+      }
+
+      startAutoplay();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLeaksSlider);
+    } else {
+      initLeaksSlider();
+    }
+    document.addEventListener('astro:page-load', initLeaksSlider);
+  })();
+</script>

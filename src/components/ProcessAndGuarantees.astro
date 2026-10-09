@@ -1,0 +1,106 @@
+---
+interface ProcessStep {
+  number: string;
+  title: string;
+  badgeColor: string;
+  items: string[];
+}
+
+const steps: ProcessStep[] = [
+  {
+    number: "01",
+    title: "Diagnóstico & Presupuesto Cerrado",
+    badgeColor: "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/70 border-indigo-200 dark:border-indigo-800",
+    items: [
+      "Análisis de tus procesos internos y diagnóstico de fugas operativas.",
+      "Propuesta comercial con precio cerrado y cronograma garantizado sin sorpresas.",
+      "Diseño de arquitectura adaptada exactamente a la operación de tu empresa."
+    ]
+  },
+  {
+    number: "02",
+    title: "Prototipo & Validación Visual",
+    badgeColor: "text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-950/70 border-cyan-200 dark:border-cyan-800",
+    items: [
+      "Maqueta interactiva navegable antes de escribir la primera línea de código.",
+      "Validación de flujos comerciales y experiencia de usuario en celular y escritorio.",
+      "Aprobación visual garantizada para asegurar que resuelve el dolor real de tu negocio."
+    ]
+  },
+  {
+    number: "03",
+    title: "Construcción & Entregas Continuas",
+    badgeColor: "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/70 border-emerald-200 dark:border-emerald-800",
+    items: [
+      "Programación modular con revisiones y avances funcionales periódicos.",
+      "Conexión de bases de datos seguras, WhatsApp API y pasarelas de cobro.",
+      "Pruebas de velocidad extrema (< 1s en celular) y permisos estrictos por rol."
+    ]
+  },
+  {
+    number: "04",
+    title: "Lanzamiento, Propiedad & Soporte",
+    badgeColor: "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/70 border-amber-200 dark:border-amber-800",
+    items: [
+      "Entrega formal del 100% del código fuente y bases de datos en tu infraestructura.",
+      "Cero cobros obligatorios de licenciamiento por cada usuario o empleado nuevo.",
+      "Soporte preventivo por suscripción mensual predecible con monitoreo activo."
+    ]
+  }
+];
+---
+
+<section id="metodologia-y-garantias" class="py-16 sm:py-24 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Encabezado Centrado con Tipografía Mayor -->
+    <div class="text-center max-w-4xl mx-auto mb-14 sm:mb-16">
+      <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-black text-slate-900 dark:text-white tracking-tight leading-[1.15]">
+        De la idea a producción en <span class="text-indigo-600 dark:text-indigo-400">4 pasos garantizados</span>
+      </h2>
+    </div>
+
+    <!-- Grid 2x2 de los 4 Pasos: Título y Lista de Cosas Puntuales -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
+      {steps.map((step) => (
+        <div class="p-7 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col justify-between space-y-6 hover:border-slate-300 dark:hover:border-slate-700 transition">
+          
+          <div class="space-y-4">
+            <!-- Número de Paso y Título Directo (Sin Subtítulo) -->
+            <div class="flex items-center gap-3">
+              <span class={`inline-flex items-center justify-center w-9 h-9 rounded-xl border font-mono text-sm font-black ${step.badgeColor}`}>
+                {step.number}
+              </span>
+              <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight">
+                {step.title}
+              </h3>
+            </div>
+
+            <!-- Lista de Cosas Puntuales -->
+            <ul class="space-y-3 pt-2">
+              {step.items.map((item) => (
+                <li class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  <span class="text-emerald-500 font-bold shrink-0 mt-0.5">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Botón de Acción Centrado -->
+    <div class="mt-12 text-center">
+      <a
+        href="#contacto"
+        class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition"
+      >
+        <span>Iniciar mi Proyecto en 4 Pasos</span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>

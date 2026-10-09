@@ -15,8 +15,8 @@
       
       <!-- Columna Izquierda: Ultra Minimalista y Directa (6 Columnas) -->
       <div class="lg:col-span-6 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
-        <!-- Main Headline Corto y Contundente -->
-        <h1 class="text-[2.6rem] sm:text-5xl lg:text-[3.5rem] xl:text-[3.75rem] font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+        <!-- Main Headline Fijo y Limpio para Máximo Rendimiento SEO -->
+        <h1 class="text-[2.4rem] sm:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.2]">
           Tecnología que hace <span class="text-indigo-600 dark:text-indigo-400">crecer tu negocio</span>.
         </h1>
 
@@ -25,20 +25,23 @@
           Páginas web de alta conversión, plataformas de software a la medida y automatizaciones comerciales para tu empresa.
         </p>
 
-        <!-- Imagen Real de Producto en Mobile (< lg) — Integrada al flujo narrativo antes de los botones -->
+        <!-- Imagen Real de Producto en Mobile (< lg) — Carrusel sincronizado -->
         <div class="block lg:hidden pt-1 pb-1 w-full max-w-lg mx-auto text-left">
-          <div class="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200/90 dark:border-slate-800/90 bg-white dark:bg-slate-900 group">
+          <div class="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200/90 dark:border-slate-800/90 bg-white dark:bg-slate-900">
             <img
+              id="hero-img-mobile"
               src="/assets/hero/hero-showcase.jpg"
-              alt="Plataforma de software y automatizaciones de Aleric.dev"
-              class="w-full h-auto object-cover"
+              alt="Aleric.dev — Ingeniería de software a tu medida"
+              class="w-full h-56 sm:h-64 object-cover transition-opacity duration-700"
               width="640"
-              height="480"
+              height="400"
               loading="eager"
             />
-            <div class="absolute bottom-2.5 left-2.5 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1 text-[11px] font-bold text-slate-800 dark:text-slate-200 shadow-xs flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-              <span>100% Código Tuyo · Cero Ataduras</span>
+            <div class="absolute bottom-2.5 left-2.5 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1 text-[11px] font-bold shadow-xs flex items-center gap-1.5">
+              <span id="hero-dot-mobile" class="w-2 h-2 rounded-full bg-indigo-500"></span>
+              <span id="hero-vertical-mobile" class="font-mono text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Aleric.dev</span>
+              <span class="text-slate-400 dark:text-slate-600">·</span>
+              <span id="hero-label-mobile" class="text-slate-800 dark:text-slate-200 text-[11px]">Software a tu medida</span>
             </div>
           </div>
         </div>
@@ -68,7 +71,7 @@
 
       </div>
 
-      <!-- Columna Derecha: Imagen Real de Producto en Desktop (Oculta en Mobile) -->
+      <!-- Columna Derecha: Imagen Real de Producto en Desktop (Rotación Dinámica) -->
       <div class="hidden lg:block lg:col-span-6 w-full">
         <div class="relative w-full max-w-lg lg:max-w-none mx-auto select-none">
           
@@ -76,27 +79,39 @@
           <div class="absolute -top-6 -right-6 w-72 h-72 bg-indigo-500/10 dark:bg-indigo-600/15 rounded-full blur-3xl pointer-events-none"></div>
           <div class="absolute -bottom-8 -left-8 w-64 h-64 bg-cyan-500/10 dark:bg-cyan-600/15 rounded-full blur-3xl pointer-events-none"></div>
 
-          <!-- Contenedor de la Imagen con Marco Sólido y Sombra Profunda -->
-          <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/90 dark:border-slate-800/90 bg-white dark:bg-slate-900 group transition duration-300 hover:shadow-indigo-500/10">
+          <!-- Contenedor de la Imagen con Marco Sólido (Sin zoom en hover) -->
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/90 dark:border-slate-800/90 bg-white dark:bg-slate-900">
             <img
+              id="hero-img-desktop"
               src="/assets/hero/hero-showcase.jpg"
-              alt="Plataforma de software y automatizaciones de Aleric.dev"
-              class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-[1.02]"
+              alt="Aleric.dev — Plataformas y soluciones digitales a tu medida"
+              class="w-full h-[410px] object-cover transition-opacity duration-700"
               width="640"
-              height="480"
+              height="410"
               loading="eager"
               fetchpriority="high"
             />
           </div>
 
-          <!-- Micro-Badge Flotante de Confianza -->
-          <div class="hidden sm:flex absolute -bottom-4 -left-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-2xl p-3 shadow-xl items-center gap-3 animate-fade-in-up">
-            <div class="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">
+          <!-- Micro-Badge Flotante Sincronizado con la Vertical y Color Oficial -->
+          <div class="hidden sm:flex absolute -bottom-4 -left-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-2xl p-3.5 shadow-xl items-center gap-3.5 max-w-sm">
+            <div id="hero-badge-icon" class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-base shrink-0 border border-indigo-200/60 dark:border-indigo-800/40">
               ⚡
             </div>
-            <div>
-              <p class="text-xs font-bold text-slate-900 dark:text-white">Velocidad &amp; Propiedad</p>
-              <p class="text-[10px] text-slate-500 dark:text-slate-400">Código 100% tuyo · Cero ataduras</p>
+            <div class="flex-1 min-w-0">
+              <!-- Nombre de la Vertical en Color Oficial -->
+              <div class="flex items-center gap-1.5 mb-0.5">
+                <span id="hero-badge-dot" class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                <span id="hero-badge-vertical" class="font-mono text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                  Aleric.dev
+                </span>
+              </div>
+              <p id="hero-badge-title" class="text-xs font-bold text-slate-900 dark:text-white truncate">
+                Ingeniería de Software a tu Medida
+              </p>
+              <p id="hero-badge-desc" class="text-[10px] text-slate-500 dark:text-slate-400 truncate">
+                Páginas web · Software propio · Automatizaciones 24/7
+              </p>
             </div>
           </div>
 
@@ -106,3 +121,128 @@
     </div>
   </div>
 </section>
+
+<script is:inline>
+  (function() {
+    function initHeroImageCarousel() {
+      const imgDesktop = document.getElementById('hero-img-desktop');
+      const imgMobile = document.getElementById('hero-img-mobile');
+      const labelMobile = document.getElementById('hero-label-mobile');
+      const verticalMobile = document.getElementById('hero-vertical-mobile');
+      const dotMobile = document.getElementById('hero-dot-mobile');
+      
+      const badgeVertical = document.getElementById('hero-badge-vertical');
+      const badgeDot = document.getElementById('hero-badge-dot');
+      const badgeTitle = document.getElementById('hero-badge-title');
+      const badgeDesc = document.getElementById('hero-badge-desc');
+      const badgeIcon = document.getElementById('hero-badge-icon');
+
+      if (!imgDesktop && !imgMobile) return;
+
+      const slides = [
+        {
+          src: '/assets/hero/hero-showcase.jpg',
+          vertical: 'Aleric.dev',
+          title: 'Ingeniería de Software a tu Medida',
+          desc: 'Páginas web · Software propio · Automatizaciones 24/7',
+          mobileLabel: 'Software a tu medida',
+          dotClass: 'bg-indigo-500',
+          textColor: 'text-indigo-600 dark:text-indigo-400',
+          icon: '⚡',
+          iconBg: 'bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/40'
+        },
+        {
+          src: '/assets/services/solution-web.jpg',
+          vertical: 'Desarrollo Web',
+          title: 'Páginas Web de Alta Conversión',
+          desc: 'Carga ultrarrápida · Optimizada para vender',
+          mobileLabel: 'Carga ultrarrápida',
+          dotClass: 'bg-cyan-500',
+          textColor: 'text-cyan-600 dark:text-cyan-400',
+          icon: '🌐',
+          iconBg: 'bg-cyan-50 dark:bg-cyan-950/60 text-cyan-600 dark:text-cyan-400 border border-cyan-200/60 dark:border-cyan-800/40'
+        },
+        {
+          src: '/assets/services/solution-software.jpg',
+          vertical: 'Software a Medida',
+          title: 'Plataformas y Sistemas Propios',
+          desc: '100% de tu empresa · Cero cobros por empleado',
+          mobileLabel: 'Cero cobros por empleado',
+          dotClass: 'bg-indigo-500',
+          textColor: 'text-indigo-600 dark:text-indigo-400',
+          icon: '💻',
+          iconBg: 'bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/40'
+        },
+        {
+          src: '/assets/services/solution-automation.jpg',
+          vertical: 'Ventas por WhatsApp',
+          title: 'Automatización Comercial 24/7',
+          desc: 'Respuestas en 2 segundos · Cierra ventas sin esperar',
+          mobileLabel: 'Respuestas en 2 segundos',
+          dotClass: 'bg-emerald-500',
+          textColor: 'text-emerald-600 dark:text-emerald-400',
+          icon: '💬',
+          iconBg: 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/40'
+        },
+        {
+          src: '/assets/services/solution-consultancy.jpg',
+          vertical: 'Consultoría Técnica',
+          title: 'Auditoría y Rescate de Software',
+          desc: 'Diagnóstico honesto · Rescate de código caído',
+          mobileLabel: 'Diagnóstico honesto',
+          dotClass: 'bg-amber-500',
+          textColor: 'text-amber-600 dark:text-amber-400',
+          icon: '🛡️',
+          iconBg: 'bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 border border-amber-200/60 dark:border-amber-800/40'
+        }
+      ];
+
+      let currentIndex = 0;
+
+      // Rotación más pausada: 5.5 segundos por slide
+      setInterval(() => {
+        // Fade out
+        if (imgDesktop) imgDesktop.style.opacity = '0.35';
+        if (imgMobile) imgMobile.style.opacity = '0.35';
+
+        setTimeout(() => {
+          currentIndex = (currentIndex + 1) % slides.length;
+          const current = slides[currentIndex];
+
+          if (imgDesktop) {
+            imgDesktop.src = current.src;
+            imgDesktop.style.opacity = '1';
+          }
+          if (imgMobile) {
+            imgMobile.src = current.src;
+            imgMobile.style.opacity = '1';
+          }
+          if (verticalMobile) {
+            verticalMobile.textContent = current.vertical;
+            verticalMobile.className = `font-mono text-[10px] font-bold uppercase tracking-wider ${current.textColor}`;
+          }
+          if (labelMobile) labelMobile.textContent = current.mobileLabel;
+          if (dotMobile) dotMobile.className = `w-2 h-2 rounded-full ${current.dotClass}`;
+
+          if (badgeVertical) {
+            badgeVertical.textContent = current.vertical;
+            badgeVertical.className = `font-mono text-[10px] font-bold uppercase tracking-wider ${current.textColor}`;
+          }
+          if (badgeDot) badgeDot.className = `w-1.5 h-1.5 rounded-full ${current.dotClass}`;
+          if (badgeTitle) badgeTitle.textContent = current.title;
+          if (badgeDesc) badgeDesc.textContent = current.desc;
+          if (badgeIcon) {
+            badgeIcon.textContent = current.icon;
+            badgeIcon.className = `w-10 h-10 rounded-xl flex items-center justify-center font-bold text-base shrink-0 ${current.iconBg}`;
+          }
+        }, 350);
+      }, 5500);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initHeroImageCarousel);
+    } else {
+      initHeroImageCarousel();
+    }
+  })();
+</script>
